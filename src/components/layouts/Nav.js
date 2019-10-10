@@ -37,16 +37,12 @@ const Logo = styled.span`
     margin-top: 1.2rem;
   }
 
-  & a {
-    text-decoration: none;
-  }
-
   & i {
     font-weight: bold;
     color: ${props => props.theme.colors.primaryDark};
   }
   & ${Navlink} {
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 3rem;
   }
 `;

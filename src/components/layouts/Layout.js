@@ -13,7 +13,7 @@ const theme = {
     primary: 'rgb(92, 52, 145)',
     primaryDark: 'rgb(73, 35, 122)',
     primaryLight: 'rgb(148, 103, 206)',
-    secondary: 'rgb(195,119,224)',
+    primaryTransparent: 'rgba(92, 52, 145,0.2)',
     lightgrey: '	rgb(240,240,240)',
     white: '#fff',
     black: 'rgb(31, 19, 19)',

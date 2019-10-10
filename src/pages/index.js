@@ -7,11 +7,7 @@ import Skus from '../components/stripe/Skus';
 import styled from '@emotion/styled';
 import profileImage from '../../images/alexquasar.png';
 import { ButtonStyle2 } from '../components/reusableStyles/buttons/Button';
-
-const Container = styled.div`
-  max-width: ${props => props.theme.pageWidth.fixed};
-  margin: 0 auto;
-`;
+import { DefaultPageContainer } from '../components/layouts/PageContainers';
 
 const SectionTop = styled.div`
   display: flex;
@@ -33,7 +29,7 @@ const SectionTopOne = styled.div`
 `;
 
 const SectionTopTwo = styled.div`
-  background: ${props => props.theme.colors.lightgrey};
+  background: ${props => props.theme.colors.primaryTransparent};
   padding: 2rem;
   display: flex;
   flex-grow: 1;
@@ -79,7 +75,7 @@ export default () => {
         title="Explore Gatsby"
         description="MERN, Gatsby and other cool stuff"
       />
-      <Container>
+      <DefaultPageContainer>
         <SectionTop>
           <SectionTopOne>
             <Title>
@@ -122,7 +118,7 @@ export default () => {
         <Checkout />
         <Skus />
         <Insta />
-      </Container>
+      </DefaultPageContainer>
     </Layout>
   );
 };

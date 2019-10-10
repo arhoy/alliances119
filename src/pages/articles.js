@@ -3,6 +3,7 @@ import Layout from '../components/layouts/Layout';
 import { graphql } from 'gatsby';
 import SEO from '../hooks/SEO';
 import Articles from '../components/articles/Articles';
+import { DefaultPageContainer } from '../components/layouts/PageContainers';
 
 export const getArticles = graphql`
   query {
@@ -32,7 +33,9 @@ const articles = ({ data }) => {
         title="Alex Quasar Articles on Gatsby and Full Stack React"
         description="Please see all the articles below, articles on Full Stack React and Gatsby and more"
       />
-      <Articles articles={data.allArticles.nodes} />
+      <DefaultPageContainer>
+        <Articles articles={data.allArticles.nodes} />
+      </DefaultPageContainer>
     </Layout>
   );
 };
