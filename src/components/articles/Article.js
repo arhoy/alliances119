@@ -9,8 +9,8 @@ const Div = styled.div`
   max-width: 100rem;
   margin: 1rem auto;
   & h2 {
-    font-size: 1.6rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 500;
   }
   & p {
     padding: 1rem;

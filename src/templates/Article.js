@@ -1,12 +1,17 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/layouts/Layout';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import Image from 'gatsby-image';
 import styled from '@emotion/styled';
+import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 import ArticleCode from '../components/articles/ArticleCode';
-import Image from 'gatsby-image';
+
+import { DefaultPageContainer } from '../components/layouts/PageContainers';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+
+import { H1 } from '../components/reusableStyles/typography/Typography';
+import { TagContainer, Tag } from '../components/reusableStyles/tags/Tag';
 
 // run template query
 export const query = graphql`
@@ -68,28 +73,10 @@ const ArticleContainer = styled.article`
   ul {
     list-style: disk;
   }
-
-  h4 {
-    font-family: Mansalva;
-  }
 `;
 
 const P = styled.p`
   padding: 1rem 0rem;
-`;
-
-const TagContainer = styled.div`
-  margin: 1rem 0;
-`;
-
-const Tag = styled.span`
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  font-size: 1.3rem;
-  background: ${props => props.theme.colors.primaryLight};
-  margin-right: 0.8rem;
-  margin-bottom: 0.8rem;
-  border-radius: 4px;
 `;
 
 const BoldStyle = styled.span`
@@ -97,13 +84,6 @@ const BoldStyle = styled.span`
 `;
 
 const CodeStyle = styled.span``;
-
-const Title = styled.h1`
-  font-family: Poppins;
-  font-size: 2.4rem;
-  line-height: 2.4rem;
-  margin-bottom: 1.4rem;
-`;
 
 const Bold = ({ children }) => <BoldStyle>{children}</BoldStyle>;
 const Text = ({ children }) => <P>{children}</P>;
@@ -149,25 +129,26 @@ const AricleTemplate = ({ data: { article } }) => {
   return (
     <Layout>
       <SEO title={title} />
+      <DefaultPageContainer>
+        <ArticleContainer>
+          <AritlceHeader>
+            <ArticleHeaderImage fluid={fluid} />
 
-      <ArticleContainer>
-        <AritlceHeader>
-          <ArticleHeaderImage fluid={fluid} />
+            <ArticleHeaderContent>
+              <H1>{title}</H1>
+              <p>{publishDate}</p>
+              <p>{author.name}</p>
 
-          <ArticleHeaderContent>
-            <Title>{title}</Title>
-            <p>{publishDate}</p>
-            <p>{author.name}</p>
-
-            <TagContainer>
-              {tags.map(tag => (
-                <Tag key={tag}>{tag}</Tag>
-              ))}
-            </TagContainer>
-          </ArticleHeaderContent>
-        </AritlceHeader>
-        <main>{documentToReactComponents(json, options)}</main>
-      </ArticleContainer>
+              <TagContainer>
+                {tags.map(tag => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </TagContainer>
+            </ArticleHeaderContent>
+          </AritlceHeader>
+          <main>{documentToReactComponents(json, options)}</main>
+        </ArticleContainer>
+      </DefaultPageContainer>
     </Layout>
   );
 };

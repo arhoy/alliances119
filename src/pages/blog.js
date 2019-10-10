@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import SEO from '../hooks/SEO';
 import Articles from '../components/articles/Articles';
 import { DefaultPageContainer } from '../components/layouts/PageContainers';
+import { H1 } from '../components/reusableStyles/typography/Typography';
 
 export const getArticles = graphql`
   query {
@@ -34,6 +35,7 @@ const articles = ({ data }) => {
         description="Please see all the articles below, articles on Full Stack React and Gatsby and more"
       />
       <DefaultPageContainer>
+        <H1>Blog Posts</H1>
         <Articles articles={data.blogArticles.nodes} />
       </DefaultPageContainer>
     </Layout>

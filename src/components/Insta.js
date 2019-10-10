@@ -2,6 +2,7 @@ import React from 'react';
 import useInsta from '../hooks/useInsta';
 import Image from 'gatsby-image';
 import styled from '@emotion/styled';
+import { H2 } from './reusableStyles/typography/Typography';
 
 const Container = styled.div`
   display: flex;
@@ -26,12 +27,12 @@ const A = styled.a`
 `;
 
 const Insta = () => {
-  const instagramData = useInsta();
+  const instagramData = useInsta({ variables: { limit: 1 } });
   const { username } = instagramData[0];
 
   return (
     <>
-      <h2>Instagram posts! from @{username}</h2>
+      <H2>Instagram posts! from @{username}</H2>
       <Container>
         <A
           href={`https://instagram.com/${username}`}

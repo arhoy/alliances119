@@ -16,11 +16,11 @@ const theme = {
     primaryTransparent: 'rgba(92, 52, 145,0.2)',
     lightgrey: '	rgb(240,240,240)',
     white: '#fff',
-    black: 'rgb(31, 19, 19)',
+    black: '#1a1a1a',
     darkgrey: 'rgb(109, 109, 109)',
   },
   pageWidth: {
-    fixed: '1000px',
+    fixed: '800px',
     fixedHome: '900px',
   },
   screenSize: {

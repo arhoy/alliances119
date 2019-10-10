@@ -1,12 +1,16 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import styled from '@emotion/styled';
+
 import Layout from '../components/layouts/Layout';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
-import styled from '@emotion/styled';
+
 import SEO from '../hooks/SEO';
 import ArticleCode from '../components/articles/ArticleCode';
 import StyledHero from '../components/heros/StyledHero';
+import { H1 } from '../components/reusableStyles/typography/Typography';
+import { TagContainer, Tag } from '../components/reusableStyles/tags/Tag';
 
 // run template query
 export const query = graphql`
@@ -51,27 +55,10 @@ const ArticleContainer = styled.article`
   ul {
     list-style: disk;
   }
-
-  h4 {
-    font-family: Mansalva;
-  }
 `;
 
 const P = styled.p`
   padding: 1rem 0rem;
-`;
-
-const TagContainer = styled.div`
-  margin: 1rem 0;
-`;
-
-const Tag = styled.span`
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  background: ${props => props.theme.colors.primaryLight};
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 4px;
 `;
 
 const BoldStyle = styled.span`
@@ -128,7 +115,7 @@ const BlogTemplate = ({ data: { article } }) => {
 
       <ArticleContainer>
         <AritlceHeader>
-          <h1>{title}</h1>
+          <H1>{title}</H1>
           <p>{publishDate}</p>
           <p>{author.name}</p>
           <StyledHero img={fluid} />

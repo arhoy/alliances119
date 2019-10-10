@@ -77,5 +77,6 @@ module.exports = {
         downloadFiles: true,
       },
     },
+    `gatsby-plugin-twitter`,
   ],
 };

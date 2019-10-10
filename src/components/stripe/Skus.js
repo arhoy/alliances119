@@ -9,7 +9,6 @@ const Container = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0 1rem 0;
 `;
 
 class Skus extends Component {

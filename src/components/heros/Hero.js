@@ -17,7 +17,6 @@ const TextBox = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   color: ${props => props.theme.colors.white};
-  font-family: Mansalva;
 `;
 
 const Hero = () => {

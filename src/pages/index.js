@@ -1,21 +1,34 @@
 import React from 'react';
+import styled from '@emotion/styled';
+
 import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 import Insta from '../components/Insta';
 import Checkout from '../components/stripe/Checkout';
 import Skus from '../components/stripe/Skus';
-import styled from '@emotion/styled';
 import profileImage from '../../images/alexquasar.png';
+import Articles from '../components/articles/Articles';
+import Navlink from '../components/Links/Navlink';
+import useLatestArticles from '../hooks/useLatestArticles';
+import useLatestBlogs from '../hooks/useLatestBlogs';
+
 import { ButtonStyle2 } from '../components/reusableStyles/buttons/Button';
 import { DefaultPageContainer } from '../components/layouts/PageContainers';
 
-const SectionTop = styled.div`
+const Section = styled.div`
   display: flex;
-  margin: 0 auto;
   padding: 4rem 0;
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     flex-wrap: wrap;
   }
+`;
+const SectionTop = styled(Section)`
+  margin: 0 auto;
+`;
+
+const SectionMiddle = styled(Section)`
+  display: block;
+  margin: 0 auto;
 `;
 
 const SectionTopOne = styled.div`
@@ -52,7 +65,28 @@ const SectionTopTwo = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 3.4rem;
+  font-size: 3.8rem;
+`;
+
+const H2 = styled.h2`
+  font-size: 3.2rem;
+  margin-bottom: 3rem;
+  & ${Navlink} {
+    font-size: 1.5rem;
+    padding: 0.5rem 2rem;
+    margin-left: 1rem;
+    background: ${props => props.theme.colors.lightgrey};
+    display: inline-block;
+    transform: translateY(-0.5rem);
+    text-decoration: none;
+  }
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    font-size: 2.5rem;
+    & ${Navlink} {
+      margin: 0;
+      padding: 0.5rem 1rem;
+    }
+  }
 `;
 
 const Blurb = styled.p`
@@ -68,7 +102,6 @@ const Social = styled.div`
 `;
 
 export default () => {
-  console.log(profileImage);
   return (
     <Layout>
       <SEO
@@ -103,21 +136,25 @@ export default () => {
           </SectionTopTwo>
         </SectionTop>
 
-        <h2>Latest Articles</h2>
+        <SectionMiddle>
+          <H2>
+            Lastest Articles <Navlink to="/articles"> View All</Navlink>
+          </H2>
+          <Articles articles={useLatestArticles()} />
+        </SectionMiddle>
 
-        <h2>React Articles</h2>
-
-        <h2>Gatsby Articles</h2>
-
-        <h2>Mongo DB Articles</h2>
-
-        <h2>Latest Websites</h2>
-
-        <h2>VS Code Set Up</h2>
-
-        <Checkout />
-        <Skus />
-        <Insta />
+        <SectionMiddle>
+          <H2>
+            Latest Blogs <Navlink to="/blogs"> View All</Navlink>
+          </H2>
+          <Articles articles={useLatestBlogs()} />
+        </SectionMiddle>
+        <Section>
+          <Skus />
+        </Section>
+        <SectionMiddle>
+          <Insta />
+        </SectionMiddle>
       </DefaultPageContainer>
     </Layout>
   );

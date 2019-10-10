@@ -11,6 +11,7 @@
 - CMS: Contentful
 - Payments: Stripe
 - Other: Kofi
+- Social Proof: gatsby-twitter-plugin, github api
 
 ## Social Links
 
