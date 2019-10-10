@@ -28,7 +28,6 @@ html {
 body {
   box-sizing: border-box;
   padding: 0rem;
-  //   font-family: 'Mansalva';
   @include respond(tab-port) {
     padding: 0;
   }

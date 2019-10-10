@@ -10,7 +10,7 @@ const Navlink = styled(Link)`
 
   &:hover {
     color: ${props => props.theme.colors.primaryDark};
-    font-weight: bolder;
+    text-decoration: underline;
   }
   &.currentPage {
     color: ${props => props.theme.colors.primaryDark};

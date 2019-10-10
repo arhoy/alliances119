@@ -4,18 +4,15 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 
 const Navlink = styled(Link)`
-  color: ${props => props.theme.colors.primaryDark};
-  font-weight: bold;
+  color: ${props => props.theme.colors.primary};
 `;
 
 const NetlifyID = styled.span`
   .netlify-identity-user,
   .netlify-identity-button,
   .netlify-identity-menu {
-    color: ${props => props.theme.colors.primaryDark};
+    color: ${props => props.theme.colors.primary};
     text-decoration: none;
-    text-decoration: none !important;
-    font-weight: bolder;
   }
 `;
 
@@ -30,8 +27,8 @@ const Button = styled.button`
   position: relative;
 
   &:hover {
-    color: ${props => props.theme.colors.primaryDark};
-    font-weight: bolder;
+    color: ${props => props.theme.colors.primary};
+    text-decoration: none;
   }
   &:after {
     content: '▼';
@@ -46,10 +43,11 @@ const DropDownContent = styled.div`
 `;
 const DropDownMenu1 = () => {
   return (
-    <div className={styles.dropdown}>
+    <div className={`${styles.dropdown}`}>
       <Button className={styles.dropbtn}>Explore </Button>
       <DropDownContent className={styles.dropdownContent}>
-        <Navlink to="/new-articles">New Articles</Navlink>
+        <Navlink to="/articles">Articles</Navlink>
+        <Navlink to="/blog">Blog</Navlink>
         <Navlink to="/stripe-products">Products</Navlink>
         <Navlink to="/contact">Contact Me</Navlink>
         <NetlifyID data-netlify-identity-button></NetlifyID>

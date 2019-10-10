@@ -6,7 +6,7 @@ import Articles from '../components/articles/Articles';
 
 export const getArticles = graphql`
   query {
-    allArticles: allContentfulAlexQuasarArticles {
+    blogArticles: allContentfulBlogPost {
       nodes {
         slug
         title
@@ -32,7 +32,7 @@ const articles = ({ data }) => {
         title="Alex Quasar Articles on Gatsby and Full Stack React"
         description="Please see all the articles below, articles on Full Stack React and Gatsby and more"
       />
-      <Articles articles={data.allArticles.nodes} />
+      <Articles articles={data.blogArticles.nodes} />
     </Layout>
   );
 };

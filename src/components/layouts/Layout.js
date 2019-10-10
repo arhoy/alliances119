@@ -10,14 +10,21 @@ import Footer from './Footer';
 
 const theme = {
   colors: {
-    primary: '#298FCA',
-    primaryDark: '#094C72',
-    primaryLight: 'rgb(188, 217, 234)',
+    primary: 'rgb(92, 52, 145)',
+    primaryDark: 'rgb(73, 35, 122)',
+    primaryLight: 'rgb(148, 103, 206)',
     secondary: 'rgb(195,119,224)',
     lightgrey: '	rgb(240,240,240)',
     white: '#fff',
     black: 'rgb(31, 19, 19)',
     darkgrey: 'rgb(109, 109, 109)',
+  },
+  pageWidth: {
+    fixed: '1000px',
+    fixedHome: '900px',
+  },
+  screenSize: {
+    mobileL: '600px',
   },
 };
 
@@ -46,7 +53,7 @@ const FooterLayout = styled.footer`
 
 const Layout = ({ children }) => {
   const white = '#fff';
-  const red = 'rgba(138, 35, 12,0.7)';
+  const primaryColor = 'rgb(92, 52, 145)';
 
   return (
     <>
@@ -64,8 +71,8 @@ const Layout = ({ children }) => {
           }
 
           h1 {
-            color: ${red};
-            font-family: Mansalva;
+            color: ${primaryColor};
+            font-family: Poppins;
           }
         `}
       />

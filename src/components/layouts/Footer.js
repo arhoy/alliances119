@@ -6,6 +6,8 @@ const d = new Date().getFullYear();
 
 const FooterStyle = styled.div`
   background: ${props => props.theme.colors.lightgrey};
+  max-width: ${props => props.theme.pageWidth.fixed};
+  margin: 0 auto;
   padding: 2rem;
   display: flex;
   flex-direction: column;

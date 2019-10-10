@@ -32,9 +32,6 @@ module.exports = {
           {
             family: `Roboto`,
           },
-          {
-            family: `Mansalva`,
-          },
         ],
       },
     },
