@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import GitHubButton from 'react-github-button';
 
 import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
@@ -113,6 +112,7 @@ const TwitterStyle = styled(FaTwitterSquare)`
 const GitHubStyle = styled(FaGithub)`
   cursor: pointer;
   font-size: 4rem;
+  color: black;
 `;
 
 export default () => {
@@ -135,8 +135,13 @@ export default () => {
             </Title>
 
             <Social>
-              <GitHubStyle title="Star Repo" />
-              <TwitterStyle title="Follow Me" />
+              <a href="https://github.com/arhoy">
+                <GitHubStyle title="Star Repo" />
+              </a>
+
+              <a href="https://twitter.com/_aquasar">
+                <TwitterStyle title="Follow Me" />
+              </a>
             </Social>
           </SectionTopOne>
           <SectionTopTwo>
