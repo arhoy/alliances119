@@ -2,13 +2,12 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const URL = 'https://aquasar-starter-blog.netlify.com';
+const URL = 'https://aquasar.io';
 
 module.exports = {
   siteMetadata: {
-    title: 'Alex Quasar Blog',
-    description:
-      'A lovely Blog testing Gatsby with Emotion (css in jx flavor) and MDX',
+    title: 'Aquasar - Web development, Gatsby and React Articles',
+    description: 'Documenting my web development journey with Gatsby and React',
     author: 'Alex Quasar',
     twitterUsername: '@_aquasar',
     image: '/default.jpg',

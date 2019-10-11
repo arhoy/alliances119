@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import GitHubButton from 'react-github-button';
 
 import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 import Insta from '../components/Insta';
-import Checkout from '../components/stripe/Checkout';
+
 import Skus from '../components/stripe/Skus';
 import profileImage from '../../images/alexquasar.png';
 import Articles from '../components/articles/Articles';
@@ -98,7 +99,7 @@ const Blurb = styled.p`
 
 const Social = styled.div`
   display: flex;
-  color: red;
+  justify-content: flex-start;
 `;
 
 export default () => {
@@ -121,11 +122,24 @@ export default () => {
             </Title>
 
             <Social>
-              <div>
-                <span>Github</span>
-                <span>Github</span>
-                <span>Github</span>
-              </div>
+              <GitHubButton
+                style={{ marginRight: '3px' }}
+                href="https://github.com/arhoy"
+                data-size="large"
+                data-show-count="true"
+                aria-label="Follow me on GitHub"
+              >
+                Follow Me
+              </GitHubButton>
+
+              <a
+                className="twitter-follow-button"
+                href="https://twitter.com/_aquasar"
+                data-size="large"
+                data-show-screen-name="false"
+              >
+                Follow Me
+              </a>
             </Social>
           </SectionTopOne>
           <SectionTopTwo>
