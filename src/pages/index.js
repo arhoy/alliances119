@@ -15,6 +15,7 @@ import useLatestBlogs from '../hooks/useLatestBlogs';
 
 import { ButtonStyle2 } from '../components/reusableStyles/buttons/Button';
 import { DefaultPageContainer } from '../components/layouts/PageContainers';
+import { FaTwitterSquare, FaGithub } from 'react-icons/fa';
 
 const Section = styled.div`
   display: flex;
@@ -102,6 +103,18 @@ const Social = styled.div`
   justify-content: flex-start;
 `;
 
+const TwitterStyle = styled(FaTwitterSquare)`
+  margin-left: 1rem;
+  color: #1da1f2;
+  cursor: pointer;
+  font-size: 4rem;
+`;
+
+const GitHubStyle = styled(FaGithub)`
+  cursor: pointer;
+  font-size: 4rem;
+`;
+
 export default () => {
   return (
     <Layout>
@@ -122,31 +135,17 @@ export default () => {
             </Title>
 
             <Social>
-              <GitHubButton
-                style={{ marginRight: '3px' }}
-                href="https://github.com/arhoy"
-                data-size="large"
-                data-show-count="true"
-                aria-label="Follow me on GitHub"
-              >
-                Follow Me
-              </GitHubButton>
-
-              <a
-                className="twitter-follow-button"
-                href="https://twitter.com/_aquasar"
-                data-size="large"
-                data-show-screen-name="false"
-              >
-                Follow Me
-              </a>
+              <GitHubStyle title="Star Repo" />
+              <TwitterStyle title="Follow Me" />
             </Social>
           </SectionTopOne>
           <SectionTopTwo>
             <img alt="" src={profileImage} />
             <h4>New Content Weekly</h4>
             <p> Developer tutorials and new websites </p>
-            <ButtonStyle2>Subscribe Me</ButtonStyle2>
+            <ButtonStyle2>
+              <a href="https://aquasar.substack.com"> Subscribe Me </a>
+            </ButtonStyle2>
           </SectionTopTwo>
         </SectionTop>
 

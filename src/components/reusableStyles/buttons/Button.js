@@ -28,6 +28,10 @@ const ButtonStyle2 = styled.button`
     font-weight: bold;
     background: ${props => props.theme.colors.primaryDark};
   }
+  & a {
+    color: ${props => props.theme.colors.white};
+    text-decoration: none;
+  }
 `;
 
 export { ButtonStyle1, ButtonStyle2 };
