@@ -1,7 +1,7 @@
 {
-  "name": "frontendmasters-gatsby",
+  "name": "aquasa",
   "private": true,
-  "description": "Bare-bones starter for the Gatsby Frontend Masters workshop.",
+  "description": "Officla git repo for aquasar.io",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
