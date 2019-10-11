@@ -34,7 +34,7 @@ const Hero = () => {
 
   return (
     <ImageBackground fluid={image.sharp.fluid} fadeIn="soft">
-      <TextBox>Gatsby Image</TextBox>
+      <TextBox>Built with Gatsby</TextBox>
     </ImageBackground>
   );
 };

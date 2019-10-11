@@ -1,7 +1,7 @@
 {
-  "name": "aquasa",
+  "name": "aquasar",
   "private": true,
-  "description": "Officla git repo for aquasar.io",
+  "description": "Official git repo for aquasar.io",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {

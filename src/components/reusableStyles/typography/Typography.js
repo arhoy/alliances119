@@ -10,4 +10,8 @@ const H2 = styled.h2`
   color: ${props => props.theme.colors.black};
 `;
 
-export { H1, H2 };
+const A = styled.a`
+  color: ${props => props.theme.colors.black};
+`;
+
+export { H1, H2, A };
