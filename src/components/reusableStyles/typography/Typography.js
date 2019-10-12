@@ -12,6 +12,17 @@ const H2 = styled.h2`
 
 const A = styled.a`
   color: ${props => props.theme.colors.black};
+  text-decoration: none;
 `;
 
-export { H1, H2, A };
+const Li = styled.li`
+  color: ${props => props.theme.colors.black};
+`;
+
+const Ul = styled.ul`
+  margin: 1rem 0;
+`;
+
+const Span = styled.span``;
+
+export { H1, H2, A, Li, Ul, Span };

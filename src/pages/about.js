@@ -4,7 +4,15 @@ import SEO from '../hooks/SEO';
 import Hero from '../components/heros/Hero';
 import styled from '@emotion/styled';
 import { DefaultPageContainer } from '../components/layouts/PageContainers';
-import { H1, H2, A } from '../components/reusableStyles/typography/Typography';
+import { H1, H2 } from '../components/reusableStyles/typography/Typography';
+import { ListInline } from '../components/reusableStyles/lists/List';
+import { ListVertical as ListWithDescription } from '../components/reusableStyles/lists/ListWithDescription';
+import currentWebsites from '../constants/currentWebsites';
+import { Margin2 } from '../components/reusableStyles/modular/modularstyles';
+import currentlyUsing from '../constants/currentlyUsing';
+import onlineResources from '../constants/onlineResources';
+import dataVisuals from '../constants/data-visuals';
+import SimpleNetlifyForm from '../components/forms/SimpleNetlifyForm';
 
 const AboutStyled = styled.div`
   p {
@@ -43,6 +51,27 @@ const about = () => {
               and provide a resource for others from all walks of life and
               education backgrounds.
             </p>
+          </Div>
+
+          <Div>
+            <H2>Porfolio</H2>
+            <p>Select Samples</p>
+            <ListInline urls={currentWebsites} />
+
+            <p>
+              If you are a local business or small company I can make a
+              blazingly fast, amazing website for you at a very affordable cost.
+              Unlike most agencies I have multiple payment options and will work
+              with you to create a custom built site at a fraction of the cost.
+            </p>
+          </Div>
+
+          <Div>
+            <H2>Current Workflow</H2>
+            <p>List of web development tools</p>
+            <Margin2>
+              <ListWithDescription items={currentlyUsing} />
+            </Margin2>
           </Div>
           <Div>
             <H2>Why Gatsby</H2>
@@ -120,26 +149,23 @@ const about = () => {
           </Div>
 
           <Div>
-            <H2>Porfolio</H2>
-            <p>A few of my sites</p>
-            <li>
-              <A href="https://dash-intel.com/">Dash-Intel</A>
-            </li>
-            <li>
-              <A href="https://ventura-gatsby-site-101.netlify.com/">Ventura</A>
-            </li>
-            <li>
-              <A href="https://www.cravejs.com">Crave JS</A>
-            </li>
-            <p>
-              Netlify is an amazing service offering hosting, continuous
-              deployment and serverless functions for developers. It's generous
-              free tier identity/authentication and contact form features are
-              invaluable for getting up a working site with minimal overhead,
-              time and cost.
-            </p>
+            <H2>Online Developer Resources</H2>
+            <p>List of my go to learning resources for web development</p>
+            <Margin2>
+              <ListWithDescription items={onlineResources} />
+            </Margin2>
           </Div>
 
+          <Div>
+            <H2>For Data Visualization</H2>
+            <p>Tableau and Power Bi are great for most organizations</p>
+            <Margin2>
+              <ListWithDescription items={dataVisuals} />
+            </Margin2>
+          </Div>
+
+          <H2>Contact Me</H2>
+          <SimpleNetlifyForm />
           <Hero />
         </AboutStyled>
       </DefaultPageContainer>
