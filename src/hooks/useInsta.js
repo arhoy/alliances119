@@ -1,6 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
 const useInsta = props => {
-  // console.log('I want pass in props from Insta component!', props);
   const data = useStaticQuery(graphql`
     query($limit: Int) {
       allInstaNode(limit: $limit) {

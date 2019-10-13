@@ -96,6 +96,7 @@ const Code = ({ children }) => <CodeStyle>{children}</CodeStyle>;
 const AricleTemplate = ({ data: { article } }) => {
   const {
     title,
+    description: { description },
     bodyRichText: { json },
     publishDate,
     author,
@@ -113,7 +114,6 @@ const AricleTemplate = ({ data: { article } }) => {
     language = 'python';
   }
 
-  console.log(fluid);
   const options = {
     renderMark: {
       [MARKS.BOLD]: text => <Bold>{text}</Bold>,
@@ -131,7 +131,7 @@ const AricleTemplate = ({ data: { article } }) => {
 
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO title={title} description={description} />
       <DefaultPageContainer>
         <ArticleContainer>
           <AritlceHeader>
