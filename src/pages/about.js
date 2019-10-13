@@ -8,7 +8,7 @@ import { H1, H2 } from '../components/reusableStyles/typography/Typography';
 import { ListInline } from '../components/reusableStyles/lists/List';
 import { ListVertical as ListWithDescription } from '../components/reusableStyles/lists/ListWithDescription';
 import currentWebsites from '../constants/currentWebsites';
-import { Margin2 } from '../components/reusableStyles/modular/modularstyles';
+import { Margin2 } from '../components/reusableStyles/modular/modularStyles';
 import currentlyUsing from '../constants/currentlyUsing';
 import onlineResources from '../constants/onlineResources';
 import dataVisuals from '../constants/data-visuals';
