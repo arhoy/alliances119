@@ -36,6 +36,12 @@ const Div = styled.div`
     [center-end] 1fr [full-end];
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    grid-template-columns:
+      [full-start] 0.5fr
+      [center-start] repeat(8, [col-start] minmax(min-content, 1fr) [col-end])
+      [center-end] 0.5fr [full-end];
+  }
 `;
 
 const NavLayout = styled.header`

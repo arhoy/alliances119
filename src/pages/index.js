@@ -16,6 +16,15 @@ import { DefaultPageContainer } from '../components/layouts/PageContainers';
 import { FaTwitterSquare, FaGithub } from 'react-icons/fa';
 import SimpleNetlifyForm from '../components/forms/SimpleNetlifyForm';
 import Hero from '../components/heros/Hero';
+import { ListInline } from '../components/reusableStyles/lists/List';
+import currentWebsites from '../constants/currentWebsites';
+import {
+  NavlinkButton,
+  NavlinkButton2,
+} from '../components/Links/NavLinkButton';
+
+import { Margin2V } from '../components/reusableStyles/modular/modularStyles';
+import { Tag } from '../components/reusableStyles/tags/Tag';
 
 const Section = styled.div`
   display: flex;
@@ -31,6 +40,13 @@ const SectionTop = styled(Section)`
 const SectionMiddle = styled(Section)`
   display: block;
   margin: 0 auto;
+`;
+
+const SectionMiddleGrey = styled(SectionMiddle)`
+  background: ${props => props.theme.colors.primaryTransparent};
+  padding: 4rem 2rem;
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
 `;
 
 const SectionTopOne = styled.div`
@@ -73,15 +89,7 @@ const Title = styled.h1`
 const H2 = styled.h2`
   font-size: 3.2rem;
   margin-bottom: 3rem;
-  & ${Navlink} {
-    font-size: 1.5rem;
-    padding: 0.5rem 2rem;
-    margin-left: 1rem;
-    background: ${props => props.theme.colors.lightgrey};
-    display: inline-block;
-    transform: translateY(-0.5rem);
-    text-decoration: none;
-  }
+
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     font-size: 2.5rem;
     & ${Navlink} {
@@ -155,16 +163,35 @@ export default () => {
           </SectionTopTwo>
         </SectionTop>
 
+        <SectionMiddleGrey>
+          <H2>Porfolio</H2>
+          <p>Select Samples</p>
+          <ListInline urls={currentWebsites} />
+          <Margin2V>
+            <Tag>Blazingly Fast</Tag>
+            <Tag>Modern</Tag>
+            <Tag>SEO Optimized</Tag>
+            <Tag>Completely Customized</Tag>
+            <p>Professional web development at fraction of the cost. </p>
+            <p>
+              Will price match <i>any</i> local web development or design agency{' '}
+            </p>
+          </Margin2V>
+
+          <NavlinkButton to="/about">Learn More</NavlinkButton>
+        </SectionMiddleGrey>
+
         <SectionMiddle>
           <H2>
-            Lastest Articles <Navlink to="/articles"> View All</Navlink>
+            Lastest Articles{' '}
+            <NavlinkButton2 to="/articles"> View All</NavlinkButton2>
           </H2>
           <Articles articles={useLatestArticles()} />
         </SectionMiddle>
 
         <SectionMiddle>
           <H2>
-            Latest Blogs <Navlink to="/blogs"> View All</Navlink>
+            Latest Blogs <NavlinkButton2 to="/blogs"> View More</NavlinkButton2>
           </H2>
           <Articles articles={useLatestBlogs()} />
         </SectionMiddle>

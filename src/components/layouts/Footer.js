@@ -1,6 +1,7 @@
 import React from 'react';
 import socialIcons from '../../constants/socialIcons';
 import styled from '@emotion/styled';
+import footerImage from '../../../images/canada.png';
 
 const d = new Date().getFullYear();
 
@@ -23,6 +24,18 @@ const FooterStyle = styled.div`
   }
 `;
 
+const Img = styled.img`
+  width: 25px;
+  height: 25px;
+  margin-left: 4px;
+`;
+
+const Div = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Footer = () => {
   return (
     <FooterStyle>
@@ -38,6 +51,9 @@ const Footer = () => {
           </a>
         ))}
       </ul>
+      <Div>
+        YEG | Alberta | <Img alt="" src={footerImage} />
+      </Div>
       <p>Aquasar Blog {d} &copy; </p>
     </FooterStyle>
   );
