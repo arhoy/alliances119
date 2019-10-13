@@ -140,7 +140,7 @@ const AricleTemplate = ({ data: { article } }) => {
             <ArticleHeaderContent>
               <H1>{title}</H1>
               <p>{publishDate}</p>
-              <p>{author.name}</p>
+              <p>{author ? author.name : 'Anonymous'}</p>
               <TagContainer>
                 {tags.map(tag => (
                   <Tag key={tag}>{tag}</Tag>
