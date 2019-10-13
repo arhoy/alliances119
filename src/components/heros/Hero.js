@@ -19,6 +19,15 @@ const TextBox = styled.div`
   color: ${props => props.theme.colors.white};
 `;
 
+const TextBox2 = styled.div`
+  text-transform: uppercase;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: ${props => props.theme.colors.white};
+`;
+
 const Hero = () => {
   const { image } = useStaticQuery(graphql`
     query {
@@ -34,7 +43,8 @@ const Hero = () => {
 
   return (
     <ImageBackground fluid={image.sharp.fluid} fadeIn="soft">
-      <TextBox>Built with Gatsby</TextBox>
+      <TextBox>Built Using Gatsby</TextBox>
+      <TextBox2>With You in Mind</TextBox2>
     </ImageBackground>
   );
 };

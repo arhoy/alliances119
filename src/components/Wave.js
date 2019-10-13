@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 const Div = styled.div`
   padding: 1rem;
-  background: ${props => props.theme.colors.primaryLight};
+  background: ${props => props.theme.colors.primaryTransparent};
 `;
 
 const Button = styled.button`

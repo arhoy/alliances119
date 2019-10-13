@@ -5,7 +5,6 @@ import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 import Insta from '../components/Insta';
 
-import Skus from '../components/stripe/Skus';
 import profileImage from '../../images/alexquasar.png';
 import Articles from '../components/articles/Articles';
 import Navlink from '../components/Links/Navlink';
@@ -15,6 +14,8 @@ import useLatestBlogs from '../hooks/useLatestBlogs';
 import { ButtonStyle2 } from '../components/reusableStyles/buttons/Button';
 import { DefaultPageContainer } from '../components/layouts/PageContainers';
 import { FaTwitterSquare, FaGithub } from 'react-icons/fa';
+import SimpleNetlifyForm from '../components/forms/SimpleNetlifyForm';
+import Hero from '../components/heros/Hero';
 
 const Section = styled.div`
   display: flex;
@@ -167,9 +168,11 @@ export default () => {
           </H2>
           <Articles articles={useLatestBlogs()} />
         </SectionMiddle>
-        <Section>
-          <Skus />
-        </Section>
+        <SectionMiddle>
+          <H2>Contact Me</H2>
+          <SimpleNetlifyForm />
+          <Hero />
+        </SectionMiddle>
         <SectionMiddle>
           <Insta />
         </SectionMiddle>
