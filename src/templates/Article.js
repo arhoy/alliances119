@@ -40,14 +40,17 @@ export const query = graphql`
 
 const AritlceHeader = styled.div`
   margin-bottom: 4rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
   align-items: center;
+  @media (max-width: 750px) {
+    display: flex;
+  }
 `;
 
 const ArticleHeaderImage = styled(Image)`
-  width: 12rem;
-  height: 12rem;
-  background-size: contain;
+  width: 15rem;
+  height: 15rem;
   margin-right: 1rem;
   justify-self: center;
   align-self: center;
@@ -138,7 +141,6 @@ const AricleTemplate = ({ data: { article } }) => {
               <H1>{title}</H1>
               <p>{publishDate}</p>
               <p>{author.name}</p>
-
               <TagContainer>
                 {tags.map(tag => (
                   <Tag key={tag}>{tag}</Tag>
