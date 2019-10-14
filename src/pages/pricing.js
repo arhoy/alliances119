@@ -11,10 +11,7 @@ import {
   SectionGrey,
 } from '../components/reusableStyles/sections/Sections';
 
-import {
-  MarginBottom6,
-  Margin2V,
-} from '../components/reusableStyles/modular/modularStyles';
+import { MarginBottom6 } from '../components/reusableStyles/modular/modularStyles';
 import SimpleNetlifyForm from '../components/forms/SimpleNetlifyForm';
 import Hero from '../components/heros/Hero';
 import { DefaultPageContainer } from '../components/layouts/PageContainers';
@@ -22,7 +19,10 @@ import { DefaultPageContainer } from '../components/layouts/PageContainers';
 const StyledH2 = styled(H2)`
   text-align: center;
   padding: 2rem 0;
-  font-size: 3.4rem;
+  font-size: 4.4rem;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    font-size: 3.4rem;
+  }
 `;
 
 const Bold = styled.span`
@@ -163,18 +163,22 @@ const pricing = () => {
         </Container>
       </SectionGrey>
 
-      <DefaultPageContainer>
-        <Section>
-          <CustomMargin>
-            <H2>Contact Me</H2>
-            <SimpleNetlifyForm />
-          </CustomMargin>
-        </Section>
+      <Section>
+        <DefaultPageContainer>
+          <Container>
+            <CustomMargin>
+              <H2>Contact Me</H2>
+              <SimpleNetlifyForm />
+            </CustomMargin>
+          </Container>
+        </DefaultPageContainer>
+      </Section>
 
-        <Margin2V>
+      <SectionGrey>
+        <Container>
           <Hero />
-        </Margin2V>
-      </DefaultPageContainer>
+        </Container>
+      </SectionGrey>
     </Layout>
   );
 };
