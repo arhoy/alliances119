@@ -10,7 +10,6 @@ import Navlink from '../Links/Navlink';
 const Header = styled.header`
   background: ${props => props.theme.colors.lightgrey};
   display: flex;
-  max-width: ${props => props.theme.pageWidth.fixed};
   margin: 0 auto;
   justify-content: space-around;
   align-items: center;

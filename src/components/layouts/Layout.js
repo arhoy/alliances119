@@ -3,6 +3,7 @@ import { Global, css } from '@emotion/core';
 import Nav from './Nav';
 import { ThemeProvider } from 'emotion-theming';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
 // real global scss styles
 import '../../scss/main.scss';
@@ -43,6 +44,11 @@ const Div = styled.div`
       [center-start] repeat(8, [col-start] minmax(min-content, 1fr) [col-end])
       [center-end] 0.5fr [full-end];
   }
+`;
+
+const DivFixed = styled.div`
+  width: 800px;
+  margin: 0 auto;
 `;
 
 const NavLayout = styled.header`
@@ -97,31 +103,39 @@ const Layout = ({ children, full }) => {
         `}
       />
 
-      <ThemeProvider theme={theme}>
-        <Div>
-          {full ? (
+      {full ? (
+        <ThemeProvider theme={theme}>
+          <Div>
             <FullNavLayout>
               <Nav />
             </FullNavLayout>
-          ) : (
-            <NavLayout>
-              <Nav />
-            </NavLayout>
-          )}
-
-          {full ? <MainFull>{children}</MainFull> : <Main>{children}</Main>}
-
-          {full ? (
+            <MainFull>{children}</MainFull>
             <FullFooterLayout>
               <Footer />
             </FullFooterLayout>
-          ) : (
-            <FooterLayout>{children}</FooterLayout>
-          )}
-        </Div>
-      </ThemeProvider>
+          </Div>
+        </ThemeProvider>
+      ) : (
+        <ThemeProvider theme={theme}>
+          <DivFixed>
+            <NavLayout>
+              <Nav />
+            </NavLayout>
+            <Main>{children}</Main>
+            <FooterLayout>
+              <Footer />
+            </FooterLayout>
+          </DivFixed>
+        </ThemeProvider>
+      )}
     </>
   );
+};
+Layout.propTypes = {
+  full: PropTypes.bool,
+};
+Layout.defaultProps = {
+  full: false,
 };
 
 export default Layout;

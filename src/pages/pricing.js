@@ -40,6 +40,11 @@ const CustomMargin = styled.div`
   }
 `;
 
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
 const textSEO = () => (
   <p>
     Your site will be build on a <Bold>Gatsby framework</Bold> and will be
@@ -99,53 +104,63 @@ const pricing = () => {
       <StyledH2>The Aquasar Advantage</StyledH2>
 
       <SectionGrey>
-        <FeatureSection
-          heading="SEO Optimized"
-          subheading="Built with SEO as a priority"
-          text={textSEO()}
-          icon={FaCrown()}
-          rotate="rotate(15deg)"
-          iconSize="10rem"
-        />
+        <Container>
+          <FeatureSection
+            heading="SEO Optimized"
+            subheading="Built with SEO as a priority"
+            text={textSEO()}
+            icon={FaCrown()}
+            rotate="rotate(15deg)"
+            iconSize="10rem"
+          />
+        </Container>
       </SectionGrey>
 
       <Section>
-        <FeatureSection
-          heading="Hosting"
-          subheading="Affordable Hosting"
-          text={textHosting()}
-          icon={FaHome()}
-          rotate="rotate(0deg)"
-        />
+        <Container>
+          <FeatureSection
+            heading="Hosting"
+            subheading="Affordable Hosting"
+            text={textHosting()}
+            icon={FaHome()}
+            rotate="rotate(0deg)"
+          />
+        </Container>
       </Section>
 
       <SectionGrey>
-        <FeatureSection
-          heading="Blazingly Fast"
-          subheading="Google rewards faster sites"
-          text={textFast()}
-          icon={FaBolt()}
-          rotate="rotate(20deg)"
-        />
+        <Container>
+          <FeatureSection
+            heading="Blazingly Fast"
+            subheading="Google rewards faster sites"
+            text={textFast()}
+            icon={FaBolt()}
+            rotate="rotate(20deg)"
+          />
+        </Container>
       </SectionGrey>
       <Section>
-        <FeatureSection
-          heading="Endless Customization"
-          subheading="Completely customized"
-          text={textCustomization()}
-          icon={FaCode()}
-          rotate="rotate(0deg)"
-        />
+        <Container>
+          <FeatureSection
+            heading="Endless Customization"
+            subheading="Completely customized"
+            text={textCustomization()}
+            icon={FaCode()}
+            rotate="rotate(0deg)"
+          />
+        </Container>
       </Section>
 
       <SectionGrey>
-        <FeatureSection
-          heading="Grow Your Online Presence"
-          subheading="Completely customized"
-          text={textGrowth()}
-          icon={FaLeaf()}
-          rotate="rotate(0deg)"
-        />
+        <Container>
+          <FeatureSection
+            heading="Grow Your Online Presence"
+            subheading="Completely customized"
+            text={textGrowth()}
+            icon={FaLeaf()}
+            rotate="rotate(0deg)"
+          />
+        </Container>
       </SectionGrey>
 
       <DefaultPageContainer>
@@ -155,10 +170,11 @@ const pricing = () => {
             <SimpleNetlifyForm />
           </CustomMargin>
         </Section>
+
+        <Margin2V>
+          <Hero />
+        </Margin2V>
       </DefaultPageContainer>
-      <Margin2V>
-        <Hero />
-      </Margin2V>
     </Layout>
   );
 };

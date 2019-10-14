@@ -25,10 +25,10 @@ const ListInline = ({ urls }) =>
     </StyledInlineLi>
   ));
 
-const ListVertical = ({ urls }) => (
+const ListVertical = ({ urls }, i) => (
   <Ul>
     {urls.map(url => (
-      <Li key={url.url}>
+      <Li key={i}>
         <StyledA rel="noopener noreferrer" href={url.url} target="_blank">
           {url.title}
         </StyledA>
