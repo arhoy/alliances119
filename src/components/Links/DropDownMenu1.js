@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../../scss/hover-drop-downs/hoverdropdown1.module.scss';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
+import { menuLinks1 } from '../../constants/menuLinks';
 
 const Navlink = styled(Link)`
   color: ${props => props.theme.colors.primary};
@@ -46,10 +47,12 @@ const DropDownMenu1 = () => {
     <div className={`${styles.dropdown}`}>
       <Button className={styles.dropbtn}>Explore </Button>
       <DropDownContent className={styles.dropdownContent}>
-        <Navlink to="/articles">Articles</Navlink>
-        <Navlink to="/blog">Blog</Navlink>
-        <Navlink to="/stripe-products">Products</Navlink>
-        <Navlink to="/contact">Contact Me</Navlink>
+        {menuLinks1.map((link, i) => (
+          <Navlink key={i} to={link.path}>
+            {link.text}
+          </Navlink>
+        ))}
+
         <NetlifyID data-netlify-identity-button></NetlifyID>
       </DropDownContent>
     </div>

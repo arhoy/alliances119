@@ -191,7 +191,7 @@ export default () => {
 
         <SectionMiddle>
           <H2>
-            Latest Blogs <NavlinkButton2 to="/blogs"> View More</NavlinkButton2>
+            Latest Blogs <NavlinkButton2 to="/blog"> View More</NavlinkButton2>
           </H2>
           <Articles articles={useLatestBlogs()} />
         </SectionMiddle>

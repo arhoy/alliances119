@@ -27,7 +27,7 @@ export const getArticles = graphql`
   }
 `;
 
-const articles = ({ data }) => {
+const blog = ({ data }) => {
   return (
     <Layout>
       <SEO
@@ -42,4 +42,4 @@ const articles = ({ data }) => {
   );
 };
 
-export default articles;
+export default blog;

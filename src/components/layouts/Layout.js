@@ -14,7 +14,8 @@ const theme = {
     primaryDark: 'rgb(73, 35, 122)',
     primaryLight: 'rgb(148, 103, 206)',
     primaryTransparent: 'rgba(92, 52, 145,0.2)',
-    lightgrey: '	rgb(240,240,240)',
+    secondary: 'rgb(24, 163, 201)',
+    lightgrey: 'rgb(240,240,240)',
     white: '#fff',
     black: '#1a1a1a',
     darkgrey: 'rgb(109, 109, 109)',
@@ -48,16 +49,29 @@ const NavLayout = styled.header`
   grid-column: center-start/center-end;
 `;
 
+const FullNavLayout = styled.header`
+  grid-column: full-start/full-end;
+`;
+
 const Main = styled.main`
   margin-top: 3rem;
   grid-column: center-start/center-end;
+`;
+
+const MainFull = styled.main`
+  margin-top: 3rem;
+  grid-column: full-start/full-end;
 `;
 
 const FooterLayout = styled.footer`
   grid-column: center-start/center-end;
 `;
 
-const Layout = ({ children }) => {
+const FullFooterLayout = styled.footer`
+  grid-column: full-start/full-end;
+`;
+
+const Layout = ({ children, full }) => {
   const white = '#fff';
   const primaryColor = 'rgb(92, 52, 145)';
 
@@ -85,13 +99,25 @@ const Layout = ({ children }) => {
 
       <ThemeProvider theme={theme}>
         <Div>
-          <NavLayout>
-            <Nav />
-          </NavLayout>
-          <Main>{children}</Main>
-          <FooterLayout>
-            <Footer />
-          </FooterLayout>
+          {full ? (
+            <FullNavLayout>
+              <Nav />
+            </FullNavLayout>
+          ) : (
+            <NavLayout>
+              <Nav />
+            </NavLayout>
+          )}
+
+          {full ? <MainFull>{children}</MainFull> : <Main>{children}</Main>}
+
+          {full ? (
+            <FullFooterLayout>
+              <Footer />
+            </FullFooterLayout>
+          ) : (
+            <FooterLayout>{children}</FooterLayout>
+          )}
         </Div>
       </ThemeProvider>
     </>

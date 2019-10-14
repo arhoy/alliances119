@@ -107,7 +107,7 @@ const AricleTemplate = ({ data: { article } }) => {
   // determine which prism to render based on tags
   let language = 'sql';
 
-  if (tags.includes('javascript')) {
+  if (tags.includes('javascript') || tags.includes('mongo')) {
     language = 'javascript';
   }
   if (tags.includes('python')) {
