@@ -27,6 +27,7 @@ const theme = {
   },
   screenSize: {
     mobileL: '600px',
+    mobileVS: '300px',
   },
 };
 
@@ -47,7 +48,7 @@ const Div = styled.div`
 `;
 
 const DivFixed = styled.div`
-  width: 800px;
+  max-width: 800px;
   margin: 0 auto;
 `;
 
@@ -60,12 +61,10 @@ const FullNavLayout = styled.header`
 `;
 
 const Main = styled.main`
-  margin-top: 3rem;
   grid-column: center-start/center-end;
 `;
 
 const MainFull = styled.main`
-  margin-top: 3rem;
   grid-column: full-start/full-end;
 `;
 

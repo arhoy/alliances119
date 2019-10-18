@@ -19,6 +19,10 @@ const Margin6V = styled.div`
   margin: 6rem 0;
 `;
 
+const MarginT6V = styled.div`
+  margin-top: 6rem;
+`;
+
 const Margin1V = styled.div`
   margin: 1rem 0;
 `;
@@ -45,4 +49,5 @@ export {
   MarginBottom2,
   MarginBottom4,
   MarginBottom6,
+  MarginT6V,
 };

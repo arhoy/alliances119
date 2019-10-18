@@ -12,7 +12,7 @@ import useLatestArticles from '../hooks/useLatestArticles';
 import useLatestBlogs from '../hooks/useLatestBlogs';
 
 import { ButtonStyle2 } from '../components/reusableStyles/buttons/Button';
-import { DefaultPageContainer } from '../components/layouts/PageContainers';
+
 import { FaTwitterSquare, FaGithub } from 'react-icons/fa';
 import SimpleNetlifyForm from '../components/forms/SimpleNetlifyForm';
 import Hero from '../components/heros/Hero';
@@ -25,31 +25,38 @@ import {
 
 import { Margin2V } from '../components/reusableStyles/modular/modularStyles';
 import { Tag } from '../components/reusableStyles/tags/Tag';
+import {
+  Section,
+  SectionGrey,
+} from '../components/reusableStyles/sections/Sections';
 
-const Section = styled.div`
+const CustomSection = styled(Section)`
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+`;
+
+const CustomSectionPortfolio = styled(SectionGrey)`
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
+`;
+
+const CustomSectionBlogs = styled(SectionGrey)`
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
+`;
+
+const CustomDiv = styled.div`
   display: flex;
   padding: 4rem 0;
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     flex-wrap: wrap;
   }
 `;
-const SectionTop = styled(Section)`
+const CustomDivTop = styled(CustomDiv)`
   margin: 0 auto;
 `;
 
-const SectionMiddle = styled(Section)`
-  display: block;
-  margin: 0 auto;
-`;
-
-const SectionMiddleGrey = styled(SectionMiddle)`
-  background: ${props => props.theme.colors.primaryTransparent};
-  padding: 4rem 2rem;
-  border-bottom-left-radius: 25px;
-  border-top-right-radius: 25px;
-`;
-
-const SectionTopOne = styled.div`
+const CustomDivTopOne = styled.div`
   margin-right: 2rem;
   display: flex;
   flex-direction: column;
@@ -59,7 +66,7 @@ const SectionTopOne = styled.div`
   }
 `;
 
-const SectionTopTwo = styled.div`
+const CustomDivTopTwo = styled.div`
   background: ${props => props.theme.colors.primaryTransparent};
   padding: 2rem;
   display: flex;
@@ -131,9 +138,9 @@ export default () => {
         title="Explore Gatsby"
         description="MERN, Gatsby and other cool stuff"
       />
-      <DefaultPageContainer>
-        <SectionTop>
-          <SectionTopOne>
+      <CustomSection>
+        <CustomDivTop>
+          <CustomDivTopOne>
             <Title>
               Hello I'm Alex
               <Blurb>
@@ -152,58 +159,59 @@ export default () => {
                 <TwitterStyle title="Follow Me" />
               </a>
             </Social>
-          </SectionTopOne>
-          <SectionTopTwo>
+          </CustomDivTopOne>
+          <CustomDivTopTwo>
             <img alt="" src={profileImage} />
             <h4>New Content Weekly</h4>
             <p> Developer tutorials and new websites </p>
             <ButtonStyle2>
               <a href="https://aquasar.substack.com"> Subscribe Me </a>
             </ButtonStyle2>
-          </SectionTopTwo>
-        </SectionTop>
+          </CustomDivTopTwo>
+        </CustomDivTop>
+      </CustomSection>
 
-        <SectionMiddleGrey>
-          <H2>Porfolio</H2>
-          <p>Select Samples</p>
-          <ListInline urls={currentWebsites} />
-          <Margin2V>
-            <Tag>Blazingly Fast</Tag>
-            <Tag>Modern</Tag>
-            <Tag>SEO Optimized</Tag>
-            <Tag>Completely Customized</Tag>
-            <p>Professional web development at fraction of the cost. </p>
-            <p>
-              Will price match <i>any</i> local web development or design agency{' '}
-            </p>
-          </Margin2V>
+      <CustomSectionPortfolio>
+        <H2>Porfolio</H2>
+        <p>Select Samples</p>
+        <ListInline urls={currentWebsites} />
+        <Margin2V>
+          <Tag>Blazingly Fast</Tag>
+          <Tag>Modern</Tag>
+          <Tag>SEO Optimized</Tag>
+          <Tag>Completely Customized</Tag>
+          <p>Professional web development at fraction of the cost. </p>
+          <p>
+            Will price match <i>any</i> local web development or design agency{' '}
+          </p>
+        </Margin2V>
 
-          <NavlinkButton to="/about">Learn More</NavlinkButton>
-        </SectionMiddleGrey>
+        <NavlinkButton to="/about">Learn More</NavlinkButton>
+      </CustomSectionPortfolio>
 
-        <SectionMiddle>
-          <H2>
-            Lastest Articles{' '}
-            <NavlinkButton2 to="/articles"> View All</NavlinkButton2>
-          </H2>
-          <Articles articles={useLatestArticles()} />
-        </SectionMiddle>
+      <Section>
+        <H2>
+          Lastest Articles
+          <NavlinkButton2 to="/articles"> View All</NavlinkButton2>
+        </H2>
+        <Articles articles={useLatestArticles()} />
+      </Section>
 
-        <SectionMiddle>
-          <H2>
-            Latest Blogs <NavlinkButton2 to="/blog"> View More</NavlinkButton2>
-          </H2>
-          <Articles articles={useLatestBlogs()} />
-        </SectionMiddle>
-        <SectionMiddle>
-          <H2>Contact Me</H2>
-          <SimpleNetlifyForm />
-          <Hero />
-        </SectionMiddle>
-        <SectionMiddle>
-          <Insta />
-        </SectionMiddle>
-      </DefaultPageContainer>
+      <CustomSectionBlogs>
+        <H2>
+          Latest Blogs <NavlinkButton2 to="/blog"> View More</NavlinkButton2>
+        </H2>
+        <Articles articles={useLatestBlogs()} />
+      </CustomSectionBlogs>
+
+      <Section>
+        <H2>Contact Me</H2>
+        <SimpleNetlifyForm />
+        <Hero />
+      </Section>
+      <Section>
+        <Insta />
+      </Section>
     </Layout>
   );
 };

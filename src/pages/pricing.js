@@ -9,6 +9,7 @@ import FeatureSection from '../components/features/FeatureSection';
 import {
   Section,
   SectionGrey,
+  Container1200,
 } from '../components/reusableStyles/sections/Sections';
 
 import { MarginBottom6 } from '../components/reusableStyles/modular/modularStyles';
@@ -38,11 +39,6 @@ const CustomMargin = styled.div`
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     margin: 1rem;
   }
-`;
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
 `;
 
 const textSEO = () => (
@@ -104,7 +100,7 @@ const pricing = () => {
       <StyledH2>The Aquasar Advantage</StyledH2>
 
       <SectionGrey>
-        <Container>
+        <Container1200>
           <FeatureSection
             heading="SEO Optimized"
             subheading="Built with SEO as a priority"
@@ -113,11 +109,11 @@ const pricing = () => {
             rotate="rotate(15deg)"
             iconSize="10rem"
           />
-        </Container>
+        </Container1200>
       </SectionGrey>
 
       <Section>
-        <Container>
+        <Container1200>
           <FeatureSection
             heading="Hosting"
             subheading="Affordable Hosting"
@@ -125,11 +121,11 @@ const pricing = () => {
             icon={FaHome()}
             rotate="rotate(0deg)"
           />
-        </Container>
+        </Container1200>
       </Section>
 
       <SectionGrey>
-        <Container>
+        <Container1200>
           <FeatureSection
             heading="Blazingly Fast"
             subheading="Google rewards faster sites"
@@ -137,10 +133,10 @@ const pricing = () => {
             icon={FaBolt()}
             rotate="rotate(20deg)"
           />
-        </Container>
+        </Container1200>
       </SectionGrey>
       <Section>
-        <Container>
+        <Container1200>
           <FeatureSection
             heading="Endless Customization"
             subheading="Completely customized"
@@ -148,11 +144,11 @@ const pricing = () => {
             icon={FaCode()}
             rotate="rotate(0deg)"
           />
-        </Container>
+        </Container1200>
       </Section>
 
       <SectionGrey>
-        <Container>
+        <Container1200>
           <FeatureSection
             heading="Grow Your Online Presence"
             subheading="Completely customized"
@@ -160,24 +156,24 @@ const pricing = () => {
             icon={FaLeaf()}
             rotate="rotate(0deg)"
           />
-        </Container>
+        </Container1200>
       </SectionGrey>
 
       <Section>
         <DefaultPageContainer>
-          <Container>
+          <Container1200>
             <CustomMargin>
               <H2>Contact Me</H2>
               <SimpleNetlifyForm />
             </CustomMargin>
-          </Container>
+          </Container1200>
         </DefaultPageContainer>
       </Section>
 
       <SectionGrey>
-        <Container>
+        <Container1200>
           <Hero />
-        </Container>
+        </Container1200>
       </SectionGrey>
     </Layout>
   );
