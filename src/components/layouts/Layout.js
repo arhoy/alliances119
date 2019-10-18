@@ -48,6 +48,10 @@ const Div = styled.div`
 `;
 
 const DivFixed = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
   max-width: 800px;
   margin: 0 auto;
 `;

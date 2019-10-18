@@ -6,12 +6,12 @@ import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 import ArticleCode from '../components/articles/ArticleCode';
 
-import { DefaultPageContainer } from '../components/layouts/PageContainers';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 
 import { H1 } from '../components/reusableStyles/typography/Typography';
 import { TagContainer, Tag } from '../components/reusableStyles/tags/Tag';
+import { Section } from '../components/reusableStyles/sections/Sections';
 
 // run template query
 export const query = graphql`
@@ -86,7 +86,10 @@ const BoldStyle = styled.span`
   font-weight: bold;
 `;
 
-const CodeStyle = styled.span``;
+const CodeStyle = styled.div`
+display:block;
+  overflow-auto;
+`;
 
 const Bold = ({ children }) => <BoldStyle>{children}</BoldStyle>;
 const Text = ({ children }) => <P>{children}</P>;
@@ -130,9 +133,9 @@ const AricleTemplate = ({ data: { article } }) => {
   };
 
   return (
-    <Layout>
+    <Layout full={true}>
       <SEO title={title} description={description} />
-      <DefaultPageContainer>
+      <Section>
         <ArticleContainer>
           <AritlceHeader>
             <ArticleHeaderImage fluid={fluid} />
@@ -150,7 +153,7 @@ const AricleTemplate = ({ data: { article } }) => {
           </AritlceHeader>
           <main>{documentToReactComponents(json, options)}</main>
         </ArticleContainer>
-      </DefaultPageContainer>
+      </Section>
     </Layout>
   );
 };

@@ -13,7 +13,7 @@ import {
 } from '../components/reusableStyles/sections/Sections';
 
 import { MarginBottom6 } from '../components/reusableStyles/modular/modularStyles';
-import SimpleNetlifyForm from '../components/forms/SimpleNetlifyForm';
+import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
 import Hero from '../components/heros/Hero';
 import { DefaultPageContainer } from '../components/layouts/PageContainers';
 

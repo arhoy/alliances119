@@ -41,7 +41,7 @@ const Footer = () => {
     query {
       image: file(relativePath: { eq: "canada-flag.png" }) {
         sharp: childImageSharp {
-          fluid(maxWidth: 30) {
+          fluid(maxWidth: 20) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }

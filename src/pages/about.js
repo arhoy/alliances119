@@ -17,7 +17,7 @@ import { Margin2 } from '../components/reusableStyles/modular/modularStyles';
 import currentlyUsing from '../constants/currentlyUsing';
 import onlineResources from '../constants/onlineResources';
 import dataVisuals from '../constants/data-visuals';
-import SimpleNetlifyForm from '../components/forms/SimpleNetlifyForm';
+import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
 
 import BasicFeatureSection from '../components/features/BasicFeatureSection';
 
@@ -263,7 +263,7 @@ const about = () => {
       <SectionGrey>
         <Container800>
           <H2>Contact Me</H2>
-          <SimpleNetlifyForm />
+          <SimpleNetlifyForm color="rgb(240,240,240)" />
         </Container800>
       </SectionGrey>
 

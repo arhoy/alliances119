@@ -14,7 +14,7 @@ import useLatestBlogs from '../hooks/useLatestBlogs';
 import { ButtonStyle2 } from '../components/reusableStyles/buttons/Button';
 
 import { FaTwitterSquare, FaGithub } from 'react-icons/fa';
-import SimpleNetlifyForm from '../components/forms/SimpleNetlifyForm';
+import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
 import Hero from '../components/heros/Hero';
 import { ListInline } from '../components/reusableStyles/lists/List';
 import currentWebsites from '../constants/currentWebsites';

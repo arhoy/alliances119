@@ -5,16 +5,6 @@ import NoStyleLink from '../Links/NoStyleLink';
 import Image from 'gatsby-image';
 
 const Div = styled.div`
-  margin: 2rem 0rem;
-  max-width: 100rem;
-  margin: 1rem auto;
-  & h2 {
-    font-size: 2rem;
-    font-weight: 500;
-  }
-  & p {
-    padding: 1rem;
-  }
   &:hover {
     cursor: pointer;
     background: ${props => props.theme.colors.lightgrey};
@@ -27,23 +17,31 @@ const Div = styled.div`
 `;
 
 const StyledLink = styled(NoStyleLink)`
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 7fr;
   align-items: center;
-  justify-items: center;
   padding: 1rem 1rem;
 `;
 
 const ImageContainer = styled(Image)`
-  min-width: 6rem;
-  min-height: 6rem;
+  width: 6rem;
+  height: 6rem;
   margin-right: 1rem;
   border-radius: 50%;
   background-size: cover;
 `;
 
+const ContentContainer = styled.div``;
+
 const Title = styled.h2`
   display: flex;
+  font-size: 1.8rem;
   justify-self: flex-start;
+`;
+
+const P = styled.p`
+  font-size: 1.2rem;
+  color: ${props => props.theme.colors.darkgrey};
 `;
 
 const Article = ({ article }) => {
@@ -51,7 +49,10 @@ const Article = ({ article }) => {
     <Div>
       <StyledLink to={`articles/${article.slug}`}>
         <ImageContainer fluid={article.heroImage.fluid} alt={article.title} />
-        <Title>{article.title}</Title>
+        <ContentContainer>
+          <Title>{article.title}</Title>
+          <P>{article.publishDate}</P>
+        </ContentContainer>
       </StyledLink>
     </Div>
   );

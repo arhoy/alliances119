@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { navigate } from 'gatsby-link';
 import styled from '@emotion/styled';
+import { navigate } from 'gatsby-link';
+
 import { ButtonStyle1 } from '../reusableStyles/buttons/Button';
 
 // Function to Make Netlify Submission and Gatsby Work
@@ -37,15 +38,10 @@ const Form = styled.form`
   border-bottom: 1rem solid ${props => props.theme.colors.primaryDark};
 `;
 
-const Input = styled.input`
-  // background: ${props=>props.theme.colors.lightgrey};
-`;
+const TextArea = styled.textarea``;
+const Input = styled.input``;
 
-const TextArea = styled.textarea`
-// background: ${props=>props.theme.colors.lightgrey};
-`;
-
-const SimpleNetlifyForm = ({background}) => {
+const SimpleNetlifyForm = ({ color }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -93,7 +89,7 @@ const SimpleNetlifyForm = ({background}) => {
           <Input
             onChange={event => setName(event.target.value)}
             placeholder="What is your given name"
-            style = {{background: `${background}`}}
+            style={{ background: `${color}` }}
             type="text"
             name="name"
             required
@@ -104,8 +100,8 @@ const SimpleNetlifyForm = ({background}) => {
         <Label>
           Your Email:
           <Input
+            style={{ background: `${color}` }}
             onChange={event => setEmail(event.target.value)}
-          
             placeholder="What is your email"
             type="email"
             name="email"
@@ -118,14 +114,14 @@ const SimpleNetlifyForm = ({background}) => {
         <Label>
           Message:
           <TextArea
-         
+            style={{ background: `${color}` }}
             onChange={event => setMessage(event.target.value)}
             placeholder="Please enter a brief message"
             name="message"
             required
             minLength="10"
             maxLength="1000"
-           />
+          />
         </Label>
       </Field>
       <Field>
@@ -135,4 +131,4 @@ const SimpleNetlifyForm = ({background}) => {
   );
 };
 
-export default SimpleNetlifyForm;
+export { SimpleNetlifyForm };

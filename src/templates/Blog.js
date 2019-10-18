@@ -11,6 +11,7 @@ import ArticleCode from '../components/articles/ArticleCode';
 import StyledHero from '../components/heros/StyledHero';
 import { H1 } from '../components/reusableStyles/typography/Typography';
 import { TagContainer, Tag } from '../components/reusableStyles/tags/Tag';
+import { Section } from '../components/reusableStyles/sections/Sections';
 
 // run template query
 export const query = graphql`
@@ -42,18 +43,6 @@ const AritlceHeader = styled.div`
   margin-bottom: 6rem;
   h1 {
     font-size: 4rem;
-  }
-`;
-
-const ArticleContainer = styled.article`
-  max-width: 75rem;
-  margin: 0 auto;
-  & li {
-    margin-left: 4rem;
-  }
-
-  ul {
-    list-style: disk;
   }
 `;
 
@@ -112,8 +101,7 @@ const BlogTemplate = ({ data: { article } }) => {
   return (
     <Layout>
       <SEO title={title} />
-
-      <ArticleContainer>
+      <Section>
         <AritlceHeader>
           <H1>{title}</H1>
           <p>{publishDate}</p>
@@ -126,7 +114,7 @@ const BlogTemplate = ({ data: { article } }) => {
           </TagContainer>
         </AritlceHeader>
         <main>{documentToReactComponents(json, options)}</main>
-      </ArticleContainer>
+      </Section>
     </Layout>
   );
 };

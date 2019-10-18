@@ -15,6 +15,10 @@ const SectionGrey = styled(Section)`
   background: ${props => props.theme.colors.lightgrey};
 `;
 
+const TopSection = styled(Section)`
+  padding-top: 2rem;
+`;
+
 const Container1200 = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -25,4 +29,4 @@ const Container800 = styled.div`
   margin: 0 auto;
 `;
 
-export { Section, SectionGrey, Container1200, Container800 };
+export { Section, SectionGrey, TopSection, Container1200, Container800 };
