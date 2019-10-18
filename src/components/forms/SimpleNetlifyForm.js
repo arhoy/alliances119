@@ -38,11 +38,11 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  background: ${props=>props.theme.colors.lightgrey};
+  // background: ${props=>props.theme.colors.lightgrey};
 `;
 
 const TextArea = styled.textarea`
-background: ${props=>props.theme.colors.lightgrey};
+// background: ${props=>props.theme.colors.lightgrey};
 `;
 
 const SimpleNetlifyForm = ({background}) => {

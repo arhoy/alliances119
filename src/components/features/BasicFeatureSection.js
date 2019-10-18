@@ -13,12 +13,7 @@ const Container = styled.div`
   }
 `;
 
-const ContentContainer = styled.div`
-  margin-right: 2rem;
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    margin-top: 3rem;
-  }
-`;
+const ContentContainer = styled.div``;
 
 const Header = styled(H2)`
   color: ${props => props.theme.colors.secondary};

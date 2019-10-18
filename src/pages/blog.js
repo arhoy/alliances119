@@ -30,6 +30,7 @@ export const getArticles = graphql`
 const blog = ({ data }) => {
   return (
     <Layout>
+      
       <SEO
         title="Alex Quasar Articles on Gatsby and Full Stack React"
         description="Please see all the articles below, articles on Full Stack React and Gatsby and more"

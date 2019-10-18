@@ -1,11 +1,15 @@
 import React from 'react';
-// import styled from '@emotion/styled';
+import styled from '@emotion/styled';
 
 import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 import Hero from '../components/heros/Hero';
 
-import { H1, H2 } from '../components/reusableStyles/typography/Typography';
+import {
+  H1,
+  H2,
+  Bold,
+} from '../components/reusableStyles/typography/Typography';
 import { ListInline } from '../components/reusableStyles/lists/List';
 import { ListVertical as ListWithDescription } from '../components/reusableStyles/lists/ListWithDescription';
 import currentWebsites from '../constants/currentWebsites';
@@ -23,115 +27,149 @@ import {
   SectionGrey,
 } from '../components/reusableStyles/sections/Sections';
 
+const P = styled.p`
+  margin: 1.5rem 0rem;
+  font-family: Poppins;
+  font-size: 1.7rem;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    text-align: center;
+    margin: 3rem 0rem;
+  }
+`;
 
+const Ul1 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  & > * {
+    margin: 1rem 0;
+  }
+`;
 
-
-
+const Div2 = styled.div`
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+`;
 const textContentful = () => (
   <>
-    <p>
+    <P>
       Contentful is an easy to use, modern headless CMS (content management
       system). It is used by companies like Walmart, Disney, Icelandair and
       Shell to name a few. This fast growing CMS system probably is good enough
-      and easy enough for most users. While it lack some features I would like
-      to see out of the box, it is possible to configure it to your liking on
-      the developer side. This decoupling of the developer from the content
-      writer, is essential to create efficient content flow and eliminate
-      developer bottlenecks.
-    </p>
+      and easy enough for most users.
+    </P>
+    <P>
+      While it lack some features I would like to see out of the box, it is
+      possible to configure it to your liking on the developer side. This
+      decoupling of the developer from the content writer, is essential to
+      create efficient content flow and eliminate developer bottlenecks.
+    </P>
 
-    <p>
+    <P>
       If you are a developer writing your personal blog, I am still on the fence
       of whether contentful is the best choice. I'm currently experimenting with
       mdx and other resources in addition to simply creating my own custom CMS
-      or content template. Depending on who you ask the later is a bad idea, but
-      it does make complete customization and developer freedom possible.
-      Perhaps the best solution is you can use Contentful for a lot of article
-      templates but maybe not for everything on your site.
-    </p>
+      or content template.
+    </P>
+    <P>
+      Depending on who you ask the later is a bad idea, but it does make
+      complete customization and developer freedom possible. Perhaps the best
+      solution is you can use Contentful for a lot of article templates but
+      maybe not for everything on your site.
+    </P>
   </>
 );
 
 const textNetlify = () => (
-  <p>
+  <P>
     Netlify is an amazing service offering hosting, continuous deployment and
-    serverless functions for developers. It's generous free tier
-    identity/authentication and contact form features are invaluable for getting
-    up a working site with minimal overhead, time and cost.ate efficient content
-    flow and eliminate developer bottlenecks.
-  </p>
+    serverless functions for developers. It's amazing out of the box
+    <Bold> identity and authentication </Bold>
+    and contact form features are invaluable for getting up a working site with
+    minimal overhead, time and cost.ate efficient content flow and eliminate
+    developer bottlenecks.
+  </P>
 );
 
 const textReact = () => (
-  <p>
-    Maybe this is an obvious answer to some, but I think every developer should
-    ask themselves the question of what a new technology, be it language,
-    library or framework offers before jumping on the popularity bandwaggon. I
-    use React simply because it makes developing in vanilla JavaScript much
-    easier. More specifically, it makes DOM manipulation, state management, and
-    creating reusable components easier. JavaScript of course is needed to make
-    the front end application of your website `come to life` so to speak. It is
-    the defacto programming language for web browsers, used to make a dynamic
-    and interactive user experience.
-  </p>
+  <>
+    <P>
+      Maybe this is an obvious answer to some, but I think every developer
+      should ask themselves the question of what a new technology, be it
+      language, library or framework offers before jumping on the popularity
+      bandwaggon.
+    </P>
+
+    <P>
+      I use React simply because it makes developing in vanilla JavaScript much
+      easier. More specifically, it makes DOM manipulation, state management,
+      and creating reusable components easier.
+    </P>
+    <P>
+      JavaScript of course is needed to make the front end application of your
+      website `come to life` so to speak. It is the defacto programming language
+      for web browsers, used to make a dynamic and interactive user experience.
+    </P>
+  </>
 );
 
 const textGatsby = () => (
   <>
-    <p>
+    <P>
       I made this site in Gatsby because, as Gatsby puts it, it is blazingly
       fast and built on top of React. I am also a huge fan of Gatsby because of
       its ability to be a progressive web app which among other things means it
       can work offline and is more resilient to bad internet connections
-    </p>
-    <p>
+    </P>
+    <P>
       This coupled with the fact that Gatsby has amazing image optimization
       features means that building a site with Gatsby makes it more accessible
       to users all over the world, especially in developing countries. Finally,
       as a static site generator, Gatsby is great for SEO, something React out
       of the box fails spectaculary at.
-    </p>
+    </P>
   </>
 );
 
-
 const textPorfolio = () => (
   <>
-  <p>Select Samples</p>
-  <ListInline urls={currentWebsites} />
-
-  <p>
-    If you are a local business or small company I can make a
-    blazingly fast, amazing website for you at a very affordable cost.
-    Unlike most agencies I have multiple payment options and will work
-    with you to create a custom built site at a fraction of the cost.
-  </p>
+    <Div2>
+      <ListInline urls={currentWebsites} />
+    </Div2>
+    <P>
+      If you are a local business or small company I can make a blazingly fast,
+      amazing website for you at a very affordable cost. Unlike most agencies I
+      have multiple payment options and will work with you to create a custom
+      built site at a fraction of the cost.
+    </P>
   </>
 );
 
 const textAbout = () => (
-<>
-<p>
-  My name is Alex Quasar (Aquasar) and
-  <strong> I make websites.</strong> I started this website as a
-  place to document my learning and journey of web development. And
-  what a journey it has been! I am a full stack web developer (70%
-  frontend, 30% backend), former data analyst and inspiring blogger!
-</p>
-<p>
-  Looking for a career change, my journey into the world of web
-  development has been anything but conventional. I hope to inspire
-  and provide a resource for others from all walks of life and
-  education backgrounds.
-</p>
-</>
+  <>
+    <P>
+      My name is Alex Quasar (Aquasar) and
+      <strong> I make websites.</strong> I started this website as a place to
+      document my learning and journey of web development. And what a journey it
+      has been!
+    </P>
+    <P>
+      I am a <strong>full stack web developer</strong> (70% frontend, 30%
+      backend), former data analyst and inspiring blogger!
+    </P>
+    <P>
+      Looking for a career change, my journey into the world of web development
+      has been anything but conventional. I hope to inspire and provide a
+      resource for others from all walks of life and education backgrounds.
+    </P>
+  </>
 );
-
-
 
 const about = () => {
   return (
-    <Layout full="true">
+    <Layout full={true}>
       <SEO
         title="About Me"
         description="This is the about me section, Alex Quasar is a mere motral develop and Gatsby is a blazzingly fast static site generator"
@@ -143,31 +181,33 @@ const about = () => {
         </Container800>
       </Section>
 
-
       <SectionGrey>
         <Container800>
-             
-        <BasicFeatureSection heading="Portfolio" subheading = "Select Samples" text={textPorfolio()} />
+          <BasicFeatureSection
+            heading="Portfolio"
+            subheading="Select Samples"
+            text={textPorfolio()}
+          />
         </Container800>
       </SectionGrey>
 
-
-
       <Section>
         <Container800>
-          
-            <BasicFeatureSection heading="Current Workflow" subheading = "List of web development tools" text={ <Margin2>
-              <ListWithDescription items={currentlyUsing} />
-            </Margin2>} />
-          
+          <BasicFeatureSection
+            heading="Current Workflow"
+            subheading="List of web development tools"
+            text={
+              <Margin2>
+                <ListWithDescription items={currentlyUsing} />
+              </Margin2>
+            }
+          />
         </Container800>
       </Section>
 
       <SectionGrey>
         <Container800>
-          
-            <BasicFeatureSection heading="Why Gatsby" text={textGatsby()} />
-          
+          <BasicFeatureSection heading="Why Gatsby" text={textGatsby()} />
         </Container800>
       </SectionGrey>
 
@@ -192,31 +232,40 @@ const about = () => {
         </Container800>
       </Section>
 
-      
       <SectionGrey>
         <Container800>
-          <BasicFeatureSection heading="Online Developer Resources" subheading = "List of my go to learning resources for web development" text={<Margin2>
-          <ListWithDescription items={onlineResources} />
-        </Margin2>} />
+          <BasicFeatureSection
+            heading="Online Developer Resources"
+            subheading="List of my go to learning resources for web development"
+            text={
+              <Ul1>
+                <ListWithDescription items={onlineResources} />
+              </Ul1>
+            }
+          />
         </Container800>
       </SectionGrey>
 
       <Section>
         <Container800>
-          <BasicFeatureSection heading="For Data Visualization" subheading = "Tableau and Power Bi are great for most organizations" text={   <Margin2>
-          <ListWithDescription items={dataVisuals} />
-        </Margin2>} />
+          <BasicFeatureSection
+            heading="For Data Visualization"
+            subheading="Tableau and Power Bi are great for most organizations"
+            text={
+              <Ul1>
+                <ListWithDescription items={dataVisuals} />
+              </Ul1>
+            }
+          />
         </Container800>
       </Section>
 
-          
-
-       <SectionGrey> 
-       <Container800>
-       <H2>Contact Me</H2>
-      <SimpleNetlifyForm/> 
-      </Container800> 
-       </SectionGrey>
+      <SectionGrey>
+        <Container800>
+          <H2>Contact Me</H2>
+          <SimpleNetlifyForm />
+        </Container800>
+      </SectionGrey>
 
       <Hero />
     </Layout>
