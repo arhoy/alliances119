@@ -189,7 +189,7 @@ const about = ({ data }) => {
         title="About Me"
         description="This is the about me section, Alex Quasar is a mere motral develop and Gatsby is a blazzingly fast static site generator"
       />
-      <StyledHero2 img={fluid} gradient="true">
+      <StyledHero2 img={fluid}>
         <Section>
           <Container800>
             <H1>What is Aquasar.io</H1>
