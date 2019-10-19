@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { FaUserAstronaut, FaFighterJet } from 'react-icons/fa';
 
 import { graphql } from 'gatsby';
 
@@ -21,13 +22,17 @@ import onlineResources from '../constants/onlineResources';
 import dataVisuals from '../constants/data-visuals';
 import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
 
-import BasicFeatureSection from '../components/features/BasicFeatureSection';
 import StyledHero2 from '../components/heros/StyledHero2';
 import {
   Section,
   Container800,
   SectionGrey,
+  Container1200,
 } from '../components/reusableStyles/sections/Sections';
+import BasicFeatureSection from '../components/features/BasicFeatureSection';
+import FeatureSectionWithFixedImage from '../components/features/FeatureSectionWithFixedImage';
+import FeatureSectionIconLeft from '../components/features/FeatureSectionIconLeft';
+import FeatureSection from '../components/features/FeatureSection';
 
 const P = styled.p`
   margin: 1.5rem 0rem;
@@ -171,10 +176,31 @@ const textAbout = () => (
 
 export const query = graphql`
   query {
-    about1: file(relativePath: { eq: "astronaut.png" }) {
+    aboutImage1: file(relativePath: { eq: "astronaut.png" }) {
       childImageSharp {
-        fluid(quality: 90, maxWidth: 200) {
+        fluid(quality: 100, maxWidth: 100) {
           ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    aboutImage2: file(relativePath: { eq: "rocket.png" }) {
+      childImageSharp {
+        fixed(width: 256, height: 256) {
+          ...GatsbyImageSharpFixed_tracedSVG
+        }
+      }
+    }
+    aboutImage3: file(relativePath: { eq: "satelite.png" }) {
+      childImageSharp {
+        fixed(width: 256, height: 256) {
+          ...GatsbyImageSharpFixed_tracedSVG
+        }
+      }
+    }
+    aboutImage4: file(relativePath: { eq: "telescope.png" }) {
+      childImageSharp {
+        fixed(width: 350, height: 350) {
+          ...GatsbyImageSharpFixed_tracedSVG
         }
       }
     }
@@ -182,14 +208,13 @@ export const query = graphql`
 `;
 
 const about = ({ data }) => {
-  const { fluid } = data.about1.childImageSharp;
   return (
     <Layout full={true}>
       <SEO
         title="About Me"
         description="This is the about me section, Alex Quasar is a mere motral develop and Gatsby is a blazzingly fast static site generator"
       />
-      <StyledHero2 img={fluid}>
+      <StyledHero2 img={data.aboutImage1.childImageSharp.fluid}>
         <Section>
           <Container800>
             <H1>What is Aquasar.io</H1>
@@ -199,18 +224,19 @@ const about = ({ data }) => {
       </StyledHero2>
 
       <SectionGrey>
-        <Container800>
-          <BasicFeatureSection
-            heading="Portfolio"
+        <Container1200>
+          <FeatureSectionWithFixedImage
+            heading="Porflio"
             subheading="Select Samples"
             text={textPorfolio()}
+            fixed={data.aboutImage3.childImageSharp.fixed}
           />
-        </Container800>
+        </Container1200>
       </SectionGrey>
 
       <Section>
         <Container800>
-          <BasicFeatureSection
+          <FeatureSectionWithFixedImage
             heading="Current Workflow"
             subheading="List of web development tools"
             text={
@@ -218,14 +244,20 @@ const about = ({ data }) => {
                 <ListWithDescription items={currentlyUsing} />
               </Margin2>
             }
+            fixed={data.aboutImage2.childImageSharp.fixed}
           />
         </Container800>
       </Section>
 
       <SectionGrey>
-        <Container800>
-          <BasicFeatureSection heading="Why Gatsby" text={textGatsby()} />
-        </Container800>
+        <Container1200>
+          <FeatureSectionWithFixedImage
+            heading="Why Gatsby"
+            subheading="Amazing React Framework"
+            text={textGatsby()}
+            fixed={data.aboutImage4.childImageSharp.fixed}
+          />
+        </Container1200>
       </SectionGrey>
 
       <Section>
@@ -251,7 +283,10 @@ const about = ({ data }) => {
 
       <SectionGrey>
         <Container800>
-          <BasicFeatureSection
+          <FeatureSectionIconLeft
+            icon={FaUserAstronaut()}
+            rotate="rotate(-15deg)"
+            iconSize="14rem"
             heading="Online Developer Resources"
             subheading="List of my go to learning resources for web development"
             text={
@@ -265,7 +300,10 @@ const about = ({ data }) => {
 
       <Section>
         <Container800>
-          <BasicFeatureSection
+          <FeatureSection
+            icon={FaFighterJet()}
+            rotate="rotate(15deg)"
+            iconSize="14rem"
             heading="For Data Visualization"
             subheading="Tableau and Power Bi are great for most organizations"
             text={
