@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import { graphql } from 'gatsby';
+
 import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 import Hero from '../components/heros/Hero';
@@ -20,7 +22,7 @@ import dataVisuals from '../constants/data-visuals';
 import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
 
 import BasicFeatureSection from '../components/features/BasicFeatureSection';
-
+import StyledHero2 from '../components/heros/StyledHero2';
 import {
   Section,
   Container800,
@@ -167,19 +169,34 @@ const textAbout = () => (
   </>
 );
 
-const about = () => {
+export const query = graphql`
+  query {
+    about1: file(relativePath: { eq: "astronaut.png" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 200) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+  }
+`;
+
+const about = ({ data }) => {
+  const { fluid } = data.about1.childImageSharp;
   return (
     <Layout full={true}>
       <SEO
         title="About Me"
         description="This is the about me section, Alex Quasar is a mere motral develop and Gatsby is a blazzingly fast static site generator"
       />
-      <Section>
-        <Container800>
-          <H1>What is Aquasar.io</H1>
-          <BasicFeatureSection heading="About me" text={textAbout()} />
-        </Container800>
-      </Section>
+      <StyledHero2 img={fluid} gradient="true">
+        <Section>
+          <Container800>
+            <H1>What is Aquasar.io</H1>
+            <BasicFeatureSection heading="About me" text={textAbout()} />
+          </Container800>
+        </Section>
+      </StyledHero2>
 
       <SectionGrey>
         <Container800>
