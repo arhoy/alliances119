@@ -41,6 +41,15 @@ const HeroBackgroundImage = styled(BackgroundImage)`
     
 `;
 
+const FullNarrowBackgroundImage = styled(BackgroundImage)`
+  width: 100%;
+  min-height: 25vh;
+  max-height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const whyFasion = () => (
   <>
     <P>
@@ -83,6 +92,13 @@ export const query = graphql`
         }
       }
     }
+    picture3: file(relativePath: { eq: "fall-background.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
   }
 `;
 
@@ -92,13 +108,21 @@ export default ({ data }) => {
       <SEO title="Fashion One" description="Sample Fashion Store" />
       <HerosContainer>
         <HeroBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
-          <CatchyBanner color="white" title="WOMEN" />
+          <CatchyBanner color="white" title="WOMEN" width="100%" />
         </HeroBackgroundImage>
 
         <HeroBackgroundImage fluid={data.picture2.childImageSharp.fluid}>
-          <CatchyBanner color="white" title="MEN" />
+          <CatchyBanner color="white" title="MEN" width="100%" />
         </HeroBackgroundImage>
       </HerosContainer>
+
+      <FullNarrowBackgroundImage fluid={data.picture3.childImageSharp.fluid}>
+        <CatchyBanner
+          color="white"
+          title="FALL SALE"
+          background="rgba(61, 55, 55,0.5)"
+        />
+      </FullNarrowBackgroundImage>
 
       <Section>
         <Container800>

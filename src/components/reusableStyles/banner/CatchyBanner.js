@@ -1,12 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const Div = styled.div`
-  padding: 2rem;
-  background: ${props => props.theme.colors.primaryTransparent};
-  width: 100%;
-`;
-
 const H1 = styled.h1`
   font-size: 6rem;
   color: ${props => props.theme.colors.primaryLight};
@@ -15,10 +9,21 @@ const H1 = styled.h1`
     font-size: 4.5rem;
   }
 `;
+const Div = styled.div`
+  padding: 2rem 4rem;
+  background: ${props => props.theme.colors.primaryTransparent};
+`;
 
-const CatchyBanner = ({ title, children, color, fontSize }) => {
+const CatchyBanner = ({
+  title,
+  children,
+  color,
+  fontSize,
+  width,
+  background,
+}) => {
   return (
-    <Div>
+    <Div style={{ width: width, background: background }}>
       <H1 style={{ color: `${color}`, fontSize: `${fontSize}` }}>{title}</H1>
       {children}
     </Div>
