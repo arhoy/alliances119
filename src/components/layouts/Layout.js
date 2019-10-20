@@ -1,6 +1,6 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
-import Nav from './Nav';
+import NavFashion1 from '../navigation/NavFashion1';
 import { ThemeProvider } from 'emotion-theming';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
@@ -12,14 +12,17 @@ import Footer from './Footer';
 const theme = {
   colors: {
     primary: 'rgb(92, 52, 145)',
-    primaryDark: 'rgb(73, 35, 122)',
+    primaryDark: 'rgb(63, 3, 122)',
     primaryLight: 'rgb(148, 103, 206)',
     primaryTransparent: 'rgba(92, 52, 145,0.2)',
     secondary: 'rgb(24, 163, 201)',
     lightgrey: 'rgb(240,240,240)',
+    lightgrey2: 'rgb(224, 217, 217)',
     white: '#fff',
     black: '#1a1a1a',
     darkgrey: 'rgb(109, 109, 109)',
+    red: 'rgb(218, 18, 31)',
+    blue: 'rgb(19, 73, 178)',
   },
   pageWidth: {
     fixed: '800px',
@@ -111,7 +114,7 @@ const Layout = ({ children, full }) => {
         <ThemeProvider theme={theme}>
           <Div>
             <FullNavLayout>
-              <Nav />
+              <NavFashion1 />
             </FullNavLayout>
             <MainFull>{children}</MainFull>
             <FullFooterLayout>
@@ -123,7 +126,7 @@ const Layout = ({ children, full }) => {
         <ThemeProvider theme={theme}>
           <DivFixed>
             <NavLayout>
-              <Nav />
+              <NavFashion1 />
             </NavLayout>
             <Main>{children}</Main>
             <FooterLayout>
@@ -139,7 +142,7 @@ Layout.propTypes = {
   full: PropTypes.bool,
 };
 Layout.defaultProps = {
-  full: false,
+  full: true,
 };
 
 export default Layout;

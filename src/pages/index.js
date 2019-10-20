@@ -1,216 +1,115 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import { graphql } from 'gatsby';
 import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
-import Insta from '../components/Insta';
-
-import profileImage from '../../images/alexquasar.png';
-import Articles from '../components/articles/Articles';
-import Navlink from '../components/Links/Navlink';
-import useLatestArticles from '../hooks/useLatestArticles';
-import useLatestBlogs from '../hooks/useLatestBlogs';
-
-import { ButtonStyle2 } from '../components/reusableStyles/buttons/Button';
-
-import { FaTwitterSquare, FaGithub } from 'react-icons/fa';
-import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
-import Hero from '../components/heros/Hero';
-import { ListInline } from '../components/reusableStyles/lists/List';
-import currentWebsites from '../constants/currentWebsites';
-import {
-  NavlinkButton,
-  NavlinkButton2,
-} from '../components/Links/NavLinkButton';
-
-import { Margin2V } from '../components/reusableStyles/modular/modularStyles';
-import { Tag } from '../components/reusableStyles/tags/Tag';
 import {
   Section,
-  SectionGrey,
+  Container800,
 } from '../components/reusableStyles/sections/Sections';
 
-const CustomSection = styled(Section)`
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-`;
+import BackgroundImage from 'gatsby-background-image';
+import { H2 } from '../components/reusableStyles/typography/Typography';
+import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
 
-const CustomSectionPortfolio = styled(SectionGrey)`
-  border-bottom-left-radius: 25px;
-  border-top-right-radius: 25px;
-`;
+import CatchyBanner from '../components/reusableStyles/banner/CatchyBanner';
+import BasicFeatureSection from '../components/features/BasicFeatureSection';
 
-const CustomSectionBlogs = styled(SectionGrey)`
-  border-bottom-left-radius: 25px;
-  border-top-right-radius: 25px;
-`;
-
-const CustomDiv = styled.div`
-  display: flex;
-  padding: 4rem 0;
+const P = styled.p`
+  margin: 1.5rem 0rem;
+  font-family: Poppins;
+  font-size: 1.7rem;
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    flex-wrap: wrap;
-  }
-`;
-const CustomDivTop = styled(CustomDiv)`
-  margin: 0 auto;
-`;
-
-const CustomDivTopOne = styled.div`
-  margin-right: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    margin-bottom: 3rem;
-  }
-`;
-
-const CustomDivTopTwo = styled.div`
-  background: ${props => props.theme.colors.primaryTransparent};
-  padding: 2rem;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  align-items: center;
-  border-bottom-left-radius: 25px;
-  border-top-right-radius: 25px;
-  & img {
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    background-size: contain;
-  }
-  h4 {
-    padding: 1rem 0rem;
-  }
-  & p {
     text-align: center;
+    margin: 3rem 0rem;
   }
 `;
 
-const Title = styled.h1`
-  font-size: 3.8rem;
+const HeroBackgroundImage = styled(BackgroundImage)`
+  width: 50vw;
+  min-height: 60vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    width: 100%;
+    min-height: 40vh;
+    align-items:flex-end;
+    
 `;
 
-const H2 = styled.h2`
-  font-size: 3.2rem;
-  margin-bottom: 3rem;
+const whyFasion = () => (
+  <>
+    <P>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur
+    </P>
+    <P>
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+      deserunt mollit anim id est laborum. Sed viverra tellus in hac habitasse
+      platea dictumst vestibulum rhoncus. Massa ultricies mi quis hendrerit.
+      Nibh tellus molestie nunc non blandit massa enim nec dui.
+    </P>
+  </>
+);
+
+const HerosContainer = styled.div`
+  display: flex;
 
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    font-size: 2.5rem;
-    & ${Navlink} {
-      margin: 0;
-      padding: 0.5rem 1rem;
+    flex-direction: column;
+  }
+`;
+
+export const query = graphql`
+  {
+    picture1: file(relativePath: { eq: "woman.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    picture2: file(relativePath: { eq: "man.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
     }
   }
 `;
 
-const Blurb = styled.p`
-  max-width: 450px;
-  padding: 2rem 0;
-  font-size: 1.6rem;
-  color: ${props => props.theme.colors.black};
-`;
-
-const Social = styled.div`
-  display: flex;
-  justify-content: flex-start;
-`;
-
-const TwitterStyle = styled(FaTwitterSquare)`
-  margin-left: 1rem;
-  color: #1da1f2;
-  cursor: pointer;
-  font-size: 4rem;
-`;
-
-const GitHubStyle = styled(FaGithub)`
-  cursor: pointer;
-  font-size: 4rem;
-  color: black;
-`;
-
-export default () => {
+export default ({ data }) => {
   return (
-    <Layout>
-      <SEO
-        title="Explore Gatsby"
-        description="MERN, Gatsby and other cool stuff"
-      />
-      <CustomSection>
-        <CustomDivTop>
-          <CustomDivTopOne>
-            <Title>
-              Hello I'm Alex
-              <Blurb>
-                I create websites and web apps using modern technologies like
-                React and Gatsby and then write about by learnings along the
-                way.
-              </Blurb>
-            </Title>
+    <Layout full={true}>
+      <SEO title="Fashion One" description="Sample Fashion Store" />
+      <HerosContainer>
+        <HeroBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
+          <CatchyBanner color="white" title="WOMEN" />
+        </HeroBackgroundImage>
 
-            <Social>
-              <a href="https://github.com/arhoy">
-                <GitHubStyle title="Star Repo" />
-              </a>
-
-              <a href="https://twitter.com/_aquasar">
-                <TwitterStyle title="Follow Me" />
-              </a>
-            </Social>
-          </CustomDivTopOne>
-          <CustomDivTopTwo>
-            <img alt="" src={profileImage} />
-            <h4>New Content Weekly</h4>
-            <p> Developer tutorials and new websites </p>
-            <ButtonStyle2>
-              <a href="https://aquasar.substack.com"> Subscribe Me </a>
-            </ButtonStyle2>
-          </CustomDivTopTwo>
-        </CustomDivTop>
-      </CustomSection>
-
-      <CustomSectionPortfolio>
-        <H2>Porfolio</H2>
-        <p>Select Samples</p>
-        <ListInline urls={currentWebsites} />
-        <Margin2V>
-          <Tag>Blazingly Fast</Tag>
-          <Tag>Modern</Tag>
-          <Tag>SEO Optimized</Tag>
-          <Tag>Completely Customized</Tag>
-          <p>Professional web development at fraction of the cost. </p>
-          <p>
-            Will price match <i>any</i> local web development or design agency{' '}
-          </p>
-        </Margin2V>
-
-        <NavlinkButton to="/about">Learn More</NavlinkButton>
-      </CustomSectionPortfolio>
+        <HeroBackgroundImage fluid={data.picture2.childImageSharp.fluid}>
+          <CatchyBanner color="white" title="MEN" />
+        </HeroBackgroundImage>
+      </HerosContainer>
 
       <Section>
-        <H2>
-          Lastest Articles
-          <NavlinkButton2 to="/articles"> View All</NavlinkButton2>
-        </H2>
-        <Articles articles={useLatestArticles()} />
-      </Section>
-
-      <CustomSectionBlogs>
-        <H2>
-          Latest Blogs <NavlinkButton2 to="/blog"> View More</NavlinkButton2>
-        </H2>
-        <Articles articles={useLatestBlogs()} />
-      </CustomSectionBlogs>
-
-      <Section>
-        <H2>Contact Me</H2>
-        <SimpleNetlifyForm />
-        <Hero />
+        <Container800>
+          <BasicFeatureSection heading="Why Fashion One" text={whyFasion()} />
+        </Container800>
       </Section>
       <Section>
-        <Insta />
+        <Container800>
+          <H2>Contact US</H2>
+          <SimpleNetlifyForm />
+        </Container800>
       </Section>
     </Layout>
   );
