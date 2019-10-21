@@ -20,6 +20,7 @@ const theme = {
     lightgrey2: 'rgb(224, 217, 217)',
     white: '#fff',
     black: '#1a1a1a',
+    blackTransparent: 'rgba(41, 43, 46, 0.4)',
     darkgrey: 'rgb(109, 109, 109)',
     red: 'rgb(218, 18, 31)',
     blue: 'rgb(19, 73, 178)',

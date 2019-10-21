@@ -49,20 +49,20 @@ const exampleLinks2 = [
 const exampleLinks3 = [
   {
     path: '/',
-    text: 'Jackets',
+    text: 'Latest',
   },
   {
     path: '/',
-    text: 'Sweaters',
+    text: 'Trending',
   },
   {
     path: '/',
-    text: 'Hoodies',
+    text: 'Blog',
   },
 
   {
-    path: '/',
-    text: 'Shoes',
+    path: '/contact',
+    text: 'Contact',
   },
 ];
 

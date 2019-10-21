@@ -41,6 +41,22 @@ const HeroBackgroundImage = styled(BackgroundImage)`
     
 `;
 
+const HeroBackgroundImageThird = styled(BackgroundImage)`
+  width: 33.33vw;
+  min-height: 30vh;
+  background-size: cover;
+  background-position: center;
+  opacity: 1 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+  &:hover {
+    background: ${props => props.theme.colors.blackTransparent};
+  }
+`;
+
 const FullNarrowBackgroundImage = styled(BackgroundImage)`
   width: 100%;
   min-height: 25vh;
@@ -99,6 +115,27 @@ export const query = graphql`
         }
       }
     }
+    picture4: file(relativePath: { eq: "jeans.JPG" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    picture5: file(relativePath: { eq: "runningshoes.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    picture6: file(relativePath: { eq: "jeans_3.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
   }
 `;
 
@@ -120,9 +157,40 @@ export default ({ data }) => {
         <CatchyBanner
           color="white"
           title="FALL SALE"
-          background="rgba(61, 55, 55,0.5)"
-        />
+          background="rgb(218, 18, 31)"
+        >
+          <p style={{ fontWeight: 'bold', marginTop: '4px' }}>
+            Up to 50% of selected brands
+          </p>
+        </CatchyBanner>
       </FullNarrowBackgroundImage>
+
+      <HerosContainer>
+        <HeroBackgroundImageThird fluid={data.picture4.childImageSharp.fluid}>
+          <CatchyBanner
+            color="white"
+            title="Jeans"
+            fontSize="4.5rem"
+            background="none"
+          />
+        </HeroBackgroundImageThird>
+        <HeroBackgroundImageThird fluid={data.picture5.childImageSharp.fluid}>
+          <CatchyBanner
+            color="white"
+            title="Shoes"
+            fontSize="4.5rem"
+            background="none"
+          />
+        </HeroBackgroundImageThird>
+        <HeroBackgroundImageThird fluid={data.picture6.childImageSharp.fluid}>
+          <CatchyBanner
+            color="white"
+            title="Bags"
+            fontSize="4.5rem"
+            background="none"
+          />
+        </HeroBackgroundImageThird>
+      </HerosContainer>
 
       <Section>
         <Container800>

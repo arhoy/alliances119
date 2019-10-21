@@ -103,7 +103,7 @@ const NavFashion = () => {
       <NavContainer>
         <MyMenu title={`Women`} menuLinks={exampleLinks2} />
         <MyMenu title={`Men`} menuLinks={exampleLinks1} />
-        <MyMenu title={`Kids`} menuLinks={exampleLinks3} />
+        <MyMenu title={`More`} menuLinks={exampleLinks3} />
       </NavContainer>
     </Header>
   );

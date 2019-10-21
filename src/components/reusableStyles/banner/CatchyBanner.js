@@ -2,12 +2,10 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const H1 = styled.h1`
-  font-size: 6rem;
+  font-size: 5rem;
   color: ${props => props.theme.colors.primaryLight};
   line-height: 4.5rem;
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    font-size: 4.5rem;
-  }
+  text-align: center;
 `;
 const Div = styled.div`
   padding: 2rem 4rem;
