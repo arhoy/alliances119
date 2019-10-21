@@ -83,6 +83,11 @@ const NavContainer = styled.nav`
     display: none;
   }
 `;
+const AlertBar = styled.div`
+  text-align: center;
+  background: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.white};
+`;
 
 const NavFashion = () => {
   useEffect(() => {
@@ -90,22 +95,26 @@ const NavFashion = () => {
   }, []);
 
   return (
-    <Header>
-      <Logo>
-        <LogoLink to="/">
-          <i>FASHION ONE</i>
-        </LogoLink>
-        <LogoBottom>
-          <LogoPhone>1 888 FASHION</LogoPhone>
-          <FaPhone />
-        </LogoBottom>
-      </Logo>
-      <NavContainer>
-        <MyMenu title={`Women`} menuLinks={exampleLinks2} />
-        <MyMenu title={`Men`} menuLinks={exampleLinks1} />
-        <MyMenu title={`More`} menuLinks={exampleLinks3} />
-      </NavContainer>
-    </Header>
+    <>
+      <AlertBar>100% Free Storewide Shipping</AlertBar>
+
+      <Header>
+        <Logo>
+          <LogoLink to="/">
+            <i>FASHION ONE</i>
+          </LogoLink>
+          <LogoBottom>
+            <LogoPhone>1 888 FASHION</LogoPhone>
+            <FaPhone />
+          </LogoBottom>
+        </Logo>
+        <NavContainer>
+          <MyMenu title={`Women`} menuLinks={exampleLinks2} />
+          <MyMenu title={`Men`} menuLinks={exampleLinks1} />
+          <MyMenu title={`More`} menuLinks={exampleLinks3} />
+        </NavContainer>
+      </Header>
+    </>
   );
 };
 

@@ -48,6 +48,8 @@
     "react-icons": "^3.7.0",
     "react-stripe-elements": "^5.0.1",
     "react-syntax-highlighter": "^11.0.2",
+    "react-text-loop": "^2.1.1",
+    "react-typed": "^1.2.0",
     "theme-ui": "^0.2.43"
   },
   "devDependencies": {

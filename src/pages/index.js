@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-
+import { FaShippingFast } from 'react-icons/fa';
+import ReactTyped from 'react-typed';
 import { graphql } from 'gatsby';
 import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
@@ -55,6 +56,9 @@ const HeroBackgroundImageThird = styled(BackgroundImage)`
   &:hover {
     background: ${props => props.theme.colors.blackTransparent};
   }
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    width: 100%;
+    min-height: 30vh;
 `;
 
 const FullNarrowBackgroundImage = styled(BackgroundImage)`
@@ -64,6 +68,14 @@ const FullNarrowBackgroundImage = styled(BackgroundImage)`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const CustomSection = styled(Section)`
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background: ${props => props.theme.colors.lightRed};
+  color: ${props => props.theme.colors.red};
+  font-weight: bold;
 `;
 
 const whyFasion = () => (
@@ -91,7 +103,18 @@ const HerosContainer = styled.div`
     flex-direction: column;
   }
 `;
+const TypeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
+const IconContainerShipping = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+`;
 export const query = graphql`
   {
     picture1: file(relativePath: { eq: "woman.jpg" }) {
@@ -152,7 +175,6 @@ export default ({ data }) => {
           <CatchyBanner color="white" title="MEN" width="100%" />
         </HeroBackgroundImage>
       </HerosContainer>
-
       <FullNarrowBackgroundImage fluid={data.picture3.childImageSharp.fluid}>
         <CatchyBanner
           color="white"
@@ -164,7 +186,6 @@ export default ({ data }) => {
           </p>
         </CatchyBanner>
       </FullNarrowBackgroundImage>
-
       <HerosContainer>
         <HeroBackgroundImageThird fluid={data.picture4.childImageSharp.fluid}>
           <CatchyBanner
@@ -191,7 +212,30 @@ export default ({ data }) => {
           />
         </HeroBackgroundImageThird>
       </HerosContainer>
+      <CustomSection>
+        <Container800>
+          <TypeContainer>
+            <IconContainerShipping>
+              <FaShippingFast />
+            </IconContainerShipping>
 
+            <ReactTyped
+              strings={[
+                'Free Shipping on orders over $50',
+                'Free Shipping actually on orders over $40',
+                'Free Shipping even on orders over $20!',
+                'We have free shipping on all orders over $20 ❤',
+              ]}
+              typeSpeed={40}
+              backSpeed={10}
+              smartBackspace
+              loop
+            >
+              <span type="text" />
+            </ReactTyped>
+          </TypeContainer>
+        </Container800>
+      </CustomSection>
       <Section>
         <Container800>
           <BasicFeatureSection heading="Why Fashion One" text={whyFasion()} />

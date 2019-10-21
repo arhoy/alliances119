@@ -23,6 +23,7 @@ const theme = {
     blackTransparent: 'rgba(41, 43, 46, 0.4)',
     darkgrey: 'rgb(109, 109, 109)',
     red: 'rgb(218, 18, 31)',
+    lightRed: 'rgb(232, 180, 182)',
     blue: 'rgb(19, 73, 178)',
   },
   pageWidth: {
