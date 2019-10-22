@@ -2,18 +2,9 @@
 
 import React, { Component } from 'react';
 import { graphql, StaticQuery } from 'gatsby';
+import AmazonCard from '../components/AmazonCard';
 
-import styled from '@emotion/styled';
-import AmazonCard from './AmazonCard';
-
-const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-`;
-
-class SkusBags extends Component {
+class SkusJeans extends Component {
   state = {
     stripe: null,
   };
@@ -27,13 +18,16 @@ class SkusBags extends Component {
     return (
       <StaticQuery
         query={graphql`
-          query SkuForAllBags {
-            products: allStripeProduct(filter: { name: { regex: "/bag/i" } }) {
+          query SkuForAllMeJeans {
+            products: allStripeProduct(
+              filter: { name: { regex: "/mens jeans/i" } }
+            ) {
               nodes {
                 name
                 skus {
                   url
                   data {
+                    id
                     price
                     currency
                     image
@@ -46,18 +40,16 @@ class SkusBags extends Component {
             }
           }
         `}
-        render={({ products: { nodes } }) => {
-          return (
-            <Container>
-              {nodes[0].skus.data.map(sku => (
-                <AmazonCard key={sku.id} sku={sku} stripe={this.state.stripe} />
-              ))}
-            </Container>
-          );
-        }}
+        render={({ products: { nodes } }) =>
+          nodes.map(node => {
+            return node.skus.data.map(sku => (
+              <AmazonCard key={sku.id} sku={sku} stripe={this.state.stripe} />
+            ));
+          })
+        }
       />
     );
   }
 }
 
-export default SkusBags;
+export default SkusJeans;

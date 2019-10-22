@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 
 import styled from '@emotion/styled';
-import AmazonCard from './AmazonCard';
+import AmazonCard from '../components/AmazonCard';
 
 const Container = styled.div`
   display: flex;

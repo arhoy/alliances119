@@ -8,6 +8,8 @@ import SEO from '../hooks/SEO';
 import {
   Section,
   Container800,
+  SectionGrey,
+  ContainerCenterFlex,
 } from '../components/reusableStyles/sections/Sections';
 
 import BackgroundImage from 'gatsby-background-image';
@@ -16,7 +18,9 @@ import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
 
 import CatchyBanner from '../components/reusableStyles/banner/CatchyBanner';
 import BasicFeatureSection from '../components/features/BasicFeatureSection';
-import SkusBags from '../components/stripe/SkusBags';
+import SkusBags from '../components/stripe/hooks/SkusBags';
+import SkusShoes from '../components/stripe/hooks/SkusShoes';
+import SkusJeans from '../components/stripe/hooks/SkusJeans';
 
 const P = styled.p`
   margin: 1.5rem 0rem;
@@ -71,6 +75,14 @@ const FullNarrowBackgroundImage = styled(BackgroundImage)`
   align-items: center;
 `;
 
+const CustomHighlight = styled.span`
+  padding: 1px 2px;
+  border-radius: 2px;
+  font-weight: bold;
+  margin: 0 4px;
+  background: ${props => props.theme.colors.primaryTransparent};
+`;
+
 const CustomSection = styled(Section)`
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -82,23 +94,48 @@ const CustomSection = styled(Section)`
 const whyFasion = () => (
   <>
     <P>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur
+      What we have here is <CustomHighlight>Fashion One</CustomHighlight> a
+      blazingly fast Ecommerce platform powered soley by Stripe and Gatsby.
+      Faster and more SEO friendy than any frontend WordPress or Shopify site
+      created by the vast majority of web design agencies and at a fraction of
+      the cost.
     </P>
     <P>
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-      deserunt mollit anim id est laborum. Sed viverra tellus in hac habitasse
-      platea dictumst vestibulum rhoncus. Massa ultricies mi quis hendrerit.
-      Nibh tellus molestie nunc non blandit massa enim nec dui.
+      My name is Alex Quasar, I am professional freelance full stack developer.
+      I create sites for individuals and work with companies small and large
+      using the latest and greatest technoligies the web has to offer. I have
+      expertise in the
+      <CustomHighlight>JAM Stack</CustomHighlight> and the
+      <CustomHighlight>MERN Stack</CustomHighlight>.
+    </P>
+    <P>
+      For Ecommerce I use any one of Gatsby combined with the following
+      platforms such as Stripe, Contentful and
+      <CustomHighlight>Shopify</CustomHighlight>.
+    </P>
+    <P>
+      What platform I use to develop a custom site for a client depends on a
+      individual case by case base on a wide variety of factors such as budget,
+      inventory, transaction cost and client preference. For more information on
+      pricing, please check out my pricing page here.
     </P>
   </>
 );
 
 const CenteredH2 = styled(H2)`
   text-align: center;
+`;
+
+const StyledItalicSpan = styled.span`
+  color: ${props => props.theme.colors.primary};
+  font-style: italic;
+  font-size: 2rem;
+`;
+
+const StyledItalicSpan2 = styled.span`
+  color: ${props => props.theme.colors.red};
+  font-size: 2rem;
+  font-style: italic;
 `;
 
 const HerosContainer = styled.div`
@@ -243,14 +280,37 @@ export default ({ data }) => {
       </CustomSection>
 
       <Section>
-        <CenteredH2>Trending Fashion Bags</CenteredH2>
-        <SkusBags />
+        <CenteredH2>
+          Fashion Bags <StyledItalicSpan2>Trending</StyledItalicSpan2>
+        </CenteredH2>
+        <ContainerCenterFlex>
+          <SkusBags />
+        </ContainerCenterFlex>
       </Section>
+
+      <SectionGrey>
+        <CenteredH2>
+          Men's Jeans <StyledItalicSpan>Hot</StyledItalicSpan>
+        </CenteredH2>
+        <ContainerCenterFlex>
+          <SkusJeans />
+        </ContainerCenterFlex>
+      </SectionGrey>
+
       <Section>
+        <CenteredH2>
+          Women's Shoes <StyledItalicSpan>Latest</StyledItalicSpan>
+        </CenteredH2>
+        <ContainerCenterFlex>
+          <SkusShoes />
+        </ContainerCenterFlex>
+      </Section>
+
+      <SectionGrey>
         <Container800>
           <BasicFeatureSection heading="Why Fashion One" text={whyFasion()} />
         </Container800>
-      </Section>
+      </SectionGrey>
       <Section>
         <Container800>
           <H2>Contact US</H2>

@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Layout from '../components/layouts/Layout';
-import Skus from '../components/stripe/Skus';
+import Skus from '../components/stripe/hooks/Skus';
 
 import { H1 } from '../components/reusableStyles/typography/Typography';
 import { Section } from '../components/reusableStyles/sections/Sections';
-import SkusBags from '../components/stripe/SkusBags';
+import SkusBags from '../components/stripe/hooks/SkusBags';
 
 const CustomSection = styled(Section)`
   padding: 4rem 1rem;

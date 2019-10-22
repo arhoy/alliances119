@@ -29,4 +29,18 @@ const Container800 = styled.div`
   margin: 0 auto;
 `;
 
-export { Section, SectionGrey, TopSection, Container1200, Container800 };
+const ContainerCenterFlex = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+export {
+  Section,
+  SectionGrey,
+  TopSection,
+  Container1200,
+  Container800,
+  ContainerCenterFlex,
+};
