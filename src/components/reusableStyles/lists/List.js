@@ -6,12 +6,6 @@ import { A, Li, Ul } from '../typography/Typography';
 const StyledInlineLi = styled(Li)`
   display: inline-block;
   margin: 1rem;
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 `;
 
 const StyledA = styled(A)`
@@ -22,25 +16,43 @@ const StyledA = styled(A)`
   }
 `;
 
-const ListInline = ({ urls }) =>
-  urls.map(url => (
-    <StyledInlineLi key={url.url}>
-      <StyledA rel="noopener noreferrer" href={url.url} target="_blank">
-        {url.title}
-      </StyledA>
-    </StyledInlineLi>
-  ));
+const StyledSpan = styled.span`
+  border-bottom: 1px solid ${props => props.theme.colors.primaryTransparent};
+  color: ${props => props.theme.colors.primary};
+  &:hover {
+    border-bottom: 1px solid ${props => props.theme.colors.primaryDark};
+  }
+`;
 
-const ListVertical = ({ urls }) => (
+// const linkClickEventHandler = () => {
+//   console.log('I was clicked!');
+// };
+
+const ListInline = ({ urls, fontSize }) =>
+  urls.map((url, i) => {
+    return (
+      <StyledInlineLi key={i}>
+        {url.noLink ? (
+          <StyledSpan style={{ fontSize: fontSize }}>{url.title}</StyledSpan>
+        ) : (
+          <StyledA
+            style={{ fontSize: `${fontSize}` }}
+            rel="noopener noreferrer"
+            href={url.url}
+            target="_blank"
+          >
+            {url.title}
+          </StyledA>
+        )}
+      </StyledInlineLi>
+    );
+  });
+
+const ListVertical = ({ urls }, i) => (
   <Ul>
     {urls.map(url => (
-      <Li key={url.url}>
-        <StyledA
-          key={url.url}
-          rel="noopener noreferrer"
-          href={url.url}
-          target="_blank"
-        >
+      <Li key={i}>
+        <StyledA rel="noopener noreferrer" href={url.url} target="_blank">
           {url.title}
         </StyledA>
       </Li>

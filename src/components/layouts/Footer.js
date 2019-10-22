@@ -1,8 +1,9 @@
 import React from 'react';
+
 import socialIcons from '../../constants/socialIcons';
-import { graphql, useStaticQuery } from 'gatsby';
+
 import styled from '@emotion/styled';
-import Img from 'gatsby-image';
+import { FaCanadianMapleLeaf } from 'react-icons/fa';
 
 const d = new Date().getFullYear();
 
@@ -14,20 +15,22 @@ const FooterStyle = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  a {
-    color: black;
-    font-size: 3rem;
-    margin: 1rem;
-    padding: 1rem;
-  }
 `;
 
-const StyledImage = styled(Img)`
+const SocialIcon = styled.a`
+  color: ${props => props.theme.colors.black};
+  font-size: 3rem;
+  margin: 1rem;
+  padding: 1rem;
+`;
+
+const StyledImage = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 25px;
   height: 25px;
-  margin-left: 6px;
+  color: ${props => props.theme.colors.primary};
 `;
 
 const Div = styled.div`
@@ -36,38 +39,49 @@ const Div = styled.div`
   align-items: center;
 `;
 
-const Footer = () => {
-  const { image } = useStaticQuery(graphql`
-    query {
-      image: file(relativePath: { eq: "canada-flag.png" }) {
-        sharp: childImageSharp {
-          fluid(maxWidth: 20) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `);
+const A = styled.a`
+  font-size: 1.2rem;
+  color: ${props => props.theme.colors.black};
+  text-decoration: none;
+`;
+const Attribution = styled.p`
+  font-size: 1.2rem;
+`;
 
+const FooterBlurb = styled.p`
+  font-weight: bold;
+`;
+
+const Footer = () => {
   return (
     <FooterStyle>
       <ul>
         {socialIcons.map(icon => (
-          <a
+          <SocialIcon
             key={icon.url}
             href={icon.url}
             target="_blank"
             rel="noopener noreferrer"
           >
             {icon.icon}
-          </a>
+          </SocialIcon>
         ))}
       </ul>
       <Div>
-        YEG | Alberta |
-        <StyledImage alt="Made In Canada" fluid={image.sharp.fluid} />
+        Made In |
+        <StyledImage>
+          <FaCanadianMapleLeaf />
+        </StyledImage>
+        | Alberta
       </Div>
-      <p>Aquasar Blog {d} &copy; </p>
+      tel: 1 888 FASHION
+      <FooterBlurb>FASHION ONE STORE {d} &copy; </FooterBlurb>
+      <Attribution>
+        Created by{' '}
+        <A target="_blank" rel="noopener noreferrer" href="https://aquasar.io/">
+          Aquasar.io
+        </A>
+      </Attribution>
     </FooterStyle>
   );
 };
