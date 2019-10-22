@@ -39,6 +39,8 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 
+  // create pages for each Stripe Product
+
   // blog template w/ pagination
   // const posts = data.posts.nodes;
   // const postsPerPage = 3;

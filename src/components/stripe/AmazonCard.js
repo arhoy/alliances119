@@ -1,35 +1,32 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { FaSketch } from 'react-icons/fa';
-
 const Container = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 3rem;
   background: ${props => props.theme.colors.lightgrey};
   border-radius: 1rem;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  justify-content: space-between;
+
+  &:hover {
+    background: ${props => props.theme.colors.primaryTransparent};
+  }
+
   width: 28rem;
-  height: 20rem;
-  margin: 2rem;
-  padding: 1rem;
-  & h4 {
-    grid-column: 1/-1;
-    text-align: center;
-  }
-  & p {
-    color: ${props => props.theme.colors.primaryDark};
-    grid-column: 1/-1;
-  }
+  height: 25rem;
+`;
+
+const ImageContainer = styled.div`
+  text-align: center;
+  padding: 0 2rem;
 `;
 
 const Image = styled.img`
-  width: 10rem;
-
-  background-size: cover;
-  grid-column: 2/-1;
-  display: flex;
-  justify-self: flex-end;
+  width: 50%;
+  object-fit: cover;
 `;
 
 const StripeCheckoutButton = styled.button`
@@ -39,11 +36,14 @@ const StripeCheckoutButton = styled.button`
   outline: none;
   color: ${props => props.theme.colors.white};
   display: flex;
-  text-align: center;
   justify-content: center;
-  justify-self: flex-start;
-  align-self: flex-end;
+  &:hover {
+    background: ${props => props.theme.colors.primaryDark};
+    cursor: pointer;
+  }
+
   border-radius: 1rem;
+  margin-bottom: 1rem;
 `;
 
 const formatPrice = (amount, currency) => {
@@ -56,7 +56,7 @@ const formatPrice = (amount, currency) => {
   return numberFormat.format(price);
 };
 
-const SkuCard = class extends React.Component {
+const AmazonCard = class extends React.Component {
   async redirectToCheckout(event, sku, quantity = 1) {
     event.preventDefault();
     const { error } = await this.props.stripe.redirectToCheckout({
@@ -74,20 +74,20 @@ const SkuCard = class extends React.Component {
     const sku = this.props.sku;
     return (
       <Container>
-        <h4>{sku.attributes.name}</h4>
-        <p>
-          <FaSketch /> Price: {formatPrice(sku.price, sku.currency)}
-        </p>
+        <ImageContainer>
+          <Image src={sku.image} />
+          <h4>{sku.attributes.name}</h4>
+          <p>Price: {formatPrice(sku.price, sku.currency)}</p>
+        </ImageContainer>
 
         <StripeCheckoutButton
           onClick={event => this.redirectToCheckout(event, sku.id)}
         >
           BUY NOW
         </StripeCheckoutButton>
-        <Image src={sku.image} />
       </Container>
     );
   }
 };
 
-export default SkuCard;
+export default AmazonCard;

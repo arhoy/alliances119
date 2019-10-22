@@ -16,6 +16,7 @@ import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
 
 import CatchyBanner from '../components/reusableStyles/banner/CatchyBanner';
 import BasicFeatureSection from '../components/features/BasicFeatureSection';
+import SkusBags from '../components/stripe/SkusBags';
 
 const P = styled.p`
   margin: 1.5rem 0rem;
@@ -95,6 +96,10 @@ const whyFasion = () => (
     </P>
   </>
 );
+
+const CenteredH2 = styled(H2)`
+  text-align: center;
+`;
 
 const HerosContainer = styled.div`
   display: flex;
@@ -236,6 +241,11 @@ export default ({ data }) => {
           </TypeContainer>
         </Container800>
       </CustomSection>
+
+      <Section>
+        <CenteredH2>Trending Fashion Bags</CenteredH2>
+        <SkusBags />
+      </Section>
       <Section>
         <Container800>
           <BasicFeatureSection heading="Why Fashion One" text={whyFasion()} />

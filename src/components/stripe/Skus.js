@@ -1,7 +1,10 @@
+// Render any one of SkuCard, AmazonCard, etc
+
 import React, { Component } from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import SkuCard from './SkuCard';
+
 import styled from '@emotion/styled';
+import AmazonCard from './AmazonCard';
 
 const Container = styled.div`
   display: flex;
@@ -30,15 +33,13 @@ class Skus extends Component {
         query={graphql`
           query SkusForProduct {
             skus: allStripeSku(sort: { fields: [price] }) {
-              edges {
-                node {
-                  id
-                  currency
-                  price
-                  image
-                  attributes {
-                    name
-                  }
+              nodes {
+                id
+                currency
+                price
+                image
+                attributes {
+                  name
                 }
               }
             }
@@ -46,8 +47,8 @@ class Skus extends Component {
         `}
         render={({ skus }) => (
           <Container>
-            {skus.edges.map(({ node: sku }) => (
-              <SkuCard key={sku.id} sku={sku} stripe={this.state.stripe} />
+            {skus.nodes.map(sku => (
+              <AmazonCard key={sku.id} sku={sku} stripe={this.state.stripe} />
             ))}
           </Container>
         )}

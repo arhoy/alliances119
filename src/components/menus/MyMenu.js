@@ -62,7 +62,6 @@ const Button = styled.button`
 `;
 
 const MyMenu = ({ title, menuLinks }) => {
-  console.log('The menu links are ', menuLinks);
   return (
     <Container>
       <Button>

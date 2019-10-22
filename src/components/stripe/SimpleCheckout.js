@@ -13,7 +13,7 @@ const ButtonStyles = styled.button`
   letter-spacing: 1.5px;
 `;
 
-const Checkout = class extends React.Component {
+const SimpleCheckout = class extends React.Component {
   // Initialise Stripe.js with your publishable key.
   // You can find your key in the Dashboard:
   // https://dashboard.stripe.com/account/apikeys
@@ -44,4 +44,4 @@ const Checkout = class extends React.Component {
   }
 };
 
-export default Checkout;
+export default SimpleCheckout;
