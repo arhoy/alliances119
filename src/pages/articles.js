@@ -22,7 +22,7 @@ const CustomTopSection = styled(Section)`
 
 export const getArticles = graphql`
   query {
-    allArticles: allContentfulAlexQuasarArticles {
+    allArticles: allContentfulFashionTwoArticles {
       nodes {
         slug
         title

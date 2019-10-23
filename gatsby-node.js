@@ -3,13 +3,13 @@ exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
   const { data } = await graphql(`
     {
-      blogArticles: allContentfulBlogPost {
+      allShoes: allContentfulFashionTwoShoes {
         nodes {
           slug
         }
       }
 
-      allArticles: allContentfulAlexQuasarArticles {
+      allArticles: allContentfulFashionTwoArticles {
         nodes {
           slug
         }
@@ -17,18 +17,7 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
 
-  // standard blog article template. Create a page for each BlogPost
-  data.blogArticles.nodes.forEach(article => {
-    createPage({
-      path: `articles/${article.slug}`,
-      component: path.resolve('./src/templates/Blog.js'),
-      context: {
-        slug: article.slug,
-      },
-    });
-  });
-
-  // create pages also for Alex Quasar Article Content Model
+  // create pages for Article Content Model
   data.allArticles.nodes.forEach(article => {
     createPage({
       path: `articles/${article.slug}`,

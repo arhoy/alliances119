@@ -94,7 +94,7 @@ const CustomSection = styled(Section)`
 const whyFasion = () => (
   <>
     <P>
-      What we have here is <CustomHighlight>Fashion One</CustomHighlight> a
+      What we have here is <CustomHighlight>Fashion two</CustomHighlight> a
       blazingly fast Ecommerce platform powered soley by Stripe and Gatsby.
       Faster and more SEO friendy than any frontend WordPress or Shopify site
       created by the vast majority of web design agencies and at a fraction of
@@ -207,7 +207,7 @@ export const query = graphql`
 export default ({ data }) => {
   return (
     <Layout full={true}>
-      <SEO title="Fashion One" description="Sample Fashion Store" />
+      <SEO title="Fashion two" description="Sample Fashion Store" />
       <HerosContainer>
         <HeroBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
           <CatchyBanner color="white" title="WOMEN" width="100%" />
@@ -308,7 +308,7 @@ export default ({ data }) => {
 
       <SectionGrey>
         <Container800>
-          <BasicFeatureSection heading="Why Fashion One" text={whyFasion()} />
+          <BasicFeatureSection heading="Why Fashion two" text={whyFasion()} />
         </Container800>
       </SectionGrey>
       <Section>

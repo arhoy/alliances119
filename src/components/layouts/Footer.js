@@ -75,7 +75,7 @@ const Footer = () => {
         | Alberta
       </Div>
       tel: 1 888 FASHION
-      <FooterBlurb>FASHION ONE STORE {d} &copy; </FooterBlurb>
+      <FooterBlurb>Fashion two STORE {d} &copy; </FooterBlurb>
       <Attribution>
         Created by{' '}
         <A target="_blank" rel="noopener noreferrer" href="https://aquasar.io/">

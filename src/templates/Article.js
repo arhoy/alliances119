@@ -16,7 +16,7 @@ import { Section } from '../components/reusableStyles/sections/Sections';
 // run template query
 export const query = graphql`
   query getFullArticle($slug: String!) {
-    article: contentfulAlexQuasarArticles(slug: { eq: $slug }) {
+    article: contentfulFashionTwoArticles(slug: { eq: $slug }) {
       title
       description {
         description

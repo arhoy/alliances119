@@ -101,7 +101,7 @@ const NavFashion = () => {
       <Header>
         <Logo>
           <LogoLink to="/">
-            <i>FASHION ONE</i>
+            <i>Fashion two</i>
           </LogoLink>
           <LogoBottom>
             <LogoPhone>1 888 FASHION</LogoPhone>
