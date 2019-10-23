@@ -3,15 +3,14 @@ exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
   const { data } = await graphql(`
     {
-      allShoes: allContentfulFashionTwoShoes {
+      allArticles: allContentfulFashionTwoArticles {
         nodes {
           slug
         }
       }
-
-      allArticles: allContentfulFashionTwoArticles {
+      allBags: allContentfulFashionTwoBags {
         nodes {
-          slug
+          productSlug
         }
       }
     }
@@ -24,6 +23,17 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve('./src/templates/Article.js'),
       context: {
         slug: article.slug,
+      },
+    });
+  });
+
+  // create page for each bag product and list them all in /bags
+  data.allBags.nodes.forEach(item => {
+    createPage({
+      path: `bags/${item.productSlug}`,
+      component: path.resolve('./src/templates/Bag.js'),
+      context: {
+        slug: item.productSlug,
       },
     });
   });

@@ -15,25 +15,23 @@ import { Section } from '../components/reusableStyles/sections/Sections';
 
 // run template query
 export const query = graphql`
-  query getFullArticle($slug: String!) {
-    article: contentfulFashionTwoArticles(slug: { eq: $slug }) {
-      title
+  query getFullBag($slug: String!) {
+    item: contentfulFashionTwoBags(productSlug: { eq: $slug }) {
+      productName
+      shortDescription
       description {
-        description
-      }
-      author {
-        name
-      }
-      publishDate(formatString: "MMM Do, Y")
-      bodyRichText {
         json
       }
-      heroImage {
+      mainImage {
         fluid {
-          ...GatsbyContentfulFluid_withWebp
+          src
         }
       }
+      price
+      discountPrice
       tags
+      rating
+      color
     }
   }
 `;
@@ -96,16 +94,15 @@ const Text = ({ children }) => <P>{children}</P>;
 
 const Code = ({ children }) => <CodeStyle>{children}</CodeStyle>;
 
-const ArticleTemplate = ({ data: { article } }) => {
+const BagTemplate = ({ data: { item } }) => {
   const {
-    title,
-    description: { description },
-    bodyRichText: { json },
-    publishDate,
-    author,
-    heroImage: { fluid },
+    productName,
+    shortDescription: { description },
+    description: { json },
+
+    mainImage: { fluid },
     tags,
-  } = article;
+  } = item;
 
   // determine which prism to render based on tags
   let language = 'sql';
@@ -134,16 +131,15 @@ const ArticleTemplate = ({ data: { article } }) => {
 
   return (
     <Layout full={true}>
-      <SEO title={title} description={description} />
+      <SEO title={productName} description={description} />
       <Section>
         <ArticleContainer>
           <ArticleHeader>
             <ArticleHeaderImage fluid={fluid} />
 
             <ArticleHeaderContent>
-              <H1>{title}</H1>
-              <p>{publishDate}</p>
-              <p>{author ? author.name : 'Anonymous'}</p>
+              <H1>{productName}</H1>
+
               <TagContainer>
                 {tags.map(tag => (
                   <Tag key={tag}>{tag}</Tag>
@@ -158,4 +154,4 @@ const ArticleTemplate = ({ data: { article } }) => {
   );
 };
 
-export default ArticleTemplate;
+export default BagTemplate;

@@ -45,6 +45,7 @@ const P = styled.p`
 `;
 
 const Article = ({ article }) => {
+  console.log(article.slug);
   return (
     <Div>
       <StyledLink to={`articles/${article.slug}`}>
