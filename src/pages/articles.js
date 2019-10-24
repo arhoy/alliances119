@@ -23,7 +23,6 @@ export const getArticles = graphql`
         }
         heroImage {
           fluid {
-            src
             ...GatsbyContentfulFluid_withWebp
           }
         }

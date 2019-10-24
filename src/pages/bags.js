@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import SEO from '../hooks/SEO';
 import Layout from '../components/layouts/Layout';
 import Bag from '../components/ecommerceProducts/bags/Bag';
+import { ContainerCenterFlex } from '../components/reusableStyles/sections/Sections';
 
 export const getBags = graphql`
   query {
@@ -16,9 +17,10 @@ export const getBags = graphql`
         discountPrice
         tags
         rating
+        displayBadge
         mainImage {
-          fluid {
-            src
+          fluid(quality: 90, maxWidth: 300) {
+            ...GatsbyContentfulFluid_withWebp
           }
         }
       }
@@ -33,9 +35,11 @@ const bags = ({ data }) => {
         title="Fashion Two Articles"
         description="Please see all the articles below related to Fashion Two"
       />
-      {data.allBags.nodes.map(item => (
-        <Bag key={item.id} bag={item} />
-      ))}
+      <ContainerCenterFlex>
+        {data.allBags.nodes.map(item => (
+          <Bag key={item.id} bag={item} />
+        ))}
+      </ContainerCenterFlex>
     </Layout>
   );
 };
