@@ -34,6 +34,7 @@ const theme = {
     mobileL: '600px',
     mobileVS: '300px',
     eightHundred: '800px',
+    nineHundred: '900px',
   },
 };
 
