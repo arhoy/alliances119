@@ -22,6 +22,8 @@ import {
   StyledImage,
   ProductTitle,
   ProductRating,
+  ProductRatingStars,
+  ProductRatingDescription,
 } from '../components/products/Styles1/ProductStyles';
 import renderProductRating from '../helpers/renderProductRating';
 
@@ -36,8 +38,10 @@ export const query = graphql`
       description {
         json
       }
+
       mainImage {
         fluid {
+          src
           ...GatsbyContentfulFluid_withWebp
         }
       }
@@ -64,6 +68,7 @@ const BagTemplate = ({ data: { item } }) => {
     description: { json },
 
     mainImage: { fluid },
+
     tags,
     rating,
   } = item;
@@ -77,7 +82,7 @@ const BagTemplate = ({ data: { item } }) => {
       [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
     },
   };
-
+  console.log('source is', fluid.src);
   return (
     <Layout full={true}>
       <SEO title={productName} description={description} />
@@ -92,14 +97,19 @@ const BagTemplate = ({ data: { item } }) => {
                 ))}
               </TagContainer>
               <ProductRating>
-                {renderProductRating(rating)} {rating} stars
+                <ProductRatingStars>
+                  {renderProductRating(rating)}
+                </ProductRatingStars>
+                <ProductRatingDescription>
+                  {rating} stars
+                </ProductRatingDescription>
               </ProductRating>
               <StyledImage fluid={fluid} alt={productName} />
               <SnipCartButton1
                 className={`snipcart-add-item`}
                 data-item-id={id}
                 data-item-name={productName}
-                data-item-image={fluid}
+                data-item-image={fluid.src}
                 data-item-price={discountPrice ? discountPrice : price}
                 data-item-url={`/bags/${productSlug}`}
               >

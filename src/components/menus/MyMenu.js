@@ -8,7 +8,7 @@ const Container = styled.div`
   padding: 2rem;
   position: relative;
   font-weight: bolder;
-  z-index: 100;
+  z-index: 2;
 `;
 
 const CustomNavlink = styled(Link)`

@@ -22,7 +22,7 @@ const A = styled.a`
   :focus,
   :hover {
     box-shadow: 0 2px 14px #22222244;
-    z-index: 10;
+    z-index: 2;
   }
 `;
 

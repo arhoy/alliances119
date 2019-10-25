@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'gatsby';
+import { FaOpencart } from 'react-icons/fa';
 
 import styled from '@emotion/styled';
 import netlifyIdentity from 'netlify-identity-widget';
@@ -89,6 +90,12 @@ const AlertBar = styled.div`
   color: ${props => props.theme.colors.white};
 `;
 
+const Cart = styled(FaOpencart)`
+  margin-left: 2rem;
+  font-size: 3rem;
+  cursor: pointer;
+`;
+
 const NavFashion = () => {
   useEffect(() => {
     netlifyIdentity.init();
@@ -112,6 +119,10 @@ const NavFashion = () => {
           <MyMenu title={`Women`} menuLinks={exampleLinks2} />
           <MyMenu title={`Men`} menuLinks={exampleLinks1} />
           <MyMenu title={`More`} menuLinks={exampleLinks3} />
+          <Cart className="snipcart-checkout">
+            <span className="snipcart-items-count"></span>
+            <span className="snipcart-total-price"></span>
+          </Cart>
         </NavContainer>
       </Header>
     </>

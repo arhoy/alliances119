@@ -4,7 +4,7 @@ import Image from 'gatsby-image';
 const ProductContainer = styled.div`
   display: grid;
   grid-template-columns: 4fr 6fr;
-  grid-column-gap: 3rem;
+  grid-column-gap: 1rem;
   padding: 4rem 0;
   @media (max-width: ${props => props.theme.screenSize.nineHundred}) {
     grid-template-columns: 1fr;
@@ -32,9 +32,16 @@ const ProductTitle = styled.h1`
 
 const ProductRating = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
+
+const ProductRatingStars = styled.span`
+  color: ${props => props.theme.colors.primary};
+`;
+
+const ProductRatingDescription = styled.span``;
 
 const StyledImage = styled(Image)`
   border-radius: 1rem;
@@ -43,7 +50,8 @@ const StyledImage = styled(Image)`
 `;
 
 const ProductContentContainer = styled.div`
-  height: 100%;
+  max-width: 70%;
+  margin: 0 auto;
 `;
 
 export {
@@ -53,4 +61,6 @@ export {
   StyledImage,
   ProductTitle,
   ProductRating,
+  ProductRatingStars,
+  ProductRatingDescription,
 };
