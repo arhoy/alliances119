@@ -24,8 +24,14 @@ import {
   ProductRating,
   ProductRatingStars,
   ProductRatingDescription,
+  StyledOldPrice,
+  StyledDiscountPrice,
+  StyledPrice,
+  PriceContainer,
+  StyledDiscountBadge,
 } from '../components/products/Styles1/ProductStyles';
 import renderProductRating from '../helpers/renderProductRating';
+import calculatePercentage from '../helpers/calculatePercentages';
 
 // run template query
 export const query = graphql`
@@ -82,7 +88,7 @@ const BagTemplate = ({ data: { item } }) => {
       [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
     },
   };
-  console.log('source is', fluid.src);
+
   return (
     <Layout full={true}>
       <SEO title={productName} description={description} />
@@ -105,6 +111,20 @@ const BagTemplate = ({ data: { item } }) => {
                 </ProductRatingDescription>
               </ProductRating>
               <StyledImage fluid={fluid} alt={productName} />
+
+              {discountPrice ? (
+                <PriceContainer>
+                  <StyledOldPrice>${price}</StyledOldPrice>
+                  <StyledDiscountPrice>${discountPrice}</StyledDiscountPrice>
+                  <StyledDiscountBadge>
+                    {`Save ${calculatePercentage(discountPrice, price, 0)}% `}
+                  </StyledDiscountBadge>
+                </PriceContainer>
+              ) : (
+                <PriceContainer>
+                  <StyledPrice>{price}</StyledPrice>
+                </PriceContainer>
+              )}
               <SnipCartButton1
                 className={`snipcart-add-item`}
                 data-item-id={id}
