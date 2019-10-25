@@ -57,6 +57,9 @@ z`;
 const ProductContentContainer = styled.div`
   max-width: 70%;
   margin: 0 auto;
+  @media (max-width: ${props => props.theme.screenSize.nineHundred}) {
+    max-width: 100%;
+  }
 `;
 
 const StyledOldPrice = styled.span`
