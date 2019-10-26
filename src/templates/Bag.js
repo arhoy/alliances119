@@ -36,6 +36,7 @@ import {
 import renderProductRating from '../helpers/renderProductRating';
 import calculatePercentage from '../helpers/calculatePercentages';
 import AliceGallery from '../components/reusableStyles/carousel/AliceGallery';
+import GestureGallery from '../components/reusableStyles/carousel/GestureGallery';
 import RRC from '../components/reusableStyles/carousel/RRC';
 
 // run template query
@@ -155,28 +156,38 @@ const BagTemplate = ({ data: { item } }) => {
         </Container1200>
       </Section>
 
-      <SectionGrey>
-        <Container800>
-          {otherImages ? <AliceGallery images={otherImages} /> : null}
-        </Container800>
-      </SectionGrey>
-
       <Section>
         <Container800>
           <RRC />
         </Container800>
       </Section>
 
-      <SecondaryProductImageContainer>
-        {otherImages &&
-          otherImages.map((image, i) => (
-            <SecondaryProductImage
-              key={i}
-              src={image.fluid.src}
-              alt={productName}
-            />
-          ))}
-      </SecondaryProductImageContainer>
+      <SectionGrey>
+        <Container800>
+          <h1>Alice Gallery</h1>
+          {otherImages ? <AliceGallery images={otherImages} /> : null}
+        </Container800>
+      </SectionGrey>
+
+      <Section>
+        <Container800>
+          <h1>Gesture Gallery</h1>
+          <GestureGallery />
+        </Container800>
+      </Section>
+      <SectionGrey>
+        <h1>Secondary Images from COntentful</h1>
+        <SecondaryProductImageContainer>
+          {otherImages &&
+            otherImages.map((image, i) => (
+              <SecondaryProductImage
+                key={i}
+                src={image.fluid.src}
+                alt={productName}
+              />
+            ))}
+        </SecondaryProductImageContainer>
+      </SectionGrey>
 
       <Section>
         <Container1200>Customer Reviews</Container1200>

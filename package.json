@@ -45,6 +45,8 @@
     "react": "^16.10.1",
     "react-alice-carousel": "^1.15.3",
     "react-dom": "^16.8.6",
+    "react-gesture-gallery": "^1.1.0",
+    "react-gesture-responder": "^2.1.0",
     "react-github-button": "^0.1.11",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0",
