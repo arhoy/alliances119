@@ -13,6 +13,7 @@ import {
   Section,
   Container1200,
   SectionGrey,
+  Container800,
 } from '../components/reusableStyles/sections/Sections';
 import { SnipCartButton1 } from '../components/reusableStyles/buttons/SnipCartAddToCartButton';
 import {
@@ -29,9 +30,13 @@ import {
   StyledPrice,
   PriceContainer,
   StyledDiscountBadge,
+  SecondaryProductImageContainer,
+  SecondaryProductImage,
 } from '../components/products/Styles1/ProductStyles';
 import renderProductRating from '../helpers/renderProductRating';
 import calculatePercentage from '../helpers/calculatePercentages';
+import AliceGallery from '../components/reusableStyles/carousel/AliceGallery';
+import RRC from '../components/reusableStyles/carousel/RRC';
 
 // run template query
 export const query = graphql`
@@ -48,6 +53,11 @@ export const query = graphql`
       mainImage {
         fluid {
           src
+          ...GatsbyContentfulFluid_withWebp
+        }
+      }
+      otherImages {
+        fluid {
           ...GatsbyContentfulFluid_withWebp
         }
       }
@@ -74,6 +84,7 @@ const BagTemplate = ({ data: { item } }) => {
     description: { json },
 
     mainImage: { fluid },
+    otherImages,
 
     tags,
     rating,
@@ -122,7 +133,7 @@ const BagTemplate = ({ data: { item } }) => {
                 </PriceContainer>
               ) : (
                 <PriceContainer>
-                  <StyledPrice>{price}</StyledPrice>
+                  <StyledPrice> Sale ${price}</StyledPrice>
                 </PriceContainer>
               )}
               <SnipCartButton1
@@ -136,15 +147,37 @@ const BagTemplate = ({ data: { item } }) => {
                 Add to Cart
               </SnipCartButton1>
             </ProductImageContainer>
+
             <ProductContentContainer>
               <main>{documentToReactComponents(json, options)}</main>
             </ProductContentContainer>
           </ProductContainer>
         </Container1200>
       </Section>
+
       <SectionGrey>
-        <Container1200>Other Images</Container1200>
+        <Container800>
+          {otherImages ? <AliceGallery images={otherImages} /> : null}
+        </Container800>
       </SectionGrey>
+
+      <Section>
+        <Container800>
+          <RRC />
+        </Container800>
+      </Section>
+
+      <SecondaryProductImageContainer>
+        {otherImages &&
+          otherImages.map((image, i) => (
+            <SecondaryProductImage
+              key={i}
+              src={image.fluid.src}
+              alt={productName}
+            />
+          ))}
+      </SecondaryProductImageContainer>
+
       <Section>
         <Container1200>Customer Reviews</Container1200>
       </Section>

@@ -87,7 +87,9 @@ const Bag = ({ bag: item }) => {
   return (
     <StyledLinkContainer to={`/bags/${item.productSlug}`}>
       <DiscountBadge>
-        {`Save ${calculatePercentage(item.discountPrice, item.price, 0)}% `}
+        {item.discountPrice
+          ? `Save ${calculatePercentage(item.discountPrice, item.price, 0)}% `
+          : 'NEW ITEM'}
       </DiscountBadge>
 
       <ImageContainer>

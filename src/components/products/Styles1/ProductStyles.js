@@ -52,11 +52,12 @@ const ProductRatingDescription = styled.span``;
 const StyledImage = styled(Image)`
   border-radius: 1rem;
   max-width: 100%;
-z`;
+`;
 
 const ProductContentContainer = styled.div`
-  max-width: 70%;
+  max-width: 80%;
   margin: 0 auto;
+  padding: 0 1rem;
   @media (max-width: ${props => props.theme.screenSize.nineHundred}) {
     max-width: 100%;
   }
@@ -69,7 +70,8 @@ const StyledOldPrice = styled.span`
 
 const StyledPrice = styled.span`
   color: ${props => props.theme.colors.black};
-  font-size: 1.9rem;
+  font-size: 2.4rem;
+  font-weight: bold;
 `;
 
 const StyledDiscountPrice = styled.span`
@@ -91,6 +93,17 @@ const StyledDiscountBadge = styled.span`
   color: ${props => props.theme.colors.white};
 `;
 
+const SecondaryProductImageContainer = styled.div`
+  background: ${props => props.theme.colors.primary};
+  display: flex;
+  justify-content: center;
+`;
+
+const SecondaryProductImage = styled.img`
+  max-width: 15rem;
+  padding: 0 2rem;
+`;
+
 export {
   ProductContainer,
   ProductImageContainer,
@@ -105,4 +118,6 @@ export {
   StyledDiscountPrice,
   StyledPrice,
   StyledDiscountBadge,
+  SecondaryProductImageContainer,
+  SecondaryProductImage,
 };

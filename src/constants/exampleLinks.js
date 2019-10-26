@@ -1,62 +1,62 @@
 const exampleLinks1 = [
   {
-    path: '/',
+    path: '/bags',
     text: 'Shirts',
   },
   {
-    path: '/',
+    path: '/bags',
     text: 'Pants',
   },
   {
-    path: '/',
-    text: 'Ties',
+    path: '/bags',
+    text: 'Bags',
   },
 
   {
-    path: '/',
+    path: '/bags',
     text: 'Polos',
   },
   {
-    path: '/',
+    path: '/bags',
     text: 'Shoes',
   },
 ];
 
 const exampleLinks2 = [
   {
-    path: '/',
+    path: '/bags',
     text: 'Skirts',
   },
   {
-    path: '/',
+    path: '/bags',
     text: 'Blouse',
   },
   {
-    path: '/',
+    path: '/bags',
     text: 'Dress Slacks',
   },
 
   {
-    path: '/',
+    path: '/bags',
     text: 'Jackets',
   },
   {
-    path: '/',
+    path: '/bags',
     text: 'Shoes',
   },
 ];
 
 const exampleLinks3 = [
   {
-    path: '/',
+    path: '/bags',
     text: 'Latest',
   },
   {
-    path: '/',
+    path: '/bags',
     text: 'Trending',
   },
   {
-    path: '/',
+    path: '/articles',
     text: 'Blog',
   },
 
