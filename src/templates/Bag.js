@@ -158,7 +158,7 @@ const BagTemplate = ({ data: { item } }) => {
 
       <Section>
         <Container800>
-          <h1>RRC Gallery</h1>
+          <h1>RRC Gallery This one is good</h1>
 
           {otherImages ? (
             <div style={{ width: '50rem', display: 'block', margin: 'auto' }}>
