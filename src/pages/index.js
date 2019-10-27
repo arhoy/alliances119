@@ -18,9 +18,11 @@ import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
 
 import CatchyBanner from '../components/reusableStyles/banner/CatchyBanner';
 import BasicFeatureSection from '../components/features/BasicFeatureSection';
-import SkusBags from '../components/stripe/hooks/SkusBags';
+
 import SkusShoes from '../components/stripe/hooks/SkusShoes';
 import SkusJeans from '../components/stripe/hooks/SkusJeans';
+import getAllBags from '../hooks/contentful/products/bags/getAllBagsHook';
+import Bag from '../components/ecommerceProducts/ContentfulProduct';
 
 const P = styled.p`
   margin: 1.5rem 0rem;
@@ -284,7 +286,9 @@ export default ({ data }) => {
           Fashion Bags <StyledItalicSpan2>Trending</StyledItalicSpan2>
         </CenteredH2>
         <ContainerCenterFlex>
-          <SkusBags />
+          {getAllBags().map(item => (
+            <Bag key={item.id} bag={item} />
+          ))}
         </ContainerCenterFlex>
       </Section>
 

@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 import Image from 'gatsby-image';
 import { Link } from 'gatsby';
 
-import renderRating from '../../../helpers/renderRating';
-import calculatePercentage from '../../../helpers/calculatePercentages';
+import renderRating from '../../helpers/renderRating';
+import calculatePercentage from '../../helpers/calculatePercentages';
 
 const StyledLinkContainer = styled(Link)`
   position: relative;
@@ -84,39 +84,43 @@ const RatingContainer = styled.div`
   text-align: center;
 `;
 
-const Bag = ({ bag: item }) => {
+const ContentfulProduct = ({ product, productType }) => {
+  console.log(product.displayBadge);
   return (
-    <StyledLinkContainer to={`/bags/${item.productSlug}`}>
+    <StyledLinkContainer to={`/${productType}/${product.productSlug}`}>
       <DiscountBadge>
-        {item.discountPrice
-          ? `Save ${calculatePercentage(item.discountPrice, item.price, 0)}% `
+        {product.discountPrice
+          ? `Save ${calculatePercentage(
+              product.discountPrice,
+              product.price,
+              0,
+            )}% `
           : 'NEW ITEM'}
       </DiscountBadge>
 
       <ImageContainer>
-        <StyledImage fluid={item.mainImage.fluid} />
+        <StyledImage fluid={product.mainImage.fluid} />
 
-        <h4>{item.productName}</h4>
+        <h4>{product.productName}</h4>
         <DisplayBadgeContainer>
-          {item.displayBadge.map(badge => (
-            <span key={badge}>{badge}</span>
-          ))}
+          {product.displayBadge &&
+            product.displayBadge.map(badge => <span key={badge}>{badge}</span>)}
         </DisplayBadgeContainer>
       </ImageContainer>
 
-      <RatingContainer>{renderRating(item.rating)}</RatingContainer>
-      {item.discountPrice ? (
+      <RatingContainer>{renderRating(product.rating)}</RatingContainer>
+      {product.discountPrice ? (
         <PriceContainer>
-          <StyledOldPrice>${item.price}</StyledOldPrice>
-          <StyledDiscountPrice>${item.discountPrice}</StyledDiscountPrice>
+          <StyledOldPrice>${product.price}</StyledOldPrice>
+          <StyledDiscountPrice>${product.discountPrice}</StyledDiscountPrice>
         </PriceContainer>
       ) : (
         <PriceContainer>
-          <StyledPrice>${item.price}</StyledPrice>
+          <StyledPrice>${product.price}</StyledPrice>
         </PriceContainer>
       )}
     </StyledLinkContainer>
   );
 };
 
-export default Bag;
+export default ContentfulProduct;

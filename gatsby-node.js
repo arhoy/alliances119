@@ -13,6 +13,11 @@ exports.createPages = async ({ actions, graphql }) => {
           productSlug
         }
       }
+      allPants: allContentfulFashionTwoPants {
+        nodes {
+          productSlug
+        }
+      }
     }
   `);
 
@@ -38,7 +43,16 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 
-  // create pages for each Stripe Product
+    // create page for each pants product and list them all in /pants
+    data.allPants.nodes.forEach(item => {
+      createPage({
+        path: `pants/${item.productSlug}`,
+        component: path.resolve('./src/templates/Pant.js'),
+        context: {
+          slug: item.productSlug,
+        },
+      });
+    });
 
   // blog template w/ pagination
   // const posts = data.posts.nodes;

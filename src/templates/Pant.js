@@ -42,7 +42,7 @@ import ProductBranding from '../components/products/ProductBranding';
 
 // run template query
 export const query = graphql`
-  query bagTemplateQuery($slug: String!) {
+  query pantTemplateQuery($slug: String!) {
     review: allContentfulReviews(
       filter: { productName: { productSlug: { eq: $slug } } }
     ) {
@@ -62,7 +62,7 @@ export const query = graphql`
       }
     }
 
-    item: contentfulFashionTwoBags(productSlug: { eq: $slug }) {
+    item: contentfulFashionTwoPants(productSlug: { eq: $slug }) {
       id
       productSlug
       productName
@@ -93,7 +93,7 @@ export const query = graphql`
 const RTFBold = ({ children }) => <Bold>{children}</Bold>;
 const Text = ({ children }) => <P>{children}</P>;
 
-const BagTemplate = ({
+const PantTemplate = ({
   data: {
     item,
     review: { nodes: reviews },
@@ -173,7 +173,7 @@ const BagTemplate = ({
                   data-item-name={productName}
                   data-item-image={mainImage.fluid.src}
                   data-item-price={discountPrice ? discountPrice : price}
-                  data-item-url={`/bags/${productSlug}`}
+                  data-item-url={`/pants/${productSlug}`}
                 >
                   Add to Cart
                 </SnipCartButton1>
@@ -204,4 +204,4 @@ const BagTemplate = ({
   );
 };
 
-export default BagTemplate;
+export default PantTemplate;

@@ -19,6 +19,18 @@ const SectionPrimaryTransparent = styled(Section)`
   background: ${props => props.theme.colors.primaryTransparent};
 `;
 
+const ProductPageTopSection = styled(Section)`
+  background: ${props => props.theme.colors.primaryTransparent};
+  padding: 2rem 6rem;
+  @media (max-width: ${props => props.theme.screenSize.mobileVS}) {
+    padding: 2rem 2rem;
+  }
+
+  & p {
+    font-weight: bold;
+  }
+`;
+
 const TopSection = styled(Section)`
   padding-top: 2rem;
 `;
@@ -48,4 +60,5 @@ export {
   Container1200,
   Container800,
   ContainerCenterFlex,
+  ProductPageTopSection,
 };

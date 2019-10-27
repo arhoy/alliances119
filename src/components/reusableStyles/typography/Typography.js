@@ -9,6 +9,16 @@ const H1 = styled.h1`
   }
 `;
 
+const ProductPageH1 = styled.h1`
+  font-size: 4rem;
+  font-style: italic;
+  color: ${props => props.theme.colors.primary};
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    text-align: center;
+    font-size: 3.4rem;
+  }
+`;
+
 const H2 = styled.h2`
   font-size: 3rem;
   color: ${props => props.theme.colors.black};
@@ -37,4 +47,4 @@ const P = styled.p`
   padding: 1rem 0rem;
 `;
 
-export { H1, H2, A, Li, Ul, Span, Bold, P };
+export { H1, H2, A, Li, Ul, Span, Bold, P, ProductPageH1 };

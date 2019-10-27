@@ -4,7 +4,7 @@ const exampleLinks1 = [
     text: 'Shirts',
   },
   {
-    path: '/bags',
+    path: '/pants',
     text: 'Pants',
   },
   {
@@ -17,8 +17,8 @@ const exampleLinks1 = [
     text: 'Polos',
   },
   {
-    path: '/bags',
-    text: 'Shoes',
+    path: '/pants',
+    text: 'Jeans',
   },
 ];
 
