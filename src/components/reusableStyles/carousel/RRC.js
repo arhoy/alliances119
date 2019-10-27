@@ -2,14 +2,14 @@
 // http://react-responsive-carousel.js.org/#demos
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
+
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import { images } from './sampleImages';
-const RRC = () => {
+const RRC = ({ images }) => {
   return (
-    <Carousel>
-      {images.map(image => (
-        <img src={image} alt={' '} />
+    <Carousel style={{ maxWidth: '20rem', background: 'transparent' }}>
+      {images.map((image, i) => (
+        <img key={i} src={image.fluid.src} alt={' '} />
       ))}
     </Carousel>
   );
