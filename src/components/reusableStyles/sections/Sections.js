@@ -15,6 +15,10 @@ const SectionGrey = styled(Section)`
   background: ${props => props.theme.colors.lightgrey};
 `;
 
+const SectionPrimaryTransparent = styled(Section)`
+  background: ${props => props.theme.colors.primaryTransparent};
+`;
+
 const TopSection = styled(Section)`
   padding-top: 2rem;
 `;
@@ -39,6 +43,7 @@ const ContainerCenterFlex = styled.div`
 export {
   Section,
   SectionGrey,
+  SectionPrimaryTransparent,
   TopSection,
   Container1200,
   Container800,

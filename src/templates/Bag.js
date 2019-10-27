@@ -12,7 +12,8 @@ import { TagContainer, Tag } from '../components/reusableStyles/tags/Tag';
 import {
   Section,
   Container1200,
-  SectionGrey,
+  Container800,
+  SectionPrimaryTransparent,
 } from '../components/reusableStyles/sections/Sections';
 import { SnipCartButton1 } from '../components/reusableStyles/buttons/SnipCartAddToCartButton';
 import {
@@ -31,15 +32,36 @@ import {
   StyledDiscountBadge,
   ProductContainerLHS,
 } from '../components/products/Styles1/ProductStyles';
-import renderProductRating from '../helpers/renderProductRating';
+import renderProductRating from '../helpers/renderRating';
 import calculatePercentage from '../helpers/calculatePercentages';
 
 import RRC from '../components/reusableStyles/carousel/RRC';
 import prependIf from '../helpers/prependIf';
+import ContentfulProductReviews from '../components/reviews/ContentfulProductReviews';
+import ProductBranding from '../components/products/ProductBranding';
 
 // run template query
 export const query = graphql`
-  query getFullBag($slug: String!) {
+  query bagTemplateQuery($slug: String!) {
+    review: allContentfulReviews(
+      filter: { productName: { productSlug: { eq: $slug } } }
+    ) {
+      nodes {
+        id
+        title
+        productName {
+          productName
+          productSlug
+        }
+        rating
+        description {
+          description
+        }
+        reviewedDate(formatString: "MMM Do, Y")
+        customerName
+      }
+    }
+
     item: contentfulFashionTwoBags(productSlug: { eq: $slug }) {
       id
       productSlug
@@ -71,7 +93,12 @@ export const query = graphql`
 const RTFBold = ({ children }) => <Bold>{children}</Bold>;
 const Text = ({ children }) => <P>{children}</P>;
 
-const BagTemplate = ({ data: { item } }) => {
+const BagTemplate = ({
+  data: {
+    item,
+    review: { nodes: reviews },
+  },
+}) => {
   const {
     id,
     productName,
@@ -101,7 +128,7 @@ const BagTemplate = ({ data: { item } }) => {
   return (
     <Layout full={true}>
       <SEO title={productName} description={description} />
-      <Section style={{ paddingTop: '1rem' }}>
+      <Section style={{ paddingTop: '4rem' }}>
         <Container1200>
           <ProductContainer>
             <ProductContainerLHS>
@@ -155,22 +182,18 @@ const BagTemplate = ({ data: { item } }) => {
 
             <ProductContentContainer>
               <main>{documentToReactComponents(json, options)}</main>
-              <div>
-                <h2> The Fasion Two Guarantee</h2>
-                <p>Free Shipping on orders over $20</p>
-                <p> 30 Return Policy</p>
-              </div>
+              <ProductBranding title="The Fashion Two Guarantee" benefits = {["30 Day Money Back Guarantee", "Free Shipping over $20"]}/>
             </ProductContentContainer>
           </ProductContainer>
         </Container1200>
       </Section>
-
-      <Section>
-        <Container1200>Customer Reviews</Container1200>
-      </Section>
-      <SectionGrey>
-        <Container1200>Other Product you may like</Container1200>
-      </SectionGrey>
+      {reviews.length > 0 ? (
+        <SectionPrimaryTransparent>
+          <Container800>
+            <ContentfulProductReviews reviews={reviews} />
+          </Container800>
+        </SectionPrimaryTransparent>
+      ) : null}
     </Layout>
   );
 };

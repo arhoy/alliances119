@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaStar, FaStarHalf } from 'react-icons/fa';
 
-const renderProductRating = rating => {
+const renderRating = rating => {
   if (rating < 1) {
     return <FaStarHalf />;
   } else if (rating < 1.5) {
@@ -57,4 +57,4 @@ const renderProductRating = rating => {
   }
 };
 
-export default renderProductRating;
+export default renderRating;

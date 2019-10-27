@@ -15,6 +15,7 @@ const ProductContainerLHS = styled.div`
   @media (min-width: ${props => props.theme.screenSize.nineHundred}) {
     display: flex;
     justify-content: flex-end;
+    align-items: flex-start;
   }
 `;
 

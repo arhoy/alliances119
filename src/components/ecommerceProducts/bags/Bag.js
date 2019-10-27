@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import Image from 'gatsby-image';
 import { Link } from 'gatsby';
 
-import renderProductRating from '../../../helpers/renderProductRating';
+import renderRating from '../../../helpers/renderRating';
 import calculatePercentage from '../../../helpers/calculatePercentages';
 
 const StyledLinkContainer = styled(Link)`
@@ -64,7 +64,8 @@ const StyledOldPrice = styled.span`
 
 const StyledPrice = styled.span`
   color: ${props => props.theme.colors.black};
-  font-size: 1.9rem;
+  font-size: 2.2rem;
+  font-weight: bold;
 `;
 
 const StyledDiscountPrice = styled.span`
@@ -103,7 +104,7 @@ const Bag = ({ bag: item }) => {
         </DisplayBadgeContainer>
       </ImageContainer>
 
-      <RatingContainer>{renderProductRating(item.rating)}</RatingContainer>
+      <RatingContainer>{renderRating(item.rating)}</RatingContainer>
       {item.discountPrice ? (
         <PriceContainer>
           <StyledOldPrice>${item.price}</StyledOldPrice>
@@ -111,7 +112,7 @@ const Bag = ({ bag: item }) => {
         </PriceContainer>
       ) : (
         <PriceContainer>
-          <StyledPrice>{item.price}</StyledPrice>
+          <StyledPrice>${item.price}</StyledPrice>
         </PriceContainer>
       )}
     </StyledLinkContainer>
