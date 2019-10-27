@@ -3,12 +3,18 @@ import Image from 'gatsby-image';
 
 const ProductContainer = styled.div`
   display: grid;
-  grid-template-columns: 4fr 6fr;
+  grid-template-columns: 3fr 6fr;
   grid-column-gap: 1rem;
-  padding: 4rem 0;
   @media (max-width: ${props => props.theme.screenSize.nineHundred}) {
     grid-template-columns: 1fr;
     grid-row-gap: 6rem;
+  }
+`;
+
+const ProductContainerLHS = styled.div`
+  @media (min-width: ${props => props.theme.screenSize.nineHundred}) {
+    display: flex;
+    justify-content: flex-end;
   }
 `;
 
@@ -16,11 +22,15 @@ const ProductImageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-self: flex-end;
+  @media (min-width: ${props => props.theme.screenSize.nineHundred}) {
+    max-width: 35rem;
+  }
 `;
 
 const ProductTitle = styled.h1`
   text-align: center;
-  font-size: 4rem;
+  font-size: 3.2rem;
   background: linear-gradient(
     to right,
     ${props => props.theme.colors.blue} 0%,
@@ -51,11 +61,13 @@ const ProductRatingDescription = styled.span``;
 
 const StyledImage = styled(Image)`
   border-radius: 1rem;
-  max-width: 100%;
 `;
 
 const ProductContentContainer = styled.div`
-  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 90%;
   margin: 0 auto;
   padding: 0 1rem;
   @media (max-width: ${props => props.theme.screenSize.nineHundred}) {
@@ -106,6 +118,7 @@ const SecondaryProductImage = styled.img`
 
 export {
   ProductContainer,
+  ProductContainerLHS,
   ProductImageContainer,
   ProductContentContainer,
   StyledImage,

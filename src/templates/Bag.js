@@ -13,7 +13,6 @@ import {
   Section,
   Container1200,
   SectionGrey,
-  Container800,
 } from '../components/reusableStyles/sections/Sections';
 import { SnipCartButton1 } from '../components/reusableStyles/buttons/SnipCartAddToCartButton';
 import {
@@ -30,14 +29,13 @@ import {
   StyledPrice,
   PriceContainer,
   StyledDiscountBadge,
-  SecondaryProductImageContainer,
-  SecondaryProductImage,
+  ProductContainerLHS,
 } from '../components/products/Styles1/ProductStyles';
 import renderProductRating from '../helpers/renderProductRating';
 import calculatePercentage from '../helpers/calculatePercentages';
-import AliceGallery from '../components/reusableStyles/carousel/AliceGallery';
-import GestureGallery from '../components/reusableStyles/carousel/GestureGallery';
+
 import RRC from '../components/reusableStyles/carousel/RRC';
+import prependIf from '../helpers/prependIf';
 
 // run template query
 export const query = graphql`
@@ -53,7 +51,6 @@ export const query = graphql`
 
       mainImage {
         fluid {
-          src
           ...GatsbyContentfulFluid_withWebp
         }
       }
@@ -84,7 +81,7 @@ const BagTemplate = ({ data: { item } }) => {
     shortDescription: { description },
     description: { json },
 
-    mainImage: { fluid },
+    mainImage,
     otherImages,
 
     tags,
@@ -104,96 +101,69 @@ const BagTemplate = ({ data: { item } }) => {
   return (
     <Layout full={true}>
       <SEO title={productName} description={description} />
-      <Section>
+      <Section style={{ paddingTop: '1rem' }}>
         <Container1200>
           <ProductContainer>
-            <ProductImageContainer>
-              <ProductTitle>{productName}</ProductTitle>
-              <TagContainer style={{ textAlign: 'center' }}>
-                {tags.map(tag => (
-                  <Tag key={tag}>{tag}</Tag>
-                ))}
-              </TagContainer>
-              <ProductRating>
-                <ProductRatingStars>
-                  {renderProductRating(rating)}
-                </ProductRatingStars>
-                <ProductRatingDescription>
-                  {rating} stars
-                </ProductRatingDescription>
-              </ProductRating>
-              <StyledImage fluid={fluid} alt={productName} />
+            <ProductContainerLHS>
+              <ProductImageContainer>
+                <ProductTitle>{productName}</ProductTitle>
+                <TagContainer style={{ textAlign: 'center' }}>
+                  {tags.map(tag => (
+                    <Tag key={tag}>{tag}</Tag>
+                  ))}
+                </TagContainer>
+                <ProductRating>
+                  <ProductRatingStars>
+                    {renderProductRating(rating)}
+                  </ProductRatingStars>
+                  <ProductRatingDescription>
+                    {rating} stars
+                  </ProductRatingDescription>
+                </ProductRating>
 
-              {discountPrice ? (
-                <PriceContainer>
-                  <StyledOldPrice>${price}</StyledOldPrice>
-                  <StyledDiscountPrice>${discountPrice}</StyledDiscountPrice>
-                  <StyledDiscountBadge>
-                    {`Save ${calculatePercentage(discountPrice, price, 0)}% `}
-                  </StyledDiscountBadge>
-                </PriceContainer>
-              ) : (
-                <PriceContainer>
-                  <StyledPrice> Sale ${price}</StyledPrice>
-                </PriceContainer>
-              )}
-              <SnipCartButton1
-                className={`snipcart-add-item`}
-                data-item-id={id}
-                data-item-name={productName}
-                data-item-image={fluid.src}
-                data-item-price={discountPrice ? discountPrice : price}
-                data-item-url={`/bags/${productSlug}`}
-              >
-                Add to Cart
-              </SnipCartButton1>
-            </ProductImageContainer>
+                {otherImages ? (
+                  <RRC images={prependIf(mainImage, otherImages)} />
+                ) : (
+                  <StyledImage fluid={mainImage.fluid} alt={productName} />
+                )}
+
+                {discountPrice ? (
+                  <PriceContainer>
+                    <StyledOldPrice>${price}</StyledOldPrice>
+                    <StyledDiscountPrice>${discountPrice}</StyledDiscountPrice>
+                    <StyledDiscountBadge>
+                      {`Save ${calculatePercentage(discountPrice, price, 0)}% `}
+                    </StyledDiscountBadge>
+                  </PriceContainer>
+                ) : (
+                  <PriceContainer>
+                    <StyledPrice> Sale ${price}</StyledPrice>
+                  </PriceContainer>
+                )}
+                <SnipCartButton1
+                  className={`snipcart-add-item`}
+                  data-item-id={id}
+                  data-item-name={productName}
+                  data-item-image={mainImage.fluid.src}
+                  data-item-price={discountPrice ? discountPrice : price}
+                  data-item-url={`/bags/${productSlug}`}
+                >
+                  Add to Cart
+                </SnipCartButton1>
+              </ProductImageContainer>
+            </ProductContainerLHS>
 
             <ProductContentContainer>
               <main>{documentToReactComponents(json, options)}</main>
+              <div>
+                <h2> The Fasion Two Guarantee</h2>
+                <p>Free Shipping on orders over $20</p>
+                <p> 30 Return Policy</p>
+              </div>
             </ProductContentContainer>
           </ProductContainer>
         </Container1200>
       </Section>
-
-      <Section>
-        <Container800>
-          <h1>RRC Gallery</h1>
-
-          {otherImages ? (
-            <div style={{ width: '50rem', display: 'block', margin: 'auto' }}>
-              <RRC images={otherImages} />
-            </div>
-          ) : null}
-        </Container800>
-      </Section>
-
-      <SectionGrey>
-        <Container800>
-          <h1>Alice Gallery</h1>
-          {otherImages ? <AliceGallery images={otherImages} /> : null}
-        </Container800>
-      </SectionGrey>
-
-      <Section>
-        <Container800>
-          <h1>Gesture Gallery</h1>
-          <GestureGallery />
-        </Container800>
-      </Section>
-      <SectionGrey>
-        <h1>Secondary Images from COntentful</h1>
-        <SecondaryProductImageContainer>
-          {otherImages &&
-            otherImages.map((image, i) => (
-              <SecondaryProductImage
-                key={i}
-                src={image.fluid.src}
-                alt={productName}
-              />
-            ))}
-        </SecondaryProductImageContainer>
-      </SectionGrey>
 
       <Section>
         <Container1200>Customer Reviews</Container1200>
