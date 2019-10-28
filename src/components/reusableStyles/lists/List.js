@@ -24,10 +24,6 @@ const StyledSpan = styled.span`
   }
 `;
 
-// const linkClickEventHandler = () => {
-//   console.log('I was clicked!');
-// };
-
 const ListInline = ({ urls, fontSize }) =>
   urls.map((url, i) => {
     return (

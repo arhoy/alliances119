@@ -85,7 +85,6 @@ const RatingContainer = styled.div`
 `;
 
 const ContentfulProduct = ({ product, productType }) => {
-  console.log(product.displayBadge);
   return (
     <StyledLinkContainer to={`/${productType}/${product.productSlug}`}>
       <DiscountBadge>

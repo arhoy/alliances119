@@ -3,26 +3,27 @@ import styled from '@emotion/styled';
 import { FaShippingFast } from 'react-icons/fa';
 import ReactTyped from 'react-typed';
 import { graphql } from 'gatsby';
+
 import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 import {
   Section,
   Container800,
   SectionGrey,
-  ContainerCenterFlex,
 } from '../components/reusableStyles/sections/Sections';
 
 import BackgroundImage from 'gatsby-background-image';
-import { H2 } from '../components/reusableStyles/typography/Typography';
+import { H2, A } from '../components/reusableStyles/typography/Typography';
 import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
 
 import CatchyBanner from '../components/reusableStyles/banner/CatchyBanner';
 import BasicFeatureSection from '../components/features/BasicFeatureSection';
 
-import SkusShoes from '../components/stripe/hooks/SkusShoes';
-import SkusJeans from '../components/stripe/hooks/SkusJeans';
 import getAllBags from '../hooks/contentful/products/bags/getAllBagsHook';
-import Bag from '../components/ecommerceProducts/ContentfulProduct';
+import { ProductLayout1 } from '../components/products/ProductContainerStyles/ProductContainerStyle';
+import Products from '../components/products/Products';
+import getAllPantsHook from '../hooks/contentful/products/pants/getAllPantsHook';
+import getAllShoesHook from '../hooks/contentful/products/shoes/getAllShoesHook';
 
 const P = styled.p`
   margin: 1.5rem 0rem;
@@ -78,10 +79,10 @@ const FullNarrowBackgroundImage = styled(BackgroundImage)`
 `;
 
 const CustomHighlight = styled.span`
-  padding: 1px 2px;
-  border-radius: 2px;
-  font-weight: bold;
-  margin: 0 4px;
+  padding: 0px 4px;
+  border-radius: 4px;
+
+  margin: 0 2px;
   background: ${props => props.theme.colors.primaryTransparent};
 `;
 
@@ -96,32 +97,50 @@ const CustomSection = styled(Section)`
 const whyFasion = () => (
   <>
     <P>
-      What we have here is <CustomHighlight>Fashion two</CustomHighlight> a
-      blazingly fast Ecommerce platform powered soley by Stripe and Gatsby.
+      <strong>FashionTwo</strong> a blazingly fast Ecommerce platform powered by
+    </P>
+    <P>
+      <CustomHighlight> Gatsby </CustomHighlight> +
+      <CustomHighlight> Contentful </CustomHighlight> +
+      <CustomHighlight> Snipcart </CustomHighlight>
+    </P>
+    <P>
       Faster and more SEO friendy than any frontend WordPress or Shopify site
       created by the vast majority of web design agencies and at a fraction of
       the cost.
     </P>
+  </>
+);
+
+const aboutMe = () => (
+  <>
     <P>
-      My name is Alex Quasar, I am professional freelance full stack developer.
-      I create sites for individuals and work with companies small and large
-      using the latest and greatest technoligies the web has to offer. I have
-      expertise in the
-      <CustomHighlight>JAM Stack</CustomHighlight> and the
-      <CustomHighlight>MERN Stack</CustomHighlight>.
+      My name is <strong>Alex Quasar</strong>. I am professional full stack web
+      developer and digital ads consultant. I build websites for local
+      businesses and work with companies small and large using the latest and
+      greatest technoligies. These include:
     </P>
     <P>
-      For Ecommerce I use any one of Gatsby combined with the following
-      platforms such as Stripe, Contentful and
-      <CustomHighlight>Shopify</CustomHighlight>.
+      <CustomHighlight> JAM Stack </CustomHighlight> &
+      <CustomHighlight> MERN Stack </CustomHighlight> &
+      <CustomHighlight> Gatsby </CustomHighlight> &
+      <CustomHighlight> Contentful </CustomHighlight>
     </P>
     <P>
-      What platform I use to develop a custom site for a client depends on a
-      individual case by case base on a wide variety of factors such as budget,
-      inventory, transaction cost and client preference. For more information on
-      pricing, please check out my pricing page here.
+      You can read more on my about page:{' '}
+      <A href="https://aquasar.io/about/">here</A>
     </P>
   </>
+);
+
+const pricing = () => (
+  <P>
+    What platform I use to develop a custom site for a client depends on a
+    individual case by case base on a wide variety of factors such as budget,
+    inventory, transaction cost and client preference. For more information on
+    pricing, please check out my pricing page:{' '}
+    <A href="https://aquasar.io/pricing/">here</A>
+  </P>
 );
 
 const CenteredH2 = styled(H2)`
@@ -285,36 +304,46 @@ export default ({ data }) => {
         <CenteredH2>
           Fashion Bags <StyledItalicSpan2>Trending</StyledItalicSpan2>
         </CenteredH2>
-        <ContainerCenterFlex>
-          {getAllBags().map(item => (
-            <Bag key={item.id} bag={item} />
-          ))}
-        </ContainerCenterFlex>
+        <ProductLayout1>
+          <Products products={getAllBags()} productType="bags" />
+        </ProductLayout1>
       </Section>
 
       <SectionGrey>
         <CenteredH2>
           Men's Jeans <StyledItalicSpan>Hot</StyledItalicSpan>
         </CenteredH2>
-        <ContainerCenterFlex>
-          <SkusJeans />
-        </ContainerCenterFlex>
+        <ProductLayout1>
+          <Products products={getAllPantsHook()} productType="pants" />
+        </ProductLayout1>
       </SectionGrey>
 
       <Section>
         <CenteredH2>
           Women's Shoes <StyledItalicSpan>Latest</StyledItalicSpan>
         </CenteredH2>
-        <ContainerCenterFlex>
-          <SkusShoes />
-        </ContainerCenterFlex>
+        <ProductLayout1>
+          <Products products={getAllShoesHook()} productType="shoes" />
+        </ProductLayout1>
       </Section>
 
       <SectionGrey>
         <Container800>
-          <BasicFeatureSection heading="Why Fashion two" text={whyFasion()} />
+          <BasicFeatureSection heading="Why FashionTwo" text={whyFasion()} />
         </Container800>
       </SectionGrey>
+      <Section>
+        <Container800>
+          <BasicFeatureSection heading="About Me" text={aboutMe()} />
+        </Container800>
+      </Section>
+
+      <SectionGrey>
+        <Container800>
+          <BasicFeatureSection heading="Pricing" text={pricing()} />
+        </Container800>
+      </SectionGrey>
+
       <Section>
         <Container800>
           <H2>Contact US</H2>

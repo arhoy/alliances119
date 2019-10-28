@@ -4,7 +4,11 @@ import ContentfulProduct from '../ecommerceProducts/ContentfulProduct';
 
 const Products = ({ products, productType }) =>
   products.map(product => (
-    <ContentfulProduct product={product} productType={productType} />
+    <ContentfulProduct
+      key={product.id}
+      product={product}
+      productType={productType}
+    />
   ));
 
 export default Products;

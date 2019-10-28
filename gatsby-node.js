@@ -18,6 +18,11 @@ exports.createPages = async ({ actions, graphql }) => {
           productSlug
         }
       }
+      allShoes: allContentfulFashionTwoShoes {
+        nodes {
+          productSlug
+        }
+      }
     }
   `);
 
@@ -43,16 +48,27 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 
-    // create page for each pants product and list them all in /pants
-    data.allPants.nodes.forEach(item => {
-      createPage({
-        path: `pants/${item.productSlug}`,
-        component: path.resolve('./src/templates/Pant.js'),
-        context: {
-          slug: item.productSlug,
-        },
-      });
+  // create page for each pants product and list them all in /pants
+  data.allPants.nodes.forEach(item => {
+    createPage({
+      path: `pants/${item.productSlug}`,
+      component: path.resolve('./src/templates/Pant.js'),
+      context: {
+        slug: item.productSlug,
+      },
     });
+  });
+
+  // create page for each shoes product and list them all in /shoes
+  data.allShoes.nodes.forEach(item => {
+    createPage({
+      path: `shoes/${item.productSlug}`,
+      component: path.resolve('./src/templates/Shoe.js'),
+      context: {
+        slug: item.productSlug,
+      },
+    });
+  });
 
   // blog template w/ pagination
   // const posts = data.posts.nodes;

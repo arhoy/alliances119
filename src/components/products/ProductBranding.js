@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { FaCheck } from 'react-icons/fa';
-import { H2 } from '../reusableStyles/typography/Typography';
 
 const ProductBrandingContainer = styled.div`
   background: ${props => props.theme.colors.lightgrey};
@@ -13,7 +12,7 @@ const ProductBrandingContainer = styled.div`
 const ProductBranding = ({ title, ...benefits }) => {
   return (
     <ProductBrandingContainer>
-      <H2> {title} </H2>
+      <h3> {title} </h3>
       {benefits &&
         benefits.benefits.map((benefit, i) => (
           <div key={i}>

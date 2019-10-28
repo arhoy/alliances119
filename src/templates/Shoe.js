@@ -5,7 +5,9 @@ import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 
+import { P, Bold } from '../components/reusableStyles/typography/Typography';
 import { TagContainer, Tag } from '../components/reusableStyles/tags/Tag';
 import {
   Section,
@@ -40,7 +42,7 @@ import ProductBranding from '../components/products/ProductBranding';
 
 // run template query
 export const query = graphql`
-  query pantTemplateQuery($slug: String!) {
+  query shoeTemplateQuery($slug: String!) {
     review: allContentfulReviews(
       filter: { productName: { productSlug: { eq: $slug } } }
     ) {
@@ -60,7 +62,7 @@ export const query = graphql`
       }
     }
 
-    item: contentfulFashionTwoPants(productSlug: { eq: $slug }) {
+    item: contentfulFashionTwoShoes(productSlug: { eq: $slug }) {
       id
       productSlug
       productName
@@ -88,7 +90,10 @@ export const query = graphql`
   }
 `;
 
-const PantTemplate = ({
+const RTFBold = ({ children }) => <Bold>{children}</Bold>;
+const Text = ({ children }) => <P>{children}</P>;
+
+const ShoeTemplate = ({
   data: {
     item,
     review: { nodes: reviews },
@@ -111,32 +116,12 @@ const PantTemplate = ({
   } = item;
 
   const options = {
+    renderMark: {
+      [MARKS.BOLD]: text => <RTFBold>{text}</RTFBold>,
+    },
+
     renderNode: {
-      'embedded-asset-block': node => {
-        const { file, title } = node.data.target.fields;
-        return (
-          <div>
-            <img width="400" src={file['en-US'].url} alt={title} />
-          </div>
-        );
-      },
-      'embedded-entry-block': node => {
-        const { name, images, description } = node.data.target.fields;
-        return (
-          <div>
-            <h3>{name['en-US']}</h3>
-            <img
-              width="400"
-              src={
-                images['en-US'][0].fields.file['en-US'].url ||
-                images['en-US'].fields.file['en-US'].url
-              }
-              alt={description['en-US']}
-            />
-            <p> {description['en-US']}</p>
-          </div>
-        );
-      },
+      [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
     },
   };
 
@@ -188,7 +173,7 @@ const PantTemplate = ({
                   data-item-name={productName}
                   data-item-image={mainImage.fluid.src}
                   data-item-price={discountPrice ? discountPrice : price}
-                  data-item-url={`/pants/${productSlug}`}
+                  data-item-url={`/shoes/${productSlug}`}
                 >
                   Add to Cart
                 </SnipCartButton1>
@@ -219,4 +204,4 @@ const PantTemplate = ({
   );
 };
 
-export default PantTemplate;
+export default ShoeTemplate;
