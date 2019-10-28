@@ -17,6 +17,7 @@ import {
 const Header = styled.header`
   background: ${props => props.theme.colors.lightgrey};
   display: flex;
+  border-bottom: 3px solid ${props => props.theme.colors.primarDark};
   margin: 0 auto;
   justify-content: space-around;
   align-items: center;

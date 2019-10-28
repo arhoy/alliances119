@@ -22,7 +22,7 @@ const CustomNavlink = styled(Link)`
   &:hover {
     color: ${props => props.theme.colors.primaryDark};
     text-decoration: none;
-    background: ${props => props.theme.colors.lightgrey2};
+    background: ${props => props.theme.colors.white};
   }
 `;
 
@@ -57,6 +57,8 @@ const Button = styled.button`
       background: ${props => props.theme.colors.lightgrey};
       width: 15rem;
       align-items: center;
+      border-radius: 0.5rem;
+      box-shadow: -10px -5px 6px -10px #777;
     }
   }
 `;
