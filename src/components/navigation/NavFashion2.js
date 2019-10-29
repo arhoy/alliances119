@@ -6,15 +6,15 @@ import styled from '@emotion/styled';
 import netlifyIdentity from 'netlify-identity-widget';
 import { FaPhone } from 'react-icons/fa';
 
-import MyMenu from '../menus/MyMenu1';
-
-import {
-  exampleLinks1,
-  exampleLinks3,
-  exampleLinks2,
-} from '../../constants/exampleLinks';
+import MyMenu2 from '../menus/MyMenu2';
+import MegaMenu1 from '../menus/MegaMenus/MegaMenu1';
+import List1 from '../menus/MegaMenus/MegaMenuLists/List1';
+import List2 from '../menus/MegaMenus/MegaMenuLists/List2';
 
 const Header = styled.header`
+  height: 80px;
+  position: relative;
+
   background: ${props => props.theme.colors.lightgrey};
   display: flex;
   border-bottom: 3px solid ${props => props.theme.colors.primarDark};
@@ -97,7 +97,7 @@ const Cart = styled(FaOpencart)`
   cursor: pointer;
 `;
 
-const NavFashion = () => {
+const NavFashion2 = () => {
   useEffect(() => {
     netlifyIdentity.init();
   }, []);
@@ -117,9 +117,16 @@ const NavFashion = () => {
           </LogoBottom>
         </Logo>
         <NavContainer>
-          <MyMenu title={`Women`} menuLinks={exampleLinks2} />
-          <MyMenu title={`Men`} menuLinks={exampleLinks1} />
-          <MyMenu title={`More`} menuLinks={exampleLinks3} />
+          <MyMenu2 title={`Women`}>
+            <MegaMenu1 background="pink">
+              <List1 />
+            </MegaMenu1>
+          </MyMenu2>
+          <MyMenu2 title={`Men`}>
+            <MegaMenu1 background="lightblue">
+              <List2 />
+            </MegaMenu1>
+          </MyMenu2>
           <Cart className="snipcart-checkout">
             <span className="snipcart-items-count"></span>
             <span className="snipcart-total-price"></span>
@@ -130,4 +137,4 @@ const NavFashion = () => {
   );
 };
 
-export default NavFashion;
+export default NavFashion2;
