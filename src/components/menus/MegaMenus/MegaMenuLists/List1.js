@@ -49,10 +49,10 @@ const List1 = () => {
       <MegaMenuUl>
         <ListHeader title="Accessories" />
         <MegaMenuLi>
-          <MegaMenuLink>Watches</MegaMenuLink>
+          <MegaMenuLink>Bags</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Smartwear</MegaMenuLink>
+          <MegaMenuLink>Pendants</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
           <MegaMenuLink>Necklaces</MegaMenuLink>

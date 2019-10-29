@@ -10,6 +10,9 @@ import MyMenu2 from '../menus/MyMenu2';
 import MegaMenu1 from '../menus/MegaMenus/MegaMenu1';
 import List1 from '../menus/MegaMenus/MegaMenuLists/List1';
 import List2 from '../menus/MegaMenus/MegaMenuLists/List2';
+import { Container800 } from '../reusableStyles/sections/Sections';
+import MyMenu from '../menus/MyMenu1';
+import { exampleLinks3 } from '../../constants/exampleLinks';
 
 const Header = styled.header`
   height: 80px;
@@ -19,6 +22,7 @@ const Header = styled.header`
   display: flex;
   border-bottom: 3px solid ${props => props.theme.colors.primarDark};
   margin: 0 auto;
+
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
@@ -118,20 +122,27 @@ const NavFashion2 = () => {
         </Logo>
         <NavContainer>
           <MyMenu2 title={`Women`}>
-            <MegaMenu1 background="pink">
-              <List1 />
-            </MegaMenu1>
+            <Container800>
+              <MegaMenu1 background="pink">
+                <List1 />
+              </MegaMenu1>
+            </Container800>
           </MyMenu2>
+
           <MyMenu2 title={`Men`}>
-            <MegaMenu1 background="lightblue">
-              <List2 />
-            </MegaMenu1>
+            <Container800>
+              <MegaMenu1 background="lightblue">
+                <List2 />
+              </MegaMenu1>
+            </Container800>
           </MyMenu2>
-          <Cart className="snipcart-checkout">
-            <span className="snipcart-items-count"></span>
-            <span className="snipcart-total-price"></span>
-          </Cart>
+
+          <MyMenu title={`More`} menuLinks={exampleLinks3} />
         </NavContainer>
+        <Cart className="snipcart-checkout">
+          <span className="snipcart-items-count"></span>
+          <span className="snipcart-total-price"></span>
+        </Cart>
       </Header>
     </>
   );

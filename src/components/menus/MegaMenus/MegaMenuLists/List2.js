@@ -1,32 +1,69 @@
+// NO STYLES IN THIS FILE! Import from MegaMenuLists/ListStyles
 import React from 'react';
+import { MegaMenuUl, MegaMenuLi, MegaMenuLink } from './ListStyles';
+
+import ListHeader from './ListHeader';
 
 const List2 = () => {
   return (
     <>
-      <ul>
-        <h4>Clothing</h4>
-        <li> Jackets </li>
-        <li> Shirts </li>
-        <li> Hoodies </li>
-        <li> Pants </li>
-        <li> Shoes </li>
-      </ul>
-      <ul>
-        <h4>Footwear</h4>
-        <li> Running </li>
-        <li> Dress </li>
-        <li> Casual </li>
-        <li> Hiking </li>
-        <li> Sandals </li>
-      </ul>
-      <ul>
-        <h4>Accessories</h4>
-        <li> Watches </li>
-        <li> SmartWear </li>
-        <li> Necklaces </li>
-        <li> Bracelets </li>
-        <li> Earrings </li>
-      </ul>
+      <MegaMenuUl>
+        <ListHeader title="Clothing" />
+        <MegaMenuLi>
+          <MegaMenuLink>Shirts</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Pants</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Dress Socks</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Workout</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Muscle Shirts</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Jackets</MegaMenuLink>
+        </MegaMenuLi>
+      </MegaMenuUl>
+      <MegaMenuUl>
+        <ListHeader title="Footwear" />
+        <MegaMenuLi>
+          <MegaMenuLink>Runners</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Dress</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Casual</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Hiking</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Beach</MegaMenuLink>
+        </MegaMenuLi>
+      </MegaMenuUl>
+      <MegaMenuUl>
+        <ListHeader title="Accessories" />
+        <MegaMenuLi>
+          <MegaMenuLink>Watches</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Smart Wear</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Sun Glasses</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Necklaces</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink>Rings</MegaMenuLink>
+        </MegaMenuLi>
+      </MegaMenuUl>
     </>
   );
 };

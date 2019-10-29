@@ -31,7 +31,6 @@ const Title = styled.span`
 `;
 
 const Button = styled.button`
-  cursor: pointer;
   border: none;
   outline: none;
   margin: none;
