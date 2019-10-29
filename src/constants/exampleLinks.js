@@ -48,8 +48,8 @@ const exampleLinks2 = [
 
 const exampleLinks3 = [
   {
-    path: '/bags',
-    text: 'Latest',
+    path: '/examples/navigation-examples',
+    text: 'Navbars',
   },
   {
     path: '/bags',

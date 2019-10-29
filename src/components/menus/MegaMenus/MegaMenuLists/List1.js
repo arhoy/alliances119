@@ -10,58 +10,58 @@ const List1 = () => {
       <MegaMenuUl>
         <ListHeader title="Clothing" />
         <MegaMenuLi>
-          <MegaMenuLink>Shirts</MegaMenuLink>
+          <MegaMenuLink to="/bags">Shirts</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Pants</MegaMenuLink>
+          <MegaMenuLink to="/pants">Pants</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Lingerie</MegaMenuLink>
+          <MegaMenuLink to="/pants">Lingerie</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Yoga Wear</MegaMenuLink>
+          <MegaMenuLink to="/bags">Yoga Wear</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Skirts</MegaMenuLink>
+          <MegaMenuLink to="/bags">Skirts</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Blouse</MegaMenuLink>
+          <MegaMenuLink to="/bags">Blouse</MegaMenuLink>
         </MegaMenuLi>
       </MegaMenuUl>
       <MegaMenuUl>
         <ListHeader title="Footwear" />
         <MegaMenuLi>
-          <MegaMenuLink>Runners</MegaMenuLink>
+          <MegaMenuLink to="/shoes">Runners</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Dress</MegaMenuLink>
+          <MegaMenuLink to="/shoes">Dress</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Casual</MegaMenuLink>
+          <MegaMenuLink to="/shoes">Casual</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Hiking</MegaMenuLink>
+          <MegaMenuLink to="/shoes">Hiking</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Beach</MegaMenuLink>
+          <MegaMenuLink to="/shoes">Beach</MegaMenuLink>
         </MegaMenuLi>
       </MegaMenuUl>
       <MegaMenuUl>
         <ListHeader title="Accessories" />
         <MegaMenuLi>
-          <MegaMenuLink>Bags</MegaMenuLink>
+          <MegaMenuLink to="/bags">Bags</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Pendants</MegaMenuLink>
+          <MegaMenuLink to="/pants">Pendants</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Necklaces</MegaMenuLink>
+          <MegaMenuLink to="/pants">Necklaces</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Bracelets</MegaMenuLink>
+          <MegaMenuLink to="/pants">Bracelets</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Earrings</MegaMenuLink>
+          <MegaMenuLink to="/pants">Earrings</MegaMenuLink>
         </MegaMenuLi>
       </MegaMenuUl>
     </>

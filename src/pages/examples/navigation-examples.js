@@ -3,25 +3,34 @@ import NavFashion from '../../components/navigation/NavFashion1';
 import NavFashion2 from '../../components/navigation/NavFashion2';
 import Layout from '../../components/layouts/Layout';
 import { H2, P } from '../../components/reusableStyles/typography/Typography';
-import {
-  Section,
-  Container800,
-} from '../../components/reusableStyles/sections/Sections';
-import { Margin4V } from '../../components/reusableStyles/modular/modularStyles';
+import { Section } from '../../components/reusableStyles/sections/Sections';
+
+import SEO from '../../hooks/SEO';
+import ProductPageHeader from '../../components/products/ProductPageHeader';
 
 const navigationExamples = () => {
   return (
     <Layout>
-      <Section style={{ padding: '1rem' }}>
-        <Container800>
-          <H2> Sample Navigations </H2>
-          <P>Some sample navbars for your next website</P>
-        </Container800>
+      <SEO
+        title="Gatsby Navigation Examples"
+        description="Gatsby Navigation Bar Examples for Aquasar Fashion Two"
+      />
+      <Section style={{ padding: '1rem 4rem' }}>
+        <ProductPageHeader
+          title={`Navbars`}
+          description={`Some sample Navbars for your next website`}
+        />
+        <P></P>
       </Section>
 
-      <NavFashion />
-      <Margin4V />
-      <NavFashion2 />
+      <Section>
+        <H2> Simple Navigation </H2>
+        <NavFashion />
+      </Section>
+      <Section>
+        <H2> Navigation with Simple Mega Menu </H2>
+        <NavFashion2 />
+      </Section>
     </Layout>
   );
 };

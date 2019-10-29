@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'gatsby';
-import { FaOpencart } from 'react-icons/fa';
+import { FaOpencart, FaAlignRight, FaTimes } from 'react-icons/fa';
 
 import styled from '@emotion/styled';
 import netlifyIdentity from 'netlify-identity-widget';
@@ -10,9 +10,16 @@ import MyMenu2 from '../menus/MyMenu2';
 import MegaMenu1 from '../menus/MegaMenus/MegaMenu1';
 import List1 from '../menus/MegaMenus/MegaMenuLists/List1';
 import List2 from '../menus/MegaMenus/MegaMenuLists/List2';
-import { Container800 } from '../reusableStyles/sections/Sections';
+import { Container1000 } from '../reusableStyles/sections/Sections';
 import MyMenu from '../menus/MyMenu1';
 import { exampleLinks3 } from '../../constants/exampleLinks';
+import NoStyleLink from '../Links/NoStyleLink';
+
+const AlertBar = styled.div`
+  text-align: center;
+  background: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.white};
+`;
 
 const Header = styled.header`
   height: 80px;
@@ -34,10 +41,7 @@ const Header = styled.header`
     align-items: center;
   }
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    height: 12rem;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0;
+    display: flex;
   }
 `;
 const LogoLink = styled(Link)`
@@ -46,10 +50,6 @@ const LogoLink = styled(Link)`
 `;
 const Logo = styled.span`
   color: ${props => props.theme.colors.primary};
-
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    margin-top: 1.5rem;
-  }
 
   & i {
     font-weight: bold;
@@ -77,34 +77,67 @@ const NavContainer = styled.nav`
   justify-content: center;
   align-items: center;
 
-  &.hideNav {
-    display: none;
-  }
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    flex-direction: row;
-    margin-top: 6rem;
-    position: absolute;
-  }
-  &.hideMe {
     display: none;
   }
-`;
-const AlertBar = styled.div`
-  text-align: center;
-  background: ${props => props.theme.colors.primary};
-  color: ${props => props.theme.colors.white};
 `;
 
 const Cart = styled(FaOpencart)`
   margin-left: 2rem;
   font-size: 3rem;
   cursor: pointer;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    display: none;
+  }
+`;
+
+const BurgerIcon = styled(FaAlignRight)`
+  @media (min-width: ${props => props.theme.screenSize.mobileL}) {
+    display: none;
+  }
+`;
+
+const CloseIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const CloseIcon = styled(FaTimes)`
+  font-size: 2rem;
+  margin-right: 4px;
+`;
+
+const MobileMenuContainer = styled.div`
+  padding: 1rem 3rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: ${props => props.theme.colors.lightgrey};
+
+  width: 100%;
+
+  & ul {
+    list-style: none;
+    height: 100%;
+  }
+  & li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid ${props => props.theme.colors.darkGrey};
+    font-weight: bold;
+  }
 `;
 
 const NavFashion2 = () => {
   useEffect(() => {
     netlifyIdentity.init();
   }, []);
+
+  const [mobileMenuOpen, setMobileMenu] = useState(false);
+
+  const mobileMenuHandler = () => {
+    setMobileMenu(prevState => !prevState);
+    console.log('I was clicked!');
+  };
 
   return (
     <>
@@ -122,19 +155,19 @@ const NavFashion2 = () => {
         </Logo>
         <NavContainer>
           <MyMenu2 title={`Women`}>
-            <Container800>
-              <MegaMenu1 background="pink">
+            <Container1000>
+              <MegaMenu1 background="rgb(242, 181, 211)">
                 <List1 />
               </MegaMenu1>
-            </Container800>
+            </Container1000>
           </MyMenu2>
 
           <MyMenu2 title={`Men`}>
-            <Container800>
-              <MegaMenu1 background="lightblue">
+            <Container1000>
+              <MegaMenu1 background="rgb(225, 184, 242)">
                 <List2 />
               </MegaMenu1>
-            </Container800>
+            </Container1000>
           </MyMenu2>
 
           <MyMenu title={`More`} menuLinks={exampleLinks3} />
@@ -143,6 +176,29 @@ const NavFashion2 = () => {
           <span className="snipcart-items-count"></span>
           <span className="snipcart-total-price"></span>
         </Cart>
+        <BurgerIcon onClick={mobileMenuHandler} />
+        {mobileMenuOpen ? (
+          <MobileMenuContainer>
+            <CloseIconContainer>
+              <CloseIcon onClick={mobileMenuHandler} /> close
+            </CloseIconContainer>
+
+            <ul>
+              <li>
+                <NoStyleLink to="/"> Home </NoStyleLink>{' '}
+              </li>
+              <li>
+                <NoStyleLink to="/bags"> Bags </NoStyleLink>{' '}
+              </li>
+              <li>
+                <NoStyleLink to="/pants"> Pants </NoStyleLink>{' '}
+              </li>
+              <li>
+                <NoStyleLink to="/shoes"> Shoes </NoStyleLink>{' '}
+              </li>
+            </ul>
+          </MobileMenuContainer>
+        ) : null}
       </Header>
     </>
   );

@@ -1,11 +1,26 @@
 import React from 'react';
+import { FaPlug } from 'react-icons/fa';
+
 import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 import styled from '@emotion/styled';
-import { H1 } from '../components/reusableStyles/typography/Typography';
+import { H1, P } from '../components/reusableStyles/typography/Typography';
+import {
+  Container1200,
+  Section,
+} from '../components/reusableStyles/sections/Sections';
 
 const StyledH1 = styled(H1)`
   text-align: center;
+`;
+
+const Container = styled(Container1200)`
+  text-align: center;
+`;
+
+const StyledIcon = styled(FaPlug)`
+  transform: rotate(45deg);
+  font-size: 6rem;
 `;
 const NotFound = () => {
   return (
@@ -14,9 +29,13 @@ const NotFound = () => {
         title="NOT FOUND PAGE"
         description="The page you are looking for has returned 404 not found"
       />
-      <StyledH1>
-        The page you are looking for may have moved or does not exist!
-      </StyledH1>
+      <Section>
+        <Container>
+          <StyledH1>404 NOT FOUND</StyledH1>
+          <P>The page you are looking for may have moved or does not exist!</P>
+          <StyledIcon />
+        </Container>
+      </Section>
     </Layout>
   );
 };

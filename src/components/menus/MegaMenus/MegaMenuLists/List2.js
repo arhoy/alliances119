@@ -10,58 +10,58 @@ const List2 = () => {
       <MegaMenuUl>
         <ListHeader title="Clothing" />
         <MegaMenuLi>
-          <MegaMenuLink>Shirts</MegaMenuLink>
+          <MegaMenuLink to="/">Shirts</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Pants</MegaMenuLink>
+          <MegaMenuLink to="/">Pants</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Dress Socks</MegaMenuLink>
+          <MegaMenuLink to="/">Dress Socks</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Workout</MegaMenuLink>
+          <MegaMenuLink to="/">Workout</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Muscle Shirts</MegaMenuLink>
+          <MegaMenuLink to="/">Muscle Shirts</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Jackets</MegaMenuLink>
+          <MegaMenuLink to="/">Jackets</MegaMenuLink>
         </MegaMenuLi>
       </MegaMenuUl>
       <MegaMenuUl>
         <ListHeader title="Footwear" />
         <MegaMenuLi>
-          <MegaMenuLink>Runners</MegaMenuLink>
+          <MegaMenuLink to="/">Runners</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Dress</MegaMenuLink>
+          <MegaMenuLink to="/">Dress</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Casual</MegaMenuLink>
+          <MegaMenuLink to="/">Casual</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Hiking</MegaMenuLink>
+          <MegaMenuLink to="/">Hiking</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Beach</MegaMenuLink>
+          <MegaMenuLink to="/">Beach</MegaMenuLink>
         </MegaMenuLi>
       </MegaMenuUl>
       <MegaMenuUl>
         <ListHeader title="Accessories" />
         <MegaMenuLi>
-          <MegaMenuLink>Watches</MegaMenuLink>
+          <MegaMenuLink to="/">Watches</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Smart Wear</MegaMenuLink>
+          <MegaMenuLink to="/">Smart Wear</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Sun Glasses</MegaMenuLink>
+          <MegaMenuLink to="/">Sun Glasses</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Necklaces</MegaMenuLink>
+          <MegaMenuLink to="/">Necklaces</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink>Rings</MegaMenuLink>
+          <MegaMenuLink to="/">Rings</MegaMenuLink>
         </MegaMenuLi>
       </MegaMenuUl>
     </>
