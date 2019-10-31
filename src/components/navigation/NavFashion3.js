@@ -8,7 +8,6 @@ import { FaPhone } from 'react-icons/fa';
 
 import MyMenu2 from '../menus/MyMenu2';
 
-import List3 from '../menus/MegaMenus/MegaMenuLists/Style2/List3';
 import { Container1200 } from '../reusableStyles/sections/Sections';
 
 import NoStyleLink from '../Links/NoStyleLink';
@@ -160,7 +159,7 @@ const NavFashion2 = () => {
           <MyMenu2 title={`Women`}>
             <Container1200>
               <MegaMenu2>
-                <List3 />
+                <List4 />
               </MegaMenu2>
             </Container1200>
           </MyMenu2>

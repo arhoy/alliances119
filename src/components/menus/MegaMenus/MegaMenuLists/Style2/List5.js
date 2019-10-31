@@ -21,56 +21,53 @@ const List5 = () => {
           <MegaMenuSpan spanColor="primary">New</MegaMenuSpan>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/bags">Gucci</MegaMenuLink>
+          <MegaMenuLink to="/bags">Buttons</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/bags">Prada</MegaMenuLink>
+          <MegaMenuLink to="/bags">Cards</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/bags">Fendi</MegaMenuLink>
+          <MegaMenuLink to="/bags">Carousel</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/bags">Coach</MegaMenuLink>
+          <MegaMenuLink to="/bags">Alerts</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/bags">Lacoste</MegaMenuLink>
+          <MegaMenuLink to="/bags">Forms</MegaMenuLink>
         </MegaMenuLi>
       </MegaMenuUl>
       <MegaMenuUl>
-        <ListHeader title="Shoes" />
+        <ListHeader title="Landing Pages" />
         <MegaMenuLi>
-          <MegaMenuLink to="/shoes">Chloé</MegaMenuLink>
+          <MegaMenuLink to="/shoes">Lander 1</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/shoes">Isnom</MegaMenuLink>
+          <MegaMenuLink to="/shoes">Lander 2</MegaMenuLink>
           <MegaMenuSpan>Hot</MegaMenuSpan>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/shoes">Matisse</MegaMenuLink>
+          <MegaMenuLink to="/shoes">Lander 3</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/shoes">Staud</MegaMenuLink>
+          <MegaMenuLink to="/shoes">Lander 4</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/shoes">Zara</MegaMenuLink>
+          <MegaMenuLink to="/shoes">Lander 5</MegaMenuLink>
         </MegaMenuLi>
       </MegaMenuUl>
       <MegaMenuUl>
-        <ListHeader title="Pants" />
+        <ListHeader title="Other" />
         <MegaMenuLi>
-          <MegaMenuLink to="/pants">Levis</MegaMenuLink>
+          <MegaMenuLink to="/pants">Styles</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/pants">Cele</MegaMenuLink>
+          <MegaMenuLink to="/pants">Porfolio</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/pants">St Lun</MegaMenuLink>
+          <MegaMenuLink to="/pants">About Me</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/pants">Givenchy</MegaMenuLink>
-        </MegaMenuLi>
-        <MegaMenuLi>
-          <MegaMenuLink to="/pants">Versace</MegaMenuLink>
+          <MegaMenuLink to="/pants">Contact</MegaMenuLink>
         </MegaMenuLi>
       </MegaMenuUl>
     </>
