@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import NoStyleLink from '../../../Links/NoStyleLink';
+import NoStyleLink from '../../../../Links/NoStyleLink';
 
 const MegaMenuUl = styled.ul`
   display: flex;

@@ -7,13 +7,14 @@ import netlifyIdentity from 'netlify-identity-widget';
 import { FaPhone } from 'react-icons/fa';
 
 import MyMenu2 from '../menus/MyMenu2';
-import MegaMenu1 from '../menus/MegaMenus/MegaMenu1';
-import List1 from '../menus/MegaMenus/MegaMenuLists/Style1/List1';
-import List2 from '../menus/MegaMenus/MegaMenuLists/Style1/List2';
-import { Container1000 } from '../reusableStyles/sections/Sections';
-import MyMenu from '../menus/MyMenu1';
-import { exampleLinks3 } from '../../constants/exampleLinks';
+
+import List3 from '../menus/MegaMenus/MegaMenuLists/Style2/List3';
+import { Container1200 } from '../reusableStyles/sections/Sections';
+
 import NoStyleLink from '../Links/NoStyleLink';
+import MegaMenu2 from '../menus/MegaMenus/MegaMenu2';
+import List5 from '../menus/MegaMenus/MegaMenuLists/Style2/List5';
+import List4 from '../menus/MegaMenus/MegaMenuLists/Style2/List4';
 
 const AlertBar = styled.div`
   text-align: center;
@@ -32,7 +33,7 @@ const Header = styled.header`
 
   justify-content: space-around;
   align-items: center;
-  padding: 1rem;
+
   z-index: 1;
 
   a {
@@ -76,6 +77,8 @@ const NavContainer = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  height: 100%;
 
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     display: none;
@@ -155,22 +158,28 @@ const NavFashion2 = () => {
         </Logo>
         <NavContainer>
           <MyMenu2 title={`Women`}>
-            <Container1000>
-              <MegaMenu1 background="rgb(242, 181, 211)">
-                <List1 />
-              </MegaMenu1>
-            </Container1000>
+            <Container1200>
+              <MegaMenu2>
+                <List3 />
+              </MegaMenu2>
+            </Container1200>
           </MyMenu2>
 
           <MyMenu2 title={`Men`}>
-            <Container1000>
-              <MegaMenu1 background="rgb(225, 184, 242)">
-                <List2 />
-              </MegaMenu1>
-            </Container1000>
+            <Container1200>
+              <MegaMenu2>
+                <List4 />
+              </MegaMenu2>
+            </Container1200>
           </MyMenu2>
 
-          <MyMenu title={`More`} menuLinks={exampleLinks3} />
+          <MyMenu2 title={`More`}>
+            <Container1200>
+              <MegaMenu2>
+                <List5 />
+              </MegaMenu2>
+            </Container1200>
+          </MyMenu2>
         </NavContainer>
         <Cart className="snipcart-checkout">
           <span className="snipcart-items-count"></span>

@@ -7,6 +7,7 @@ import { Section } from '../../components/reusableStyles/sections/Sections';
 
 import SEO from '../../hooks/SEO';
 import ProductPageHeader from '../../components/products/ProductPageHeader';
+import NavFashion3 from '../../components/navigation/NavFashion3';
 
 const navigationExamples = () => {
   return (
@@ -30,6 +31,10 @@ const navigationExamples = () => {
       <Section>
         <H2> Navigation with Simple Mega Menu </H2>
         <NavFashion2 />
+      </Section>
+      <Section>
+        <H2> Navigation + Mega Menu + Pictures </H2>
+        <NavFashion3 />
       </Section>
     </Layout>
   );

@@ -5,9 +5,9 @@ import { FaCaretDown } from 'react-icons/fa';
 import { Container800 } from '../reusableStyles/sections/Sections';
 
 const Container = styled.div`
-  display: block;
+  display: flex;
+  height: 100%;
 
-  padding: 2rem;
   font-weight: bolder;
   z-index: 2;
 `;
@@ -15,8 +15,11 @@ const Container = styled.div`
 const DropDownContent = styled.div`
   display: none;
 
+  text-align: center;
+  width: 100%;
+
   position: absolute;
-  top: 80px;
+  top: 75px;
   left: 0;
 `;
 
@@ -31,22 +34,19 @@ const Title = styled.span`
 `;
 
 const Button = styled.button`
+  background: transparent;
   border: none;
   outline: none;
-  margin: none;
-  padding: none;
-  background: ${props => props.theme.colors.lightgrey};
+
+  padding: 2rem 2rem;
+
   font-size: 1.8rem;
 
   &:hover {
-    height: 80px;
-    background: transparent;
+    height: 77px;
+    text-decoration: underline;
     ${DropDownContent} {
       display: block;
-      text-align: center;
-      width: 100%;
-
-      min-height: 15vh;
     }
   }
 `;

@@ -36,6 +36,7 @@ const theme = {
     mobileVS: '300px',
     eightHundred: '800px',
     nineHundred: '900px',
+    oneThousand: '1000px',
   },
 };
 
