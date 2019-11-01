@@ -41,6 +41,7 @@ const theme = {
 };
 
 const Div = styled.div`
+  overflow-x: hidden;
   display: grid;
   grid-template-columns:
     [full-start] 1fr

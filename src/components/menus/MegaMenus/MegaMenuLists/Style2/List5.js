@@ -38,15 +38,16 @@ const List5 = () => {
       </MegaMenuUl>
       <MegaMenuUl>
         <ListHeader title="Landing Pages" />
+
         <MegaMenuLi>
-          <MegaMenuLink to="/shoes">Lander 1</MegaMenuLink>
-        </MegaMenuLi>
-        <MegaMenuLi>
-          <MegaMenuLink to="/shoes">Lander 2</MegaMenuLink>
+          <MegaMenuLink to="/demos/fashion-one">Fashion One</MegaMenuLink>
           <MegaMenuSpan>Hot</MegaMenuSpan>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/shoes">Lander 3</MegaMenuLink>
+          <MegaMenuLink to="/demos/fashion-two">Fashion Two</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/demos/fashion-three">Fashion Three</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
           <MegaMenuLink to="/shoes">Lander 4</MegaMenuLink>
