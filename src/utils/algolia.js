@@ -29,7 +29,12 @@ const productQuery = `
 const queries = [
   {
     query: productQuery,
-    transformer: ({ data }) => data.allContentfulFashionTwoPants.nodes,
+    transformer: ({ data }) =>
+      concat(
+        data.allContentfulFashionTwoPants.nodes,
+        data.allContentfulFashionTwoBags.nodes,
+        data.allContentfulFashionTwoShoes.nodes,
+      ),
   },
 ];
 

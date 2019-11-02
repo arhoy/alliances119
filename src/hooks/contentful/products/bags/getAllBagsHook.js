@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 const getAllBagsHook = () => {
   const data = useStaticQuery(graphql`
-    query {
+    {
       allItems: allContentfulFashionTwoBags {
         nodes {
           id
@@ -23,7 +23,9 @@ const getAllBagsHook = () => {
       }
     }
   `);
+
   const items = data.allItems.nodes;
+
   return items;
 };
 

@@ -31,7 +31,6 @@ const AliceGallery = ({
   const handleOnDragStart = e => e.preventDefault();
 
   if (gatsbyImageArray) {
-    console.log('here are the props', props);
     return (
       <Container>
         <AliceCarousel
