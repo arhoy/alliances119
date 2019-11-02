@@ -27,7 +27,7 @@ const List5 = () => {
           <MegaMenuLink to="/bags">Cards</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/bags">Carousel</MegaMenuLink>
+          <MegaMenuLink to="/examples/carousels">Carousel</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
           <MegaMenuLink to="/bags">Alerts</MegaMenuLink>

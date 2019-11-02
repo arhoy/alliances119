@@ -43,8 +43,6 @@ const List4 = () => {
     }
   `);
 
-  console.log(data);
-
   return (
     <>
       <MegaMenuUl>
