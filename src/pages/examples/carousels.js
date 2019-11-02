@@ -52,18 +52,52 @@ const carousel = ({ data }) => {
       </Section>
       <Section>
         <H2> Carousel #1 </H2>
+        <P> Moving Carousal with autoPlay and duration and pause on hover</P>
 
         <StyledAliceGallery
           gatsbyImageArray
           images={images1}
-          loop
-          loopInterval={2000}
+          autoPlay
+          duration={3000}
+          buttonsDisabled={true}
         />
       </Section>
       <Section>
-        <H2> Carousel #1 </H2>
+        <H2> Carousel #2 </H2>
+        <P>
+          Fast moving Carousal with autoPlay and duration and no pause on hover
+        </P>
 
-        <StyledAliceGallery gatsbyImageArray images={images2} />
+        <StyledAliceGallery
+          gatsbyImageArray
+          images={images1}
+          autoPlay
+          duration={900}
+          stopAutoPlayOnHover={false}
+          autoPlayInterval={2000}
+          buttonsDisabled={true}
+        />
+      </Section>
+      <Section>
+        <H2> Carousel #3 </H2>
+        <P>No autoPlay</P>
+
+        <StyledAliceGallery
+          gatsbyImageArray
+          images={images2}
+          buttonsDisabled={true}
+        />
+      </Section>
+
+      <Section>
+        <H2> Carousel #4 </H2>
+        <P>No autoPlay, don't show dots, show buttons</P>
+
+        <StyledAliceGallery
+          gatsbyImageArray
+          images={images2}
+          dotsDisabled={true}
+        />
       </Section>
     </Layout>
   );

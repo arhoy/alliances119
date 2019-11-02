@@ -10,23 +10,27 @@ const StyledImage = styled.img`
 `;
 
 const StyledOptimizedImage = styled(Img)`
-  max-width: 50%;
+  object-fit: cover;
+  width: 50rem;
   margin: 0 auto;
 `;
 
-const AliceGallery = ({ images, gatsbyImageArray, loop, loopInterval }) => {
+const AliceGallery = ({ images, gatsbyImageArray, ...props }) => {
   const handleOnDragStart = e => e.preventDefault();
-  console.log('other props are', loopInterval);
+
   if (gatsbyImageArray) {
+    console.log('here are the props', props);
     return (
       <>
         <AliceCarousel
           mouseDragEnabled
-          buttonsDisabled
-          autoPlay={loop}
-          stopAutoPlayOnHover={true}
-          autoPlayInterval={1000}
-          autoPlayDirection="rtl"
+          autoPlay={props.autoPlay}
+          duration={props.duration}
+          stopAutoPlayOnHover={props.stopAutoPlayOnHover}
+          autoPlayInterval={props.autoPlayInterval}
+          dotsDisabled={props.dotsDisabled}
+          buttonsDisabled={props.buttonsDisabled}
+          playButtonEnabled={props.playButtonEnabled}
         >
           {images.map((image, i) => (
             <StyledOptimizedImage
