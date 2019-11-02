@@ -27,6 +27,7 @@ import getAllShoesHook from '../../hooks/contentful/products/shoes/getAllShoesHo
 import AliceGallery from '../../components/reusableStyles/carousel/AliceGallery';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import NoStyleLink from '../../components/Links/NoStyleLink';
 
 const P = styled.p`
   margin: 1.5rem 0rem;
@@ -40,7 +41,7 @@ const P = styled.p`
 
 const HeroBackgroundImage = styled(BackgroundImage)`
   width: 100vw;
-  height: 88vh;
+  height: 92vh;
   background-size: cover;
   background-position: top;
   display: flex;
@@ -387,30 +388,36 @@ export default ({ data }) => {
       </Section>
 
       <HerosContainer>
-        <HeroBackgroundImageHalf fluid={data.picture4.childImageSharp.fluid}>
-          <CatchyBanner
-            color="white"
-            title="Jeans"
-            fontSize="4.5rem"
-            background="none"
-          />
+        <HeroBackgroundImageThird fluid={data.picture7.childImageSharp.fluid}>
+          <NoStyleLink to="/bags">
+            <CatchyBanner
+              color="white"
+              title="Shop"
+              fontSize="4.5rem"
+              background="rgba(218, 18, 31,0.4)"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageThird>
+        <HeroBackgroundImageThird fluid={data.picture8.childImageSharp.fluid}>
+          <NoStyleLink to="/shoes">
+            <CatchyBanner
+              color="white"
+              title="This"
+              fontSize="4.5rem"
+              background="rgba(92, 52, 145,0.4)"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageThird>
+        <HeroBackgroundImageHalf fluid={data.picture9.childImageSharp.fluid}>
+          <NoStyleLink to="/pants">
+            <CatchyBanner
+              color="white"
+              title="Look"
+              fontSize="4.5rem"
+              background="rgba(19, 73, 178,0.4)"
+            />
+          </NoStyleLink>
         </HeroBackgroundImageHalf>
-        <HeroBackgroundImageThird fluid={data.picture5.childImageSharp.fluid}>
-          <CatchyBanner
-            color="white"
-            title="Shoes"
-            fontSize="4.5rem"
-            background="none"
-          />
-        </HeroBackgroundImageThird>
-        <HeroBackgroundImageThird fluid={data.picture6.childImageSharp.fluid}>
-          <CatchyBanner
-            color="white"
-            title="Bags"
-            fontSize="4.5rem"
-            background="none"
-          />
-        </HeroBackgroundImageThird>
       </HerosContainer>
 
       <SectionGrey>
@@ -423,30 +430,36 @@ export default ({ data }) => {
       </SectionGrey>
 
       <HerosContainer>
-        <HeroBackgroundImageThird fluid={data.picture7.childImageSharp.fluid}>
-          <CatchyBanner
-            color="white"
-            title="Shop"
-            fontSize="4.5rem"
-            background="rgba(218, 18, 31,0.4)"
-          />
-        </HeroBackgroundImageThird>
-        <HeroBackgroundImageThird fluid={data.picture8.childImageSharp.fluid}>
-          <CatchyBanner
-            color="white"
-            title="This"
-            fontSize="4.5rem"
-            background="rgba(92, 52, 145,0.4)"
-          />
-        </HeroBackgroundImageThird>
-        <HeroBackgroundImageHalf fluid={data.picture9.childImageSharp.fluid}>
-          <CatchyBanner
-            color="white"
-            title="Look"
-            fontSize="4.5rem"
-            background="rgba(19, 73, 178,0.4)"
-          />
+        <HeroBackgroundImageHalf fluid={data.picture4.childImageSharp.fluid}>
+          <NoStyleLink to="/pants">
+            <CatchyBanner
+              color="white"
+              title="Jeans"
+              fontSize="4.5rem"
+              background="none"
+            />
+          </NoStyleLink>
         </HeroBackgroundImageHalf>
+        <HeroBackgroundImageThird fluid={data.picture5.childImageSharp.fluid}>
+          <NoStyleLink to="/shoes">
+            <CatchyBanner
+              color="white"
+              title="Shoes"
+              fontSize="4.5rem"
+              background="none"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageThird>
+        <HeroBackgroundImageThird fluid={data.picture6.childImageSharp.fluid}>
+          <NoStyleLink to="/bags">
+            <CatchyBanner
+              color="white"
+              title="Bags"
+              fontSize="4.5rem"
+              background="none"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageThird>
       </HerosContainer>
 
       <Section>
@@ -457,27 +470,29 @@ export default ({ data }) => {
           <Products products={getAllShoesHook()} productType="shoes" />
         </ProductLayout1>
       </Section>
-      <CatchyBanner
-        color="white"
-        title="Designer Brands"
-        fontSize="4.5rem"
-        background="rgba(218, 18, 31,0.4)"
-      />
-      <Container800>
-        <AliceGallery
-          gatsbyImageArray
-          images={data.heroCarousel.nodes}
-          dotsDisabled={true}
-          autoPlay
-          duration={1000}
-          autoPlayInterval={1000}
-          buttonsDisabled={true}
-          stopAutoPlayOnHover={false}
-          imageHeight={'50vh'}
-        >
-          <CatchyBanner color="white" title="Amazing Prices" />
-        </AliceGallery>
-      </Container800>
+      <Section>
+        <Container800>
+          <CatchyBanner
+            color="white"
+            title="Designer Brands"
+            fontSize="4.5rem"
+            background="rgba(218, 18, 31,0.4)"
+          />
+          <AliceGallery
+            gatsbyImageArray
+            images={data.heroCarousel.nodes}
+            dotsDisabled={true}
+            autoPlay
+            duration={1000}
+            autoPlayInterval={1000}
+            buttonsDisabled={true}
+            stopAutoPlayOnHover={false}
+            imageHeight={'50vh'}
+          >
+            <CatchyBanner color="white" title="Amazing Prices" />
+          </AliceGallery>
+        </Container800>
+      </Section>
 
       <SectionGrey>
         <Container800>

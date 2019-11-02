@@ -43,8 +43,6 @@ const LogoLink = styled(Link)`
   margin: 0;
 `;
 const Logo = styled.span`
-  color: ${props => props.theme.colors.primary};
-
   & i {
     font-weight: bold;
     color: ${props => props.theme.colors.primaryDark};
@@ -56,11 +54,14 @@ const Logo = styled.span`
   }
 `;
 
-const LogoBottom = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const LogoSpan = styled.span`
+  display: inline-block;
+  padding-bottom: 2px;
+  border-bottom: 4px solid ${props => props.theme.colors.primary};
+  border-radius: 4px;
 `;
+
+const LogoSpan2 = styled.span``;
 
 const NavContainer = styled.nav`
   display: flex;
@@ -136,9 +137,11 @@ const NavFashion4 = () => {
       <Header>
         <Logo>
           <LogoLink to="/">
-            <i>FashionTwo</i>
+            <i>
+              <LogoSpan2>Fashion</LogoSpan2>
+              <LogoSpan>Two</LogoSpan>
+            </i>
           </LogoLink>
-          <LogoBottom></LogoBottom>
         </Logo>
         <NavContainer>
           <MyMenu2 title={`Women`}>
