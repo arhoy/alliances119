@@ -11,17 +11,29 @@ const StyledImage = styled.img`
 
 const StyledOptimizedImage = styled(Img)`
   object-fit: cover;
-  width: 50rem;
+
   margin: 0 auto;
 `;
 
-const AliceGallery = ({ images, gatsbyImageArray, ...props }) => {
+const Container = styled.div`
+  width: 100%;
+`;
+
+const AliceGallery = ({
+  images,
+  gatsbyImageArray,
+  imageHeight,
+  maxImageWidth,
+  imageWidth,
+  children,
+  ...props
+}) => {
   const handleOnDragStart = e => e.preventDefault();
 
   if (gatsbyImageArray) {
     console.log('here are the props', props);
     return (
-      <>
+      <Container>
         <AliceCarousel
           mouseDragEnabled
           autoPlay={props.autoPlay}
@@ -41,11 +53,15 @@ const AliceGallery = ({ images, gatsbyImageArray, ...props }) => {
               style={{
                 display: 'block',
                 margin: '0 auto',
+                height: imageHeight ? imageHeight : '',
+                width: imageWidth ? imageWidth : '',
+                maxWidth: maxImageWidth ? maxImageWidth : '',
               }}
             />
           ))}
         </AliceCarousel>
-      </>
+        {children}
+      </Container>
     );
   }
 
@@ -61,14 +77,12 @@ const AliceGallery = ({ images, gatsbyImageArray, ...props }) => {
             display: 'block',
             margin: '0 auto',
           }}
-        />
+        >
+          {children}
+        </StyledImage>
       ))}
     </AliceCarousel>
   );
 };
 
-const StyledAliceGallery = styled(AliceGallery)`
-  background: red;
-`;
-
-export default StyledAliceGallery;
+export default AliceGallery;

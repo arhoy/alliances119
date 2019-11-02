@@ -7,7 +7,7 @@ import { Section } from '../../components/reusableStyles/sections/Sections';
 import SEO from '../../hooks/SEO';
 import ProductPageHeader from '../../components/products/ProductPageHeader';
 
-import StyledAliceGallery from '../../components/reusableStyles/carousel/AliceGallery';
+import AliceGallery from '../../components/reusableStyles/carousel/AliceGallery';
 export const query = graphql`
   {
     imageArray1: allFile(filter: { relativePath: { regex: "/megaMenu/" } }) {
@@ -24,7 +24,7 @@ export const query = graphql`
     ) {
       nodes {
         childImageSharp {
-          fluid {
+          fluid(maxWidth: 3000) {
             ...GatsbyImageSharpFluid_noBase64
           }
         }
@@ -54,12 +54,14 @@ const carousel = ({ data }) => {
         <H2> Carousel #1 </H2>
         <P> Moving Carousal with autoPlay and duration and pause on hover</P>
 
-        <StyledAliceGallery
+        <AliceGallery
           gatsbyImageArray
           images={images1}
           autoPlay
           duration={3000}
           buttonsDisabled={true}
+          imageHeight={'30rem'}
+          maxImageWidth={'30rem'}
         />
       </Section>
       <Section>
@@ -68,7 +70,7 @@ const carousel = ({ data }) => {
           Fast moving Carousal with autoPlay and duration and no pause on hover
         </P>
 
-        <StyledAliceGallery
+        <AliceGallery
           gatsbyImageArray
           images={images1}
           autoPlay
@@ -76,27 +78,30 @@ const carousel = ({ data }) => {
           stopAutoPlayOnHover={false}
           autoPlayInterval={2000}
           buttonsDisabled={true}
+          imageHeight={'30rem'}
+          maxImageWidth={'30rem'}
         />
       </Section>
       <Section>
         <H2> Carousel #3 </H2>
         <P>No autoPlay</P>
 
-        <StyledAliceGallery
+        <AliceGallery
           gatsbyImageArray
           images={images2}
           buttonsDisabled={true}
+          maxImageWidth={'60rem'}
         />
       </Section>
 
       <Section>
         <H2> Carousel #4 </H2>
         <P>No autoPlay, don't show dots, show buttons</P>
-
-        <StyledAliceGallery
+        <AliceGallery
           gatsbyImageArray
           images={images2}
           dotsDisabled={true}
+          imageHeight={'80vh'}
         />
       </Section>
     </Layout>
