@@ -29,8 +29,7 @@ const productQuery = `
 const queries = [
   {
     query: productQuery,
-    transformer: ({ data }) =>
-      data.allContentfulFashionTwoPants.nodes.map(node),
+    transformer: ({ data }) => data.allContentfulFashionTwoPants.nodes,
   },
 ];
 

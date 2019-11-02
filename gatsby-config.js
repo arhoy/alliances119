@@ -5,6 +5,7 @@ require('dotenv').config({
 const URL = 'https://aquasar.io';
 
 const queries = require('./src/utils/algolia');
+console.log('quereis ared ', queries);
 
 module.exports = {
   siteMetadata: {
