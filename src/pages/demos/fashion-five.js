@@ -4,7 +4,7 @@ import { FaShippingFast } from 'react-icons/fa';
 import ReactTyped from 'react-typed';
 import { graphql } from 'gatsby';
 
-import Layout2 from '../../components/layouts/Layout2';
+import Layout5 from '../../components/layouts/Layout5';
 import SEO from '../../hooks/SEO';
 import {
   Section,
@@ -19,16 +19,16 @@ import { SimpleNetlifyForm } from '../../components/forms/SimpleNetlifyForm';
 import CatchyBanner from '../../components/reusableStyles/banner/CatchyBanner';
 import BasicFeatureSection from '../../components/features/BasicFeatureSection';
 
-import getAllBags from '../../hooks/contentful/products/bags/getAllBagsHook';
 import { ProductLayout1 } from '../../components/products/ProductContainerStyles/ProductContainerStyle';
 import Products from '../../components/products/Products';
 
-import getAllPantsHook from '../../hooks/contentful/products/pants/getAllPantsHook';
-import getAllShoesHook from '../../hooks/contentful/products/shoes/getAllShoesHook';
 import AliceGallery from '../../components/reusableStyles/carousel/AliceGallery';
-import AliceCarousel from 'react-alice-carousel';
+
 import 'react-alice-carousel/lib/alice-carousel.css';
 import NoStyleLink from '../../components/Links/NoStyleLink';
+import getAllBagsHook from '../../hooks/contentful/products/bags/getAllBagsHook';
+import getAllPantsHook from '../../hooks/contentful/products/pants/getAllPantsHook';
+import getAllShoesHook from '../../hooks/contentful/products/shoes/getAllShoesHook';
 
 const P = styled.p`
   margin: 1.5rem 0rem;
@@ -111,6 +111,60 @@ const CustomSection = styled(Section)`
   font-weight: bold;
 `;
 
+const CenteredH2 = styled(H2)`
+  text-align: center;
+`;
+
+const HerosContainer = styled.div`
+  display: flex;
+
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    flex-direction: column;
+  }
+`;
+const TypeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const IconContainerShipping = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+`;
+
+const HeroCatchyDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  & > * {
+    margin: 1rem 0;
+  }
+  align-items: flex-start;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    display: none;
+  }
+`;
+
+const FullNarrowBackgroundImage = styled(BackgroundImage)`
+  width: 100%;
+  min-height: 25vh;
+  max-height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CustomBannerContainer = styled.div`
+  padding: 4rem 1rem;
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  grid-gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(max-content, 35rem));
+`;
+
 const whyFasion = () => (
   <>
     <P>
@@ -159,54 +213,6 @@ const pricing = () => (
     <A href="https://aquasar.io/pricing/">here</A>
   </P>
 );
-
-const CenteredH2 = styled(H2)`
-  text-align: center;
-`;
-
-const StyledItalicSpan = styled.span`
-  color: ${props => props.theme.colors.primary};
-  font-style: italic;
-  font-size: 2rem;
-`;
-
-const StyledItalicSpan2 = styled.span`
-  color: ${props => props.theme.colors.red};
-  font-size: 2rem;
-  font-style: italic;
-`;
-
-const HerosContainer = styled.div`
-  display: flex;
-
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    flex-direction: column;
-  }
-`;
-const TypeContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const IconContainerShipping = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 1rem;
-`;
-
-const HeroCatchyDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  & > * {
-    margin: 1rem 0;
-  }
-  align-items: flex-start;
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    display: none;
-  }
-`;
 
 export const query = graphql`
   {
@@ -296,62 +302,28 @@ export const query = graphql`
 
 export default ({ data }) => {
   return (
-    <Layout2 full={true}>
+    <Layout5 full={true}>
       <SEO title="Fashion two" description="Sample Fashion Store" />
       <HerosContainer>
-        <AliceCarousel
-          stopAutoPlayOnHover={false}
-          mouseDragEnabled
-          autoPlay={true}
-          duration={2000}
-          autoPlayInterval={5000}
-          buttonsDisabled={true}
-          dotsDisabled={true}
-        >
-          <HeroBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
-            <HeroCatchyDiv>
-              <CatchyBanner
-                background="rgba(218, 18, 31,0.4)"
-                color="white"
-                title="Designer Brands"
-              />
-              <CatchyBanner
-                background="rgba(92, 52, 145,0.4)"
-                color="white"
-                title="Stunning Prices"
-              />
-              <CatchyBanner
-                background="rgba(19, 73, 178,0.4)"
-                color="white"
-                title="Shop Now"
-              />
-            </HeroCatchyDiv>
-          </HeroBackgroundImage>
-          <HeroBackgroundImage fluid={data.picture2.childImageSharp.fluid}>
-            <HeroCatchyDiv>
-              <CatchyBanner
-                background="rgba(92, 52, 145,0.4)"
-                color="white"
-                title="Business Casual"
-              />
-              <CatchyBanner
-                background="rgba(19, 73, 178,0.4)"
-                color="white"
-                title="Modern Style"
-              />
-            </HeroCatchyDiv>
-          </HeroBackgroundImage>
-
-          <HeroBackgroundImage fluid={data.picture10.childImageSharp.fluid}>
-            <HeroCatchyDiv>
-              <CatchyBanner
-                background="rgba(218, 18, 31,0.4)"
-                color="white"
-                title="Up to 60% Off"
-              />
-            </HeroCatchyDiv>
-          </HeroBackgroundImage>
-        </AliceCarousel>
+        <HeroBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
+          <HeroCatchyDiv>
+            <CatchyBanner
+              background="rgba(218, 18, 31,0.4)"
+              color="white"
+              title="Designer Brands"
+            />
+            <CatchyBanner
+              background="rgba(92, 52, 145,0.4)"
+              color="white"
+              title="Stunning Prices"
+            />
+            <CatchyBanner
+              background="rgba(19, 73, 178,0.4)"
+              color="white"
+              title="Shop Now"
+            />
+          </HeroCatchyDiv>
+        </HeroBackgroundImage>
       </HerosContainer>
 
       <CustomSection>
@@ -379,12 +351,33 @@ export default ({ data }) => {
         </Container800>
       </CustomSection>
 
+      <FullNarrowBackgroundImage fluid={data.picture3.childImageSharp.fluid}>
+        <CustomBannerContainer>
+          <CatchyBanner
+            color="white"
+            title="Red Tag"
+            background="rgb(218, 18, 31)"
+          >
+            <p
+              style={{
+                fontWeight: 'bold',
+                marginTop: '4px',
+                color: 'lightgrey',
+                textAlign: 'center',
+              }}
+            >
+              Up to 50% of selected brands
+            </p>
+          </CatchyBanner>
+        </CustomBannerContainer>
+      </FullNarrowBackgroundImage>
+
       <Section>
-        <CenteredH2>
-          Fashion Bags <StyledItalicSpan2>Trending</StyledItalicSpan2>
-        </CenteredH2>
+        <CenteredH2>Fashion Two Products</CenteredH2>
         <ProductLayout1>
-          <Products products={getAllBags()} productType="bags" />
+          <Products products={getAllBagsHook()} productType="bags" />
+          <Products products={getAllPantsHook()} productType="pants" />
+          <Products products={getAllShoesHook()} productType="shoes" />
         </ProductLayout1>
       </Section>
 
@@ -421,15 +414,6 @@ export default ({ data }) => {
         </HeroBackgroundImageHalf>
       </HerosContainer>
 
-      <SectionGrey>
-        <CenteredH2>
-          Men's Jeans <StyledItalicSpan>Hot</StyledItalicSpan>
-        </CenteredH2>
-        <ProductLayout1>
-          <Products products={getAllPantsHook()} productType="pants" />
-        </ProductLayout1>
-      </SectionGrey>
-
       <HerosContainer>
         <HeroBackgroundImageHalf fluid={data.picture4.childImageSharp.fluid}>
           <NoStyleLink to="/pants">
@@ -464,20 +448,12 @@ export default ({ data }) => {
       </HerosContainer>
 
       <Section>
-        <CenteredH2>
-          Women's Shoes <StyledItalicSpan>Latest</StyledItalicSpan>
-        </CenteredH2>
-        <ProductLayout1>
-          <Products products={getAllShoesHook()} productType="shoes" />
-        </ProductLayout1>
-      </Section>
-      <Section>
         <Container800>
           <CatchyBanner
             color="white"
             title="Designer Brands"
             fontSize="4.5rem"
-            background="rgba(218, 18, 31,0.4)"
+            background="rgb(218, 18, 31)"
           />
           <AliceGallery
             gatsbyImageArray
@@ -490,7 +466,11 @@ export default ({ data }) => {
             stopAutoPlayOnHover={false}
             imageHeight={'50vh'}
           >
-            <CatchyBanner color="white" title="Amazing Prices" />
+            <CatchyBanner
+              background="rgb(92, 52, 145)"
+              color="white"
+              title="Amazing Prices"
+            />
           </AliceGallery>
         </Container800>
       </Section>
@@ -518,6 +498,6 @@ export default ({ data }) => {
           <SimpleNetlifyForm />
         </Container800>
       </Section>
-    </Layout2>
+    </Layout5>
   );
 };

@@ -53,7 +53,7 @@ const List5 = () => {
           <MegaMenuLink to="/demos/fashion-four">Fashion Four</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/shoes">Lander 5</MegaMenuLink>
+          <MegaMenuLink to="/demos/fashion-five">Fashion Five</MegaMenuLink>
         </MegaMenuLi>
       </MegaMenuUl>
       <MegaMenuUl>

@@ -6,6 +6,7 @@ const productQuery = `
         productName
         shortDescription
         tags
+        productSlug
       }
     }
     allContentfulFashionTwoBags {
@@ -13,6 +14,7 @@ const productQuery = `
         productName
         shortDescription
         tags
+        productSlug
       }
     }
       allContentfulFashionTwoShoes {
@@ -20,6 +22,7 @@ const productQuery = `
         productName
         shortDescription
         tags
+        productSlug
       }
     }
   }
