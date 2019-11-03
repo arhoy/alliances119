@@ -384,7 +384,7 @@ export default ({ data }) => {
           Fashion Bags <StyledItalicSpan2>Trending</StyledItalicSpan2>
         </CenteredH2>
         <ProductLayout1>
-          <Products products={getAllBags()} productType="bags" />
+          <Products products={getAllBags()} productType="products" />
         </ProductLayout1>
       </Section>
 
@@ -426,7 +426,7 @@ export default ({ data }) => {
           Men's Jeans <StyledItalicSpan>Hot</StyledItalicSpan>
         </CenteredH2>
         <ProductLayout1>
-          <Products products={getAllPantsHook()} productType="pants" />
+          <Products products={getAllPantsHook()} productType="products" />
         </ProductLayout1>
       </SectionGrey>
 
@@ -468,7 +468,7 @@ export default ({ data }) => {
           Women's Shoes <StyledItalicSpan>Latest</StyledItalicSpan>
         </CenteredH2>
         <ProductLayout1>
-          <Products products={getAllShoesHook()} productType="shoes" />
+          <Products products={getAllShoesHook()} productType="products" />
         </ProductLayout1>
       </Section>
       <Section>

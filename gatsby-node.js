@@ -40,7 +40,7 @@ exports.createPages = async ({ actions, graphql }) => {
   // create page for each bag product and list them all in /bags
   data.allBags.nodes.forEach(item => {
     createPage({
-      path: `bags/${item.productSlug}`,
+      path: `products/${item.productSlug}`,
       component: path.resolve('./src/templates/Bag.js'),
       context: {
         slug: item.productSlug,
@@ -51,7 +51,7 @@ exports.createPages = async ({ actions, graphql }) => {
   // create page for each pants product and list them all in /pants
   data.allPants.nodes.forEach(item => {
     createPage({
-      path: `pants/${item.productSlug}`,
+      path: `products/${item.productSlug}`,
       component: path.resolve('./src/templates/Pant.js'),
       context: {
         slug: item.productSlug,
@@ -62,7 +62,7 @@ exports.createPages = async ({ actions, graphql }) => {
   // create page for each shoes product and list them all in /shoes
   data.allShoes.nodes.forEach(item => {
     createPage({
-      path: `shoes/${item.productSlug}`,
+      path: `products/${item.productSlug}`,
       component: path.resolve('./src/templates/Shoe.js'),
       context: {
         slug: item.productSlug,

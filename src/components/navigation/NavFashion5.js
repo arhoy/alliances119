@@ -14,7 +14,7 @@ import NoStyleLink from '../Links/NoStyleLink';
 import MegaMenu2 from '../menus/MegaMenus/MegaMenu2';
 import List5 from '../menus/MegaMenus/MegaMenuLists/Style2/List5';
 import List4 from '../menus/MegaMenus/MegaMenuLists/Style2/List4';
-import ProductSearchPreview from '../algolia/ProductSearchPreview';
+
 import Search from '../algolia/Search';
 
 const Header = styled.header`
@@ -122,6 +122,21 @@ const MobileMenuContainer = styled.div`
   }
 `;
 
+const SearchContainerComputer = styled.div`
+  width: 15vw;
+
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    display: none;
+  }
+`;
+
+const SearchContainerMobile = styled.div`
+  margin: 0 auto;
+  @media (min-width: ${props => props.theme.screenSize.mobileL}) {
+    display: none;
+  }
+`;
+
 const NavFashion5 = () => {
   useEffect(() => {
     netlifyIdentity.init();
@@ -145,8 +160,6 @@ const NavFashion5 = () => {
             </i>
           </LogoLink>
         </Logo>
-        <Search />
-        <ProductSearchPreview />
 
         <NavContainer>
           <MyMenu2 title={`Women`}>
@@ -173,34 +186,43 @@ const NavFashion5 = () => {
             </Container1200>
           </MyMenu2>
         </NavContainer>
+        <SearchContainerComputer>
+          <Search />
+        </SearchContainerComputer>
+
         <Cart className="snipcart-checkout">
           <span className="snipcart-items-count"></span>
           <span className="snipcart-total-price"></span>
         </Cart>
         <BurgerIcon onClick={mobileMenuHandler} />
         {mobileMenuOpen ? (
-          <MobileMenuContainer>
-            <CloseIconContainer>
-              <CloseIcon onClick={mobileMenuHandler} /> close
-            </CloseIconContainer>
+          <>
+            <MobileMenuContainer>
+              <CloseIconContainer>
+                <CloseIcon onClick={mobileMenuHandler} /> close
+              </CloseIconContainer>
 
-            <ul>
-              <li>
-                <NoStyleLink to="/"> Home </NoStyleLink>{' '}
-              </li>
-              <li>
-                <NoStyleLink to="/bags"> Bags </NoStyleLink>{' '}
-              </li>
-              <li>
-                <NoStyleLink to="/pants"> Pants </NoStyleLink>{' '}
-              </li>
-              <li>
-                <NoStyleLink to="/shoes"> Shoes </NoStyleLink>{' '}
-              </li>
-            </ul>
-          </MobileMenuContainer>
+              <ul>
+                <li>
+                  <NoStyleLink to="/"> Home </NoStyleLink>{' '}
+                </li>
+                <li>
+                  <NoStyleLink to="/bags"> Bags </NoStyleLink>{' '}
+                </li>
+                <li>
+                  <NoStyleLink to="/pants"> Pants </NoStyleLink>{' '}
+                </li>
+                <li>
+                  <NoStyleLink to="/shoes"> Shoes </NoStyleLink>{' '}
+                </li>
+              </ul>
+            </MobileMenuContainer>
+          </>
         ) : null}
       </Header>
+      <SearchContainerMobile>
+        <Search />
+      </SearchContainerMobile>
     </>
   );
 };

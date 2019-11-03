@@ -26,9 +26,7 @@ import AliceGallery from '../../components/reusableStyles/carousel/AliceGallery'
 
 import 'react-alice-carousel/lib/alice-carousel.css';
 import NoStyleLink from '../../components/Links/NoStyleLink';
-import getAllBagsHook from '../../hooks/contentful/products/bags/getAllBagsHook';
-import getAllPantsHook from '../../hooks/contentful/products/pants/getAllPantsHook';
-import getAllShoesHook from '../../hooks/contentful/products/shoes/getAllShoesHook';
+import getAllProductsHook from '../../hooks/contentful/products/allProducts/getAllProductsHook';
 
 const P = styled.p`
   margin: 1.5rem 0rem;
@@ -375,9 +373,7 @@ export default ({ data }) => {
       <Section>
         <CenteredH2>Fashion Two Products</CenteredH2>
         <ProductLayout1>
-          <Products products={getAllBagsHook()} productType="bags" />
-          <Products products={getAllPantsHook()} productType="pants" />
-          <Products products={getAllShoesHook()} productType="shoes" />
+          <Products products={getAllProductsHook()} productType="products" />
         </ProductLayout1>
       </Section>
 

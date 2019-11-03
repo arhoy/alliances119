@@ -19,7 +19,7 @@ const pants = () => {
       <ProductPageHeader title={title} description={description} />
 
       <ProductLayout1>
-        <Products products={getAllPants()} productType="pants" />
+        <Products products={getAllPants()} productType="products" />
       </ProductLayout1>
     </Layout>
   );

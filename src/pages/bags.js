@@ -16,7 +16,7 @@ const bags = () => {
       <SEO title={title} description={description} />
       <ProductPageHeader title={title} description={description} />
       <ProductLayout1>
-        <Products products={getAllBags()} productType="bags" />
+        <Products products={getAllBags()} productType="products" />
       </ProductLayout1>
     </Layout>
   );
