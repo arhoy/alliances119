@@ -30,8 +30,7 @@ const queries = [
   {
     query: productQuery,
     transformer: ({ data }) =>
-      concat(
-        data.allContentfulFashionTwoPants.nodes,
+      data.allContentfulFashionTwoPants.nodes.concat(
         data.allContentfulFashionTwoBags.nodes,
         data.allContentfulFashionTwoShoes.nodes,
       ),

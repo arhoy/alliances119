@@ -22,6 +22,7 @@ import BasicFeatureSection from '../../components/features/BasicFeatureSection';
 import getAllBags from '../../hooks/contentful/products/bags/getAllBagsHook';
 import { ProductLayout1 } from '../../components/products/ProductContainerStyles/ProductContainerStyle';
 import Products from '../../components/products/Products';
+import getAllProductsHook from '../../hooks/contentful/products/allProducts/getAllProductsHook';
 import getAllPantsHook from '../../hooks/contentful/products/pants/getAllPantsHook';
 import getAllShoesHook from '../../hooks/contentful/products/shoes/getAllShoesHook';
 import AliceGallery from '../../components/reusableStyles/carousel/AliceGallery';
@@ -425,7 +426,7 @@ export default ({ data }) => {
           Men's Jeans <StyledItalicSpan>Hot</StyledItalicSpan>
         </CenteredH2>
         <ProductLayout1>
-          <Products products={getAllPantsHook()} productType="pants" />
+          <Products products={getAllProductsHook()} productType="pants" />
         </ProductLayout1>
       </SectionGrey>
 

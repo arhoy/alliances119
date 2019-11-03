@@ -60,8 +60,7 @@ const getAllBagsHook = () => {
     }
   `);
 
-  const items = concat(
-    data.allBags.nodes,
+  const items = data.allBags.nodes.concat(
     data.allShoes.nodes,
     data.allPants.nodes,
   );
