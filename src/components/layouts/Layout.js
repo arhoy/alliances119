@@ -26,6 +26,8 @@ const theme = {
     red: 'rgb(218, 18, 31)',
     lightRed: 'rgb(232, 180, 182)',
     blue: 'rgb(19, 73, 178)',
+    lightGreen: '#D4EDDA',
+    green: 'rgb(31, 90, 46)',
   },
   pageWidth: {
     fixed: '800px',
