@@ -31,6 +31,7 @@ import getAllBagsHook from '../hooks/contentful/products/bags/getAllBagsHook';
 import getAllPantsHook from '../hooks/contentful/products/pants/getAllPantsHook';
 import getAllShoesHook from '../hooks/contentful/products/shoes/getAllShoesHook';
 import MailChimpEmailForm1 from '../components/mailchimp/MailChimpEmailForm1';
+import Map1 from '../components/mapbox/Map1';
 
 const P = styled.p`
   margin: 1.5rem 0rem;
@@ -478,6 +479,15 @@ export default ({ data }) => {
           <Products products={getAllShoesHook()} productType="products" />
         </ProductLayout1>
       </Section>
+
+      <SectionGrey>
+        <Map1
+          title={`Store Locations`}
+          mapStyle="mapbox://styles/arhoy/ck2ktklfm3o8b1co185ptfskc"
+          width="100%"
+          height="50vh"
+        />
+      </SectionGrey>
 
       <Section>
         <Container800>

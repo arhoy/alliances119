@@ -21,7 +21,7 @@ const List5 = () => {
           <MegaMenuSpan spanColor="primary">New</MegaMenuSpan>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/bags">Buttons</MegaMenuLink>
+          <MegaMenuLink to="/examples/mapbox-examples">MapBox</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
           <MegaMenuLink to="/bags">Cards</MegaMenuLink>

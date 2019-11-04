@@ -62,6 +62,10 @@ const MailChimpEmailForm1 = ({ timeToPopUp }) => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+      width: 90%;
+      margin: 0 auto;
+    }
   `;
 
   const Container = styled.div`
@@ -76,6 +80,11 @@ const MailChimpEmailForm1 = ({ timeToPopUp }) => {
 
   const Blurb = styled(P)`
     width: 75%;
+    @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+    }
   `;
 
   const Closed = styled(FaTimes)`
@@ -89,13 +98,20 @@ const MailChimpEmailForm1 = ({ timeToPopUp }) => {
   `;
   const SubContainer = styled.div``;
 
+  const StyledH2 = styled(H2)`
+    text-align: center;
+    line-height: 3rem;
+  `;
+
   if (showForm) {
     return (
       <>
         <Container onClick={closePopUp}></Container>
         <StyledForm onSubmit={handleSubmit}>
           <Closed onClick={closePopUp} />
-          <H2>{success ? `Submission Success!` : `Subscribe Now and Save!`}</H2>
+          <StyledH2>
+            {success ? `Submission Success!` : `Subscribe Now and Save!`}
+          </StyledH2>
           <Blurb>
             Get the latest deals straight to your inbox, never miss a sale again
           </Blurb>
