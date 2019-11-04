@@ -30,7 +30,9 @@ const List5 = () => {
           <MegaMenuLink to="/examples/carousels">Carousel</MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
-          <MegaMenuLink to="/bags">Alerts</MegaMenuLink>
+          <MegaMenuLink to="/examples/mailchimp-forms">
+            Subscriber Forms
+          </MegaMenuLink>
         </MegaMenuLi>
         <MegaMenuLi>
           <MegaMenuLink to="/bags">Forms</MegaMenuLink>

@@ -5,7 +5,6 @@ require('dotenv').config({
 const URL = 'https://aquasar.io';
 
 const queries = require('./src/utils/algolia');
-console.log('quereis ared ', queries);
 
 module.exports = {
   siteMetadata: {
@@ -97,6 +96,12 @@ module.exports = {
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         queries,
         chunkSize: 10000,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: process.env.MAILCHIMP_ENDPOINT,
       },
     },
   ],
