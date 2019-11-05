@@ -37,7 +37,7 @@ const Map1 = ({ title, mapStyle, height, width }) => {
 
       <ReactMapGL
         {...viewport}
-        mapboxApiAccessToken={process.env.MAPBOX_ACCESS_TOKEN}
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         mapStyle={mapStyle}
         onViewportChange={viewport => {
           setViewport(viewport);
