@@ -2,14 +2,21 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 
 import addToMailchimp from 'gatsby-plugin-mailchimp';
-import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
+
 import { InputStyle1 } from '../reusableStyles/inputs/Input';
-import { H2, P } from '../reusableStyles/typography/Typography';
+
 import { FaTimes } from 'react-icons/fa';
 import {
   SimpleAlertRed,
   SimpleAlertGreen,
 } from '../reusableStyles/alerts/SimpleAlerts';
+import {
+  StyledForm2,
+  Button1,
+  Blurb,
+  StyledH2,
+  SubContainer,
+} from './form-styles/StyledForms';
 
 const MailChimpEmailForm1 = ({ timeToPopUp }) => {
   const [email, setEmail] = useState('');
@@ -46,28 +53,6 @@ const MailChimpEmailForm1 = ({ timeToPopUp }) => {
     setShowForm(false);
   };
 
-  const StyledForm = styled.form`
-    position: fixed;
-    transform: translate(-50%, -50%);
-    padding: 3rem;
-    width: 60rem;
-    margin: auto;
-    top: 50%;
-    left: 50%;
-    z-index: 12;
-    display: block;
-    background: ${props => props.theme.colors.lightgrey};
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-      width: 90%;
-      margin: 0 auto;
-    }
-  `;
-
   const Container = styled.div`
     position: fixed;
     background: ${props => props.theme.colors.blackTransparent};
@@ -76,15 +61,6 @@ const MailChimpEmailForm1 = ({ timeToPopUp }) => {
     left: 0;
     top: 0;
     z-index: 11;
-  `;
-
-  const Blurb = styled(P)`
-    width: 75%;
-    @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-      width: 90%;
-      margin: 0 auto;
-      text-align: center;
-    }
   `;
 
   const Closed = styled(FaTimes)`
@@ -96,18 +72,12 @@ const MailChimpEmailForm1 = ({ timeToPopUp }) => {
     font-size: 3rem;
     cursor: pointer;
   `;
-  const SubContainer = styled.div``;
-
-  const StyledH2 = styled(H2)`
-    text-align: center;
-    line-height: 3rem;
-  `;
 
   if (showForm) {
     return (
       <>
         <Container onClick={closePopUp}></Container>
-        <StyledForm onSubmit={handleSubmit}>
+        <StyledForm2 onSubmit={handleSubmit}>
           <Closed onClick={closePopUp} />
           <StyledH2>
             {success ? `Submission Success!` : `Subscribe Now and Save!`}
@@ -125,7 +95,7 @@ const MailChimpEmailForm1 = ({ timeToPopUp }) => {
               value={email}
             />
 
-            <ButtonStyle2 type="submit">Submit</ButtonStyle2>
+            <Button1 type="submit">Submit</Button1>
           </SubContainer>
           {error && (
             <SimpleAlertRed>Form Submission was not successful</SimpleAlertRed>
@@ -135,7 +105,7 @@ const MailChimpEmailForm1 = ({ timeToPopUp }) => {
               Thank you for subscribing! Sweet deals are coming to your inbox
             </SimpleAlertGreen>
           )}
-        </StyledForm>
+        </StyledForm2>
       </>
     );
   } else {
