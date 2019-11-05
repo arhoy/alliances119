@@ -69,6 +69,21 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     });
   });
+  // mapbox to work
+  exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+    if (stage === 'build-html') {
+      actions.setWebpackConfig({
+        module: {
+          rules: [
+            {
+              test: /mapbox-gl/,
+              use: loaders.null(),
+            },
+          ],
+        },
+      });
+    }
+  };
 
   // blog template w/ pagination
   // const posts = data.posts.nodes;
