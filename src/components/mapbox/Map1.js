@@ -13,6 +13,11 @@ const Icon = styled(FaMapMarkerAlt)`
 
 const PopupDiv = styled.div``;
 
+const SelectionHighlight = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
 const Map1 = ({ title, mapStyle, height, width }) => {
   const [viewport, setViewport] = useState({
     latitude: 53,
@@ -39,6 +44,7 @@ const Map1 = ({ title, mapStyle, height, width }) => {
         {...viewport}
         mapboxApiAccessToken={process.env.GATSBY_MAPBOX_API_TOKEN}
         mapStyle={mapStyle}
+        scrollZoom={false}
         onViewportChange={viewport => {
           setViewport(viewport);
         }}
@@ -73,11 +79,13 @@ const Map1 = ({ title, mapStyle, height, width }) => {
       </ReactMapGL>
 
       {selected && (
-        <SimpleAlertPrimary>
-          <P>
-            This is the <Bold>{selected.name} </Bold> location
-          </P>
-        </SimpleAlertPrimary>
+        <SelectionHighlight>
+          <SimpleAlertPrimary>
+            <P>
+              This is the <Bold>{selected.name} </Bold> location
+            </P>
+          </SimpleAlertPrimary>
+        </SelectionHighlight>
       )}
     </div>
   );

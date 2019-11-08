@@ -19,6 +19,42 @@ const SectionPrimaryTransparent = styled(Section)`
   background: ${props => props.theme.colors.primaryTransparent};
 `;
 
+const SectionHexaGrey = styled(Section)`
+  margin: 4rem 0;
+
+  background: ${props => props.theme.colors.lightgrey};
+  -webkit-clip-path: polygon(
+    50% 0%,
+    80% 10%,
+    100% 0,
+    100% 100%,
+    80% 90%,
+    50% 100%,
+    20% 90%,
+    0 100%,
+    0 0,
+    20% 10%
+  );
+  clip-path: polygon(
+    50% 0%,
+    80% 10%,
+    100% 0,
+    100% 100%,
+    80% 90%,
+    50% 100%,
+    20% 90%,
+    0 100%,
+    0 0,
+    20% 10%
+  );
+`;
+
+const SectionParallelGrey = styled(Section)`
+  background: ${props => props.theme.colors.lightgrey};
+  -webkit-clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
+  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
+`;
+
 const ProductPageTopSection = styled(Section)`
   background: ${props => props.theme.colors.primaryTransparent};
   padding: 2rem 6rem;
@@ -61,6 +97,8 @@ export {
   Section,
   SectionGrey,
   SectionPrimaryTransparent,
+  SectionHexaGrey,
+  SectionParallelGrey,
   TopSection,
   Container1200,
   Container1000,

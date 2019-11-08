@@ -10,6 +10,8 @@ import {
   Section,
   Container800,
   SectionGrey,
+  SectionHexaGrey,
+  SectionParallelGrey,
 } from '../components/reusableStyles/sections/Sections';
 
 import BackgroundImage from 'gatsby-background-image';
@@ -46,6 +48,7 @@ const P = styled.p`
 const HeroBackgroundImage = styled(BackgroundImage)`
   width: 100vw;
   height: 92vh;
+
   background-size: cover;
   background-position: top;
   display: flex;
@@ -124,6 +127,11 @@ const HerosContainer = styled.div`
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     flex-direction: column;
   }
+`;
+
+const HerosContainerSliced = styled(HerosContainer)`
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
 `;
 const TypeContainer = styled.div`
   display: flex;
@@ -319,7 +327,7 @@ export default ({ data }) => {
   return (
     <Layout5 full={true}>
       <SEO title="Fashion two" description="Sample Fashion Store" />
-      <HerosContainer>
+      <HerosContainerSliced>
         <HeroBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
           <HeroCatchyDiv>
             <CatchyBanner
@@ -339,7 +347,137 @@ export default ({ data }) => {
             />
           </HeroCatchyDiv>
         </HeroBackgroundImage>
+      </HerosContainerSliced>
+
+      <Section>
+        <CenteredH2>
+          Fashion Bags <StyledItalicSpan2>Trending</StyledItalicSpan2>
+        </CenteredH2>
+        <ProductLayout1>
+          <Products products={getAllBagsHook()} productType="products" />
+        </ProductLayout1>
+      </Section>
+
+      <HerosContainer>
+        <HeroBackgroundImageThird fluid={data.picture7.childImageSharp.fluid}>
+          <NoStyleLink to="/bags">
+            <CatchyBanner
+              color="white"
+              title="Shop"
+              fontSize="4.5rem"
+              background="rgba(218, 18, 31,0.4)"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageThird>
+        <HeroBackgroundImageThird fluid={data.picture8.childImageSharp.fluid}>
+          <NoStyleLink to="/shoes">
+            <CatchyBanner
+              color="white"
+              title="This"
+              fontSize="4.5rem"
+              background="rgba(92, 52, 145,0.4)"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageThird>
+        <HeroBackgroundImageHalf fluid={data.picture9.childImageSharp.fluid}>
+          <NoStyleLink to="/pants">
+            <CatchyBanner
+              color="white"
+              title="Look"
+              fontSize="4.5rem"
+              background="rgba(19, 73, 178,0.4)"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageHalf>
       </HerosContainer>
+
+      <SectionHexaGrey>
+        <CenteredH2>
+          Men's Jeans <StyledItalicSpan>Hot</StyledItalicSpan>
+        </CenteredH2>
+        <ProductLayout1>
+          <Products products={getAllPantsHook()} productType="products" />
+        </ProductLayout1>
+      </SectionHexaGrey>
+
+      <HerosContainer>
+        <HeroBackgroundImageHalf fluid={data.picture4.childImageSharp.fluid}>
+          <NoStyleLink to="/pants">
+            <CatchyBanner
+              color="white"
+              title="Jeans"
+              fontSize="4.5rem"
+              background="none"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageHalf>
+        <HeroBackgroundImageThird fluid={data.picture5.childImageSharp.fluid}>
+          <NoStyleLink to="/shoes">
+            <CatchyBanner
+              color="white"
+              title="Shoes"
+              fontSize="4.5rem"
+              background="none"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageThird>
+        <HeroBackgroundImageThird fluid={data.picture6.childImageSharp.fluid}>
+          <NoStyleLink to="/bags">
+            <CatchyBanner
+              color="white"
+              title="Bags"
+              fontSize="4.5rem"
+              background="none"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageThird>
+      </HerosContainer>
+
+      <Section>
+        <CenteredH2>
+          Women's Shoes <StyledItalicSpan>Latest</StyledItalicSpan>
+        </CenteredH2>
+        <ProductLayout1>
+          <Products products={getAllShoesHook()} productType="products" />
+        </ProductLayout1>
+      </Section>
+
+      <SectionParallelGrey>
+        <Map1
+          title={`Store Locations`}
+          mapStyle="mapbox://styles/arhoy/ck2ktklfm3o8b1co185ptfskc"
+          width="100%"
+          height="50vh"
+        />
+      </SectionParallelGrey>
+
+      <Section>
+        <Container800>
+          <CatchyBanner
+            color="white"
+            title="Designer Brands"
+            fontSize="4.5rem"
+            background="rgb(218, 18, 31)"
+          />
+          <AliceGallery
+            gatsbyImageArray
+            images={data.heroCarousel.nodes}
+            dotsDisabled={true}
+            autoPlay
+            duration={1000}
+            autoPlayInterval={1000}
+            buttonsDisabled={true}
+            stopAutoPlayOnHover={false}
+            imageHeight={'50vh'}
+          >
+            <CatchyBanner
+              background="rgb(92, 52, 145)"
+              color="white"
+              title="Amazing Prices"
+            />
+          </AliceGallery>
+        </Container800>
+      </Section>
 
       <CustomSection>
         <Container800>
@@ -386,136 +524,6 @@ export default ({ data }) => {
           </CatchyBanner>
         </CustomBannerContainer>
       </FullNarrowBackgroundImage>
-
-      <Section>
-        <CenteredH2>
-          Fashion Bags <StyledItalicSpan2>Trending</StyledItalicSpan2>
-        </CenteredH2>
-        <ProductLayout1>
-          <Products products={getAllBagsHook()} productType="products" />
-        </ProductLayout1>
-      </Section>
-
-      <HerosContainer>
-        <HeroBackgroundImageThird fluid={data.picture7.childImageSharp.fluid}>
-          <NoStyleLink to="/bags">
-            <CatchyBanner
-              color="white"
-              title="Shop"
-              fontSize="4.5rem"
-              background="rgba(218, 18, 31,0.4)"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageThird>
-        <HeroBackgroundImageThird fluid={data.picture8.childImageSharp.fluid}>
-          <NoStyleLink to="/shoes">
-            <CatchyBanner
-              color="white"
-              title="This"
-              fontSize="4.5rem"
-              background="rgba(92, 52, 145,0.4)"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageThird>
-        <HeroBackgroundImageHalf fluid={data.picture9.childImageSharp.fluid}>
-          <NoStyleLink to="/pants">
-            <CatchyBanner
-              color="white"
-              title="Look"
-              fontSize="4.5rem"
-              background="rgba(19, 73, 178,0.4)"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageHalf>
-      </HerosContainer>
-
-      <SectionGrey>
-        <CenteredH2>
-          Men's Jeans <StyledItalicSpan>Hot</StyledItalicSpan>
-        </CenteredH2>
-        <ProductLayout1>
-          <Products products={getAllPantsHook()} productType="products" />
-        </ProductLayout1>
-      </SectionGrey>
-
-      <HerosContainer>
-        <HeroBackgroundImageHalf fluid={data.picture4.childImageSharp.fluid}>
-          <NoStyleLink to="/pants">
-            <CatchyBanner
-              color="white"
-              title="Jeans"
-              fontSize="4.5rem"
-              background="none"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageHalf>
-        <HeroBackgroundImageThird fluid={data.picture5.childImageSharp.fluid}>
-          <NoStyleLink to="/shoes">
-            <CatchyBanner
-              color="white"
-              title="Shoes"
-              fontSize="4.5rem"
-              background="none"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageThird>
-        <HeroBackgroundImageThird fluid={data.picture6.childImageSharp.fluid}>
-          <NoStyleLink to="/bags">
-            <CatchyBanner
-              color="white"
-              title="Bags"
-              fontSize="4.5rem"
-              background="none"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageThird>
-      </HerosContainer>
-
-      <Section>
-        <CenteredH2>
-          Women's Shoes <StyledItalicSpan>Latest</StyledItalicSpan>
-        </CenteredH2>
-        <ProductLayout1>
-          <Products products={getAllShoesHook()} productType="products" />
-        </ProductLayout1>
-      </Section>
-
-      <SectionGrey>
-        <Map1
-          title={`Store Locations`}
-          mapStyle="mapbox://styles/arhoy/ck2ktklfm3o8b1co185ptfskc"
-          width="100%"
-          height="50vh"
-        />
-      </SectionGrey>
-
-      <Section>
-        <Container800>
-          <CatchyBanner
-            color="white"
-            title="Designer Brands"
-            fontSize="4.5rem"
-            background="rgb(218, 18, 31)"
-          />
-          <AliceGallery
-            gatsbyImageArray
-            images={data.heroCarousel.nodes}
-            dotsDisabled={true}
-            autoPlay
-            duration={1000}
-            autoPlayInterval={1000}
-            buttonsDisabled={true}
-            stopAutoPlayOnHover={false}
-            imageHeight={'50vh'}
-          >
-            <CatchyBanner
-              background="rgb(92, 52, 145)"
-              color="white"
-              title="Amazing Prices"
-            />
-          </AliceGallery>
-        </Container800>
-      </Section>
 
       <SectionGrey>
         <Container800>
