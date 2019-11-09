@@ -29,8 +29,27 @@ const mapboxExamples = () => {
 
       <Section>
         <Map1
-          title={`Simple Mapbox`}
+          title={`Le Shine Mapbox`}
           mapStyle="mapbox://styles/arhoy/ck2ktklfm3o8b1co185ptfskc"
+          width="90rem"
+          height="60rem"
+        />
+        <Map1
+          title={`Decimal Mapbox`}
+          mapStyle="mapbox://styles/arhoy/ck2quw2ih2vey1cmvllmze84r"
+          width="90rem"
+          height="60rem"
+        />
+        <Map1
+          title={`Light Mapbox`}
+          mapStyle="mapbox://styles/arhoy/cjzazjdwr0rr61cmwpxxsycwk"
+          width="90rem"
+          height="60rem"
+        />
+
+        <Map1
+          title={`Red Mapbox`}
+          mapStyle="mapbox://styles/arhoy/ck2qv28cm0bn11clf5uq6wnhs"
           width="90rem"
           height="60rem"
         />

@@ -34,6 +34,7 @@ const StyledFormTemplate1Purple = styled(StyledFormTemplate1)`
 const Button1 = styled(ButtonStyle2)`
   border-radius: 3px;
   padding: 1rem;
+  cursor: pointer;
 `;
 
 const StyledH2 = styled(H2)`

@@ -4,7 +4,11 @@ import Layout from '../../components/layouts/Layout';
 import { Section } from '../../components/reusableStyles/sections/Sections';
 import { H2, P } from '../../components/reusableStyles/typography/Typography';
 import MailChimpForm1 from '../../components/mailchimp/templates/MailChimpForm1';
-import { PopUpCard } from '../../components/reusableStyles/cards/PopUpCard';
+import {
+  PopUpCard1,
+  PopUpCard1Orange,
+  PopUpCard1Purple,
+} from '../../components/reusableStyles/cards/PopUpCard';
 
 const mailChimpForms = () => {
   return (
@@ -18,7 +22,9 @@ const mailChimpForms = () => {
 
         <Section>
           <H2> Other Templates </H2>
-          <PopUpCard />
+          <PopUpCard1 />
+          <PopUpCard1Orange />
+          <PopUpCard1Purple />
         </Section>
       </Layout>
     </>
