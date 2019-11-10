@@ -173,7 +173,7 @@ const BagTemplate = ({
                   data-item-name={productName}
                   data-item-image={mainImage.fluid.src}
                   data-item-price={discountPrice ? discountPrice : price}
-                  data-item-url={`/bags/${productSlug}`}
+                  data-item-url={`/products/${productSlug}`}
                 >
                   Add to Cart
                 </SnipCartButton1>

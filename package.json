@@ -65,8 +65,7 @@
     "react-text-loop": "^2.1.1",
     "react-typed": "^1.2.0",
     "reactjs-popup": "^1.5.0",
-    "theme-ui": "^0.2.43",
-    "uninstall": "0.0.0"
+    "theme-ui": "^0.2.43"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
