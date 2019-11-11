@@ -1,39 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { FaShippingFast } from 'react-icons/fa';
+
 import ReactTyped from 'react-typed';
 import { graphql } from 'gatsby';
+import Particles from 'react-particles-js';
 
-import Layout5 from '../components/layouts/Layout5';
+import MainLayout from '../components/layouts/MainLayout';
 import SEO from '../hooks/SEO';
 import {
   Section,
   Container800,
   SectionGrey,
-  SectionHexaGrey,
-  SectionParallelGrey,
 } from '../components/reusableStyles/sections/Sections';
 
 import BackgroundImage from 'gatsby-background-image';
-import { H2, A } from '../components/reusableStyles/typography/Typography';
+import Img from 'gatsby-image';
+import {
+  H2,
+  A,
+  H2Centered,
+} from '../components/reusableStyles/typography/Typography';
 import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
 
 import CatchyBanner from '../components/reusableStyles/banner/CatchyBanner';
 import BasicFeatureSection from '../components/features/BasicFeatureSection';
 
-import { ProductLayout1 } from '../components/products/ProductContainerStyles/ProductContainerStyle';
-import Products from '../components/products/Products';
-
-import AliceGallery from '../components/reusableStyles/carousel/AliceGallery';
-
-import 'react-alice-carousel/lib/alice-carousel.css';
 import NoStyleLink from '../components/Links/NoStyleLink';
-
-import getAllBagsHook from '../hooks/contentful/products/bags/getAllBagsHook';
-import getAllPantsHook from '../hooks/contentful/products/pants/getAllPantsHook';
-import getAllShoesHook from '../hooks/contentful/products/shoes/getAllShoesHook';
-import MailChimpEmailForm1 from '../components/mailchimp/MailChimpEmailForm1';
-import Map1 from '../components/mapbox/Map1';
+import {
+  ButtonStyle2Large,
+  ButtonStyle2,
+} from '../components/reusableStyles/buttons/Button';
 
 const P = styled.p`
   margin: 1.5rem 0rem;
@@ -45,80 +41,12 @@ const P = styled.p`
   }
 `;
 
-const HeroBackgroundImage = styled(BackgroundImage)`
-  width: 100vw;
-  height: 92vh;
-
-  background-size: cover;
-  background-position: top;
-  display: flex;
-  justify-content: stretch;
-  align-items: center;
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    width: 100%;
-    height: 50vh;
-
- 
-    align-items:flex-start;
-    
-`;
-
-const HeroBackgroundImageThird = styled(BackgroundImage)`
-  width: 33.33vw;
-  min-height: 30vh;
-  background-size: cover;
-  background-position: center;
-  opacity: 1 !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.4s ease-in;
-  &:hover {
-    background: ${props => props.theme.colors.blackTransparent};
-  }
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    width: 100%;
-    min-height: 30vh;
-`;
-
-const HeroBackgroundImageHalf = styled(BackgroundImage)`
-  width: 50vw;
-  min-height: 30vh;
-  background-size: cover;
-  background-position: center;
-  opacity: 1 !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.4s ease-in;
-  &:hover {
-    background: ${props => props.theme.colors.blackTransparent};
-  }
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    width: 100%;
-    min-height: 30vh;
-`;
-
 const CustomHighlight = styled.span`
   padding: 0px 4px;
   border-radius: 4px;
 
   margin: 0 2px;
   background: ${props => props.theme.colors.primaryTransparent};
-`;
-
-const CustomSection = styled(Section)`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  background: ${props => props.theme.colors.lightRed};
-  color: ${props => props.theme.colors.red};
-  font-weight: bold;
-`;
-
-const CenteredH2 = styled(H2)`
-  text-align: center;
 `;
 
 const HerosContainer = styled.div`
@@ -129,33 +57,9 @@ const HerosContainer = styled.div`
   }
 `;
 
-const HerosContainerSliced = styled(HerosContainer)`
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
-`;
-const TypeContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const IconContainerShipping = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 1rem;
-`;
-
-const HeroCatchyDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  & > * {
-    margin: 1rem 0;
-  }
-  align-items: flex-start;
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    display: none;
-  }
+const MainHeroCover = styled(HerosContainer)`
+  width: 100%;
+  height: 100vh;
 `;
 
 const FullNarrowBackgroundImage = styled(BackgroundImage)`
@@ -176,32 +80,124 @@ const CustomBannerContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(max-content, 35rem));
 `;
 
-const StyledItalicSpan = styled.span`
-  color: ${props => props.theme.colors.primary};
-  font-style: italic;
-  font-size: 2rem;
+const MainCenterDiv = styled.div`
+  position: absolute;
+  color: ${props => props.theme.colors.white};
+  z-index: 4;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
-const StyledItalicSpan2 = styled.span`
-  color: ${props => props.theme.colors.red};
-  font-size: 2rem;
-  font-style: italic;
+const StyledParticles = styled(Particles)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: ${props => props.theme.colors.black};
+  opacity: 0.9;
+`;
+const Blurb = styled.h1`
+  text-align: center;
+  color: ${props => props.theme.colors.white};
 `;
 
-const whyFasion = () => (
+const FashionDemos = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const CustomButtonStyle2 = styled(ButtonStyle2)`
+  transform: translate(0, 10vh);
+  padding: 1rem 2rem;
+  opacity: 0;
+  transition: all 0.4s ease-in;
+`;
+const DemoViewContainer = styled.div`
+  height: 40rem;
+  width: 30rem;
+  background: ${props => props.theme.colors.blackTransparent};
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  border-radius: 6px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transition: all 0.2s ease-in;
+`;
+
+const DemoImage = styled(Img)`
+  background-size: contain;
+
+  width: 100%;
+  height: 100%;
+`;
+
+const DemoImageContainer = styled.div`
+  height: 40rem;
+  width: 30rem;
+  margin: 2rem;
+
+  position: relative;
+
+  display: flex;
+  justify-content: flex-start;
+
+  &:before {
+    content: '';
+    position: absolute;
+    height: 40rem;
+    width: 30rem;
+    border: 3px solid ${props => props.theme.colors.primary};
+    box-sizing: border-box;
+    top: -2rem;
+    left: -2rem;
+    z-index: -1;
+  }
+  &:hover {
+    ${DemoViewContainer} {
+      opacity: 1;
+    }
+    ${CustomButtonStyle2} {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  }
+`;
+
+const whyRipple = () => (
   <>
     <P>
-      <strong>FashionTwo</strong> a blazingly fast Ecommerce platform powered by
+      <strong>RippleJS</strong> themes are blazingly fast website themes for any
+      purpose create by Aquasar Web Development. The JAMstack is the future of
+      web development, exploiting the power of front end frameworks like Gatsby
+      and taking full advantage of powerful APIs and microservices like
+      Snipcart, Algolia and Contentful to create a fast, user friendly browser
+      experience.
     </P>
     <P>
       <CustomHighlight> Gatsby </CustomHighlight> +
+      <CustomHighlight> React </CustomHighlight> +
       <CustomHighlight> Contentful </CustomHighlight> +
-      <CustomHighlight> Snipcart </CustomHighlight>
+      <CustomHighlight> Netlify </CustomHighlight> +
+      <CustomHighlight> Algolio </CustomHighlight> +
+      <CustomHighlight> Snipcart </CustomHighlight> &
+      <CustomHighlight> Much much more </CustomHighlight>
     </P>
     <P>
-      Faster and more SEO friendy than any frontend WordPress or Shopify site
+      "Faster and more SEO friendy than any frontend WordPress or Shopify site
       created by the vast majority of web design agencies and at a fraction of
-      the cost.
+      the cost."
     </P>
   </>
 );
@@ -239,6 +235,28 @@ const pricing = () => (
 
 export const query = graphql`
   {
+    logoTrans: file(
+      relativePath: { eq: "logos/main/RippleJSLogoTransparent.png" }
+    ) {
+      childImageSharp {
+        fixed(quality: 90, width: 300) {
+          ...GatsbyImageSharpFixed_noBase64
+        }
+      }
+    }
+
+    fashionDemos: allFile(
+      filter: { relativePath: { regex: "/demos/fashion/" } }
+    ) {
+      nodes {
+        childImageSharp {
+          fluid(maxWidth: 300, maxHeight: 400) {
+            ...GatsbyImageSharpFluid_noBase64
+          }
+        }
+      }
+    }
+
     picture1: file(relativePath: { eq: "woman.jpg" }) {
       childImageSharp {
         fluid(quality: 90, maxWidth: 1000) {
@@ -267,6 +285,7 @@ export const query = graphql`
         }
       }
     }
+
     picture5: file(relativePath: { eq: "runningshoes.jpg" }) {
       childImageSharp {
         fluid(quality: 90, maxWidth: 1000) {
@@ -309,200 +328,132 @@ export const query = graphql`
         }
       }
     }
-    heroCarousel: allFile(
-      filter: { relativePath: { regex: "/carouselArray1/" } }
-    ) {
-      nodes {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
-        }
-      }
-    }
   }
 `;
 
 export default ({ data }) => {
+  const [typingComplete, setTypingComplete] = useState(false);
+
+  const typingCompleteHandler = () => {
+    console.log('The typing has finished!');
+    setTypingComplete(true);
+  };
+
   return (
-    <Layout5 full={true}>
+    <MainLayout full={true}>
       <SEO title="Fashion two" description="Sample Fashion Store" />
-      <HerosContainerSliced>
-        <HeroBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
-          <HeroCatchyDiv>
-            <CatchyBanner
-              background="rgba(218, 18, 31,0.4)"
-              color="white"
-              title="Designer Brands"
-            />
-            <CatchyBanner
-              background="rgba(92, 52, 145,0.4)"
-              color="white"
-              title="Stunning Prices"
-            />
-            <CatchyBanner
-              background="rgba(19, 73, 178,0.4)"
-              color="white"
-              title="Shop Now"
-            />
-          </HeroCatchyDiv>
-        </HeroBackgroundImage>
-      </HerosContainerSliced>
+      <MainHeroCover>
+        <StyledParticles
+          params={{
+            particles: {
+              number: {
+                value: 250,
+              },
+              // color: {
+              //   value: 'white',
+              // },
+              shape: {
+                type: 'circle',
+                stroke: {
+                  width: 1,
+                  color: '#e2e2e2',
+                },
+              },
+              opacity: {
+                value: 0.2,
+                random: true,
+                anim: {
+                  enable: false,
+                  speed: 1,
+                },
+              },
 
-      <Section>
-        <CenteredH2>
-          Fashion Bags <StyledItalicSpan2>Trending</StyledItalicSpan2>
-        </CenteredH2>
-        <ProductLayout1>
-          <Products products={getAllBagsHook()} productType="products" />
-        </ProductLayout1>
-      </Section>
-
-      <HerosContainer>
-        <HeroBackgroundImageThird fluid={data.picture7.childImageSharp.fluid}>
-          <NoStyleLink to="/bags">
-            <CatchyBanner
-              color="white"
-              title="Shop"
-              fontSize="4.5rem"
-              background="rgba(218, 18, 31,0.4)"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageThird>
-        <HeroBackgroundImageThird fluid={data.picture8.childImageSharp.fluid}>
-          <NoStyleLink to="/shoes">
-            <CatchyBanner
-              color="white"
-              title="This"
-              fontSize="4.5rem"
-              background="rgba(92, 52, 145,0.4)"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageThird>
-        <HeroBackgroundImageHalf fluid={data.picture9.childImageSharp.fluid}>
-          <NoStyleLink to="/pants">
-            <CatchyBanner
-              color="white"
-              title="Look"
-              fontSize="4.5rem"
-              background="rgba(19, 73, 178,0.4)"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageHalf>
-      </HerosContainer>
-
-      <SectionHexaGrey>
-        <CenteredH2>
-          Men's Jeans <StyledItalicSpan>Hot</StyledItalicSpan>
-        </CenteredH2>
-        <ProductLayout1>
-          <Products products={getAllPantsHook()} productType="products" />
-        </ProductLayout1>
-      </SectionHexaGrey>
-
-      <HerosContainer>
-        <HeroBackgroundImageHalf fluid={data.picture4.childImageSharp.fluid}>
-          <NoStyleLink to="/pants">
-            <CatchyBanner
-              color="white"
-              title="Jeans"
-              fontSize="4.5rem"
-              background="none"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageHalf>
-        <HeroBackgroundImageThird fluid={data.picture5.childImageSharp.fluid}>
-          <NoStyleLink to="/shoes">
-            <CatchyBanner
-              color="white"
-              title="Shoes"
-              fontSize="4.5rem"
-              background="none"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageThird>
-        <HeroBackgroundImageThird fluid={data.picture6.childImageSharp.fluid}>
-          <NoStyleLink to="/bags">
-            <CatchyBanner
-              color="white"
-              title="Bags"
-              fontSize="4.5rem"
-              background="none"
-            />
-          </NoStyleLink>
-        </HeroBackgroundImageThird>
-      </HerosContainer>
-
-      <Section>
-        <CenteredH2>
-          Women's Shoes <StyledItalicSpan>Latest</StyledItalicSpan>
-        </CenteredH2>
-        <ProductLayout1>
-          <Products products={getAllShoesHook()} productType="products" />
-        </ProductLayout1>
-      </Section>
-
-      <SectionParallelGrey>
-        <Map1
-          title={`Store Locations`}
-          mapStyle="mapbox://styles/arhoy/ck2ktklfm3o8b1co185ptfskc"
-          width="100%"
-          height="50vh"
+              size: {
+                value: 5,
+                random: false,
+              },
+              line_linked: {
+                enable: true,
+                distance: 90,
+                color: '#fff',
+                width: 1,
+              },
+              move: {
+                enable: true,
+                speed: 2,
+                direction: 'none',
+              },
+            },
+            interactivity: {
+              events: {
+                onhover: {
+                  enable: true,
+                  mode: 'repulse',
+                },
+                onclick: {
+                  enable: true,
+                  mode: 'bubble',
+                },
+              },
+              modes: {
+                repulse: {
+                  distance: 50,
+                  duration: 10,
+                },
+                bubble: {
+                  distance: 100,
+                  size: 50,
+                },
+              },
+            },
+          }}
         />
-      </SectionParallelGrey>
+
+        <MainCenterDiv>
+          <Img fixed={data.logoTrans.childImageSharp.fixed} />
+          <Blurb>
+            {typingComplete ? (
+              <ButtonStyle2Large>Learn More</ButtonStyle2Large>
+            ) : (
+              <ReactTyped
+                strings={[
+                  'Lightning Fast Development',
+                  'Full Ecommerce Solutions',
+                  'Complete Customization',
+                  'Full Support',
+                  'Fast, Slick, Modern ',
+                  'Learn More',
+                ]}
+                typeSpeed={50}
+                backSpeed={0}
+                smartBackspace
+                onComplete={typingCompleteHandler}
+              >
+                <span type="text" />
+              </ReactTyped>
+            )}
+          </Blurb>
+        </MainCenterDiv>
+      </MainHeroCover>
 
       <Section>
-        <Container800>
-          <CatchyBanner
-            color="white"
-            title="Designer Brands"
-            fontSize="4.5rem"
-            background="rgb(218, 18, 31)"
-          />
-          <AliceGallery
-            gatsbyImageArray
-            images={data.heroCarousel.nodes}
-            dotsDisabled={true}
-            autoPlay
-            duration={1000}
-            autoPlayInterval={1000}
-            buttonsDisabled={true}
-            stopAutoPlayOnHover={false}
-            imageHeight={'50vh'}
-          >
-            <CatchyBanner
-              background="rgb(92, 52, 145)"
-              color="white"
-              title="Amazing Prices"
-            />
-          </AliceGallery>
-        </Container800>
+        <H2Centered> FASHION DEMOS</H2Centered>
+        <FashionDemos>
+          {data.fashionDemos.nodes.map((node, i) => (
+            <NoStyleLink key={i} to="/demos/fashion-six">
+              <DemoImageContainer>
+                <DemoImage fluid={node.childImageSharp.fluid} />
+                <DemoViewContainer>
+                  <CustomButtonStyle2>View Demo</CustomButtonStyle2>
+                </DemoViewContainer>
+              </DemoImageContainer>
+            </NoStyleLink>
+          ))}
+        </FashionDemos>
       </Section>
-
-      <CustomSection>
-        <Container800>
-          <TypeContainer>
-            <IconContainerShipping>
-              <FaShippingFast />
-            </IconContainerShipping>
-
-            <ReactTyped
-              strings={[
-                'Free Shipping on orders over $50',
-                'Free Shipping actually on orders over $40',
-                'Free Shipping even on orders over $20!',
-                'We have free shipping on all orders over $20 ❤',
-              ]}
-              typeSpeed={40}
-              backSpeed={10}
-              smartBackspace
-              loop
-            >
-              <span type="text" />
-            </ReactTyped>
-          </TypeContainer>
-        </Container800>
-      </CustomSection>
+      <Section>
+        <H2Centered> More Themes Coming Soon </H2Centered>
+      </Section>
 
       <FullNarrowBackgroundImage fluid={data.picture3.childImageSharp.fluid}>
         <CustomBannerContainer>
@@ -519,15 +470,17 @@ export default ({ data }) => {
                 textAlign: 'center',
               }}
             >
-              Up to 50% of selected brands
+              Up to 50% Off
             </p>
           </CatchyBanner>
         </CustomBannerContainer>
       </FullNarrowBackgroundImage>
-
       <SectionGrey>
         <Container800>
-          <BasicFeatureSection heading="Why FashionTwo" text={whyFasion()} />
+          <BasicFeatureSection
+            heading="Why RippleJS Theme"
+            text={whyRipple()}
+          />
         </Container800>
       </SectionGrey>
       <Section>
@@ -535,20 +488,17 @@ export default ({ data }) => {
           <BasicFeatureSection heading="About Me" text={aboutMe()} />
         </Container800>
       </Section>
-
       <SectionGrey>
         <Container800>
           <BasicFeatureSection heading="Pricing" text={pricing()} />
         </Container800>
       </SectionGrey>
-
       <Section>
         <Container800>
           <H2>Contact US</H2>
           <SimpleNetlifyForm />
         </Container800>
       </Section>
-      <MailChimpEmailForm1 timeToPopUp={4000} />
-    </Layout5>
+    </MainLayout>
   );
 };

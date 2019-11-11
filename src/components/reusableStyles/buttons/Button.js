@@ -34,4 +34,9 @@ const ButtonStyle2 = styled.button`
   }
 `;
 
-export { ButtonStyle1, ButtonStyle2 };
+const ButtonStyle2Large = styled(ButtonStyle2)`
+  padding: 1rem 2rem;
+  font-size: 2rem;
+`;
+
+export { ButtonStyle1, ButtonStyle2, ButtonStyle2Large };

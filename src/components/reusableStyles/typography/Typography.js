@@ -24,6 +24,11 @@ const H2 = styled.h2`
   color: ${props => props.theme.colors.black};
 `;
 
+const H2Centered = styled(H2)`
+  text-align: center;
+  margin: 2rem 0;
+`;
+
 const A = styled.a`
   color: ${props => props.theme.colors.black};
   text-decoration: none;
@@ -47,4 +52,4 @@ const P = styled.p`
   padding: 1rem 0rem;
 `;
 
-export { H1, H2, A, Li, Ul, Span, Bold, P, ProductPageH1 };
+export { H1, H2, H2Centered, A, Li, Ul, Span, Bold, P, ProductPageH1 };

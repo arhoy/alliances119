@@ -43,7 +43,6 @@ const List5 = () => {
 
         <MegaMenuLi>
           <MegaMenuLink to="/demos/fashion-one">Fashion One</MegaMenuLink>
-          <MegaMenuSpan>Hot</MegaMenuSpan>
         </MegaMenuLi>
         <MegaMenuLi>
           <MegaMenuLink to="/demos/fashion-two">Fashion Two</MegaMenuLink>
@@ -56,6 +55,10 @@ const List5 = () => {
         </MegaMenuLi>
         <MegaMenuLi>
           <MegaMenuLink to="/demos/fashion-five">Fashion Five</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/demos/fashion-six">Fashion Six</MegaMenuLink>{' '}
+          <MegaMenuSpan>Hot</MegaMenuSpan>
         </MegaMenuLi>
       </MegaMenuUl>
       <MegaMenuUl>
