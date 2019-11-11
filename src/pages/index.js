@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-
+import * as Scroll from 'react-scroll';
 import ReactTyped from 'react-typed';
 import { graphql } from 'gatsby';
 import Particles from 'react-particles-js';
@@ -413,7 +413,14 @@ export default ({ data }) => {
           <Img fixed={data.logoTrans.childImageSharp.fixed} />
           <Blurb>
             {typingComplete ? (
-              <ButtonStyle2Large>Learn More</ButtonStyle2Large>
+              <Scroll.Link
+                to="rippleDemos"
+                smooth={true}
+                duration={500}
+                offset={-30}
+              >
+                <ButtonStyle2Large>Learn More</ButtonStyle2Large>
+              </Scroll.Link>
             ) : (
               <ReactTyped
                 strings={[
@@ -437,7 +444,10 @@ export default ({ data }) => {
       </MainHeroCover>
 
       <Section>
-        <H2Centered> FASHION DEMOS</H2Centered>
+        <Scroll.Element id="rippleDemos">
+          <H2Centered> DEMOS</H2Centered>
+        </Scroll.Element>
+
         <FashionDemos>
           {data.fashionDemos.nodes.map((node, i) => (
             <NoStyleLink key={i} to="/demos/fashion-six">
@@ -452,7 +462,7 @@ export default ({ data }) => {
         </FashionDemos>
       </Section>
       <Section>
-        <H2Centered> More Themes Coming Soon </H2Centered>
+        <H2Centered> Many More Themes Coming Soon </H2Centered>
       </Section>
 
       <FullNarrowBackgroundImage fluid={data.picture3.childImageSharp.fluid}>
