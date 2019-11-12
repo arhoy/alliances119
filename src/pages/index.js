@@ -30,6 +30,10 @@ import {
   ButtonStyle2Large,
   ButtonStyle2,
 } from '../components/reusableStyles/buttons/Button';
+import {
+  CustomHighlight2,
+  CustomHighlight2Primary,
+} from '../components/reusableStyles/highlights/Highlights';
 
 const P = styled.p`
   margin: 1.5rem 0rem;
@@ -39,14 +43,6 @@ const P = styled.p`
     text-align: center;
     margin: 3rem 0rem;
   }
-`;
-
-const CustomHighlight = styled.span`
-  padding: 0px 4px;
-  border-radius: 4px;
-
-  margin: 0 2px;
-  background: ${props => props.theme.colors.primaryTransparent};
 `;
 
 const HerosContainer = styled.div`
@@ -115,9 +111,18 @@ const FashionDemos = styled.div`
 
 const CustomButtonStyle2 = styled(ButtonStyle2)`
   transform: translate(0, 10vh);
+
   padding: 1rem 2rem;
   opacity: 0;
-  transition: all 0.4s ease-in;
+  border-radius: 50%;
+
+  transition: border-radius 0.2s ease-in 0.2s;
+  & span {
+    display: flex;
+    font-size: 2.4rem;
+    justify-content: center;
+    text-align: center;
+  }
 `;
 const DemoViewContainer = styled.div`
   height: 40rem;
@@ -151,7 +156,15 @@ const DemoImageContainer = styled.div`
   position: relative;
 
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
+  & h3 {
+    font-family: Poppins;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    background: ${props => props.theme.colors.primaryLight};
+    color: ${props => props.theme.colors.white};
+  }
 
   &:before {
     content: '';
@@ -170,6 +183,7 @@ const DemoImageContainer = styled.div`
     }
     ${CustomButtonStyle2} {
       transform: translate(0, 0);
+      border-radius: 1rem;
       opacity: 1;
     }
   }
@@ -186,13 +200,13 @@ const whyRipple = () => (
       experience.
     </P>
     <P>
-      <CustomHighlight> Gatsby </CustomHighlight> +
-      <CustomHighlight> React </CustomHighlight> +
-      <CustomHighlight> Contentful </CustomHighlight> +
-      <CustomHighlight> Netlify </CustomHighlight> +
-      <CustomHighlight> Algolio </CustomHighlight> +
-      <CustomHighlight> Snipcart </CustomHighlight> &
-      <CustomHighlight> Much much more </CustomHighlight>
+      <CustomHighlight2> Gatsby </CustomHighlight2> +
+      <CustomHighlight2> React </CustomHighlight2> +
+      <CustomHighlight2> Contentful </CustomHighlight2> +
+      <CustomHighlight2> Netlify </CustomHighlight2> +
+      <CustomHighlight2> Algolio </CustomHighlight2> +
+      <CustomHighlight2> Snipcart </CustomHighlight2> &
+      <CustomHighlight2> Much much more </CustomHighlight2>
     </P>
     <P>
       "Faster and more SEO friendy than any frontend WordPress or Shopify site
@@ -211,10 +225,10 @@ const aboutMe = () => (
       greatest technoligies. These include:
     </P>
     <P>
-      <CustomHighlight> JAM Stack </CustomHighlight> &
-      <CustomHighlight> MERN Stack </CustomHighlight> &
-      <CustomHighlight> Gatsby </CustomHighlight> &
-      <CustomHighlight> Contentful </CustomHighlight>
+      <CustomHighlight2> JAM Stack </CustomHighlight2> &
+      <CustomHighlight2> MERN Stack </CustomHighlight2> &
+      <CustomHighlight2> Gatsby </CustomHighlight2> &
+      <CustomHighlight2> Contentful </CustomHighlight2>
     </P>
     <P>
       You can read more on my about page:{' '}
@@ -223,13 +237,34 @@ const aboutMe = () => (
   </>
 );
 
-const pricing = () => (
+const featuresText = () => (
   <P>
-    What platform I use to develop a custom site for a client depends on a
-    individual case by case base on a wide variety of factors such as budget,
-    inventory, transaction cost and client preference. For more information on
-    pricing, please check out my pricing page:{' '}
-    <A href="https://aquasar.io/pricing/">here</A>
+    What you get with the Ripple Theme? You will get a fully functional and
+    developer supported modern web app like in the demos
+    <br />
+    <br />
+    <CustomHighlight2Primary> Lightning Fast Website </CustomHighlight2Primary>
+    <CustomHighlight2Primary> Algolia Search </CustomHighlight2Primary>
+    <CustomHighlight2Primary> Website Chat </CustomHighlight2Primary>
+    <CustomHighlight2Primary>Built In Dynamic SEO tags</CustomHighlight2Primary>
+    <CustomHighlight2Primary> Contentful Product CMS </CustomHighlight2Primary>
+    <CustomHighlight2Primary>
+      Customized MailChimp Popup
+    </CustomHighlight2Primary>
+    <CustomHighlight2Primary> Customized Mapbox Map </CustomHighlight2Primary>
+    <CustomHighlight2Primary> Optimized Images </CustomHighlight2Primary>
+    <CustomHighlight2Primary>
+      Conversion Optimized Checkout
+    </CustomHighlight2Primary>
+    <CustomHighlight2Primary> Hosting </CustomHighlight2Primary>
+    <CustomHighlight2Primary>6 Month Developer Support</CustomHighlight2Primary>
+    <CustomHighlight2Primary>Subscriber Form</CustomHighlight2Primary>
+    <br />
+    <br />
+    Sounds pretty good? If so, give us a shout! In addition to the features
+    above, you will get a local experienced developer who wants to team up with
+    you to help grow your business and online presence. Prices for a Ripple
+    Theme start at $300 build fee + $10/month for web hosting and support.
   </P>
 );
 
@@ -252,6 +287,18 @@ export const query = graphql`
         childImageSharp {
           fluid(maxWidth: 300, maxHeight: 400) {
             ...GatsbyImageSharpFluid_noBase64
+          }
+        }
+      }
+    }
+
+    demos: allContentfulPortfolioDemos {
+      nodes {
+        demoSlug
+        demoTitle
+        demoImage {
+          fluid(quality: 99, maxWidth: 600, maxHeight: 800) {
+            ...GatsbyContentfulFluid_withWebp
           }
         }
       }
@@ -426,10 +473,12 @@ export default ({ data }) => {
                 strings={[
                   'Lightning Fast Development',
                   'Full Ecommerce Solutions',
+                  'Optimized Checkout Process',
+                  'Chat Integration',
                   'Complete Customization',
                   'Full Support',
                   'Fast, Slick, Modern ',
-                  'Learn More',
+                  'Quick Development',
                 ]}
                 typeSpeed={50}
                 backSpeed={0}
@@ -449,13 +498,16 @@ export default ({ data }) => {
         </Scroll.Element>
 
         <FashionDemos>
-          {data.fashionDemos.nodes.map((node, i) => (
-            <NoStyleLink key={i} to="/demos/fashion-six">
+          {data.demos.nodes.map((node, i) => (
+            <NoStyleLink key={node.demoTitle} to={`/demos/${node.demoSlug}`}>
               <DemoImageContainer>
-                <DemoImage fluid={node.childImageSharp.fluid} />
+                <DemoImage fluid={node.demoImage.fluid} />
                 <DemoViewContainer>
-                  <CustomButtonStyle2>View Demo</CustomButtonStyle2>
+                  <CustomButtonStyle2>
+                    <span>Live</span> <span>Demo</span>
+                  </CustomButtonStyle2>
                 </DemoViewContainer>
+                <h3>{node.demoTitle}</h3>
               </DemoImageContainer>
             </NoStyleLink>
           ))}
@@ -495,14 +547,15 @@ export default ({ data }) => {
       </SectionGrey>
       <Section>
         <Container800>
-          <BasicFeatureSection heading="About Me" text={aboutMe()} />
+          <BasicFeatureSection heading="Features" text={featuresText()} />
         </Container800>
       </Section>
       <SectionGrey>
         <Container800>
-          <BasicFeatureSection heading="Pricing" text={pricing()} />
+          <BasicFeatureSection heading="About Me" text={aboutMe()} />
         </Container800>
       </SectionGrey>
+
       <Section>
         <Container800>
           <H2>Contact US</H2>
