@@ -85,6 +85,11 @@ export const query = graphql`
       rating
       color
     }
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
   }
 `;
 
@@ -92,6 +97,7 @@ const PantTemplate = ({
   data: {
     item,
     review: { nodes: reviews },
+    site,
   },
 }) => {
   const {
@@ -188,7 +194,7 @@ const PantTemplate = ({
                   data-item-name={productName}
                   data-item-image={mainImage.fluid.src}
                   data-item-price={discountPrice ? discountPrice : price}
-                  data-item-url={`/products/${productSlug}`}
+                  data-item-url={`${site.siteMetadata.siteUrl}/products/${productSlug}`}
                 >
                   Add to Cart
                 </SnipCartButton1>
