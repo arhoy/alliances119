@@ -1,9 +1,9 @@
 import React from 'react';
+import * as Scroll from 'react-scroll';
 
 import styled from '@emotion/styled';
 
 import Logo from '../logos/main/Logo';
-import { Link } from 'gatsby';
 
 const Header = styled.header`
   height: 80px;
@@ -41,10 +41,44 @@ const NavContainer = styled.nav`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.span`
+  position: relative;
+  display: inline-block;
   color: ${props => props.theme.colors.white};
   text-decoration: none;
   margin: 0 3px;
+  cursor: pointer;
+
+  &:before {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0px;
+    height: 2px;
+    content: '';
+    transition: all 0.2s ease-in;
+  }
+  &:hover {
+    &:before {
+      box-shadow: 0 0px 15px ${props => props.theme.colors.coolTeal};
+      width: 100%;
+    }
+  }
+`;
+const StyledLinkRed = styled(StyledLink)`
+  &:before {
+    background: ${props => props.theme.colors.red};
+  }
+`;
+const StyledLinkGreen = styled(StyledLink)`
+  &:before {
+    background: ${props => props.theme.colors.laserGreen};
+  }
+`;
+const StyledLinkBlue = styled(StyledLink)`
+  &:before {
+    background: ${props => props.theme.colors.laserBlue};
+  }
 `;
 
 const NavMain = () => {
@@ -54,8 +88,20 @@ const NavMain = () => {
         <Logo />
 
         <NavContainer>
-          <StyledLink to="/"> Examples</StyledLink>
-          <StyledLink to="/">587 772 5536</StyledLink>
+          <Scroll.Link
+            to="rippleDemos"
+            smooth={true}
+            duration={500}
+            offset={-30}
+          >
+            <StyledLinkRed> Examples</StyledLinkRed>
+          </Scroll.Link>
+          <Scroll.Link to="whyRipple" smooth={true} duration={500}>
+            <StyledLinkGreen> About</StyledLinkGreen>
+          </Scroll.Link>
+          <Scroll.Link to="contact" smooth={true} duration={500}>
+            <StyledLinkBlue> Contact</StyledLinkBlue>
+          </Scroll.Link>
         </NavContainer>
       </Header>
     </>

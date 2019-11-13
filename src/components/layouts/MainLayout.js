@@ -12,7 +12,7 @@ import MainFooter from './MainFooter';
 const theme = {
   colors: {
     primary: 'rgb(92, 52, 145)',
-    primaryDark: 'rgb(63, 3, 122)',
+    primaryDark: 'rgb(66, 37, 95)',
     primaryLight: 'rgb(148, 103, 206)',
     primaryVeryLight: 'rgb(232, 213, 250)',
     primaryTransparent: 'rgba(92, 52, 145,0.2)',
@@ -24,10 +24,13 @@ const theme = {
     blackTransparent: 'rgba(41, 43, 46, 0.4)',
     darkgrey: 'rgb(109, 109, 109)',
     red: 'rgb(218, 18, 31)',
+    laserGreen: 'rgb(14, 205, 109)',
+    laserBlue: 'RGB(38, 132, 255)',
     lightRed: 'rgb(232, 180, 182)',
     blue: 'rgb(19, 73, 178)',
     lightGreen: '#D4EDDA',
     green: 'rgb(31, 90, 46)',
+    coolTeal: 'rgba(70, 250, 250, 1)',
   },
   pageWidth: {
     fixed: '800px',

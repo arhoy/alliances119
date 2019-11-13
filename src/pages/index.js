@@ -492,10 +492,8 @@ export default ({ data }) => {
         </MainCenterDiv>
       </MainHeroCover>
 
-      <Section>
-        <Scroll.Element id="rippleDemos">
-          <H2Centered> DEMOS</H2Centered>
-        </Scroll.Element>
+      <Section id="rippleDemos">
+        <H2Centered> DEMOS</H2Centered>
 
         <FashionDemos>
           {data.demos.nodes.map((node, i) => (
@@ -537,7 +535,7 @@ export default ({ data }) => {
           </CatchyBanner>
         </CustomBannerContainer>
       </FullNarrowBackgroundImage>
-      <SectionGrey>
+      <SectionGrey id="whyRipple">
         <Container800>
           <BasicFeatureSection
             heading="Why RippleJS Theme"
@@ -556,7 +554,7 @@ export default ({ data }) => {
         </Container800>
       </SectionGrey>
 
-      <Section>
+      <Section id="contact">
         <Container800>
           <H2>Contact US</H2>
           <SimpleNetlifyForm />
