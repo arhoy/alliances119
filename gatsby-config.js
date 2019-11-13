@@ -2,7 +2,13 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const URL = 'https://www.ripplejs.com';
+// Define site URL here
+let URL;
+if (process.env.NODE_ENV === 'production') {
+  URL = 'https://www.ripplejs.com';
+} else {
+  URL = 'http://localhost:8000';
+}
 
 const queries = require('./src/utils/algolia');
 

@@ -87,6 +87,11 @@ export const query = graphql`
       rating
       color
     }
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
   }
 `;
 
@@ -97,6 +102,7 @@ const BagTemplate = ({
   data: {
     item,
     review: { nodes: reviews },
+    site,
   },
 }) => {
   const {
@@ -124,7 +130,9 @@ const BagTemplate = ({
       [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
     },
   };
-  console.log('product slug is', productSlug);
+  console.log(
+    `product slug is, ${site.siteMetadata.siteUrl}/products/${productSlug}`,
+  );
 
   return (
     <Layout5 full={true}>
