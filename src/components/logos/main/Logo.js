@@ -18,7 +18,7 @@ const Logo = () => {
       }
     `,
   );
-  console.log(data);
+
   return <Img fixed={data.logoNavigation.childImageSharp.fixed} />;
 };
 

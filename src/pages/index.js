@@ -382,7 +382,6 @@ export default ({ data }) => {
   const [typingComplete, setTypingComplete] = useState(false);
 
   const typingCompleteHandler = () => {
-    console.log('The typing has finished!');
     setTypingComplete(true);
   };
 

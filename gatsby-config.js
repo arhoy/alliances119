@@ -2,17 +2,18 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const URL = 'https://aquasar.io';
+const URL = 'https://www.ripplejs.com';
 
 const queries = require('./src/utils/algolia');
 
 module.exports = {
   siteMetadata: {
-    title: 'Aquasar - Web development, Gatsby and React Articles',
-    description: 'Documenting my web development journey with Gatsby and React',
+    title: 'Ripple JS - Complete Gatsby Ecommerce Themes',
+    description:
+      'Ripple JS offers the fastest themes and development for Ecommerce powered by Contentful and Snipcart',
     author: 'Alex Quasar',
     twitterUsername: '@_aquasar',
-    image: '/default.jpg',
+    image: '/default.png',
     siteUrl: URL,
   },
   plugins: [
@@ -108,9 +109,6 @@ module.exports = {
       resolve: 'gatsby-plugin-crisp-chat',
       options: {
         websiteId: process.env.CRISP_WEBSITE_ID,
-        // enableDuringDevelop: false, // Optional. Disables Crisp Chat during gatsby develop. Defaults to true.
-        // defer: true, // Optional. Sets the Crisp loading script to defer instead of async. Defaults to false.
-        // enableImprovedAccessibility: false // Optional. Sets aria-label attribute on pop-up icon for screen readers. Defaults to true
       },
     },
   ],
