@@ -18,7 +18,6 @@ import {
   ProductContainer,
   ProductContentContainer,
   ProductImageContainer,
-  StyledImage,
   ProductTitle,
   ProductRating,
   ProductRatingStars,
@@ -33,7 +32,7 @@ import {
 import renderProductRating from '../helpers/renderRating';
 import calculatePercentage from '../helpers/calculatePercentages';
 
-import RRC from '../components/reusableStyles/carousel/RRC';
+import RRCWithZoom from '../components/reusableStyles/carousel/RRCWithZoom';
 import prependIf from '../helpers/prependIf';
 import ContentfulProductReviews from '../components/reviews/ContentfulProductReviews';
 import ProductBranding from '../components/products/ProductBranding';
@@ -120,11 +119,12 @@ const PantTemplate = ({
     renderNode: {
       'embedded-asset-block': node => {
         const { file, title } = node.data.target.fields;
-        return (
-          <div>
-            <img width="400" src={file['en-US'].url} alt={title} />
-          </div>
-        );
+        if (file)
+          return (
+            <div>
+              <img width="400" src={file['en-US'].url} alt={title} />
+            </div>
+          );
       },
       'embedded-entry-block': node => {
         const { name, images, description } = node.data.target.fields;
@@ -170,9 +170,9 @@ const PantTemplate = ({
                 </ProductRating>
 
                 {otherImages ? (
-                  <RRC images={prependIf(mainImage, otherImages)} />
+                  <RRCWithZoom images={prependIf(mainImage, otherImages)} />
                 ) : (
-                  <StyledImage fluid={mainImage.fluid} alt={productName} />
+                  <RRCWithZoom images={[mainImage]} />
                 )}
 
                 {discountPrice ? (

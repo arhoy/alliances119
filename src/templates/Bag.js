@@ -20,7 +20,6 @@ import {
   ProductContainer,
   ProductContentContainer,
   ProductImageContainer,
-  StyledImage,
   ProductTitle,
   ProductRating,
   ProductRatingStars,
@@ -35,7 +34,7 @@ import {
 import renderProductRating from '../helpers/renderRating';
 import calculatePercentage from '../helpers/calculatePercentages';
 
-import RRC from '../components/reusableStyles/carousel/RRC';
+import RRCWithZoom from '../components/reusableStyles/carousel/RRCWithZoom';
 import prependIf from '../helpers/prependIf';
 import ContentfulProductReviews from '../components/reviews/ContentfulProductReviews';
 import ProductBranding from '../components/products/ProductBranding';
@@ -130,9 +129,6 @@ const BagTemplate = ({
       [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
     },
   };
-  console.log(
-    `product slug is, ${site.siteMetadata.siteUrl}/products/${productSlug}`,
-  );
 
   return (
     <Layout5 full={true}>
@@ -158,9 +154,9 @@ const BagTemplate = ({
                 </ProductRating>
 
                 {otherImages ? (
-                  <RRC images={prependIf(mainImage, otherImages)} />
+                  <RRCWithZoom images={prependIf(mainImage, otherImages)} />
                 ) : (
-                  <StyledImage fluid={mainImage.fluid} alt={productName} />
+                  <RRCWithZoom images={[mainImage]} />
                 )}
 
                 {discountPrice ? (

@@ -117,5 +117,11 @@ module.exports = {
         websiteId: process.env.CRISP_WEBSITE_ID,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GATSBY_GOOGLE_ANALYTICS_ID,
+      },
+    },
   ],
 };

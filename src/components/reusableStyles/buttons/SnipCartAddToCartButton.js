@@ -6,6 +6,8 @@ const SnipCartButton1 = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
+  max-width: 30rem;
+  margin: 0 auto;
   background: ${props => props.theme.colors.primary};
   color: ${props => props.theme.colors.white};
   font-weight: bolder;

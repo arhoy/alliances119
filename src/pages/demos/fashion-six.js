@@ -31,7 +31,9 @@ import NoStyleLink from '../../components/Links/NoStyleLink';
 
 import getAllBagsHook from '../../hooks/contentful/products/bags/getAllBagsHook';
 import getAllPantsHook from '../../hooks/contentful/products/pants/getAllPantsHook';
+import getAllShirtsHook from '../../hooks/contentful/products/shirts/getAllShirtsHook';
 import getAllShoesHook from '../../hooks/contentful/products/shoes/getAllShoesHook';
+
 import MailChimpEmailForm1 from '../../components/mailchimp/MailChimpEmailForm1';
 import Map1 from '../../components/mapbox/Map1';
 
@@ -399,6 +401,15 @@ export default ({ data }) => {
           <Products products={getAllPantsHook()} productType="products" />
         </ProductLayout1>
       </SectionHexaGrey>
+
+      <Section>
+        <CenteredH2>
+          Men's Shirts <StyledItalicSpan>New</StyledItalicSpan>
+        </CenteredH2>
+        <ProductLayout1>
+          <Products products={getAllShirtsHook()} productType="products" />
+        </ProductLayout1>
+      </Section>
 
       <HerosContainer>
         <HeroBackgroundImageHalf fluid={data.picture4.childImageSharp.fluid}>

@@ -23,6 +23,11 @@ exports.createPages = async ({ actions, graphql }) => {
           productSlug
         }
       }
+      allShirt: allContentfulFashionTwoShirts {
+        nodes {
+          productSlug
+        }
+      }
     }
   `);
 
@@ -70,21 +75,16 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 
-  // // mapbox to work
-  // exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  //   if (stage === 'build-html') {
-  //     actions.setWebpackConfig({
-  //       module: {
-  //         rules: [
-  //           {
-  //             test: /mapbox-gl/,
-  //             use: loaders.null(),
-  //           },
-  //         ],
-  //       },
-  //     });
-  //   }
-  // };
+  // create page for each shirt product and list them all in /products
+  data.allShirt.nodes.forEach(item => {
+    createPage({
+      path: `products/${item.productSlug}`,
+      component: path.resolve('./src/templates/Shirt.js'),
+      context: {
+        slug: item.productSlug,
+      },
+    });
+  });
 
   // blog template w/ pagination
   // const posts = data.posts.nodes;

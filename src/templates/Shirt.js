@@ -5,9 +5,7 @@ import Layout5 from '../components/layouts/Layout5';
 import SEO from '../hooks/SEO';
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 
-import { P, Bold } from '../components/reusableStyles/typography/Typography';
 import { TagContainer, Tag } from '../components/reusableStyles/tags/Tag';
 import {
   Section,
@@ -41,7 +39,7 @@ import ProductBranding from '../components/products/ProductBranding';
 
 // run template query
 export const query = graphql`
-  query shoeTemplateQuery($slug: String!) {
+  query shirtTemplateQuery($slug: String!) {
     review: allContentfulReviews(
       filter: { productName: { productSlug: { eq: $slug } } }
     ) {
@@ -61,7 +59,7 @@ export const query = graphql`
       }
     }
 
-    item: contentfulFashionTwoShoes(productSlug: { eq: $slug }) {
+    item: contentfulFashionTwoShirts(productSlug: { eq: $slug }) {
       id
       productSlug
       productName
@@ -84,7 +82,6 @@ export const query = graphql`
       discountPrice
       tags
       rating
-      color
     }
     site {
       siteMetadata {
@@ -94,10 +91,7 @@ export const query = graphql`
   }
 `;
 
-const RTFBold = ({ children }) => <Bold>{children}</Bold>;
-const Text = ({ children }) => <P>{children}</P>;
-
-const ShoeTemplate = ({
+const ShirtTemplate = ({
   data: {
     item,
     review: { nodes: reviews },
@@ -121,12 +115,34 @@ const ShoeTemplate = ({
   } = item;
 
   const options = {
-    renderMark: {
-      [MARKS.BOLD]: text => <RTFBold>{text}</RTFBold>,
-    },
-
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+      'embedded-asset-block': node => {
+        const { file, title } = node.data.target.fields;
+        if (file && title) {
+          return (
+            <pre>
+              <img width="400" src={file['en-US'].url} alt={title} />
+            </pre>
+          );
+        }
+      },
+      'embedded-entry-block': node => {
+        const { name, images, description } = node.data.target.fields;
+        return (
+          <div>
+            <h3>{name['en-US']}</h3>
+            <img
+              width="400"
+              src={
+                images['en-US'][0].fields.file['en-US'].url ||
+                images['en-US'].fields.file['en-US'].url
+              }
+              alt={description['en-US']}
+            />
+            <p> {description['en-US']}</p>
+          </div>
+        );
+      },
     },
   };
 
@@ -158,6 +174,7 @@ const ShoeTemplate = ({
                 ) : (
                   <RRCWithZoom images={[mainImage]} />
                 )}
+
                 {discountPrice ? (
                   <PriceContainer>
                     <StyledOldPrice>${price}</StyledOldPrice>
@@ -208,4 +225,4 @@ const ShoeTemplate = ({
   );
 };
 
-export default ShoeTemplate;
+export default ShirtTemplate;
