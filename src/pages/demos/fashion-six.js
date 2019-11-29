@@ -134,6 +134,10 @@ const HerosContainer = styled.div`
 const HerosContainerSliced = styled(HerosContainer)`
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+  }
 `;
 const TypeContainer = styled.div`
   display: flex;

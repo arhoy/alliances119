@@ -25,34 +25,65 @@ const SectionHexaGrey = styled(Section)`
   background: ${props => props.theme.colors.lightgrey};
   -webkit-clip-path: polygon(
     50% 0%,
-    80% 10%,
+    75% 5%,
     100% 0,
     100% 100%,
-    80% 90%,
+    75% 96%,
     50% 100%,
-    20% 90%,
+    25% 95%,
     0 100%,
     0 0,
-    20% 10%
+    25% 4%
   );
   clip-path: polygon(
     50% 0%,
-    80% 10%,
+    75% 5%,
     100% 0,
     100% 100%,
-    80% 90%,
+    75% 96%,
     50% 100%,
-    20% 90%,
+    25% 95%,
     0 100%,
     0 0,
-    20% 10%
+    25% 4%
   );
+
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    -webkit-clip-path: polygon(
+      50% 0%,
+      75% 3%,
+      100% 0,
+      100% 100%,
+      75% 98%,
+      50% 100%,
+      24% 98%,
+      0 100%,
+      0 0,
+      24% 3%
+    );
+    clip-path: polygon(
+      50% 0%,
+      75% 3%,
+      100% 0,
+      100% 100%,
+      75% 98%,
+      50% 100%,
+      24% 98%,
+      0 100%,
+      0 0,
+      24% 3%
+    );
+  }
 `;
 
 const SectionParallelGrey = styled(Section)`
   background: ${props => props.theme.colors.lightgrey};
-  -webkit-clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
-  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
+  -webkit-clip-path: polygon(0 0, 100% 7%, 100% 100%, 0 93%);
+  clip-path: polygon(0 0, 100% 7%, 100% 100%, 0 93%);
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    -webkit-clip-path: polygon(0 0, 100vw 5vw, 100vw 100vw, 0 95vw);
+    clip-path: polygon(0 0, 100vw 5vw, 100vw 100vw, 0 95vw);
+  }
 `;
 
 const ProductPageTopSection = styled(Section)`
