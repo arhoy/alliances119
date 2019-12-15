@@ -16,3 +16,9 @@
 - Authentication: Netlify Identity Widget
 - CMS: Contentful
 - Other: Kofi
+
+## How to use
+
+- Add .env.development and .env.production files based on the .env.example file
+- npm i
+- gatsby develop

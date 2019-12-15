@@ -30,7 +30,11 @@ const IconContainer = styled.span`
 
 const Title = styled.span`
   font-weight: bolder;
+  cursor: pointer;
   color: ${props => props.theme.colors.primary};
+  &:hover {
+    display: inline-block;
+  }
 `;
 
 const Button = styled.button`
@@ -51,11 +55,11 @@ const Button = styled.button`
   }
 `;
 
-const MyMenu2 = ({ title, children }) => {
+const MyMenu2 = ({ title, children, color }) => {
   return (
     <Container>
       <Button>
-        <Title>{title}</Title>
+        <Title style={{ color }}>{title}</Title>
 
         <IconContainer>
           <FaCaretDown />
