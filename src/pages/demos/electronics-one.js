@@ -25,6 +25,7 @@ import NoStyleLink from '../../components/Links/NoStyleLink';
 
 const HerosContainer = styled.div`
   display: flex;
+  padding: 1rem 0;
 
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     flex-direction: column;
@@ -115,11 +116,6 @@ const StyledImage = styled.span`
 
 const StyledFaCanadianMapleLeaf = styled(FaCanadianMapleLeaf)`
   font-size: 7rem;
-`;
-
-const CustomSection = styled(Section)`
-  padding-bottom: 0;
-  margin-bottom: 0;
 `;
 
 const HeroBackgroundImageThird = styled(BackgroundImage)`
@@ -237,25 +233,6 @@ const electronicsOne = ({ data }) => {
         </HeroBackgroundImage>
       </HerosContainer>
 
-      <CustomSection>
-        <FullNarrowBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
-          <CustomBannerContainer>
-            <h4>Free Shipping</h4>
-            <h4>Low Prices</h4>
-            <h4>Amazing Customer Support</h4>
-            <h4>Made In Canada</h4>
-          </CustomBannerContainer>
-        </FullNarrowBackgroundImage>
-      </CustomSection>
-
-      <Section id="inventory">
-        <AmazonProducts
-          title={'Our Inventory'}
-          products={results.data}
-          pagination={results.pagination}
-        />
-      </Section>
-
       <HerosContainer>
         <HeroBackgroundImageHalf fluid={data.picture4.childImageSharp.fluid}>
           <NoStyleLink to="/electronics">
@@ -289,6 +266,24 @@ const electronicsOne = ({ data }) => {
         </HeroBackgroundImageThird>
       </HerosContainer>
 
+      <Section id="inventory">
+        <AmazonProducts
+          title={'Our Inventory'}
+          products={results.data}
+          pagination={results.pagination}
+        />
+      </Section>
+
+      <Section>
+        <FullNarrowBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
+          <CustomBannerContainer>
+            <h4>Free Shipping</h4>
+            <h4>Low Prices</h4>
+            <h4>Amazing Customer Support</h4>
+            <h4>Made In Canada</h4>
+          </CustomBannerContainer>
+        </FullNarrowBackgroundImage>
+      </Section>
       <Section>
         <Container1200>
           <H2Centered>Can't find what you need? Give us a shout!</H2Centered>
