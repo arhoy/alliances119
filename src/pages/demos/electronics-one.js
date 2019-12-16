@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import axios from 'axios';
+
+import { graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import { FaCanadianMapleLeaf } from 'react-icons/fa';
 
+import { getElectronics } from '../../hooks/apiHooks/amazon-electronics';
 import ElectronicsLayout from '../../components/layouts/ElectronicsLayout';
 
 import { H1 } from '../../components/reusableStyles/typography/Typography';
 import { ButtonStyle2Large } from '../../components/reusableStyles/buttons/Button';
 import { Section } from '../../components/reusableStyles/sections/Sections';
+import AmazonProducts from '../../components/amazonproducts/AmazonProducts';
 
 const HerosContainer = styled.div`
   display: flex;
@@ -114,20 +117,12 @@ export const query = graphql`
 `;
 
 const electronicsOne = ({ data }) => {
-  const [results, setResults] = useState([]); // set results to empty array
+  const [results, setResults] = useState({}); // set results to empty array
 
   try {
-    useEffect(() => {
-      const fetchData = async () => {
-        const results = await axios(
-          `https://jsonplaceholder.typicode.com/albums`,
-        );
-
-        // setstate of results to results array.
-        setResults(results.data);
-      };
-
-      fetchData();
+    useEffect(async () => {
+      const results = await getElectronics();
+      setResults(results);
     }, []); // only run on componentDidMount and componentUnmount and query state change
   } catch (error) {
     console.error(error);
@@ -156,10 +151,11 @@ const electronicsOne = ({ data }) => {
         </FullNarrowBackgroundImage>
       </Section>
 
-      <div>
-        {results.length > 0 &&
-          results.map(result => <div key={result.id}>{result.title}</div>)}
-      </div>
+      <AmazonProducts
+        title={'Our Inventory'}
+        products={results.data}
+        pagination={results.pagination}
+      />
     </ElectronicsLayout>
   );
 };
