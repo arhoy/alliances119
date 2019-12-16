@@ -31,6 +31,11 @@ const InputRangeContainer = styled.div`
 
 // each product on the products render
 const StyledLinkContainer = styled(Link)`
+  & h4 {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   position: relative;
   text-decoration: none;
   display: flex;
@@ -109,6 +114,25 @@ const PriceContainer = styled.div`
 
 const RatingContainer = styled.div`
   text-align: center;
+  color: ${props => props.theme.colors.primary};
+`;
+
+const ViewMoreContainer1 = styled.div`
+  display: flex;
+  justify-content: center;
+
+  & button {
+    margin: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    color: ${props => props.theme.colors.white};
+    background: ${props => props.theme.colors.primary};
+    &:hover {
+      background: ${props => props.theme.colors.primaryDark};
+    }
+  }
 `;
 
 export {
@@ -126,4 +150,5 @@ export {
   ActionContainer,
   SelectContainer,
   InputRangeContainer,
+  ViewMoreContainer1,
 };

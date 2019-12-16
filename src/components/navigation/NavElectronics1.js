@@ -171,7 +171,7 @@ const NavElectronics1 = () => {
             </Container1200>
           </MyMenu2>
 
-          <CustomStyleLink> Contact </CustomStyleLink>
+          <CustomStyleLink to="/contact"> Contact </CustomStyleLink>
         </NavContainer>
         <SearchContainerComputer>
           <Search />

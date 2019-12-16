@@ -1,28 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AmazonProduct from './AmazonProduct';
 import { ProductLayout1 } from '../products/ProductContainerStyles/ProductContainerStyle';
 import { H2Centered } from '../reusableStyles/typography/Typography';
+import { ViewMoreContainer1 } from './AmazonProductsStyling';
+import { ButtonStyle2Large } from '../reusableStyles/buttons/Button';
+import { getElectronics } from '../../hooks/apiHooks/amazon-electronics';
 
 const AmazonProducts = ({ products, pagination, title }) => {
+  const [items, setItems] = useState(products);
+  const [limit, setLimit] = useState(25);
+
+  const setLimitHandler = async () => {
+    setLimit(prevLimit => prevLimit + 25);
+
+    const results = await getElectronics(1, limit + 25);
+    setItems(results.data);
+  };
+
   return (
     <>
       <H2Centered>{title}</H2Centered>
+
+      {!items && (
+        <ProductLayout1>
+          {products &&
+            products.length > 0 &&
+            products.map(item => (
+              <AmazonProduct
+                key={item._id}
+                product={item}
+                department="electronics"
+              />
+            ))}
+        </ProductLayout1>
+      )}
+
       <ProductLayout1>
-        <pre>{JSON.stringify(pagination, null, 2)}</pre>
-        {products &&
-          products.length > 0 &&
-          products.map(result => (
+        {items &&
+          items.length > 0 &&
+          items.map(item => (
             <AmazonProduct
-              key={result._id}
-              product={result}
+              key={item._id}
+              product={item}
               department="electronics"
             />
           ))}
       </ProductLayout1>
-      <div>
-        <div>{pagination && pagination.prev && pagination.prev.page}</div>
-        <div>{pagination && pagination.next && pagination.next.page}</div>
-      </div>
+      <ViewMoreContainer1>
+        <ButtonStyle2Large onClick={setLimitHandler}>
+          View More{' '}
+        </ButtonStyle2Large>
+      </ViewMoreContainer1>
     </>
   );
 };

@@ -120,9 +120,13 @@ const electronicsOne = ({ data }) => {
   const [results, setResults] = useState({}); // set results to empty array
 
   try {
-    useEffect(async () => {
-      const results = await getElectronics();
-      setResults(results);
+    useEffect(() => {
+      const fetchData = async () => {
+        const results = await getElectronics();
+
+        setResults(results);
+      };
+      fetchData();
     }, []); // only run on componentDidMount and componentUnmount and query state change
   } catch (error) {
     console.error(error);
