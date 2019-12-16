@@ -10,8 +10,12 @@ import ElectronicsLayout from '../../components/layouts/ElectronicsLayout';
 
 import { H1 } from '../../components/reusableStyles/typography/Typography';
 import { ButtonStyle2Large } from '../../components/reusableStyles/buttons/Button';
-import { Section } from '../../components/reusableStyles/sections/Sections';
+import {
+  Section,
+  Container1200,
+} from '../../components/reusableStyles/sections/Sections';
 import AmazonProducts from '../../components/amazonproducts/AmazonProducts';
+import { SimpleNetlifyForm } from '../../components/forms/SimpleNetlifyForm';
 
 const HerosContainer = styled.div`
   display: flex;
@@ -160,6 +164,12 @@ const electronicsOne = ({ data }) => {
         products={results.data}
         pagination={results.pagination}
       />
+
+      <Section>
+        <Container1200>
+          <SimpleNetlifyForm />
+        </Container1200>
+      </Section>
     </ElectronicsLayout>
   );
 };
