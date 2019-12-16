@@ -4,7 +4,7 @@ import { ProductLayout1 } from '../products/ProductContainerStyles/ProductContai
 import { H2Centered } from '../reusableStyles/typography/Typography';
 import { ViewMoreContainer1 } from './AmazonProductsStyling';
 import { ButtonStyle2Large } from '../reusableStyles/buttons/Button';
-import { getElectronics } from '../../hooks/apiHooks/amazon-electronics';
+import { getAmazonProducts } from '../../hooks/apiHooks/amazonproducts';
 
 const AmazonProducts = ({ products, pagination, title }) => {
   const [items, setItems] = useState(products);
@@ -13,7 +13,7 @@ const AmazonProducts = ({ products, pagination, title }) => {
   const setLimitHandler = async () => {
     setLimit(prevLimit => prevLimit + 25);
 
-    const results = await getElectronics(1, limit + 25);
+    const results = await getAmazonProducts(1, limit + 25);
     setItems(results.data);
   };
 
@@ -29,7 +29,7 @@ const AmazonProducts = ({ products, pagination, title }) => {
               <AmazonProduct
                 key={item._id}
                 product={item}
-                department="electronics"
+                department="amazonproducts"
               />
             ))}
         </ProductLayout1>
@@ -42,7 +42,7 @@ const AmazonProducts = ({ products, pagination, title }) => {
             <AmazonProduct
               key={item._id}
               product={item}
-              department="electronics"
+              department="amazonproducts"
             />
           ))}
       </ProductLayout1>

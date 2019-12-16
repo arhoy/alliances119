@@ -21,7 +21,7 @@ const AmazonProduct = ({ product, department }) => {
     return <div> No products found in this category</div>;
   }
   return (
-    <StyledLinkContainer to={`/app/${department}/${product.slug}`}>
+    <StyledLinkContainer to={`/amzn/${department}/${product.slug}`}>
       <DiscountBadge>
         {product.discountPrice
           ? `Save ${calculatePercentage(

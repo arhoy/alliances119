@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
+import * as Scroll from 'react-scroll';
 
 import { graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import { FaCanadianMapleLeaf } from 'react-icons/fa';
 
-import { getElectronics } from '../../hooks/apiHooks/amazon-electronics';
+import { getAmazonProducts } from '../../hooks/apiHooks/amazonproducts';
 import ElectronicsLayout from '../../components/layouts/ElectronicsLayout';
 
-import { H1 } from '../../components/reusableStyles/typography/Typography';
+import {
+  H1,
+  H2Centered,
+} from '../../components/reusableStyles/typography/Typography';
 import { ButtonStyle2Large } from '../../components/reusableStyles/buttons/Button';
 import {
   Section,
@@ -16,6 +20,8 @@ import {
 } from '../../components/reusableStyles/sections/Sections';
 import AmazonProducts from '../../components/amazonproducts/AmazonProducts';
 import { SimpleNetlifyForm } from '../../components/forms/SimpleNetlifyForm';
+import CatchyBanner from '../../components/reusableStyles/banner/CatchyBanner';
+import NoStyleLink from '../../components/Links/NoStyleLink';
 
 const HerosContainer = styled.div`
   display: flex;
@@ -94,18 +100,64 @@ const StyledImage = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5rem;
-  height: 5rem;
-  color: ${props => props.theme.colors.red};
-`;
 
-const StyledFaCanadianMapleLeaf = styled(FaCanadianMapleLeaf)`
-  font-size: 5rem;
-  &:before {
+  font-size: 6rem;
+  color: ${props => props.theme.colors.red};
+
+  &:before,
+  &:after {
     content: '|';
     top: 0;
     left: 0;
+    padding: 0 1rem;
   }
+`;
+
+const StyledFaCanadianMapleLeaf = styled(FaCanadianMapleLeaf)`
+  font-size: 7rem;
+`;
+
+const CustomSection = styled(Section)`
+  padding-bottom: 0;
+  margin-bottom: 0;
+`;
+
+const HeroBackgroundImageThird = styled(BackgroundImage)`
+  width: 33.33vw;
+  min-height: 30vh;
+  background-size: cover;
+  background-position: center;
+  opacity: 1 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+  &:hover {
+    background: ${props => props.theme.colors.blackTransparent};
+  }
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    width: 100%;
+    min-height: 30vh;
+`;
+
+const HeroBackgroundImageHalf = styled(BackgroundImage)`
+  width: 50vw;
+  min-height: 30vh;
+  background-size: cover;
+  background-position: center;
+  opacity: 1 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+  &:hover {
+    background: ${props => props.theme.colors.blackTransparent};
+  }
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    width: 100%;
+    min-height: 30vh;
 `;
 
 export const query = graphql`
@@ -114,6 +166,40 @@ export const query = graphql`
       childImageSharp {
         fluid(quality: 90, maxWidth: 1000) {
           ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+
+    picture4: file(relativePath: { eq: "watch.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+    picture5: file(relativePath: { eq: "tv.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+    picture6: file(relativePath: { eq: "apple-iphone-1.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+
+    heroCarousel: allFile(
+      filter: { relativePath: { regex: "/carouselArray1/" } }
+    ) {
+      nodes {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid_noBase64
+          }
         }
       }
     }
@@ -126,7 +212,7 @@ const electronicsOne = ({ data }) => {
   try {
     useEffect(() => {
       const fetchData = async () => {
-        const results = await getElectronics();
+        const results = await getAmazonProducts();
 
         setResults(results);
       };
@@ -145,10 +231,13 @@ const electronicsOne = ({ data }) => {
             <StyledFaCanadianMapleLeaf />
           </StyledImage>
 
-          <ButtonStyle2LargeCustom>Shop Now</ButtonStyle2LargeCustom>
+          <Scroll.Link to="inventory" smooth={true} duration={500} offset={-30}>
+            <ButtonStyle2LargeCustom>Shop Now</ButtonStyle2LargeCustom>
+          </Scroll.Link>
         </HeroBackgroundImage>
       </HerosContainer>
-      <Section>
+
+      <CustomSection>
         <FullNarrowBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
           <CustomBannerContainer>
             <h4>Free Shipping</h4>
@@ -157,16 +246,52 @@ const electronicsOne = ({ data }) => {
             <h4>Made In Canada</h4>
           </CustomBannerContainer>
         </FullNarrowBackgroundImage>
+      </CustomSection>
+
+      <Section id="inventory">
+        <AmazonProducts
+          title={'Our Inventory'}
+          products={results.data}
+          pagination={results.pagination}
+        />
       </Section>
 
-      <AmazonProducts
-        title={'Our Inventory'}
-        products={results.data}
-        pagination={results.pagination}
-      />
+      <HerosContainer>
+        <HeroBackgroundImageHalf fluid={data.picture4.childImageSharp.fluid}>
+          <NoStyleLink to="/electronics">
+            <CatchyBanner
+              color="white"
+              title="Watches"
+              fontSize="4.5rem"
+              background="none"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageHalf>
+        <HeroBackgroundImageThird fluid={data.picture5.childImageSharp.fluid}>
+          <NoStyleLink to="/electronics">
+            <CatchyBanner
+              color="white"
+              title="TVs"
+              fontSize="4.5rem"
+              background="none"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageThird>
+        <HeroBackgroundImageThird fluid={data.picture6.childImageSharp.fluid}>
+          <NoStyleLink to="/electronics">
+            <CatchyBanner
+              color="white"
+              title="Phones"
+              fontSize="4.5rem"
+              background="none"
+            />
+          </NoStyleLink>
+        </HeroBackgroundImageThird>
+      </HerosContainer>
 
       <Section>
         <Container1200>
+          <H2Centered>Can't find what you need? Give us a shout!</H2Centered>
           <SimpleNetlifyForm />
         </Container1200>
       </Section>

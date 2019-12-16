@@ -1,7 +1,13 @@
 const path = require('path');
 
+const { getAmazonProducts, getAmazonElectronics } = require('./apis/pilotjs');
+
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
+  // getting api data
+  const amazonProductData = await getAmazonProducts();
+  const amazonElectronicData = await getAmazonElectronics();
+
   const { data } = await graphql(`
     {
       allArticles: allContentfulFashionTwoArticles {
@@ -87,21 +93,42 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 
-  // blog template w/ pagination
-  // const posts = data.posts.nodes;
-  // const postsPerPage = 3;
-  // const numPages = Math.ceil(posts.length / postsPerPage);
+  // create page from APIS
+  amazonProductData.data.forEach(item => {
+    createPage({
+      path: `amzn/amazonproducts/${item.slug}`,
+      component: path.resolve('./src/templates/AmazonProduct.js'),
+      context: {
+        slug: item.slug,
+        name: item.name,
+        rating: item.rating,
+        priceValue: item.priceValue,
+        image: item.image,
+        department: 'amazonproducts',
+      },
+    });
+  });
 
-  // Array.from({ length: numPages }).forEach((_, i) => {
-  //   createPage({
-  //     path: i === 0 ? `/blogs` : `/blogs/${i + 1}`,
-  //     component: path.resolve('./src/templates/BlogListTemplate.js'),
-  //     context: {
-  //       limit: postsPerPage,
-  //       skip: i * postsPerPage,
-  //       numPages,
-  //       currentPage: i + 1,
-  //     },
-  //   });
-  // });
+  // create page from APIS
+  amazonElectronicData.data.forEach(item => {
+    // replace . with - from incoming data
+    const substringArray = [')', '!', '('];
+    // only create page if data for slug is valid WIN32 path (slug doesn't start with JUNK)
+    if (
+      !substringArray.some(substring => item.slug.charAt(0).includes(substring))
+    ) {
+      createPage({
+        path: `amzn/electronics/${item.slug}`,
+        component: path.resolve('./src/templates/AmazonProduct.js'),
+        context: {
+          slug: item.slug,
+          name: item.name,
+          rating: item.rating,
+          priceValue: item.priceValue,
+          image: item.image,
+          department: 'electronics',
+        },
+      });
+    }
+  });
 };

@@ -36,10 +36,10 @@ const SimpleSlider = ({ images }) => {
           smallImage: {
             alt: ' ',
             isFluidWidth: true,
-            src: images[index].fluid.src,
+            src: images[index].fluid ? images[index].fluid.src : images[index],
           },
           largeImage: {
-            src: images[index].fluid.src,
+            src: images[index].fluid ? images[index].fluid.src : images[index],
             width: 600,
             height: 600,
           },

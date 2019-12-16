@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { graphql } from 'gatsby';
 import Layout from '../../components/layouts/Layout';
 import { P, H2 } from '../../components/reusableStyles/typography/Typography';
 import { Section } from '../../components/reusableStyles/sections/Sections';
@@ -8,6 +8,7 @@ import SEO from '../../hooks/SEO';
 import ProductPageHeader from '../../components/products/ProductPageHeader';
 
 import AliceGallery from '../../components/reusableStyles/carousel/AliceGallery';
+
 export const query = graphql`
   {
     imageArray1: allFile(filter: { relativePath: { regex: "/megaMenu/" } }) {
