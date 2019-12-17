@@ -29,6 +29,7 @@ const HerosContainer = styled.div`
 
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     flex-direction: column;
+    padding: 0rem;
   }
 `;
 
@@ -86,6 +87,7 @@ const StyledH1 = styled(H1)`
   font-size: 6rem;
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     font-size: 4.1rem;
+    padding: 0 1rem;
   }
 `;
 
