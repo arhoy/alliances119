@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
-import * as Scroll from 'react-scroll';
-import ReactTyped from 'react-typed';
+
 import { graphql } from 'gatsby';
-import Particles from 'react-particles-js';
 
 import MainLayout from '../components/layouts/MainLayout';
 import SEO from '../hooks/SEO';
@@ -26,10 +24,7 @@ import CatchyBanner from '../components/reusableStyles/banner/CatchyBanner';
 import BasicFeatureSection from '../components/features/BasicFeatureSection';
 
 import NoStyleLink from '../components/Links/NoStyleLink';
-import {
-  ButtonStyle2Large,
-  ButtonStyle2,
-} from '../components/reusableStyles/buttons/Button';
+import { ButtonStyle2 } from '../components/reusableStyles/buttons/Button';
 import {
   CustomHighlight2,
   CustomHighlight2Primary,
@@ -43,19 +38,6 @@ const P = styled.p`
     text-align: center;
     margin: 3rem 0rem;
   }
-`;
-
-const HerosContainer = styled.div`
-  display: flex;
-
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    flex-direction: column;
-  }
-`;
-
-const MainHeroCover = styled(HerosContainer)`
-  width: 100%;
-  height: 100vh;
 `;
 
 const FullNarrowBackgroundImage = styled(BackgroundImage)`
@@ -74,33 +56,6 @@ const CustomBannerContainer = styled.div`
   justify-content: center;
   grid-gap: 3rem;
   grid-template-columns: repeat(auto-fit, minmax(max-content, 35rem));
-`;
-
-const MainCenterDiv = styled.div`
-  position: absolute;
-  color: ${props => props.theme.colors.white};
-  z-index: 4;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StyledParticles = styled(Particles)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: ${props => props.theme.colors.black};
-  opacity: 0.9;
-`;
-const Blurb = styled.h1`
-  text-align: center;
-  color: ${props => props.theme.colors.white};
 `;
 
 const FashionDemos = styled.div`
@@ -379,12 +334,6 @@ export const query = graphql`
 `;
 
 export default ({ data }) => {
-  const [typingComplete, setTypingComplete] = useState(false);
-
-  const typingCompleteHandler = () => {
-    setTypingComplete(true);
-  };
-
   return (
     <MainLayout full={true}>
       <SEO title="Fashion two" description="Sample Fashion Store" />
