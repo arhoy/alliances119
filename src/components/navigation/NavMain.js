@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaAlignRight } from 'react-icons/fa';
 import * as Scroll from 'react-scroll';
 
 import styled from '@emotion/styled';
 
 import Logo from '../logos/main/Logo';
+import { MobileMenu1 } from '../menus-mobile/Main/MobileMenu1';
 
 const Header = styled.header`
   height: 80px;
@@ -81,7 +83,21 @@ const StyledLinkBlue = styled(StyledLink)`
   }
 `;
 
+const BurgerIcon = styled(FaAlignRight)`
+  color: ${props => props.theme.colors.white};
+  cursor: pointer;
+  font-size: 2.6rem;
+  @media (min-width: ${props => props.theme.screenSize.mobileL}) {
+    display: none;
+  }
+`;
+
 const NavMain = () => {
+  const [mobileMenuOpen, setMobileMenu] = useState(false);
+
+  const mobileMenuHandler = () => {
+    setMobileMenu(prevState => !prevState);
+  };
   return (
     <>
       <Header>
@@ -103,6 +119,10 @@ const NavMain = () => {
             <StyledLinkBlue> Contact</StyledLinkBlue>
           </Scroll.Link>
         </NavContainer>
+        <BurgerIcon onClick={mobileMenuHandler} />
+        {mobileMenuOpen ? (
+          <MobileMenu1 mobileMenuHandler={mobileMenuHandler} />
+        ) : null}
       </Header>
     </>
   );

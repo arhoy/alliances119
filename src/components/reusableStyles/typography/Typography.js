@@ -50,6 +50,9 @@ const Span = styled.span``;
 
 const P = styled.p`
   padding: 1rem 0rem;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    text-align: center;
+  }
 `;
 
 export { H1, H2, H2Centered, A, Li, Ul, Span, Bold, P, ProductPageH1 };

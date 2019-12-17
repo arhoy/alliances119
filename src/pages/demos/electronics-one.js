@@ -82,6 +82,7 @@ const HeroBackgroundImage = styled.div`
 
 const StyledH1 = styled(H1)`
   color: ${props => props.theme.colors.white};
+  padding: 0 2rem;
 
   text-align: center;
   font-size: 6rem;

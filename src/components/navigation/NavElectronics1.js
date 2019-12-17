@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 
 import { FaOpencart, FaAlignRight } from 'react-icons/fa';
 
 import styled from '@emotion/styled';
-
-import netlifyIdentity from 'netlify-identity-widget';
 
 import MyMenu2 from '../menus/MyMenu2';
 
@@ -113,10 +111,6 @@ const CustomStyleLink = styled(Link)`
 `;
 
 const NavElectronics1 = () => {
-  useEffect(() => {
-    netlifyIdentity.init();
-  }, []);
-
   const [mobileMenuOpen, setMobileMenu] = useState(false);
 
   const mobileMenuHandler = () => {
