@@ -16,6 +16,10 @@ const MobileMenuContainer = styled.div`
   width: 100%;
 `;
 
+const MobileMenuContainerPrimaryLight = styled(MobileMenuContainer)`
+  background: ${props => props.theme.colors.primaryLight};
+`;
+
 const LinkContainerUl = styled.ul`
   list-style: none;
   height: 100%;
@@ -55,7 +59,7 @@ const StyledLink = styled(NoStyleLink)`
   text-align: center;
   &:hover {
     background-position: 100%;
-    color: ${props => props.theme.colors.black};
+    color: ${props => props.theme.colors.primaryDark};
     -webkit-transform: translateX(0.5rem);
     transform: translateX(0.5rem);
   }
@@ -65,6 +69,7 @@ export {
   CloseIcon,
   CloseIconContainer,
   MobileMenuContainer,
+  MobileMenuContainerPrimaryLight,
   StyledLink,
   LinkContainerUl,
   LinkWrapper,

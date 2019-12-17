@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+
 import { Link } from 'gatsby';
 
-import { FaOpencart, FaAlignRight, FaTimes } from 'react-icons/fa';
+import { FaOpencart, FaAlignRight } from 'react-icons/fa';
 
 import styled from '@emotion/styled';
 import netlifyIdentity from 'netlify-identity-widget';
@@ -10,12 +11,12 @@ import MyMenu2 from '../menus/MyMenu2';
 
 import { Container1200 } from '../reusableStyles/sections/Sections';
 
-import NoStyleLink from '../Links/NoStyleLink';
 import MegaMenu2 from '../menus/MegaMenus/MegaMenu2';
 import List5 from '../menus/MegaMenus/MegaMenuLists/Style2/List5';
 import List4 from '../menus/MegaMenus/MegaMenuLists/Style2/List4';
 
 import Search from '../algolia/Search';
+import { MobileMenu1 } from '../menus-mobile/Fashion/MobileMenu1';
 
 const Header = styled.header`
   height: 80px;
@@ -92,36 +93,6 @@ const BurgerIcon = styled(FaAlignRight)`
   }
 `;
 
-const CloseIconContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const CloseIcon = styled(FaTimes)`
-  font-size: 2rem;
-  margin-right: 4px;
-`;
-
-const MobileMenuContainer = styled.div`
-  padding: 1rem 3rem;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: ${props => props.theme.colors.lightgrey};
-
-  width: 100%;
-
-  & ul {
-    list-style: none;
-    height: 100%;
-  }
-  & li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid ${props => props.theme.colors.darkGrey};
-    font-weight: bold;
-  }
-`;
-
 const SearchContainerComputer = styled.div`
   width: 15vw;
 
@@ -195,28 +166,7 @@ const NavFashion5 = () => {
         </Cart>
         <BurgerIcon onClick={mobileMenuHandler} />
         {mobileMenuOpen ? (
-          <>
-            <MobileMenuContainer>
-              <CloseIconContainer>
-                <CloseIcon onClick={mobileMenuHandler} /> close
-              </CloseIconContainer>
-
-              <ul>
-                <li>
-                  <NoStyleLink to="/"> Home </NoStyleLink>{' '}
-                </li>
-                <li>
-                  <NoStyleLink to="/bags"> Bags </NoStyleLink>{' '}
-                </li>
-                <li>
-                  <NoStyleLink to="/pants"> Pants </NoStyleLink>{' '}
-                </li>
-                <li>
-                  <NoStyleLink to="/shoes"> Shoes </NoStyleLink>{' '}
-                </li>
-              </ul>
-            </MobileMenuContainer>
-          </>
+          <MobileMenu1 mobileMenuHandler={mobileMenuHandler} />
         ) : null}
       </Header>
       <SearchContainerMobile>
