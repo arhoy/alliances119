@@ -13,18 +13,18 @@ import '../../scss/main.scss';
 
 const theme = {
   colors: {
-    primary: 'rgb(5, 64, 116)',
-    primaryDark: 'rgb(4, 43, 76)',
-    primaryLight: 'rgb(4, 97, 179)',
-    primaryVeryLight: 'rgb(175, 216, 253)',
-    primaryTransparent: 'rgb(5, 64, 116,0.2)',
+    primary: 'RGB(0, 101, 255)',
+    primaryDark: '#0747A6',
+    primaryLight: '#4C9AFF',
+    primaryVeryLight: '#DEEBFF',
+    primaryTransparent: 'RGB(0, 101, 255,0.2)',
     secondary: 'rgb(24, 163, 201)',
     lightgrey: 'rgb(240,240,240)',
     lightgrey2: 'rgb(224, 217, 217)',
     white: '#fff',
     black: '#1a1a1a',
     blackTransparent: 'rgba(41, 43, 46, 0.4)',
-    darkgrey: 'rgb(109, 109, 109)',
+    darkGrey: 'rgb(109, 109, 109)',
     red: 'rgb(218, 18, 31)',
     lightRed: 'rgb(232, 180, 182)',
     blue: 'rgb(19, 73, 178)',
@@ -37,6 +37,7 @@ const theme = {
   },
   screenSize: {
     mobileL: '600px',
+    mobileS: '400px',
     mobileVS: '300px',
     eightHundred: '800px',
     nineHundred: '900px',

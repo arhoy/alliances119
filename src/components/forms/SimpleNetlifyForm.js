@@ -71,7 +71,7 @@ const SimpleNetlifyForm = ({ color }) => {
 
   return (
     <Form
-      name="contact"
+      name="contact-1-simple"
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
