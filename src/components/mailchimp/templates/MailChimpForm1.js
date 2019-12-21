@@ -31,7 +31,7 @@ const MailChimpForm1 = ({ timeToPopUp }) => {
       // sets local storage
     }, timeToPopUp);
     return () => clearTimeout(timer);
-  }, []);
+  }, [timeToPopUp]);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -79,7 +79,6 @@ const MailChimpForm1 = ({ timeToPopUp }) => {
 
           <SubContainer>
             <InputStyle1
-              autoFocus={true}
               type="email"
               placeholder="Your Email"
               onChange={event => setEmail(event.target.value)}

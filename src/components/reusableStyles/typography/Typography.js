@@ -29,6 +29,15 @@ const H2Centered = styled(H2)`
   margin: 2rem 0;
 `;
 
+const H2CenteredLight1 = styled(H2Centered)`
+  font-weight: 500;
+`;
+
+const H2CenteredLight2 = styled(H2Centered)`
+  font-weight: 500;
+  text-transform: uppercase;
+`;
+
 const A = styled.a`
   color: ${props => props.theme.colors.black};
   text-decoration: none;
@@ -55,4 +64,17 @@ const P = styled.p`
   }
 `;
 
-export { H1, H2, H2Centered, A, Li, Ul, Span, Bold, P, ProductPageH1 };
+export {
+  H1,
+  H2,
+  H2Centered,
+  H2CenteredLight1,
+  H2CenteredLight2,
+  A,
+  Li,
+  Ul,
+  Span,
+  Bold,
+  P,
+  ProductPageH1,
+};

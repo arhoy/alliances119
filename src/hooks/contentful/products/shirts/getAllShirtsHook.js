@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-const getAllShirtsHook = () => {
+const GetAllShirtsHook = () => {
   const data = useStaticQuery(graphql`
     query {
       allItems: allContentfulFashionTwoShirts {
@@ -27,4 +27,4 @@ const getAllShirtsHook = () => {
   return items;
 };
 
-export default getAllShirtsHook;
+export default GetAllShirtsHook;

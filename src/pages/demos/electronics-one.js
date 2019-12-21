@@ -205,7 +205,7 @@ export const query = graphql`
   }
 `;
 
-const electronicsOne = ({ data }) => {
+const ElectronicsOne = ({ data }) => {
   const [results, setResults] = useState({}); // set results to empty array
 
   try {
@@ -297,4 +297,4 @@ const electronicsOne = ({ data }) => {
   );
 };
 
-export default electronicsOne;
+export default ElectronicsOne;

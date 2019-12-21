@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { FaGlobeAfrica } from 'react-icons/fa';
 
 import { graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
+import Image from 'gatsby-image';
+import Slider from 'react-slick';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import SuperStoreLayout from '../../components/layouts/SuperStoreLayout';
 import { Section } from '../../components/reusableStyles/sections/Sections';
 import {
-  H2Centered,
-  P,
+  Bold,
+  H2CenteredLight2,
 } from '../../components/reusableStyles/typography/Typography';
 
 const HerosContainer = styled.div`
@@ -88,9 +93,30 @@ const StyledIcon = styled(FaGlobeAfrica)`
   opacity: 0.4;
 `;
 
+const ImageContainer = styled.div``;
+
+const StyledImage = styled(Image)`
+  margin: 0 1rem;
+  cursor: pointer;
+`;
+
 export const query = graphql`
   {
     picture1: file(relativePath: { eq: "superstore/Amazon1.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    picture2: file(relativePath: { eq: "superstore/Amazon2.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    picture3: file(relativePath: { eq: "superstore/Amazon3.jpg" }) {
       childImageSharp {
         fluid(quality: 90, maxWidth: 1000) {
           ...GatsbyImageSharpFluid_tracedSVG
@@ -135,14 +161,31 @@ export const query = graphql`
 `;
 
 const superstoreOne = ({ data }) => {
-  try {
-    useEffect(() => {
-      console.log('Load stuff');
-    }, []); // only run on componentDidMount and componentUnmount and query state change
-  } catch (error) {
-    console.error(error);
-  }
-
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <SuperStoreLayout full={false}>
       <HerosContainer>
@@ -184,8 +227,29 @@ const superstoreOne = ({ data }) => {
         </HerosCard>
       </HerosCardContainer>
       <Section>
-        <H2Centered>How it Works</H2Centered>
-        <P>YOu will Blah blah blah</P>
+        <H2CenteredLight2>
+          <Bold>Featured</Bold> Products
+        </H2CenteredLight2>
+        <Slider {...settings}>
+          <ImageContainer>
+            <StyledImage fluid={data.picture1.childImageSharp.fluid} />
+          </ImageContainer>
+          <ImageContainer>
+            <StyledImage fluid={data.picture2.childImageSharp.fluid} />
+          </ImageContainer>
+          <ImageContainer>
+            <StyledImage fluid={data.picture3.childImageSharp.fluid} />
+          </ImageContainer>
+          <ImageContainer>
+            <StyledImage fluid={data.picture1.childImageSharp.fluid} />
+          </ImageContainer>
+          <ImageContainer>
+            <StyledImage fluid={data.picture2.childImageSharp.fluid} />
+          </ImageContainer>
+          <ImageContainer>
+            <StyledImage fluid={data.picture3.childImageSharp.fluid} />
+          </ImageContainer>
+        </Slider>
       </Section>
     </SuperStoreLayout>
   );
