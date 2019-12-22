@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 
-import { FaOpencart, FaAlignRight } from 'react-icons/fa';
+import { FaAlignRight } from 'react-icons/fa';
 
 import styled from '@emotion/styled';
 
-import MyMenu2 from '../menus/MyMenu2';
+import MyMenu3 from '../menus/MyMenu3';
 
 import { Container1200 } from '../reusableStyles/sections/Sections';
 
@@ -15,6 +15,7 @@ import ElectronicsList1 from '../menus/MegaMenus/MegaMenuLists/Style2/Electronic
 
 import Search from '../algolia/Search';
 import { MobileMenu1 } from '../menus-mobile/Electronics/MobileMenu1';
+import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
 
 const Header = styled.header`
   height: 80px;
@@ -41,22 +42,31 @@ const Header = styled.header`
     display: flex;
   }
 `;
-const LogoLink = styled(Link)`
+
+const Logo = styled.div`
   padding: 0;
   margin: 0;
 `;
-const Logo = styled.span`
-  & ${LogoLink} {
-    text-decoration: none !important;
-    font-size: 3rem;
-    line-height: 2.4rem;
-  }
+const LogoLink = styled(Link)`
+  font-size: 2.9rem;
+  padding: 0;
+  margin: 0;
+
+  text-decoration: none !important;
 `;
 
 const LogoSpan2 = styled.span`
   color: ${props => props.theme.colors.white};
-  font-weight: bold;
   letter-spacing: 4px;
+  display: flex;
+
+  border-bottom: 2px solid ${props => props.theme.colors.primary};
+  & span {
+    display: inline-block;
+    height: 40px;
+    font-style: italic;
+    border-bottom: thick double ${props => props.theme.colors.primaryLight};
+  }
 `;
 
 const NavContainer = styled.nav`
@@ -67,15 +77,6 @@ const NavContainer = styled.nav`
 
   height: 100%;
 
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    display: none;
-  }
-`;
-
-const Cart = styled(FaOpencart)`
-  margin-left: 2rem;
-  font-size: 3rem;
-  cursor: pointer;
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     display: none;
   }
@@ -102,12 +103,8 @@ const SearchContainerMobile = styled.div`
   }
 `;
 
-const CustomStyleLink = styled(Link)`
-  text-decoration: none;
-  color: ${props => props.theme.colors.white};
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-left: 1rem;
+const CustomButtonStyle2 = styled(ButtonStyle2)`
+  display: flex;
 `;
 
 const NavSuperStore1 = () => {
@@ -122,29 +119,36 @@ const NavSuperStore1 = () => {
       <Header>
         <Logo>
           <LogoLink to="/">
-            <LogoSpan2>Alliances 119</LogoSpan2>
+            <LogoSpan2>
+              ALLIANCES<span>119</span>
+            </LogoSpan2>
           </LogoLink>
         </Logo>
 
         <NavContainer>
-          <MyMenu2 color={'white'} title={`SHOP`}>
+          <MyMenu3 color={'white'} title={`SHOP`}>
             <Container1200>
               <MegaMenu2>
                 <ElectronicsList1 />
               </MegaMenu2>
             </Container1200>
-          </MyMenu2>
+          </MyMenu3>
+          <MyMenu3 color={'white'} title={`ABOUT`}>
+            <Container1200>
+              <MegaMenu2>
+                <ElectronicsList1 />
+              </MegaMenu2>
+            </Container1200>
+          </MyMenu3>
 
-          <CustomStyleLink to="/contact"> Contact </CustomStyleLink>
+          <CustomButtonStyle2>
+            <a href="tel:587-772-5536">587-772-5536</a>
+          </CustomButtonStyle2>
         </NavContainer>
         <SearchContainerComputer>
           <Search />
         </SearchContainerComputer>
 
-        <Cart className="snipcart-checkout">
-          <span className="snipcart-items-count"></span>
-          <span className="snipcart-total-price"></span>
-        </Cart>
         <BurgerIcon onClick={mobileMenuHandler} />
         {mobileMenuOpen ? (
           <MobileMenu1 mobileMenuHandler={mobileMenuHandler} />

@@ -1,10 +1,10 @@
-// Hover menu used for Fashion Templates and Electronics 1
+// Click Menu Used in SuperStore Layout
 
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
-import { FaCaretDown } from 'react-icons/fa';
 import { Container800 } from '../reusableStyles/sections/Sections';
+import OutsideAlerter from '../../utils/OutsideAlerter';
 
 const Container = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 const DropDownContent = styled.div`
-  display: none;
+  display: block;
 
   text-align: center;
   width: 100%;
@@ -23,11 +23,6 @@ const DropDownContent = styled.div`
   position: absolute;
   top: 75px;
   left: 0;
-`;
-
-const IconContainer = styled.span`
-  position: absolute;
-  transform: translate(1px, 2px);
 `;
 
 const Title = styled.span`
@@ -44,34 +39,35 @@ const Button = styled.button`
   border: none;
   outline: none;
 
-  padding: 2rem 2rem;
+  padding: 2rem 1.5rem;
 
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 
   &:hover {
-    height: 77px;
-    text-decoration: underline;
-    ${DropDownContent} {
-      display: block;
-    }
+    background: ${props => props.theme.colors.primary};
   }
 `;
 
-const MyMenu2 = ({ title, children, color }) => {
+const MyMenu3 = ({ title, children, color }) => {
+  const [menu, setMenu] = useState(false);
+  const menuHandler = () => {
+    setMenu(prevMenu => !prevMenu);
+  };
   return (
     <Container>
-      <Button>
+      <Button onClick={menuHandler}>
         <Title style={{ color }}>{title}</Title>
 
-        <IconContainer>
-          <FaCaretDown />
-        </IconContainer>
         <Container800>
-          <DropDownContent>{children}</DropDownContent>
+          {menu && (
+            <OutsideAlerter menuhandler={menuHandler}>
+              <DropDownContent>{children}</DropDownContent>
+            </OutsideAlerter>
+          )}
         </Container800>
       </Button>
     </Container>
   );
 };
 
-export default MyMenu2;
+export default MyMenu3;
