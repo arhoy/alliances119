@@ -11,10 +11,17 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import SuperStoreLayout from '../../components/layouts/SuperStoreLayout';
-import { Section } from '../../components/reusableStyles/sections/Sections';
+import {
+  Section,
+  SectionGrey,
+  SectionPrimaryTransparent,
+} from '../../components/reusableStyles/sections/Sections';
 import {
   Bold,
   H2CenteredLight2,
+  H1,
+  P,
+  H3,
 } from '../../components/reusableStyles/typography/Typography';
 
 const HerosContainer = styled.div`
@@ -28,7 +35,7 @@ const HerosContainer = styled.div`
 `;
 
 const HerosCardContainer = styled.div`
-  margin-top: -25vh;
+  margin-top: -20vh;
 
   display: flex;
   flex-wrap: wrap;
@@ -64,29 +71,34 @@ const HerosCard = styled.div`
 `;
 
 const HeroBackgroundImage = styled(BackgroundImage)`
-  z-index:0;
+  z-index: 0;
   width: 100%;
   height: 70vh;
   background-size: cover;
   background-position: top;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  z-index:-1;
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    width: 100%;
-    height: 50vh;
+  z-index: -1;
+`;
 
- 
-    align-items:flex-start;
-    
+const HeroContentContainer = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+`;
+const HeroContent = styled.div`
+  width: 100%;
+  background: ${props => props.theme.colors.primaryLight};
+
+  padding: 3rem;
+  border-top-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 `;
 const IconContainer = styled.div`
+  width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  padding: 2rem;
 `;
 const StyledIcon = styled(FaGlobeAfrica)`
   font-size: 25rem;
@@ -98,6 +110,22 @@ const ImageContainer = styled.div``;
 const StyledImage = styled(Image)`
   margin: 0 1rem;
   cursor: pointer;
+`;
+
+const CustomH1 = styled(H1)`
+  text-align: center;
+`;
+
+const Blurb = styled.p`
+  text-align: center;
+  font-weight: bolder;
+  & i {
+    text-decoration: underline;
+  }
+`;
+const Blurb2 = styled(Blurb)`
+  font-weight: 500;
+  margin-top: 1rem;
 `;
 
 export const query = graphql`
@@ -190,9 +218,21 @@ const superstoreOne = ({ data }) => {
     <SuperStoreLayout full={false}>
       <HerosContainer>
         <HeroBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
-          <IconContainer>
-            <StyledIcon />
-          </IconContainer>
+          <HeroContentContainer>
+            <HeroContent>
+              <CustomH1>The Amazon Store For Africa</CustomH1>
+              <Blurb>
+                We will deliver to <i>any</i> African country when Amazon won't
+              </Blurb>
+              <Blurb2>
+                Just add our Warehouse on address line 1 during checkout
+              </Blurb2>
+            </HeroContent>
+
+            <IconContainer>
+              <StyledIcon />
+            </IconContainer>
+          </HeroContentContainer>
         </HeroBackgroundImage>
       </HerosContainer>
       <HerosCardContainer>
@@ -251,6 +291,47 @@ const superstoreOne = ({ data }) => {
           </ImageContainer>
         </Slider>
       </Section>
+      <SectionPrimaryTransparent>
+        <H2CenteredLight2>
+          <Bold>Our </Bold> Pricing
+        </H2CenteredLight2>
+        <H3>Amazon Products</H3>
+        <P>
+          For Amazon related products, you pay for the product on Amazon after
+          finding it on this site, or going to this site first. After your order
+          is shipped to our warehouse, we will call you to confirm and ship your
+          product. Our fees for shipping and processing are 10% of your order +
+          $20.
+        </P>
+        <H3>Cars, Trucks and Automobiles</H3>
+        <P>
+          If you have found a car you would like to purchase and ship it to
+          Africa, please fill out the form below with the URL of the vehicle you
+          would like to purchase. We will follow up with you shortly. Our
+          shipping rates depend on each country and the weight of the car. Costs
+          typically vary between $500 to $900 per car.
+        </P>
+      </SectionPrimaryTransparent>
+      <SectionGrey>
+        <H2CenteredLight2>
+          <Bold>Our </Bold> Warehouse
+        </H2CenteredLight2>
+        <H3>We are a Amazon Associate Partner</H3>
+        <P>
+          When checking out on Amazon, it is very important to add our warehouse
+          address XX XXX on address line 1. so.
+        </P>
+        <P>Please see a video here on how to do this if you are not certain.</P>
+        <H3>More Brands coming</H3>
+        <P>
+          While we mostly have Amazon products listed, we will continue to grow
+          our site to list other ecommerce products as well. It is important to
+          us that if you come to this site before checking out on Amazon with
+          our Warehoue address as products, service pricing and instructions
+          might change over time.
+        </P>
+        <P>If you have any questions please do not hesitate to contact us</P>
+      </SectionGrey>
     </SuperStoreLayout>
   );
 };

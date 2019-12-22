@@ -29,6 +29,10 @@ const H2Centered = styled(H2)`
   margin: 2rem 0;
 `;
 
+const H3 = styled.h3`
+  font-size: 2.4rem;
+`;
+
 const H2CenteredLight1 = styled(H2Centered)`
   font-weight: 500;
 `;
@@ -59,6 +63,7 @@ const Span = styled.span``;
 
 const P = styled.p`
   padding: 1rem 0rem;
+  font-size: 1.6rem;
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     text-align: center;
   }
@@ -70,6 +75,7 @@ export {
   H2Centered,
   H2CenteredLight1,
   H2CenteredLight2,
+  H3,
   A,
   Li,
   Ul,

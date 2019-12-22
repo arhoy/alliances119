@@ -11,11 +11,13 @@ import { Container1200 } from '../reusableStyles/sections/Sections';
 
 import MegaMenu2 from '../menus/MegaMenus/MegaMenu2';
 
-import ElectronicsList1 from '../menus/MegaMenus/MegaMenuLists/Style2/ElectronicsList1';
+import SuperStoreList1 from '../menus/MegaMenus/MegaMenuLists/Style2/SuperStoreList1';
 
 import Search from '../algolia/Search';
 import { MobileMenu1 } from '../menus-mobile/Electronics/MobileMenu1';
 import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
+import SuperStoreList2 from '../menus/MegaMenus/MegaMenuLists/Style2/SuperStoreList2';
+import SuperStoreList3 from '../menus/MegaMenus/MegaMenuLists/Style2/SuperStoreList3';
 
 const Header = styled.header`
   height: 80px;
@@ -88,14 +90,6 @@ const BurgerIcon = styled(FaAlignRight)`
   }
 `;
 
-const SearchContainerComputer = styled.div`
-  width: 15vw;
-
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    display: none;
-  }
-`;
-
 const SearchContainerMobile = styled.div`
   margin: 0 auto;
   @media (min-width: ${props => props.theme.screenSize.mobileL}) {
@@ -129,14 +123,21 @@ const NavSuperStore1 = () => {
           <MyMenu3 color={'white'} title={`SHOP`}>
             <Container1200>
               <MegaMenu2>
-                <ElectronicsList1 />
+                <SuperStoreList1 />
               </MegaMenu2>
             </Container1200>
           </MyMenu3>
-          <MyMenu3 color={'white'} title={`ABOUT`}>
+          <MyMenu3 color={'white'} title={`BRANDS`}>
             <Container1200>
               <MegaMenu2>
-                <ElectronicsList1 />
+                <SuperStoreList2 />
+              </MegaMenu2>
+            </Container1200>
+          </MyMenu3>
+          <MyMenu3 color={'white'} title={`CARS`}>
+            <Container1200>
+              <MegaMenu2>
+                <SuperStoreList3 />
               </MegaMenu2>
             </Container1200>
           </MyMenu3>
@@ -145,9 +146,6 @@ const NavSuperStore1 = () => {
             <a href="tel:587-772-5536">587-772-5536</a>
           </CustomButtonStyle2>
         </NavContainer>
-        <SearchContainerComputer>
-          <Search />
-        </SearchContainerComputer>
 
         <BurgerIcon onClick={mobileMenuHandler} />
         {mobileMenuOpen ? (

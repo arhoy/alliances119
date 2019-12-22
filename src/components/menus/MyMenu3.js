@@ -21,7 +21,7 @@ const DropDownContent = styled.div`
   width: 100%;
 
   position: absolute;
-  top: 75px;
+  top: 80px;
   left: 0;
 `;
 
@@ -35,7 +35,8 @@ const Title = styled.span`
 `;
 
 const Button = styled.button`
-  background: transparent;
+  background: ${props =>
+    props.active ? props.theme.colors.primary : 'transparent'};
   border: none;
   outline: none;
 
@@ -55,7 +56,7 @@ const MyMenu3 = ({ title, children, color }) => {
   };
   return (
     <Container>
-      <Button onClick={menuHandler}>
+      <Button onClick={menuHandler} active={menu}>
         <Title style={{ color }}>{title}</Title>
 
         <Container800>
