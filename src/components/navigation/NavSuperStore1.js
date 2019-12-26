@@ -17,7 +17,6 @@ import Search from '../algolia/Search';
 import { MobileMenu1 } from '../menus-mobile/Electronics/MobileMenu1';
 import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
 import SuperStoreList2 from '../menus/MegaMenus/MegaMenuLists/Style2/SuperStoreList2';
-import SuperStoreList3 from '../menus/MegaMenus/MegaMenuLists/Style2/SuperStoreList3';
 
 const Header = styled.header`
   height: 80px;
@@ -131,13 +130,6 @@ const NavSuperStore1 = () => {
             <Container1200>
               <MegaMenu2>
                 <SuperStoreList2 />
-              </MegaMenu2>
-            </Container1200>
-          </MyMenu3>
-          <MyMenu3 color={'white'} title={`CARS`}>
-            <Container1200>
-              <MegaMenu2>
-                <SuperStoreList3 />
               </MegaMenu2>
             </Container1200>
           </MyMenu3>

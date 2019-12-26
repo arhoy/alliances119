@@ -45,6 +45,7 @@ const HerosCardContainer = styled.div`
 `;
 
 const HerosCard = styled.div`
+  z-index: 2;
   background: ${props => props.theme.colors.white};
   display: flex;
   flex-direction: column;
@@ -71,23 +72,28 @@ const HerosCard = styled.div`
 `;
 
 const HeroBackgroundImage = styled(BackgroundImage)`
-  z-index: 0;
   width: 100%;
   height: 70vh;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.5)
+  );
   background-size: cover;
   background-position: top;
   align-items: center;
-  z-index: -1;
+  opacity: 1 !important;
 `;
 
 const HeroContentContainer = styled.div`
   margin-top: 1rem;
-  display: flex;
+
   flex-direction: column;
 `;
 const HeroContent = styled.div`
-  width: 100%;
-  background: ${props => props.theme.colors.primaryLight};
+  color: ${props => props.theme.colors.white};
+  max-width: 80rem;
+  margin: 0 auto;
 
   padding: 3rem;
   border-top-left-radius: 2rem;
@@ -114,6 +120,7 @@ const StyledImage = styled(Image)`
 
 const CustomH1 = styled(H1)`
   text-align: center;
+  color: ${props => props.theme.colors.white};
 `;
 
 const Blurb = styled.p`
@@ -130,6 +137,13 @@ const Blurb2 = styled(Blurb)`
 
 export const query = graphql`
   {
+    heroImage: file(relativePath: { eq: "superstore/hero.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
     picture1: file(relativePath: { eq: "superstore/Amazon1.jpg" }) {
       childImageSharp {
         fluid(quality: 90, maxWidth: 1000) {
@@ -215,9 +229,9 @@ const superstoreOne = ({ data }) => {
     ],
   };
   return (
-    <SuperStoreLayout full={false}>
+    <SuperStoreLayout full={true}>
       <HerosContainer>
-        <HeroBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
+        <HeroBackgroundImage fluid={data.heroImage.childImageSharp.fluid}>
           <HeroContentContainer>
             <HeroContent>
               <CustomH1>The Amazon Store For Africa</CustomH1>

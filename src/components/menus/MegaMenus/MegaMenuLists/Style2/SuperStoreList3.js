@@ -47,15 +47,75 @@ const SuperStoreList3 = () => {
         <ListHeader title="Current List of Car Sites" />
         <MegaMenuPictureContainer></MegaMenuPictureContainer>
         <MegaMenuLi>
-          <MegaMenuSpan spanColor="red">Go Auto</MegaMenuSpan>
-          <MegaMenuSpan spanColor="primary">Auto Trader</MegaMenuSpan>
-          <MegaMenuSpan spanColor="primary">Kijiji</MegaMenuSpan>
-          <div>
-            <p>
-              Please view these sites and contact us if you have found a car of
-              interest
-            </p>
-          </div>
+          <MegaMenuLink to="/phones">Calvin Klein</MegaMenuLink>
+          <MegaMenuSpan>Hot</MegaMenuSpan>
+        </MegaMenuLi>
+      </MegaMenuUl>
+      <MegaMenuUl>
+        <ListHeader title="Top Fashion Brands" />
+        <MegaMenuPictureContainer>
+          <MegaMenuPicture fixed={data.picture2.childImageSharp.fixed} />
+        </MegaMenuPictureContainer>
+        <MegaMenuLi>
+          <MegaMenuLink to="/phones">Michael Kors</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/phones">Calvin Klein</MegaMenuLink>
+          <MegaMenuSpan>Hot</MegaMenuSpan>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/phones">Stuart Weitzman</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/phones">Gucci</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/phones">Fossil</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/phones">Adidas</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/phones">Levi's</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/phones">Nike</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/phones">Under Armour</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/phones">Aldo</MegaMenuLink>
+        </MegaMenuLi>
+      </MegaMenuUl>
+      <MegaMenuUl>
+        <ListHeader title="Featured Products" />
+        <MegaMenuPictureContainer>
+          <MegaMenuPicture fixed={data.picture3.childImageSharp.fixed} />
+        </MegaMenuPictureContainer>
+        <MegaMenuLi>
+          <MegaMenuLink to="/pants">Echo Dot</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/pants">Fire TV Stick</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/pants">Kindle</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/pants">Windows 10</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/pants">Game of Thrones S8</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/pants">Razer DeathAdder</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/pants">Samsung Galaxy</MegaMenuLink>
+        </MegaMenuLi>
+        <MegaMenuLi>
+          <MegaMenuLink to="/pants">Apple iPhone</MegaMenuLink>
         </MegaMenuLi>
       </MegaMenuUl>
     </>
