@@ -28,7 +28,6 @@ function useOutsideAlerter(ref, menuhandler) {
  * Component that alerts if you click outside of it
  */
 export default function OutsideAlerter(props) {
-  console.log('props are', props);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, props.menuhandler);
 

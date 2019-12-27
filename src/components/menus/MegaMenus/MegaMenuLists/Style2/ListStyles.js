@@ -7,6 +7,10 @@ const MegaMenuUl = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  & a {
+    text-decoration: none;
+    color: ${props => props.theme.colors.black};
+  }
 `;
 
 const MegaMenuLi = styled.li`
@@ -32,6 +36,8 @@ const MegaMenuSpan = styled.span`
 
 const MegaMenuLink = styled(NoStyleLink)``;
 
+const MegaMenuA = styled.a``;
+
 const MegaMenuPictureContainer = styled.div`
   position: absolute;
   bottom: 0;
@@ -46,6 +52,7 @@ const MegaMenuPicture = styled(Img)``;
 export {
   MegaMenuUl,
   MegaMenuLi,
+  MegaMenuA,
   MegaMenuLink,
   MegaMenuSpan,
   MegaMenuPictureContainer,

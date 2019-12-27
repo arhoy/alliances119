@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { FaGlobeAfrica } from 'react-icons/fa';
 
@@ -23,6 +23,7 @@ import {
   P,
   H3,
 } from '../../components/reusableStyles/typography/Typography';
+import { amazonItemSearch } from '../../hooks/amazonProductApi/AmazonProductApi';
 
 const HerosContainer = styled.div`
   z-index: -1;
@@ -202,7 +203,21 @@ export const query = graphql`
   }
 `;
 
-const superstoreOne = ({ data }) => {
+const SuperstoreOne = ({ data }) => {
+  const [results, setResults] = useState({}); // set results to empty array
+
+  try {
+    useEffect(() => {
+      const fetchData = async () => {
+        console.log('sdfsdf');
+        const results = await amazonItemSearch();
+      };
+      fetchData();
+    }, []); // only run on componentDidMount and componentUnmount and query state change
+  } catch (error) {
+    console.error(error);
+  }
+
   const settings = {
     dots: true,
     infinite: true,
@@ -305,6 +320,14 @@ const superstoreOne = ({ data }) => {
           </ImageContainer>
         </Slider>
       </Section>
+
+      {/* <Section id="inventory">
+        <AmazonProducts
+          title={'Our Inventory'}
+          products={results.data}
+          pagination={results.pagination}
+        />
+      </Section> */}
       <SectionPrimaryTransparent>
         <H2CenteredLight2>
           <Bold>Our </Bold> Pricing
@@ -350,4 +373,4 @@ const superstoreOne = ({ data }) => {
   );
 };
 
-export default superstoreOne;
+export default SuperstoreOne;
