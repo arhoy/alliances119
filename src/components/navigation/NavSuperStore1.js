@@ -121,14 +121,14 @@ const NavSuperStore1 = () => {
         <NavContainer>
           <MyMenu3 color={'white'} title={`SHOP`}>
             <Container1200>
-              <MegaMenu2>
+              <MegaMenu2 background={'white'}>
                 <SuperStoreList1 />
               </MegaMenu2>
             </Container1200>
           </MyMenu3>
           <MyMenu3 color={'white'} title={`BRANDS`}>
             <Container1200>
-              <MegaMenu2>
+              <MegaMenu2 background={'white'}>
                 <SuperStoreList2 />
               </MegaMenu2>
             </Container1200>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 const MegaMenuStyle = styled.div`
-  background: ${props => props.theme.colors.white};
+  background: ${props => props.background || props.theme.colors.white};
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
   padding: 2rem 4rem;
   display: grid;

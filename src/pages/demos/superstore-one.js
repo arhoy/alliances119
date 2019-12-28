@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { FaGlobeAfrica } from 'react-icons/fa';
+import {
+  FaGlobeAfrica,
+  FaSearch,
+  FaAmazon,
+  FaCcAmazonPay,
+  FaEnvira,
+  FaDollarSign,
+  FaCarAlt,
+} from 'react-icons/fa';
 
 import { graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
@@ -14,19 +22,19 @@ import SuperStoreLayout from '../../components/layouts/SuperStoreLayout';
 import {
   Section,
   SectionGrey,
-  SectionWhite,
   Container1200,
 } from '../../components/reusableStyles/sections/Sections';
 import {
   Bold,
   H2CenteredLight2,
   H1,
-  P,
-  H3,
 } from '../../components/reusableStyles/typography/Typography';
 import { amazonItemSearch } from '../../hooks/amazonProductApi/AmazonProductApi';
 
 import SliderContainer1 from '../../components/reusableStyles/slider/SliderContainer1';
+import HerosCard1 from '../../components/reusableStyles/cards/HerosCard1';
+import FeatureSection from '../../components/features/FeatureSection';
+import { ButtonStyle1 } from '../../components/reusableStyles/buttons/Button';
 
 const HerosContainer = styled.div`
   z-index: -1;
@@ -46,33 +54,6 @@ const HerosCardContainer = styled.div`
 
   justify-content: center;
   align-items: flex-end;
-`;
-
-const HerosCard = styled.div`
-  z-index: 2;
-  background: ${props => props.theme.colors.white};
-  display: flex;
-  flex-direction: column;
-
-  padding: 1rem 2rem;
-  text-align: center;
-  & h4 {
-    font-weight: bold;
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
-    display: block;
-    min-height: 8rem;
-  }
-
-  & p {
-    font-size: 1.6rem;
-    padding: 0 1rem;
-  }
-
-  margin: 1rem;
-
-  width: 20%;
-  min-width: 20rem;
 `;
 
 const HeroBackgroundImage = styled(BackgroundImage)`
@@ -112,7 +93,8 @@ const IconContainer = styled.div`
 `;
 const StyledIcon = styled(FaGlobeAfrica)`
   font-size: 25rem;
-  opacity: 0.4;
+  opacity: 0.35;
+  color: ${props => props.theme.colors.white};
 `;
 
 const CustomH1 = styled(H1)`
@@ -138,6 +120,40 @@ const Blurb2 = styled(Blurb)`
   font-weight: 500;
   margin-top: 1rem;
 `;
+
+const textVehicles = () => (
+  <p>
+    You can also purchase cars through us. If you have found a car you would
+    like to purchase and ship it to Africa, please fill out the form below with
+    the URL of the vehicle you would like to purchase. We will follow up with
+    you shortly. Our shipping rates depend on each country and the weight of the
+    car. Costs typically vary between <Bold> $500 to $900 </Bold>per car.
+  </p>
+);
+
+const textAmazonProducts = () => (
+  <p>
+    For Amazon related products, you pay for the product on Amazon after finding
+    it on this site, or going to this site first. After your order is shipped to
+    our warehouse, we will call you to confirm and ship your product. Our fees
+    for shipping and processing are <Bold>10% of your order + $20. </Bold>
+  </p>
+);
+
+const textOurWarehouse1 = () => (
+  <>
+    <p>
+      We are a Amazon Associate Partner When checking out on Amazon, use our
+      warehouse address
+      <br />
+      <ButtonStyle1> XX XXX on address line 1</ButtonStyle1>
+    </p>
+    <p style={{ marginTop: '1rem' }}>
+      You can reach our support team if you are having difficulty with purchases
+      or if you have any other questions
+    </p>
+  </>
+);
 
 export const query = graphql`
   {
@@ -212,7 +228,6 @@ const SuperstoreOne = ({ data }) => {
   try {
     useEffect(() => {
       const fetchData = async () => {
-        console.log('sdfsdf');
         const results = await amazonItemSearch();
       };
       fetchData();
@@ -268,35 +283,32 @@ const SuperstoreOne = ({ data }) => {
         </HeroBackgroundImage>
       </HerosContainer>
       <HerosCardContainer>
-        <HerosCard>
-          <h4>Find Your Product</h4>
-          <p>
-            We are a Ecommerce Store Shipping products to Africa from Amazon,
-            Best Buy, Autotrader and more
-          </p>
-        </HerosCard>
-        <HerosCard>
-          <h4>Checkout Via Amazon </h4>
-          <p>
-            Amazon will fullfill the orders, send it to our warehouse. We will
-            ship your product with tracking number to your location immediately
-          </p>
-        </HerosCard>
-        <HerosCard>
-          <h4>Safe Secure Transactions </h4>
-          <p>
-            Your orders are 100% guaranteed by Amazon and by Alliances119 to
-            arrive in a fast and timely manner.
-          </p>
-        </HerosCard>
-        <HerosCard>
-          <h4> Many Brands & Growing! </h4>
-          <p>
-            We are the fastest growing new kid on the block, delivering
-            ecommerce products to the entire African continent. Providing
-            unparalled customer service.
-          </p>
-        </HerosCard>
+        <HerosCard1
+          title={`Find Your Product`}
+          blurb={`    We are a Ecommerce Store Shipping products to Africa from Amazon,
+            Best Buy, Autotrader and more`}
+          icon={<FaSearch />}
+        />
+        <HerosCard1
+          title={`Checkout Via Amazon`}
+          blurb={`             Amazon will fullfill the orders, send it to our warehouse. We will
+          ship your product with tracking number to your location immediately`}
+          icon={<FaAmazon />}
+        />
+        <HerosCard1
+          title={`Safe Secure Transactions`}
+          blurb={`            Your orders are 100% guaranteed by Amazon and by Alliances119 to
+          arrive in a fast and timely manner.`}
+          icon={<FaCcAmazonPay />}
+        />
+
+        <HerosCard1
+          title={`Many Brands & Growing!`}
+          blurb={`   We are the fastest growing new kid on the block, delivering
+          ecommerce products to the entire African continent. Providing
+          unparalled customer service.`}
+          icon={<FaEnvira />}
+        />
       </HerosCardContainer>
       <Section>
         <CustomH2>
@@ -333,7 +345,7 @@ const SuperstoreOne = ({ data }) => {
             title={`iphones`}
             subtitle={`Reburbished at Great Prices`}
           ></SliderContainer1>
-         <SliderContainer1
+          <SliderContainer1
             background={`linear-gradient(to right bottom, #000000, #434343);`}
             href="https://www.amazon.ca/s?k=amazon+drones&_encoding=UTF8&tag=fashionfive-20&linkCode=ur2&linkId=412603aabc1e3fcd6b0f20c2efdbf384&camp=15121&creative=330641"
             title={`Drones`}
@@ -349,51 +361,41 @@ const SuperstoreOne = ({ data }) => {
           pagination={results.pagination}
         />
       </Section> */}
-      <SectionWhite>
-        <Container1200>
-          <CustomH2>
-            <Bold>Our </Bold> Pricing
-          </CustomH2>
-          <H3>Amazon Products</H3>
-          <P>
-            For Amazon related products, you pay for the product on Amazon after
-            finding it on this site, or going to this site first. After your
-            order is shipped to our warehouse, we will call you to confirm and
-            ship your product. Our fees for shipping and processing are 10% of
-            your order + $20.
-          </P>
-          <H3>Cars, Trucks and Automobiles</H3>
-          <P>
-            If you have found a car you would like to purchase and ship it to
-            Africa, please fill out the form below with the URL of the vehicle
-            you would like to purchase. We will follow up with you shortly. Our
-            shipping rates depend on each country and the weight of the car.
-            Costs typically vary between $500 to $900 per car.
-          </P>
-        </Container1200>
-      </SectionWhite>
+
       <SectionGrey>
         <Container1200>
-          <CustomH2>
-            <Bold>Our </Bold> Warehouse
-          </CustomH2>
-          <H3>We are a Amazon Associate Partner</H3>
-          <P>
-            When checking out on Amazon, it is very important to add our
-            warehouse address XX XXX on address line 1. so.
-          </P>
-          <P>
-            Please see a video here on how to do this if you are not certain.
-          </P>
-          <H3>More Brands coming</H3>
-          <P>
-            While we mostly have Amazon products listed, we will continue to
-            grow our site to list other ecommerce products as well. It is
-            important to us that if you come to this site before checking out on
-            Amazon with our Warehoue address as products, service pricing and
-            instructions might change over time.
-          </P>
-          <P>If you have any questions please do not hesitate to contact us</P>
+          <FeatureSection
+            heading="Amazon Products"
+            subheading="Our Pricing"
+            text={textAmazonProducts()}
+            icon={FaDollarSign()}
+            rotate="rotate(12deg)"
+          />
+        </Container1200>
+      </SectionGrey>
+
+      <Section>
+        <Container1200>
+          <FeatureSection
+            heading="Vehicles"
+            subheading="Our Process"
+            text={textVehicles()}
+            icon={FaCarAlt()}
+            rotate="rotate(-15deg)"
+            iconSize="10rem"
+          />
+        </Container1200>
+      </Section>
+
+      <SectionGrey>
+        <Container1200>
+          <FeatureSection
+            heading="Our Warehouse"
+            subheading="Amazon Associate Partner"
+            text={textOurWarehouse1()}
+            icon={FaAmazon()}
+            rotate="rotate(0deg)"
+          />
         </Container1200>
       </SectionGrey>
     </SuperStoreLayout>
