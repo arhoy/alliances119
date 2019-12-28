@@ -11,6 +11,15 @@ const Section = styled.div`
   }
 `;
 
+const SectionPrimary = styled(Section)`
+  background: ${props => props.theme.colors.primaryDark};
+  color: ${props => props.theme.colors.white};
+`;
+
+const SectionWhite = styled(Section)`
+  background: ${props => props.theme.colors.white};
+`;
+
 const SectionGrey = styled(Section)`
   background: ${props => props.theme.colors.lightgrey};
 `;
@@ -126,6 +135,7 @@ const ContainerCenterFlex = styled.div`
 
 export {
   Section,
+  SectionWhite,
   SectionGrey,
   SectionPrimaryTransparent,
   SectionHexaGrey,
@@ -136,4 +146,5 @@ export {
   Container800,
   ContainerCenterFlex,
   ProductPageTopSection,
+  SectionPrimary,
 };
