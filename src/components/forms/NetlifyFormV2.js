@@ -57,28 +57,28 @@ const FormTitle = styled.h4`
 `;
 
 const TextArea = styled.textarea`
-  background: ${props => props.theme.colors.darkGrey};
+  background: ${props => props.background || props.theme.colors.darkGrey};
   height: 10rem;
 
   &::placeholder {
-    color: ${props => props.theme.colors.lightgrey};
+    color: ${props => props.color || props.theme.colors.lightgrey};
     text-indent: 1rem;
   }
 `;
 const Input = styled.input`
   padding-left: 1rem;
-  background: ${props => props.theme.colors.darkGrey};
-  color: ${props => props.theme.colors.lightgrey};
+  background: ${props => props.background || props.theme.colors.darkGrey};
+  color: ${props => props.color || props.theme.colors.lightgrey};
 
   outline: none;
   border: none;
   &::placeholder {
-    color: ${props => props.theme.colors.lightgrey};
+    color: ${props => props.color || props.theme.colors.lightgrey};
     text-indent: 1rem;
   }
 `;
 
-const NetlifyFormV2 = ({ title, color }) => {
+const NetlifyFormV2 = ({ title, color, background }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -134,8 +134,9 @@ const NetlifyFormV2 = ({ title, color }) => {
 
               <Input
                 onChange={event => setFirstName(event.target.value)}
+                background={background}
+                color={color}
                 placeholder="First Name"
-                style={{ background: `${color}` }}
                 type="text"
                 name="firstName"
                 required
@@ -148,8 +149,9 @@ const NetlifyFormV2 = ({ title, color }) => {
 
               <Input
                 onChange={event => setLastName(event.target.value)}
+                background={background}
+                color={color}
                 placeholder="Last Name"
-                style={{ background: `${color}` }}
                 type="text"
                 name="lastName"
                 required
@@ -164,8 +166,9 @@ const NetlifyFormV2 = ({ title, color }) => {
 
               <Input
                 onChange={event => setPhoneNumber(event.target.value)}
+                background={background}
+                color={color}
                 placeholder="Phone Number"
-                style={{ background: `${color}` }}
                 type="text"
                 name="phoneNumber"
                 required
@@ -177,8 +180,9 @@ const NetlifyFormV2 = ({ title, color }) => {
               <h6> Email Address *:</h6>
 
               <Input
-                style={{ background: `${color}` }}
                 onChange={event => setEmail(event.target.value)}
+                background={background}
+                color={color}
                 placeholder="Email Address"
                 type="email"
                 name="email"
@@ -193,8 +197,9 @@ const NetlifyFormV2 = ({ title, color }) => {
               <h6>Message:</h6>
 
               <TextArea
-                style={{ background: `${color}` }}
                 onChange={event => setMessage(event.target.value)}
+                background={background}
+                color={color}
                 placeholder=""
                 name="message"
                 required

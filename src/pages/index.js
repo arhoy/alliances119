@@ -18,7 +18,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import SuperStoreLayout from '../components/layouts/Layout';
+import Layout from '../components/layouts/Layout';
 import {
   Section,
   SectionGrey,
@@ -248,7 +248,7 @@ const Home = ({ data }) => {
     ],
   };
   return (
-    <SuperStoreLayout full={true}>
+    <Layout full={true}>
       <HerosContainer>
         <HeroBackgroundImage fluid={data.heroImage.childImageSharp.fluid}>
           <HeroContentContainer>
@@ -385,7 +385,7 @@ const Home = ({ data }) => {
           />
         </Container1200>
       </SectionGrey>
-    </SuperStoreLayout>
+    </Layout>
   );
 };
 
