@@ -222,7 +222,7 @@ export const query = graphql`
   }
 `;
 
-const SuperstoreOne = ({ data }) => {
+const Home = ({ data }) => {
   const [results, setResults] = useState({}); // set results to empty array
 
   try {
@@ -402,4 +402,4 @@ const SuperstoreOne = ({ data }) => {
   );
 };
 
-export default SuperstoreOne;
+export default Home;

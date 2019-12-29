@@ -71,7 +71,10 @@ const SuperStoreList1 = () => {
           >
             Gaming
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt=""
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
           <MegaMenuSpan spanColor="red">Hot</MegaMenuSpan>
         </MegaMenuLi>
 
@@ -84,8 +87,8 @@ const SuperStoreList1 = () => {
             Photography
           </a>
           <img
+            alt=""
             src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
-            alt="Photography"
           />
         </MegaMenuLi>
 
@@ -112,7 +115,7 @@ const SuperStoreList1 = () => {
           </a>
           <img
             src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
-            alt=""
+            alt="Computers"
           />
         </MegaMenuLi>
         <MegaMenuLi>
@@ -169,7 +172,10 @@ const SuperStoreList1 = () => {
           >
             Best Selling Electronics
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt=""
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
       </MegaMenuUl>
       <MegaMenuUl>
@@ -185,7 +191,10 @@ const SuperStoreList1 = () => {
           >
             Men's Fashion
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt=""
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -195,7 +204,10 @@ const SuperStoreList1 = () => {
           >
             Women's Fashion
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt=""
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
           <MegaMenuSpan>Hot</MegaMenuSpan>
         </MegaMenuLi>
         <MegaMenuLi>
@@ -206,7 +218,10 @@ const SuperStoreList1 = () => {
           >
             Sports & Outdoors
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Sports and Outdoors"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -216,7 +231,10 @@ const SuperStoreList1 = () => {
           >
             Woman's Yoga Wear
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Woman Yoga Wear"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -226,7 +244,10 @@ const SuperStoreList1 = () => {
           >
             Lingerie
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Lingerie"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -236,7 +257,10 @@ const SuperStoreList1 = () => {
           >
             Jewelry
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Jewlry"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -246,7 +270,10 @@ const SuperStoreList1 = () => {
           >
             Wearable Tech
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Wearable Tech"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
       </MegaMenuUl>
       <MegaMenuUl>
@@ -262,7 +289,10 @@ const SuperStoreList1 = () => {
           >
             Baby Shop
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Baby Shop"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -272,7 +302,10 @@ const SuperStoreList1 = () => {
           >
             Book Store
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Book Store"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -282,7 +315,10 @@ const SuperStoreList1 = () => {
           >
             Diet &amp; Nutrition
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Diet and Nutrition"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -292,7 +328,10 @@ const SuperStoreList1 = () => {
           >
             Wellness
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Wellness"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -302,7 +341,10 @@ const SuperStoreList1 = () => {
           >
             Beauty Shop
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Beauty Shop"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -312,7 +354,10 @@ const SuperStoreList1 = () => {
           >
             Best Sellers
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Best Sellers"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -322,7 +367,10 @@ const SuperStoreList1 = () => {
           >
             Amazon Products
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Amazon Products"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
         <MegaMenuLi>
           <a
@@ -332,7 +380,10 @@ const SuperStoreList1 = () => {
           >
             Tools
           </a>
-          <img src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15" />
+          <img
+            alt="Tools"
+            src="//ir-ca.amazon-adsystem.com/e/ir?t=fashionfive-20&l=ur2&o=15"
+          />
         </MegaMenuLi>
       </MegaMenuUl>
     </>
