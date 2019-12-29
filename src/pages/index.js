@@ -1,51 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import * as Scroll from 'react-scroll';
-import ReactTyped from 'react-typed';
-import { graphql } from 'gatsby';
-import Particles from 'react-particles-js';
+import {
+  FaGlobeAfrica,
+  FaSearch,
+  FaAmazon,
+  FaCcAmazonPay,
+  FaEnvira,
+  FaDollarSign,
+  FaCarAlt,
+} from 'react-icons/fa';
 
-import MainLayout from '../components/layouts/MainLayout';
-import SEO from '../hooks/SEO';
+import { graphql } from 'gatsby';
+import BackgroundImage from 'gatsby-background-image';
+
+import Slider from 'react-slick';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+import SuperStoreLayout from '../components/layouts/Layout';
 import {
   Section,
-  Container800,
   SectionGrey,
+  Container1200,
 } from '../components/reusableStyles/sections/Sections';
-
-import BackgroundImage from 'gatsby-background-image';
-import Img from 'gatsby-image';
 import {
-  H2,
-  A,
-  H2Centered,
+  Bold,
+  H2CenteredLight2,
+  H1,
 } from '../components/reusableStyles/typography/Typography';
-import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
+import { amazonItemSearch } from '../hooks/amazonProductApi/AmazonProductApi';
 
-import CatchyBanner from '../components/reusableStyles/banner/CatchyBanner';
-import BasicFeatureSection from '../components/features/BasicFeatureSection';
-
-import NoStyleLink from '../components/Links/NoStyleLink';
-import {
-  ButtonStyle2Large,
-  ButtonStyle2,
-} from '../components/reusableStyles/buttons/Button';
-import {
-  CustomHighlight2,
-  CustomHighlight2Primary,
-} from '../components/reusableStyles/highlights/Highlights';
-
-const P = styled.p`
-  margin: 1.5rem 0rem;
-  font-family: Poppins;
-  font-size: 1.7rem;
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    text-align: center;
-    margin: 3rem 0rem;
-  }
-`;
+import SliderContainer1 from '../components/reusableStyles/slider/SliderContainer1';
+import HerosCard1 from '../components/reusableStyles/cards/HerosCard1';
+import FeatureSection from '../components/features/FeatureSection';
+import { ButtonStyle1 } from '../components/reusableStyles/buttons/Button';
 
 const HerosContainer = styled.div`
+  z-index: -1;
+
   display: flex;
 
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
@@ -53,512 +46,360 @@ const HerosContainer = styled.div`
   }
 `;
 
-const MainHeroCover = styled(HerosContainer)`
-  width: 100%;
-  height: 100vh;
-`;
+const HerosCardContainer = styled.div`
+  margin-top: -20vh;
 
-const FullNarrowBackgroundImage = styled(BackgroundImage)`
-  width: 100%;
-  min-height: 25vh;
-  max-height: 40vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const CustomBannerContainer = styled.div`
-  padding: 4rem 1rem;
-  width: 100%;
-  display: grid;
-  justify-content: center;
-  grid-gap: 3rem;
-  grid-template-columns: repeat(auto-fit, minmax(max-content, 35rem));
-`;
-
-const MainCenterDiv = styled.div`
-  position: absolute;
-  color: ${props => props.theme.colors.white};
-  z-index: 4;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StyledParticles = styled(Particles)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: ${props => props.theme.colors.black};
-  opacity: 0.9;
-`;
-const Blurb = styled.h1`
-  text-align: center;
-  color: ${props => props.theme.colors.white};
-`;
-
-const FashionDemos = styled.div`
   display: flex;
   flex-wrap: wrap;
+
   justify-content: center;
+  align-items: flex-end;
 `;
 
-const CustomButtonStyle2 = styled(ButtonStyle2)`
-  transform: translate(0, 10vh);
-
-  padding: 1rem 2rem;
-  opacity: 0;
-  border-radius: 50%;
-
-  transition: border-radius 0.2s ease-in 0.2s;
-  & span {
-    display: flex;
-    font-size: 2.4rem;
-    justify-content: center;
-    text-align: center;
-  }
+const HeroBackgroundImage = styled(BackgroundImage)`
+  width: 100%;
+  height: 70vh;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.5)
+  );
+  background-size: cover;
+  background-position: top;
+  align-items: center;
+  opacity: 1 !important;
 `;
-const DemoViewContainer = styled.div`
-  height: 40rem;
-  width: 30rem;
-  background: ${props => props.theme.colors.blackTransparent};
-  position: absolute;
-  left: 0%;
-  top: 0%;
-  border-radius: 6px;
+
+const HeroContentContainer = styled.div`
+  margin-top: 1rem;
+
+  flex-direction: column;
+`;
+const HeroContent = styled.div`
+  color: ${props => props.theme.colors.white};
+  max-width: 80rem;
+  margin: 0 auto;
+
+  padding: 3rem;
+  border-top-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+`;
+const IconContainer = styled.div`
+  width: 100%;
 
   display: flex;
   justify-content: center;
   align-items: center;
-
-  opacity: 0;
-  transition: all 0.2s ease-in;
+`;
+const StyledIcon = styled(FaGlobeAfrica)`
+  font-size: 25rem;
+  opacity: 0.35;
+  color: ${props => props.theme.colors.white};
 `;
 
-const DemoImage = styled(Img)`
-  background-size: contain;
-
-  width: 100%;
-  height: 100%;
+const CustomH1 = styled(H1)`
+  text-align: center;
+  color: ${props => props.theme.colors.white};
+  text-shadow: -3px 3px 0 ${props => props.theme.colors.black};
 `;
 
-const DemoImageContainer = styled.div`
-  height: 40rem;
-  width: 30rem;
-  margin: 2rem;
-
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  & h3 {
-    font-family: Poppins;
-    font-weight: bold;
-    padding: 1rem 2rem;
-    background: ${props => props.theme.colors.primaryLight};
-    color: ${props => props.theme.colors.white};
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    height: 40rem;
-    width: 30rem;
-    border: 3px solid ${props => props.theme.colors.primary};
-    box-sizing: border-box;
-    top: -2rem;
-    left: -2rem;
-    z-index: -1;
-  }
-  &:hover {
-    ${DemoViewContainer} {
-      opacity: 1;
-    }
-    ${CustomButtonStyle2} {
-      transform: translate(0, 0);
-      border-radius: 1rem;
-      opacity: 1;
-    }
-  }
+const CustomH2 = styled(H2CenteredLight2)`
+  font-size: 3.2rem;
+  color: ${props => props.theme.colors.primary};
+  text-shadow: -3px 3px 0 rgba(10, 14, 39, 0.1);
 `;
 
-const whyRipple = () => (
-  <>
-    <P>
-      <strong>RippleJS</strong> themes are blazingly fast website themes for any
-      purpose create by Aquasar Web Development. The JAMstack is the future of
-      web development, exploiting the power of front end frameworks like Gatsby
-      and taking full advantage of powerful APIs and microservices like
-      Snipcart, Algolia and Contentful to create a fast, user friendly browser
-      experience.
-    </P>
-    <P>
-      <CustomHighlight2> Gatsby </CustomHighlight2> +
-      <CustomHighlight2> React </CustomHighlight2> +
-      <CustomHighlight2> Contentful </CustomHighlight2> +
-      <CustomHighlight2> Netlify </CustomHighlight2> +
-      <CustomHighlight2> Algolio </CustomHighlight2> +
-      <CustomHighlight2> Snipcart </CustomHighlight2> &
-      <CustomHighlight2> Much much more </CustomHighlight2>
-    </P>
-    <P>
-      "Faster and more SEO friendy than any frontend WordPress or Shopify site
-      created by the vast majority of web design agencies and at a fraction of
-      the cost."
-    </P>
-  </>
+const Blurb = styled.p`
+  text-align: center;
+  font-weight: bolder;
+  & i {
+    text-decoration: underline;
+  }
+`;
+const Blurb2 = styled(Blurb)`
+  font-weight: 500;
+  margin-top: 1rem;
+`;
+
+const textVehicles = () => (
+  <p>
+    You can also purchase cars through us. If you have found a car you would
+    like to purchase and ship it to Africa, please fill out the form below with
+    the URL of the vehicle you would like to purchase. We will follow up with
+    you shortly. Our shipping rates depend on each country and the weight of the
+    car. Costs typically vary between <Bold> $500 to $900 </Bold>per car.
+  </p>
 );
 
-const aboutMe = () => (
-  <>
-    <P>
-      My name is <strong>Alex Quasar</strong>. I am professional full stack web
-      developer and digital ads consultant. I build websites for local
-      businesses and work with companies small and large using the latest and
-      greatest technoligies. These include:
-    </P>
-    <P>
-      <CustomHighlight2> JAM Stack </CustomHighlight2> &
-      <CustomHighlight2> MERN Stack </CustomHighlight2> &
-      <CustomHighlight2> Gatsby </CustomHighlight2> &
-      <CustomHighlight2> Contentful </CustomHighlight2>
-    </P>
-    <P>
-      You can read more on my about page:{' '}
-      <A href="https://aquasar.io/about/">here</A>
-    </P>
-  </>
+const textAmazonProducts = () => (
+  <p>
+    For Amazon related products, you pay for the product on Amazon after finding
+    it on this site, or going to this site first. After your order is shipped to
+    our warehouse, we will call you to confirm and ship your product. Our fees
+    for shipping and processing are <Bold>10% of your order + $20. </Bold>
+  </p>
 );
 
-const featuresText = () => (
-  <P>
-    What you get with the Ripple Theme? You will get a fully functional and
-    developer supported modern web app like in the demos
-    <br />
-    <br />
-    <CustomHighlight2Primary> Lightning Fast Website </CustomHighlight2Primary>
-    <CustomHighlight2Primary> Algolia Search </CustomHighlight2Primary>
-    <CustomHighlight2Primary> Website Chat </CustomHighlight2Primary>
-    <CustomHighlight2Primary>Built In Dynamic SEO tags</CustomHighlight2Primary>
-    <CustomHighlight2Primary> Contentful Product CMS </CustomHighlight2Primary>
-    <CustomHighlight2Primary>
-      Customized MailChimp Popup
-    </CustomHighlight2Primary>
-    <CustomHighlight2Primary> Customized Mapbox Map </CustomHighlight2Primary>
-    <CustomHighlight2Primary> Optimized Images </CustomHighlight2Primary>
-    <CustomHighlight2Primary>
-      Conversion Optimized Checkout
-    </CustomHighlight2Primary>
-    <CustomHighlight2Primary> Hosting </CustomHighlight2Primary>
-    <CustomHighlight2Primary>6 Month Developer Support</CustomHighlight2Primary>
-    <CustomHighlight2Primary>Subscriber Form</CustomHighlight2Primary>
-    <br />
-    <br />
-    Sounds pretty good? If so, give us a shout! In addition to the features
-    above, you will get a local experienced developer who wants to team up with
-    you to help grow your business and online presence. Prices for a Ripple
-    Theme start at $300 build fee + $10/month for web hosting and support.
-  </P>
+const textOurWarehouse1 = () => (
+  <>
+    <p>
+      We are a Amazon Associate Partner When checking out on Amazon, use our
+      warehouse address
+      <br />
+      <ButtonStyle1> XX XXX on address line 1</ButtonStyle1>
+    </p>
+    <p style={{ marginTop: '1rem' }}>
+      You can reach our support team if you are having difficulty with purchases
+      or if you have any other questions
+    </p>
+  </>
 );
 
 export const query = graphql`
   {
-    logoTrans: file(
-      relativePath: { eq: "logos/main/RippleJSLogoTransparent.png" }
-    ) {
+    heroImage: file(relativePath: { eq: "superstore/hero.jpg" }) {
       childImageSharp {
-        fixed(quality: 90, width: 300) {
-          ...GatsbyImageSharpFixed_noBase64
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    slider1: file(relativePath: { eq: "superstore/slider1.png" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    slider2: file(relativePath: { eq: "superstore/slider2.png" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    slider3: file(relativePath: { eq: "superstore/slider3.png" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }
 
-    fashionDemos: allFile(
-      filter: { relativePath: { regex: "/demos/fashion/" } }
+    picture4: file(relativePath: { eq: "watch.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+    picture5: file(relativePath: { eq: "tv.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+    picture6: file(relativePath: { eq: "apple-iphone-1.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+
+    heroCarousel: allFile(
+      filter: { relativePath: { regex: "/carouselArray1/" } }
     ) {
       nodes {
         childImageSharp {
-          fluid(maxWidth: 300, maxHeight: 400) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
     }
-
-    demos: allContentfulPortfolioDemos {
-      nodes {
-        demoSlug
-        demoTitle
-        demoImage {
-          fluid(quality: 99, maxWidth: 600, maxHeight: 800) {
-            ...GatsbyContentfulFluid_withWebp
-          }
-        }
-      }
-    }
-
-    picture1: file(relativePath: { eq: "woman.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1000) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-    picture2: file(relativePath: { eq: "man.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1000) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-    picture3: file(relativePath: { eq: "purple-blob.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1000) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-    picture4: file(relativePath: { eq: "jeans.JPG" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1000) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-
-    picture5: file(relativePath: { eq: "runningshoes.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1000) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-    picture6: file(relativePath: { eq: "jeans_3.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1000) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-    picture7: file(relativePath: { eq: "woman2.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1000) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-    picture8: file(relativePath: { eq: "woman4.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1000) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-    picture9: file(relativePath: { eq: "man2.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1000) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-    picture10: file(relativePath: { eq: "man2.jpg" }) {
-      childImageSharp {
-        fluid(quality: 90, maxWidth: 1000) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
   }
 `;
 
-export default ({ data }) => {
-  const [typingComplete, setTypingComplete] = useState(false);
+const SuperstoreOne = ({ data }) => {
+  const [results, setResults] = useState({}); // set results to empty array
 
-  const typingCompleteHandler = () => {
-    setTypingComplete(true);
+  try {
+    useEffect(() => {
+      const fetchData = async () => {
+        const results = await amazonItemSearch();
+      };
+      fetchData();
+    }, []); // only run on componentDidMount and componentUnmount and query state change
+  } catch (error) {
+    console.error(error);
+  }
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-
   return (
-    <MainLayout full={true}>
-      <SEO title="Fashion two" description="Sample Fashion Store" />
-      <MainHeroCover>
-        <StyledParticles
-          params={{
-            particles: {
-              number: {
-                value: 250,
-              },
-              // color: {
-              //   value: 'white',
-              // },
-              shape: {
-                type: 'circle',
-                stroke: {
-                  width: 1,
-                  color: '#e2e2e2',
-                },
-              },
-              opacity: {
-                value: 0.2,
-                random: true,
-                anim: {
-                  enable: false,
-                  speed: 1,
-                },
-              },
+    <SuperStoreLayout full={true}>
+      <HerosContainer>
+        <HeroBackgroundImage fluid={data.heroImage.childImageSharp.fluid}>
+          <HeroContentContainer>
+            <HeroContent>
+              <CustomH1>The Amazon Store For Africa</CustomH1>
+              <Blurb>
+                We will deliver to <i>any</i> African country when Amazon won't
+              </Blurb>
+              <Blurb2>
+                Just add our Warehouse on address line 1 during checkout
+              </Blurb2>
+            </HeroContent>
 
-              size: {
-                value: 5,
-                random: false,
-              },
-              line_linked: {
-                enable: true,
-                distance: 90,
-                color: '#fff',
-                width: 1,
-              },
-              move: {
-                enable: true,
-                speed: 2,
-                direction: 'none',
-              },
-            },
-            interactivity: {
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: 'repulse',
-                },
-                onclick: {
-                  enable: true,
-                  mode: 'bubble',
-                },
-              },
-              modes: {
-                repulse: {
-                  distance: 50,
-                  duration: 10,
-                },
-                bubble: {
-                  distance: 100,
-                  size: 50,
-                },
-              },
-            },
-          }}
+            <IconContainer>
+              <StyledIcon />
+            </IconContainer>
+          </HeroContentContainer>
+        </HeroBackgroundImage>
+      </HerosContainer>
+      <HerosCardContainer>
+        <HerosCard1
+          title={`Find Your Product`}
+          blurb={`    We are a Ecommerce Store Shipping products to Africa from Amazon,
+            Best Buy, Autotrader and more`}
+          icon={<FaSearch />}
+        />
+        <HerosCard1
+          title={`Checkout Via Amazon`}
+          blurb={`             Amazon will fullfill the orders, send it to our warehouse. We will
+          ship your product with tracking number to your location immediately`}
+          icon={<FaAmazon />}
+        />
+        <HerosCard1
+          title={`Safe Secure Transactions`}
+          blurb={`            Your orders are 100% guaranteed by Amazon and by Alliances119 to
+          arrive in a fast and timely manner.`}
+          icon={<FaCcAmazonPay />}
         />
 
-        <MainCenterDiv>
-          <Img fixed={data.logoTrans.childImageSharp.fixed} />
-          <Blurb>
-            {typingComplete ? (
-              <Scroll.Link
-                to="rippleDemos"
-                smooth={true}
-                duration={500}
-                offset={-30}
-              >
-                <ButtonStyle2Large>Learn More</ButtonStyle2Large>
-              </Scroll.Link>
-            ) : (
-              <ReactTyped
-                strings={[
-                  'Lightning Fast Development',
-                  'Full Ecommerce Solutions',
-                  'Optimized Checkout Process',
-                  'Chat Integration',
-                  'Complete Customization',
-                  'Full Support',
-                  'Fast, Slick, Modern ',
-                  'Quick Development',
-                ]}
-                typeSpeed={50}
-                backSpeed={0}
-                smartBackspace
-                onComplete={typingCompleteHandler}
-              >
-                <span type="text" />
-              </ReactTyped>
-            )}
-          </Blurb>
-        </MainCenterDiv>
-      </MainHeroCover>
-
-      <Section id="rippleDemos">
-        <H2Centered> DEMOS</H2Centered>
-
-        <FashionDemos>
-          {data.demos.nodes.map((node, i) => (
-            <NoStyleLink key={node.demoTitle} to={`/demos/${node.demoSlug}`}>
-              <DemoImageContainer>
-                <DemoImage fluid={node.demoImage.fluid} />
-                <DemoViewContainer>
-                  <CustomButtonStyle2>
-                    <span>Live</span> <span>Demo</span>
-                  </CustomButtonStyle2>
-                </DemoViewContainer>
-                <h3>{node.demoTitle}</h3>
-              </DemoImageContainer>
-            </NoStyleLink>
-          ))}
-        </FashionDemos>
-      </Section>
+        <HerosCard1
+          title={`Many Brands & Growing!`}
+          blurb={`   We are the fastest growing new kid on the block, delivering
+          ecommerce products to the entire African continent. Providing
+          unparalled customer service.`}
+          icon={<FaEnvira />}
+        />
+      </HerosCardContainer>
       <Section>
-        <H2Centered> Many More Themes Coming Soon </H2Centered>
+        <CustomH2>
+          <Bold>Featured</Bold> Products
+        </CustomH2>
+        <Slider {...settings}>
+          <SliderContainer1
+            background={`linear-gradient(to right bottom, #000000, #434343);`}
+            href="https://www.amazon.ca/s?k=monitors+asus&_encoding=UTF8&tag=fashionfive-20&linkCode=ur2&linkId=8ed51b45a03f3971b380223c4fe4e9bd&camp=15121&creative=330641"
+            title={`Monitors`}
+            subtitle={`Premium ASUS Monitors`}
+          ></SliderContainer1>
+          <SliderContainer1
+            background={`linear-gradient(to right bottom, #000000, #434343);`}
+            href="https://www.amazon.ca/s?k=iphone&_encoding=UTF8&tag=fashionfive-20&linkCode=ur2&linkId=a94be228d0112520e15357a3e37d5f8d&camp=15121&creative=330641"
+            title={`iphones`}
+            subtitle={`Reburbished at Great Prices`}
+          ></SliderContainer1>
+          <SliderContainer1
+            background={`linear-gradient(to right bottom, #000000, #434343);`}
+            href="https://www.amazon.ca/s?k=amazon+drones&_encoding=UTF8&tag=fashionfive-20&linkCode=ur2&linkId=412603aabc1e3fcd6b0f20c2efdbf384&camp=15121&creative=330641"
+            title={`Drones`}
+            subtitle={`Starting at $39.99`}
+          ></SliderContainer1>
+          <SliderContainer1
+            background={`linear-gradient(to right bottom, #000000, #434343);`}
+            href="https://www.amazon.ca/s?k=monitors+asus&_encoding=UTF8&tag=fashionfive-20&linkCode=ur2&linkId=8ed51b45a03f3971b380223c4fe4e9bd&camp=15121&creative=330641"
+            title={`Monitors`}
+            subtitle={`Premium ASUS Monitors`}
+          ></SliderContainer1>
+          <SliderContainer1
+            background={`linear-gradient(to right bottom, #000000, #434343);`}
+            href="https://www.google.com"
+            title={`iphones`}
+            subtitle={`Reburbished at Great Prices`}
+          ></SliderContainer1>
+          <SliderContainer1
+            background={`linear-gradient(to right bottom, #000000, #434343);`}
+            href="https://www.amazon.ca/s?k=amazon+drones&_encoding=UTF8&tag=fashionfive-20&linkCode=ur2&linkId=412603aabc1e3fcd6b0f20c2efdbf384&camp=15121&creative=330641"
+            title={`Drones`}
+            subtitle={`Starting at $39.99`}
+          ></SliderContainer1>
+        </Slider>
       </Section>
 
-      <FullNarrowBackgroundImage fluid={data.picture3.childImageSharp.fluid}>
-        <CustomBannerContainer>
-          <CatchyBanner
-            color="white"
-            title="Red Tag"
-            background="rgb(218, 18, 31)"
-          >
-            <p
-              style={{
-                fontWeight: 'bold',
-                marginTop: '4px',
-                color: 'lightgrey',
-                textAlign: 'center',
-              }}
-            >
-              Up to 50% Off
-            </p>
-          </CatchyBanner>
-        </CustomBannerContainer>
-      </FullNarrowBackgroundImage>
-      <SectionGrey id="whyRipple">
-        <Container800>
-          <BasicFeatureSection
-            heading="Why RippleJS Theme"
-            text={whyRipple()}
-          />
-        </Container800>
-      </SectionGrey>
-      <Section>
-        <Container800>
-          <BasicFeatureSection heading="Features" text={featuresText()} />
-        </Container800>
-      </Section>
+      {/* <Section id="inventory">
+        <AmazonProducts
+          title={'Our Inventory'}
+          products={results.data}
+          pagination={results.pagination}
+        />
+      </Section> */}
+
       <SectionGrey>
-        <Container800>
-          <BasicFeatureSection heading="About Me" text={aboutMe()} />
-        </Container800>
+        <Container1200>
+          <FeatureSection
+            heading="Amazon Products"
+            subheading="Our Pricing"
+            text={textAmazonProducts()}
+            icon={FaDollarSign()}
+            rotate="rotate(12deg)"
+          />
+        </Container1200>
       </SectionGrey>
 
-      <Section id="contact">
-        <Container800>
-          <H2>Contact US</H2>
-          <SimpleNetlifyForm />
-        </Container800>
+      <Section>
+        <Container1200>
+          <FeatureSection
+            heading="Vehicles"
+            subheading="Our Process"
+            text={textVehicles()}
+            icon={FaCarAlt()}
+            rotate="rotate(-15deg)"
+            iconSize="10rem"
+          />
+        </Container1200>
       </Section>
-    </MainLayout>
+
+      <SectionGrey>
+        <Container1200>
+          <FeatureSection
+            heading="Our Warehouse"
+            subheading="Amazon Associate Partner"
+            text={textOurWarehouse1()}
+            icon={FaAmazon()}
+            rotate="rotate(0deg)"
+          />
+        </Container1200>
+      </SectionGrey>
+    </SuperStoreLayout>
   );
 };
+
+export default SuperstoreOne;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import Layout5 from '../components/layouts/Layout5';
+import Layout from '../components/layouts/Layout';
 import SEO from '../hooks/SEO';
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -131,7 +131,7 @@ const BagTemplate = ({
   };
 
   return (
-    <Layout5 full={true}>
+    <Layout full={true}>
       <SEO title={productName} description={description} />
       <Section style={{ paddingTop: '4rem' }}>
         <Container1200>
@@ -205,7 +205,7 @@ const BagTemplate = ({
           </Container800>
         </SectionPrimaryTransparent>
       ) : null}
-    </Layout5>
+    </Layout>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import ElectronicsLayout from '../components/layouts/ElectronicsLayout';
+import Layout from '../components/layouts/Layout';
 
 import renderRating from '../helpers/renderRating';
 
@@ -45,7 +45,7 @@ const CustomProductImageContainer = styled(ProductImageContainer)`
 
 const AmazonProduct = ({ pageContext }) => {
   return (
-    <ElectronicsLayout>
+    <Layout>
       <Section style={{ paddingTop: '4rem' }}>
         <Container1200>
           <CustomProductContainer>
@@ -127,7 +127,7 @@ const AmazonProduct = ({ pageContext }) => {
           </CustomProductContainer>
         </Container1200>
       </Section>
-    </ElectronicsLayout>
+    </Layout>
   );
 };
 

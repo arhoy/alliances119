@@ -1,179 +1,179 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 
-import { Link } from 'gatsby';
+// import { Link } from 'gatsby';
 
-import { FaOpencart, FaAlignRight } from 'react-icons/fa';
+// import { FaOpencart, FaAlignRight } from 'react-icons/fa';
 
-import styled from '@emotion/styled';
-import netlifyIdentity from 'netlify-identity-widget';
+// import styled from '@emotion/styled';
+// import netlifyIdentity from 'netlify-identity-widget';
 
-import MyMenu2 from '../menus/MyMenu2';
+// import MyMenu2 from '../menus/MyMenu2';
 
-import { Container1200 } from '../reusableStyles/sections/Sections';
+// import { Container1200 } from '../reusableStyles/sections/Sections';
 
-import MegaMenu2 from '../menus/MegaMenus/MegaMenu2';
-import List5 from '../menus/MegaMenus/MegaMenuLists/Style2/List5';
-import List4 from '../menus/MegaMenus/MegaMenuLists/Style2/List4';
+// import MegaMenu2 from '../menus/MegaMenus/MegaMenu2';
+// import List5 from '../menus/MegaMenus/MegaMenuLists/Style2/List5';
+// import List4 from '../menus/MegaMenus/MegaMenuLists/Style2/List4';
 
-import Search from '../algolia/Search';
-import { MobileMenu1 } from '../menus-mobile/Fashion/MobileMenu1';
+// import Search from '../algolia/Search';
+// import { MobileMenu1 } from '../menus-mobile/Fashion/MobileMenu1';
 
-const Header = styled.header`
-  height: 80px;
-  position: relative;
+// const Header = styled.header`
+//   height: 80px;
+//   position: relative;
 
-  background: ${props => props.theme.colors.lightgrey};
-  display: flex;
+//   background: ${props => props.theme.colors.lightgrey};
+//   display: flex;
 
-  margin: 0 auto;
+//   margin: 0 auto;
 
-  justify-content: space-around;
-  align-items: center;
+//   justify-content: space-around;
+//   align-items: center;
 
-  z-index: 1;
+//   z-index: 1;
 
-  a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    display: flex;
-  }
-`;
-const LogoLink = styled(Link)`
-  padding: 0;
-  margin: 0;
-`;
-const Logo = styled.span`
-  & i {
-    font-weight: bold;
-    color: ${props => props.theme.colors.red};
-  }
-  & ${LogoLink} {
-    text-decoration: none !important;
-    font-size: 3rem;
-    line-height: 2.4rem;
-  }
-`;
+//   a {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//   }
+//   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+//     display: flex;
+//   }
+// `;
+// const LogoLink = styled(Link)`
+//   padding: 0;
+//   margin: 0;
+// `;
+// const Logo = styled.span`
+//   & i {
+//     font-weight: bold;
+//     color: ${props => props.theme.colors.red};
+//   }
+//   & ${LogoLink} {
+//     text-decoration: none !important;
+//     font-size: 3rem;
+//     line-height: 2.4rem;
+//   }
+// `;
 
-const LogoSpan = styled.span`
-  display: inline-block;
-  padding-bottom: 2px;
-  border-bottom: 4px solid ${props => props.theme.colors.primary};
-  border-bottom-right-radius: 4px;
-`;
+// const LogoSpan = styled.span`
+//   display: inline-block;
+//   padding-bottom: 2px;
+//   border-bottom: 4px solid ${props => props.theme.colors.primary};
+//   border-bottom-right-radius: 4px;
+// `;
 
-const LogoSpan2 = styled.span``;
+// const LogoSpan2 = styled.span``;
 
-const NavContainer = styled.nav`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// const NavContainer = styled.nav`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 
-  height: 100%;
+//   height: 100%;
 
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    display: none;
-  }
-`;
+//   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+//     display: none;
+//   }
+// `;
 
-const Cart = styled(FaOpencart)`
-  margin-left: 2rem;
-  font-size: 3rem;
-  cursor: pointer;
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    display: none;
-  }
-`;
+// const Cart = styled(FaOpencart)`
+//   margin-left: 2rem;
+//   font-size: 3rem;
+//   cursor: pointer;
+//   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+//     display: none;
+//   }
+// `;
 
-const BurgerIcon = styled(FaAlignRight)`
-  @media (min-width: ${props => props.theme.screenSize.mobileL}) {
-    display: none;
-  }
-`;
+// const BurgerIcon = styled(FaAlignRight)`
+//   @media (min-width: ${props => props.theme.screenSize.mobileL}) {
+//     display: none;
+//   }
+// `;
 
-const SearchContainerComputer = styled.div`
-  width: 15vw;
+// const SearchContainerComputer = styled.div`
+//   width: 15vw;
 
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    display: none;
-  }
-`;
+//   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+//     display: none;
+//   }
+// `;
 
-const SearchContainerMobile = styled.div`
-  margin: 0 auto;
-  @media (min-width: ${props => props.theme.screenSize.mobileL}) {
-    display: none;
-  }
-`;
+// const SearchContainerMobile = styled.div`
+//   margin: 0 auto;
+//   @media (min-width: ${props => props.theme.screenSize.mobileL}) {
+//     display: none;
+//   }
+// `;
 
-const NavFashion5 = () => {
-  useEffect(() => {
-    netlifyIdentity.init();
-  }, []);
+// const NavFashion5 = () => {
+//   useEffect(() => {
+//     netlifyIdentity.init();
+//   }, []);
 
-  const [mobileMenuOpen, setMobileMenu] = useState(false);
+//   const [mobileMenuOpen, setMobileMenu] = useState(false);
 
-  const mobileMenuHandler = () => {
-    setMobileMenu(prevState => !prevState);
-  };
+//   const mobileMenuHandler = () => {
+//     setMobileMenu(prevState => !prevState);
+//   };
 
-  return (
-    <>
-      <Header>
-        <Logo>
-          <LogoLink to="/">
-            <i>
-              <LogoSpan2>Fashion</LogoSpan2>
-              <LogoSpan>Two</LogoSpan>
-            </i>
-          </LogoLink>
-        </Logo>
+//   return (
+//     <>
+//       <Header>
+//         <Logo>
+//           <LogoLink to="/">
+//             <i>
+//               <LogoSpan2>Fashion</LogoSpan2>
+//               <LogoSpan>Two</LogoSpan>
+//             </i>
+//           </LogoLink>
+//         </Logo>
 
-        <NavContainer>
-          <MyMenu2 title={`Women`}>
-            <Container1200>
-              <MegaMenu2>
-                <List4 />
-              </MegaMenu2>
-            </Container1200>
-          </MyMenu2>
+//         <NavContainer>
+//           <MyMenu2 title={`Women`}>
+//             <Container1200>
+//               <MegaMenu2>
+//                 <List4 />
+//               </MegaMenu2>
+//             </Container1200>
+//           </MyMenu2>
 
-          <MyMenu2 title={`Men`}>
-            <Container1200>
-              <MegaMenu2>
-                <List4 />
-              </MegaMenu2>
-            </Container1200>
-          </MyMenu2>
+//           <MyMenu2 title={`Men`}>
+//             <Container1200>
+//               <MegaMenu2>
+//                 <List4 />
+//               </MegaMenu2>
+//             </Container1200>
+//           </MyMenu2>
 
-          <MyMenu2 title={`More`}>
-            <Container1200>
-              <MegaMenu2>
-                <List5 />
-              </MegaMenu2>
-            </Container1200>
-          </MyMenu2>
-        </NavContainer>
-        <SearchContainerComputer>
-          <Search />
-        </SearchContainerComputer>
+//           <MyMenu2 title={`More`}>
+//             <Container1200>
+//               <MegaMenu2>
+//                 <List5 />
+//               </MegaMenu2>
+//             </Container1200>
+//           </MyMenu2>
+//         </NavContainer>
+//         <SearchContainerComputer>
+//           <Search />
+//         </SearchContainerComputer>
 
-        <Cart className="snipcart-checkout">
-          <span className="snipcart-items-count"></span>
-          <span className="snipcart-total-price"></span>
-        </Cart>
-        <BurgerIcon onClick={mobileMenuHandler} />
-        {mobileMenuOpen ? (
-          <MobileMenu1 mobileMenuHandler={mobileMenuHandler} />
-        ) : null}
-      </Header>
-      <SearchContainerMobile>
-        <Search />
-      </SearchContainerMobile>
-    </>
-  );
-};
+//         <Cart className="snipcart-checkout">
+//           <span className="snipcart-items-count"></span>
+//           <span className="snipcart-total-price"></span>
+//         </Cart>
+//         <BurgerIcon onClick={mobileMenuHandler} />
+//         {mobileMenuOpen ? (
+//           <MobileMenu1 mobileMenuHandler={mobileMenuHandler} />
+//         ) : null}
+//       </Header>
+//       <SearchContainerMobile>
+//         <Search />
+//       </SearchContainerMobile>
+//     </>
+//   );
+// };
 
-export default NavFashion5;
+// export default NavFashion5;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
-import MainLayout from '../components/layouts/MainLayout';
+import Layout from '../components/layouts/Layout';
 
 import { H1, P } from '../components/reusableStyles/typography/Typography.js';
 import Hero from '../components/heros/Hero.js';
@@ -9,7 +9,7 @@ import { Section } from '../components/reusableStyles/sections/Sections.js';
 
 const contact = () => {
   return (
-    <MainLayout>
+    <Layout>
       <Section>
         <H1>Contact Page</H1>
         <P> You can reach me at (587) 772 5536 or fill out the form below</P>
@@ -17,7 +17,7 @@ const contact = () => {
         <SimpleNetlifyForm />
         <Hero />
       </Section>
-    </MainLayout>
+    </Layout>
   );
 };
 

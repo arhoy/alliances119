@@ -1,45 +1,49 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
-import NavFashion3 from '../navigation/NavFashion3';
+
 import { ThemeProvider } from 'emotion-theming';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
+import Nav from '../navigation/Nav';
+import Footer from './Footer';
+
 // real global scss styles
 import '../../scss/main.scss';
-import Footer from './Footer';
 
 const theme = {
   colors: {
-    primary: 'rgb(92, 52, 145)',
-    primaryDark: 'rgb(63, 3, 122)',
-    primaryLight: 'rgb(148, 103, 206)',
-    primaryVeryLight: 'rgb(232, 213, 250)',
-    primaryTransparent: 'rgba(92, 52, 145,0.2)',
+    primary: 'rgb(240, 92, 34)',
+    primaryDark: 'rgb(232, 70, 11)',
+    primaryLight: 'rgb(249, 106, 54)',
+    primaryVeryLight: 'rgb(244, 156, 124)',
+    primaryTransparent: 'rgb(240, 92, 34,0.15)',
     secondary: 'rgb(24, 163, 201)',
-    lightgrey: 'rgb(240,240,240)',
+    lightgrey: '#E0E0E0',
     lightgrey2: 'rgb(224, 217, 217)',
-    white: '#fff',
+    white: '#F3F1F1',
     black: '#1a1a1a',
-    blackTransparent: 'rgba(41, 43, 46, 0.4)',
-    darkgrey: 'rgb(109, 109, 109)',
+    blackTransparent: 'rgba(41, 43, 46, 0.8)',
+    darkGrey: 'rgb(109, 109, 109)',
     red: 'rgb(218, 18, 31)',
-    redTransparent: 'rgb(218, 18, 31,0.5)',
+    redTransparent: 'rgb(218, 18, 31,0.8)',
     lightRed: 'rgb(232, 180, 182)',
     blue: 'rgb(19, 73, 178)',
     lightGreen: '#D4EDDA',
     green: 'rgb(31, 90, 46)',
   },
   pageWidth: {
-    fixed: '800px',
-    fixedHome: '900px',
+    fixed: '1200px',
+    fixedHome: '1200px',
   },
   screenSize: {
     mobileL: '600px',
+    mobileS: '400px',
     mobileVS: '300px',
     eightHundred: '800px',
     nineHundred: '900px',
     oneThousand: '1000px',
+    fixedStandard: '1200px',
   },
 };
 
@@ -65,7 +69,7 @@ const DivFixed = styled.div`
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  max-width: 800px;
+  max-width: 1500px;
   margin: 0 auto;
 `;
 
@@ -94,7 +98,7 @@ const FullFooterLayout = styled.footer`
 `;
 
 const Layout = ({ children, full }) => {
-  const white = '#fff';
+  const bodyColor = '#EAEDED';
   const primaryColor = 'rgb(92, 52, 145)';
 
   return (
@@ -107,7 +111,7 @@ const Layout = ({ children, full }) => {
           }
 
           body {
-            background: ${white};
+            background: ${bodyColor};
             margin: 0;
             font-family: Poppins, Roboto, Helvetica, Arial, sans-serif;
           }
@@ -123,7 +127,7 @@ const Layout = ({ children, full }) => {
         <ThemeProvider theme={theme}>
           <Div>
             <FullNavLayout>
-              <NavFashion3 />
+              <Nav />
             </FullNavLayout>
             <MainFull>{children}</MainFull>
             <FullFooterLayout>
@@ -133,15 +137,15 @@ const Layout = ({ children, full }) => {
         </ThemeProvider>
       ) : (
         <ThemeProvider theme={theme}>
+          <NavLayout>
+            <Nav />
+          </NavLayout>
           <DivFixed>
-            <NavLayout>
-              <NavFashion3 />
-            </NavLayout>
             <Main>{children}</Main>
-            <FooterLayout>
-              <Footer />
-            </FooterLayout>
           </DivFixed>
+          <FooterLayout>
+            <Footer />
+          </FooterLayout>
         </ThemeProvider>
       )}
     </>
