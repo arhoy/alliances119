@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import {
   FaGlobeAfrica,
@@ -29,7 +29,6 @@ import {
   H2CenteredLight2,
   H1,
 } from '../components/reusableStyles/typography/Typography';
-import { amazonItemSearch } from '../hooks/amazonProductApi/AmazonProductApi';
 
 import SliderContainer1 from '../components/reusableStyles/slider/SliderContainer1';
 import HerosCard1 from '../components/reusableStyles/cards/HerosCard1';
@@ -223,19 +222,6 @@ export const query = graphql`
 `;
 
 const Home = ({ data }) => {
-  const [results, setResults] = useState({}); // set results to empty array
-
-  try {
-    useEffect(() => {
-      const fetchData = async () => {
-        const results = await amazonItemSearch();
-      };
-      fetchData();
-    }, []); // only run on componentDidMount and componentUnmount and query state change
-  } catch (error) {
-    console.error(error);
-  }
-
   const settings = {
     dots: true,
     infinite: true,
@@ -310,6 +296,7 @@ const Home = ({ data }) => {
           icon={<FaEnvira />}
         />
       </HerosCardContainer>
+
       <Section>
         <CustomH2>
           <Bold>Featured</Bold> Products

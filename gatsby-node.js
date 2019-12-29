@@ -44,17 +44,6 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 
-  // create page for each pants product and list them all in /pants
-  data.allPants.nodes.forEach(item => {
-    createPage({
-      path: `products/${item.productSlug}`,
-      component: path.resolve('./src/templates/Pant.js'),
-      context: {
-        slug: item.productSlug,
-      },
-    });
-  });
-
   // create page from APIS
   amazonProductData.data.forEach(item => {
     createPage({
