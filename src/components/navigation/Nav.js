@@ -13,8 +13,7 @@ import MegaMenu2 from '../menus/MegaMenus/MegaMenu2';
 
 import SuperStoreList1 from '../menus/MegaMenus/MegaMenuLists/Style2/SuperStoreList1';
 
-import Search from '../algolia/Search';
-import { MobileMenu1 } from '../menus-mobile/Electronics/MobileMenu1';
+import { MobileMenu1 } from '../menus-mobile/Main/MobileMenu1';
 import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
 import SuperStoreList2 from '../menus/MegaMenus/MegaMenuLists/Style2/SuperStoreList2';
 
@@ -84,13 +83,7 @@ const NavContainer = styled.nav`
 `;
 
 const BurgerIcon = styled(FaAlignRight)`
-  @media (min-width: ${props => props.theme.screenSize.mobileL}) {
-    display: none;
-  }
-`;
-
-const SearchContainerMobile = styled.div`
-  margin: 0 auto;
+  cursor: pointer;
   @media (min-width: ${props => props.theme.screenSize.mobileL}) {
     display: none;
   }
@@ -144,9 +137,6 @@ const NavSuperStore1 = () => {
           <MobileMenu1 mobileMenuHandler={mobileMenuHandler} />
         ) : null}
       </Header>
-      <SearchContainerMobile>
-        <Search />
-      </SearchContainerMobile>
     </>
   );
 };

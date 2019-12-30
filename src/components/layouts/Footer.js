@@ -128,14 +128,14 @@ const Footer = () => {
               </LinkHeadersPrimary>
             </LinkContainers>
             <LinkContainers>
-              <LinkHeaders>Find Products</LinkHeaders>
-              <CustomLinks to="/">Amazon Products</CustomLinks>
-              <CustomLinks to="/">Other Products</CustomLinks>
+              <LinkHeaders>Amazon Products</LinkHeaders>
+              <CustomLinks to="/new-releases">New Releases</CustomLinks>
+              <CustomLinks to="/best-sellers">Best Sellers</CustomLinks>
             </LinkContainers>
             <LinkContainers>
               <LinkHeaders>Can't Find Your Product?</LinkHeaders>
-              <CustomLinks to="/">Tell Us Which Product</CustomLinks>
-              <CustomLinks to="/">Report an issue</CustomLinks>
+              <CustomLinks to="/contact">Tell Us Which Product</CustomLinks>
+              <CustomLinks to="/contact">Report an issue</CustomLinks>
             </LinkContainers>
           </LinkColumnContainers>
           <LinkColumnContainers>
@@ -158,26 +158,25 @@ const Footer = () => {
               <LinkHeaders>About Us</LinkHeaders>
               <CustomLinks to="/">Why Choose Us</CustomLinks>
               <CustomLinks to="/">Blog</CustomLinks>
-              <CustomLinks to="/">Rewards Card</CustomLinks>
+              <CustomLinks to="/reward-card">Rewards Card</CustomLinks>
               <CustomLinks to="/">Who We Are</CustomLinks>
-              <CustomLinks to="/">Contact Us</CustomLinks>
+              <CustomLinks to="/contact">Contact Us</CustomLinks>
             </LinkContainers>
           </LinkColumnContainers>
           <LinkColumnContainers>
             <LinkContainers>
               <LinkHeaders>Address</LinkHeaders>
               <LinkDescription>
-                725 5th Ave, New York, NY 10022, United States
+                101 200st, Edmonton, AB TKL 2X1, Canada
               </LinkDescription>
             </LinkContainers>
             <LinkContainers>
               <LinkHeaders>Our Site</LinkHeaders>
-              <CustomLinks to="/">Products</CustomLinks>
-              <CustomLinks to="/">Brands</CustomLinks>
-              <CustomLinks to="/">Partners</CustomLinks>
+              <CustomLinks to="/products">Products</CustomLinks>
+              <CustomLinks to="/brands">Brands</CustomLinks>
               <CustomLinks to="/">Terms</CustomLinks>
               <CustomLinks to="/">Privacy</CustomLinks>
-              <CustomLinks to="/">Contact</CustomLinks>
+              <CustomLinks to="/contact">Contact</CustomLinks>
             </LinkContainers>
           </LinkColumnContainers>
         </MenuRHS>

@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 
 const H1 = styled.h1`
-  font-size: 4rem;
-  color: ${props => props.theme.colors.black};
+  font-size: 5rem;
+  text-align: center;
+  color: ${props => props.theme.colors.primary};
+  text-shadow: -3px 3px 0 rgba(10, 14, 39, 0.1);
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    text-align: center;
     font-size: 3.4rem;
   }
 `;
@@ -69,6 +70,11 @@ const P = styled.p`
   }
 `;
 
+const PBasic = styled.p`
+  padding: 1rem 0rem;
+  font-size: 1.6rem;
+`;
+
 export {
   H1,
   H2,
@@ -82,5 +88,6 @@ export {
   Span,
   Bold,
   P,
+  PBasic,
   ProductPageH1,
 };

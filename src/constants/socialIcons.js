@@ -1,21 +1,17 @@
 import React from 'react';
-import {
-  FaTwitterSquare,
-  FaFacebookSquare,
-  FaGithubSquare,
-} from 'react-icons/fa';
+import { FaTwitterSquare, FaFacebookSquare, FaInstagram } from 'react-icons/fa';
 
 export default [
   {
     icon: <FaFacebookSquare />,
-    url: 'https://www.facebook.com/CraveJs-1602659229869334',
+    url: 'https://www.facebook.com',
   },
   {
-    icon: <FaGithubSquare />,
-    url: 'https://github.com/arhoy',
+    icon: <FaInstagram />,
+    url: 'https://instagram.com',
   },
   {
     icon: <FaTwitterSquare />,
-    url: 'https://twitter.com/_aquasar',
+    url: 'https://twitter.com',
   },
 ];

@@ -1,14 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import {
-  FaGlobeAfrica,
-  FaSearch,
-  FaAmazon,
-  FaCcAmazonPay,
-  FaEnvira,
-  FaDollarSign,
-  FaCarAlt,
-} from 'react-icons/fa';
+import { FaAmazon, FaDollarSign, FaCarAlt } from 'react-icons/fa';
 
 import { graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
@@ -32,10 +24,10 @@ import {
 } from '../components/reusableStyles/typography/Typography';
 
 import SliderContainer1 from '../components/reusableStyles/slider/SliderContainer1';
-import HerosCard1 from '../components/reusableStyles/cards/HerosCard1';
+
 import FeatureSection from '../components/features/FeatureSection';
 import { ButtonStyle1 } from '../components/reusableStyles/buttons/Button';
-import RenderAmazonProducts from '../hooks/apiHooks/RenderAmazonProducts';
+import SuperStoreList2 from '../components/menus/MegaMenus/MegaMenuLists/Style2/SuperStoreList2';
 
 const HerosContainer = styled.div`
   z-index: -1;
@@ -47,19 +39,10 @@ const HerosContainer = styled.div`
   }
 `;
 
-const HerosCardContainer = styled.div`
-  margin-top: -20vh;
-
-  display: flex;
-  flex-wrap: wrap;
-
-  justify-content: center;
-  align-items: flex-end;
-`;
-
 const HeroBackgroundImage = styled(BackgroundImage)`
   width: 100%;
-  height: 70vh;
+  height: 40vh;
+
   background-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.75),
@@ -67,38 +50,28 @@ const HeroBackgroundImage = styled(BackgroundImage)`
   );
   background-size: cover;
   background-position: top;
-  align-items: center;
+
   opacity: 1 !important;
 `;
 
 const HeroContentContainer = styled.div`
-  margin-top: 1rem;
-
-  flex-direction: column;
+  min-width: 30rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 const HeroContent = styled.div`
   color: ${props => props.theme.colors.white};
-  max-width: 80rem;
-  margin: 0 auto;
 
-  padding: 3rem;
+  padding: 1rem;
   border-top-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
 `;
-const IconContainer = styled.div`
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const StyledIcon = styled(FaGlobeAfrica)`
-  font-size: 25rem;
-  opacity: 0.35;
-  color: ${props => props.theme.colors.white};
-`;
 
 const CustomH1 = styled(H1)`
+  text-transform: uppercase;
+  margin-bottom: 2rem;
   text-align: center;
   color: ${props => props.theme.colors.white};
   text-shadow: -3px 3px 0 ${props => props.theme.colors.black};
@@ -111,15 +84,16 @@ const CustomH2 = styled(H2CenteredLight2)`
 `;
 
 const Blurb = styled.p`
+  margin: 2rem 0.5rem;
   text-align: center;
   font-weight: bolder;
+  font-size: 2rem;
   & i {
     text-decoration: underline;
   }
 `;
 const Blurb2 = styled(Blurb)`
   font-weight: 500;
-  margin-top: 1rem;
 `;
 
 const textVehicles = () => (
@@ -158,7 +132,7 @@ const textOurWarehouse1 = () => (
 
 export const query = graphql`
   {
-    heroImage: file(relativePath: { eq: "superstore/hero.jpg" }) {
+    heroImage: file(relativePath: { eq: "superstore/hero-brand.jpg" }) {
       childImageSharp {
         fluid(quality: 90, maxWidth: 1000) {
           ...GatsbyImageSharpFluid_tracedSVG
@@ -223,7 +197,7 @@ export const query = graphql`
   }
 `;
 
-const Home = ({ data }) => {
+const Brands = ({ data }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -255,50 +229,20 @@ const Home = ({ data }) => {
         <HeroBackgroundImage fluid={data.heroImage.childImageSharp.fluid}>
           <HeroContentContainer>
             <HeroContent>
-              <CustomH1>The Amazon Store For Africa</CustomH1>
+              <CustomH1>Our Brands</CustomH1>
               <Blurb>
-                We will deliver to <i>any</i> African country when Amazon won't
+                Shop for a wide variety of brands. Some of our brands here
               </Blurb>
               <Blurb2>
                 Just add our Warehouse on address line 1 during checkout
               </Blurb2>
             </HeroContent>
-
-            <IconContainer>
-              <StyledIcon />
-            </IconContainer>
           </HeroContentContainer>
         </HeroBackgroundImage>
       </HerosContainer>
-      <HerosCardContainer>
-        <HerosCard1
-          title={`Find Your Product`}
-          blurb={`    We are a Ecommerce Store Shipping products to Africa from Amazon,
-            Best Buy, Autotrader and more`}
-          icon={<FaSearch />}
-        />
-        <HerosCard1
-          title={`Checkout Via Amazon`}
-          blurb={`             Amazon will fullfill the orders, send it to our warehouse. We will
-          ship your product with tracking number to your location immediately`}
-          icon={<FaAmazon />}
-        />
-        <HerosCard1
-          title={`Safe Secure Transactions`}
-          blurb={`            Your orders are 100% guaranteed by Amazon and by Alliances119 to
-          arrive in a fast and timely manner.`}
-          icon={<FaCcAmazonPay />}
-        />
-
-        <HerosCard1
-          title={`Many Brands & Growing!`}
-          blurb={`   We are the fastest growing new kid on the block, delivering
-          ecommerce products to the entire African continent. Providing
-          unparalled customer service.`}
-          icon={<FaEnvira />}
-        />
-      </HerosCardContainer>
-
+      <Section>
+        <SuperStoreList2 />
+      </Section>
       <Section>
         <CustomH2>
           <Bold>Featured</Bold> Products
@@ -343,15 +287,6 @@ const Home = ({ data }) => {
         </Slider>
       </Section>
 
-      <RenderAmazonProducts keyword={'iphones'} title={'iphone deals'} />
-
-      <RenderAmazonProducts
-        keyword={'under armour'}
-        title="Latest Under Armour"
-      />
-
-      <RenderAmazonProducts keyword={'Deals'} title="Todays Deals" />
-
       <SectionGrey>
         <Container1200>
           <FeatureSection
@@ -392,4 +327,4 @@ const Home = ({ data }) => {
   );
 };
 
-export default Home;
+export default Brands;
