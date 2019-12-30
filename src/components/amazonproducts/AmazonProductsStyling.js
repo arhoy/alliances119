@@ -73,7 +73,7 @@ const StyledContainer2 = styled.div`
   border-radius: 1rem;
 
   width: 30rem;
-  height: 30rem;
+  height: 32rem;
 `;
 
 const StyledLinkContainer2 = styled(StyledLinkContainer)`
@@ -122,6 +122,8 @@ const StyledImage2 = styled.img`
 const StyledImage3 = styled.img`
   object-fit: cover;
   margin: 0 auto;
+  max-width: 20rem;
+  max-height: 15rem;
 `;
 
 const StyledOldPrice = styled.span`
