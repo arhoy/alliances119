@@ -285,7 +285,7 @@ const Home = ({ data }) => {
         />
         <HerosCard1
           title={`Safe Secure Transactions`}
-          blurb={`            Your orders are 100% guaranteed by Amazon and by Alliances119 to
+          blurb={`            Your orders are 100% guaranteed by Amazon and by E-Achatafrica.com to
           arrive in a fast and timely manner.`}
           icon={<FaCcAmazonPay />}
         />

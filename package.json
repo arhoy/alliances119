@@ -1,7 +1,7 @@
 {
-  "name": "alliances119",
+  "name": "E-Achatafrica.com",
   "private": true,
-  "description": "Official repo for alliances119.com",
+  "description": "Official repo for E-Achatafrica.com.com",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -83,6 +83,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arhoy/alliances119"
+    "url": "https://github.com/arhoy/E-Achatafrica.com"
   }
 }

@@ -69,6 +69,12 @@ const P = styled.p`
     text-align: center;
   }
 `;
+const PCenter = styled.p`
+  padding: 1rem 0rem;
+  font-size: 1.6rem;
+
+  text-align: center;
+`;
 
 const PBasic = styled.p`
   padding: 1rem 0rem;
@@ -88,6 +94,7 @@ export {
   Span,
   Bold,
   P,
+  PCenter,
   PBasic,
   ProductPageH1,
 };

@@ -16,6 +16,7 @@ import SuperStoreList1 from '../menus/MegaMenus/MegaMenuLists/Style2/SuperStoreL
 import { MobileMenu1 } from '../menus-mobile/Main/MobileMenu1';
 import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
 import SuperStoreList2 from '../menus/MegaMenus/MegaMenuLists/Style2/SuperStoreList2';
+import NoStyleLink from '../Links/NoStyleLink';
 
 const Header = styled.header`
   height: 80px;
@@ -93,6 +94,18 @@ const CustomButtonStyle2 = styled(ButtonStyle2)`
   display: flex;
 `;
 
+const CustomLink = styled(NoStyleLink)`
+  color: ${props => props.theme.colors.white};
+  height: 100%;
+  padding: 1rem;
+  margin: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  & :hover {
+    background: ${props => props.theme.colors.primary};
+  }
+`;
+
 const NavSuperStore1 = () => {
   const [mobileMenuOpen, setMobileMenu] = useState(false);
 
@@ -105,13 +118,12 @@ const NavSuperStore1 = () => {
       <Header>
         <Logo>
           <LogoLink to="/">
-            <LogoSpan2>
-              ALLIANCES<span>119</span>
-            </LogoSpan2>
+            <LogoSpan2>E-Achatafrica</LogoSpan2>
           </LogoLink>
         </Logo>
 
         <NavContainer>
+          <CustomLink to="/stores">Stores</CustomLink>
           <MyMenu3 color={'white'} title={`SHOP`}>
             <Container1200>
               <MegaMenu2 background={'white'}>

@@ -24,7 +24,7 @@ const RewardsCard = () => {
           </P>
 
           <NetlifyFormV2
-            title={'Alliances119 Gives Back'}
+            title={'E-Achatafrica.com Gives Back'}
             background="#EAEDED"
             color="black"
           />

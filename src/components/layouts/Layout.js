@@ -21,7 +21,7 @@ const theme = {
     secondary: 'rgb(24, 163, 201)',
     lightgrey: '#E0E0E0',
     lightgrey2: 'rgb(224, 217, 217)',
-    white: '#F3F1F1',
+    white: 'white',
     black: '#1a1a1a',
     blackTransparent: 'rgba(41, 43, 46, 0.8)',
     darkGrey: 'rgb(109, 109, 109)',
@@ -98,7 +98,7 @@ const FullFooterLayout = styled.footer`
 `;
 
 const Layout = ({ children, full }) => {
-  const bodyColor = '#EAEDED';
+  const bodyColor = 'white';
   const primaryColor = 'rgb(92, 52, 145)';
 
   return (
