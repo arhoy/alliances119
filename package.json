@@ -23,7 +23,7 @@
     "amazon-product-api": "^0.4.4",
     "emotion-theming": "^10.0.19",
     "es6-promise": "^4.2.8",
-    "gatsby": "^2.13.50",
+    "gatsby": "^2.32.13",
     "gatsby-background-image": "^0.8.14",
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-algolia": "^0.3.4",
